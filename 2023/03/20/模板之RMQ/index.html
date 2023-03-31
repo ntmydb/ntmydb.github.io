@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <title>模板之RMQ | Whispering&#39;s Blog</title>
+        <meta name="author" content="Whispering" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>WHISPERING&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WHISPERING&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>模板之RMQ</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E7%AE%97%E6%B3%95/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%80%8D%E5%A2%9E/" style="color: #00bcd4">倍增</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/RMQ/" style="color: #00bcd4">RMQ</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="rmq模板"><a class="markdownIt-Anchor" href="#rmq模板"></a> RMQ模板</h1>
+<span id="more"></span>
+<h2 id="一-rmq简介"><a class="markdownIt-Anchor" href="#一-rmq简介"></a> 一、RMQ简介</h2>
+<h3 id="中文全名为区间最值查询有人说区间最值不就循环扫一遍就出来了吗好想法-但是如果区间长度为100000以上而且需要连续查询m次呢"><a class="markdownIt-Anchor" href="#中文全名为区间最值查询有人说区间最值不就循环扫一遍就出来了吗好想法-但是如果区间长度为100000以上而且需要连续查询m次呢"></a> 中文全名为区间最值查询，有人说区间最值不就循环扫一遍就出来了吗，好想法。但是，如果区间长度为100000以上而且需要连续查询m次呢</h3>
+<h3 id="显然你会看到满屏的font-colorffc116-size6tlefont谁不喜欢绿色的font-color52a41a-size6acfont呢所以rmq算法就是把黄色绿掉的算法"><a class="markdownIt-Anchor" href="#显然你会看到满屏的font-colorffc116-size6tlefont谁不喜欢绿色的font-color52a41a-size6acfont呢所以rmq算法就是把黄色绿掉的算法"></a> 显然你会看到满屏的<font color="#ffc116" size="6">TLE</font>，谁不喜欢绿色的<font color="#52a41a" size="6">AC</font>呢？所以RMQ算法就是把黄色绿掉的算法</h3>
+<h3 id="rmq算法一般预处理时间较长时间复杂度为onlogn但查询速度很快只需要o1rmq本质上还是用到了倍增的思想记录连续2j个数的最值因此提高查找效率"><a class="markdownIt-Anchor" href="#rmq算法一般预处理时间较长时间复杂度为onlogn但查询速度很快只需要o1rmq本质上还是用到了倍增的思想记录连续2j个数的最值因此提高查找效率"></a> RMQ算法一般预处理时间较长，时间复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>,但查询速度很快，只需要<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，RMQ本质上还是用到了倍增的思想，记录连续<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">2^j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span></span></span></span>个数的最值，因此提高查找效率</h3>
+<h2 id="二-例题及代码"><a class="markdownIt-Anchor" href="#二-例题及代码"></a> 二、例题及代码</h2>
+<h3 id="例题忠诚"><a class="markdownIt-Anchor" href="#例题忠诚"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1816">例题:忠诚</a></h3>
+<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
+<pre><code>#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int N=100001;
+int z[N][20];
+int n,m;
+int count1(int x)
+&#123;
+    int need=1;
+    for(int i=0;i&lt;x;i++)
+        need=need*2;
+    return need;
+&#125;
+void create(int n)
+&#123;
+    for(int i=1;count1(i)&lt;=n;i++)
+    &#123;
+        for(int j=1;j+count1(i)-1&lt;=n;j++)
+            z[j][i]=min(z[j][i-1],z[j+(1&lt;&lt;(i-1))][i-1]);
+    &#125;
+    return;
+&#125;
+int work(int l,int r)
+&#123;
+    int t=(int)(log((r-l+1)*1.0)/log(2.0));
+    return min(z[l][t],z[r-(1&lt;&lt;t)+1][t]);
+&#125;
+int main()
+&#123;
+    scanf(&quot;%d%d&quot;,&amp;m,&amp;n);
+    for(int i=1;i&lt;=m;i++)
+        scanf(&quot;%d&quot;,&amp;z[i][0]);
+    create(m);
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        int a,b;
+        scanf(&quot; %d %d&quot;,&amp;a,&amp;b);
+        printf(&quot;%d &quot;,work(a,b));
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<h3 id="具体算法原理请移步另一篇文章"><a class="markdownIt-Anchor" href="#具体算法原理请移步另一篇文章"></a> 具体算法原理请移步另一篇文章</h3>
+
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Whispering&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Whispering
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script>
+    let clientID = "9696093cd1d92ad659a5",
+        clientSecret = "5cd57248f573a64384afb01e67ded6adf4d8465b";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "ntmydb.github.io",
+        owner: "ntmydb",
+        admin: ["ntmydb"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+        proxy: "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token",
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+
+
+
+        
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

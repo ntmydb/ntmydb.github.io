@@ -1,0 +1,625 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <title>模板之最短路 | Whispering&#39;s Blog</title>
+        <meta name="author" content="Whispering" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>WHISPERING&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WHISPERING&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>模板之最短路</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/19
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E7%AE%97%E6%B3%95/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/C/" style="color: #ffa2c4">C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">图论</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="color: #ff7d73">最短路</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Floyd/" style="color: #00a596">Floyd</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Dijskra/" style="color: #00bcd4">Dijskra</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/SPFA/" style="color: #ff7d73">SPFA</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="最短路的各个算法"><a class="markdownIt-Anchor" href="#最短路的各个算法"></a> 最短路的各个算法</h1>
+<span id="more"></span>
+<h2 id="一-floyd"><a class="markdownIt-Anchor" href="#一-floyd"></a> 一、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>l</mi><mi>o</mi><mi>y</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">Floyd</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">d</span></span></span></span></h2>
+<h3 id="时间复杂度为on3但优点是可以计算图中任意两点之间的最短距离"><a class="markdownIt-Anchor" href="#时间复杂度为on3但优点是可以计算图中任意两点之间的最短距离"></a> 时间复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，但优点是可以计算图中任意两点之间的最短距离</h3>
+<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
+<pre><code>int dis[N][N];
+
+void Floyd()
+&#123;
+    for(int k=1;k&lt;=n;k++)
+    &#123;
+        for(int i=1;i&lt;=n;i++)
+        &#123;
+            if(i!=k)
+            &#123;
+                for(int j=1;j&lt;=n;j++)
+                &#123;
+                    if(j!=i &amp;&amp; j!=k &amp;&amp; dis[i][k]+dis[k][j]&lt;dis[i])
+                        dis[i][j]=dis[i][k]+dis[k][j];
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    return;
+&#125;
+</code></pre>
+<h3 id="例题牛大赛"><a class="markdownIt-Anchor" href="#例题牛大赛"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2419">例题：牛大赛</a></h3>
+<h3 id="code-2"><a class="markdownIt-Anchor" href="#code-2"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=101;
+int n,m,win[N],lose[N];
+bool flag[N][N];
+
+int main()
+&#123;
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++)
+	&#123;
+		int a,b;
+		scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+		flag[a][b]=true;
+	&#125;
+	for(int k=1;k&lt;=n;k++)
+	&#123;
+		for(int i=1;i&lt;=n;i++)
+		&#123;
+			if(i!=k)
+			&#123;
+				for(int j=1;j&lt;=n;j++)
+				&#123;
+					if(j!=i &amp;&amp; j!=k &amp;&amp; flag[i][k] &amp;&amp; flag[k][j])
+						flag[i][j]=true;
+				&#125;
+			&#125;
+		&#125;
+	&#125;
+	for(int i=1;i&lt;=n;i++)
+	&#123;
+		for(int j=1;j&lt;=n;j++)
+		&#123;
+			if(flag[i][j])
+				win[i]++,lose[j]++;
+		&#125;
+	&#125;
+	int ans=0;
+	for(int i=1;i&lt;=n;i++)
+		if(win[i]+lose[i]+1==n)
+			ans++;
+	printf(&quot;%d\n&quot;,ans);
+	return 0;
+&#125;
+</code></pre>
+<h2 id="二-dijskra"><a class="markdownIt-Anchor" href="#二-dijskra"></a> 二、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>i</mi><mi>j</mi><mi>s</mi><mi>k</mi><mi>r</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Dijskra</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span></span></span></span></h2>
+<h3 id="时间复杂度正常的是on2用堆优化后可以达到onlogn优点是快不容易被卡相对于spfa而言缺点是只能求一个点到其他点的最短距离"><a class="markdownIt-Anchor" href="#时间复杂度正常的是on2用堆优化后可以达到onlogn优点是快不容易被卡相对于spfa而言缺点是只能求一个点到其他点的最短距离"></a> 时间复杂度正常的是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，用堆优化后可以达到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>，优点是快，不容易被卡（相对于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>P</mi><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">SPFA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">A</span></span></span></span>而言），缺点是只能求一个点到其他点的最短距离</h3>
+<h3 id="code-3"><a class="markdownIt-Anchor" href="#code-3"></a> Code:</h3>
+<pre><code>int dis[N]
+
+void Dijskra()
+&#123;
+      //普通版O(n^2)
+    for(int i=1; i&lt;=n; i++)
+        dist[i]=dis[st][i];
+    flag[S]=true;
+    for(int i=1; i&lt;n; i++)
+    &#123;
+        int minn=0x7f7f7f7f;
+        int to=0;
+        for(int j=1; j&lt;=n; j++)
+        &#123;
+            if(!flag[j] &amp;&amp; d[j]&lt;minn)
+            &#123;
+                minn=d[j];
+                to=j;
+            &#125;
+        &#125;
+        if(to==0)
+            break;
+        flag[to]=true;
+        for(int j=1; j&lt;=n; j++)
+        &#123;
+            if(dist[j]&gt;dist[to]+dis[to][j] &amp;&amp; !flag[j])
+                dist[j]=dist[to]+dis[to][j];
+        &#125;
+    &#125; 
+&#125;
+//------------------------------------------------
+struct node 
+&#123;
+    long long to;
+    long long len;
+    node(int tt,int ll)
+    &#123;
+        to=tt;
+        len=ll;
+    &#125;
+    node()
+    &#123;
+    &#125;
+&#125;;
+vector &lt;node&gt; v[N];
+
+struct edge
+&#123;
+    int to;
+    int dis;
+    edge(int tt,int dd)
+    &#123;
+        to=tt;
+        dis=dd;
+    &#125;
+    edge()
+    &#123;
+    &#125;
+    bool operator &lt; (const edge &amp; ot) const
+    &#123;
+        return dis&gt;ot.dis;
+    &#125;
+&#125;;
+priority_queue &lt;edge &gt; q; 
+
+int dis[N];
+
+void Dijskra_heap()
+&#123;
+    //堆优化版O(nlogn)
+     for(int i=2;i&lt;=n;i++)
+        dis[i]=0x7f7f7f7f;
+    dis[1]=0;
+    q.push(edge(1,0));
+    while(q.size())
+    &#123;
+        int t=q.top().to;
+        q.pop();
+        if(flag[t]) 
+            continue;
+        flag[t]=true;
+        int size=v[t].size();
+        for(int i=0;i&lt;size;i++)
+        &#123;
+            int to=v[t][i].to;
+            int len=v[t][i].len;
+            if(dis[to]&gt;dis[t]+len)
+            &#123;
+                dis[to]=dis[t]+len;
+                q.push(edge(to,dis[to]));
+            &#125;
+        &#125;
+    &#125;
+    return;
+ &#125; 
+</code></pre>
+<h3 id="例题单源最短路径"><a class="markdownIt-Anchor" href="#例题单源最短路径"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4779">例题:单源最短路径</a></h3>
+<h3 id="code-4"><a class="markdownIt-Anchor" href="#code-4"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=300001;
+long long n,m,S,dis[N];
+bool vis[N];
+struct node
+&#123;
+	long long to,len;
+	node(long long tt,long long ll)
+	&#123;
+		to=tt,len=ll;
+	&#125;
+	node()
+	&#123;
+	&#125;
+&#125;;
+vector &lt;node &gt; g[N];
+struct edge
+&#123;
+    long long to;
+    long long dis;
+    edge(long long tt,long long dd)
+    &#123;
+        to=tt;
+        dis=dd;
+    &#125;
+    edge()
+    &#123;
+    &#125;
+    bool operator &lt; (const edge &amp; ot) const
+    &#123;
+        return dis&gt;ot.dis;
+    &#125;
+&#125;;
+priority_queue &lt;edge &gt; q; 
+void Dijskra_heap()
+&#123;
+     for(int i=2;i&lt;=n;i++)
+        dis[i]=9999999999999;
+    dis[1]=0;
+    q.push(edge(1,0));
+    while(q.size())
+    &#123;
+        long long t=q.top().to;
+        q.pop();
+        if(vis[t]) 
+            continue;
+        vis[t]=true;
+        long long size=g[t].size();
+        for(int i=0;i&lt;size;i++)
+        &#123;
+            long long to=g[t][i].to;
+            long long len=g[t][i].len;
+            if(dis[to]&gt;dis[t]+len)
+            &#123;
+                dis[to]=dis[t]+len;
+                q.push(edge(to,dis[to]));
+            &#125;
+        &#125;
+    &#125;
+    return;
+&#125; 
+int main()
+&#123;
+	scanf(&quot;%lld %lld %lld&quot;,&amp;n,&amp;m,&amp;S);
+	for(int i=1;i&lt;=m;i++)
+	&#123;
+		long long a,b,c;
+		scanf(&quot;%lld %lld %lld&quot;,&amp;a,&amp;b,&amp;c);
+		g[a].push_back(node(b,c));
+	&#125;
+	Dijskra_heap();
+	for(int i=1;i&lt;=n;i++)
+	&#123;
+		if(i!=n)
+			printf(&quot;%lld &quot;,dis[i]==9999999999999?-1:dis[i]);
+		else
+			printf(&quot;%lld\n&quot;,dis[i]==9999999999999?-1:dis[i]);
+	&#125;
+	return 0;
+&#125;
+</code></pre>
+<h2 id="三-spfa"><a class="markdownIt-Anchor" href="#三-spfa"></a> 三、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>P</mi><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">SPFA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">A</span></span></span></span></h2>
+<h3 id="众所周知spfa已经死了如果你不知道那就不知道吧"><a class="markdownIt-Anchor" href="#众所周知spfa已经死了如果你不知道那就不知道吧"></a> 众所周知，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>P</mi><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">SPFA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">A</span></span></span></span>已经死了，如果你不知道，那就不知道吧</h3>
+<h3 id="那我为什么要写这个算法呢因为spfa有一个最大的好处那就是好写好记时间复杂度为oke其中k是一个常数e是边数但是最坏时间复杂度是ovev是图中点的数目它也可以求单源最短路径但是你用spfa做dijskra的例题会t掉所以例题是另一个"><a class="markdownIt-Anchor" href="#那我为什么要写这个算法呢因为spfa有一个最大的好处那就是好写好记时间复杂度为oke其中k是一个常数e是边数但是最坏时间复杂度是ovev是图中点的数目它也可以求单源最短路径但是你用spfa做dijskra的例题会t掉所以例题是另一个"></a> 那我为什么要写这个算法呢，因为SPFA有一个最大的好处，那就是好写好记，时间复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(kE)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>是一个常数，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>是边数，但是最坏时间复杂度是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>V</mi><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(VE)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>是图中点的数目，它也可以求单源最短路径，但是你用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>P</mi><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">SPFA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">A</span></span></span></span>做<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>i</mi><mi>j</mi><mi>s</mi><mi>k</mi><mi>r</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Dijskra</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span></span></span></span>的例题会T掉，所以例题是另一个</h3>
+<h3 id="例题单源最短路弱化版"><a class="markdownIt-Anchor" href="#例题单源最短路弱化版"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3371">例题:单源最短路（弱化版）</a></h3>
+<h3 id="code-5"><a class="markdownIt-Anchor" href="#code-5"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const long long N=200001;
+struct node
+&#123;
+    long long to;
+    long long len;
+    node(long long tt,long long ll)
+    &#123;
+        to=tt;
+        len=ll;
+    &#125;
+    node()
+    &#123;
+    &#125;
+&#125;;
+vector &lt;node&gt; g[N];
+queue &lt;long long &gt; q;
+long long st,n,m,cnt[N],dis[N];
+bool flag[N];
+void spfa()
+&#123;
+    q.push(st),flag[st]=true,dis[st]=0;
+    while(!q.empty())
+    &#123;
+        long long t=q.front();
+        q.pop();
+        flag[t]=false;
+        long long size=g[t].size();
+        for(long long i=0;i&lt;size;i++)
+        &#123;
+            long long to=g[t][i].to;
+            long long len=g[t][i].len;
+            if(dis[to]&gt;dis[t]+len)
+            &#123;
+                dis[to]=dis[t]+len;
+                if(!flag[to])
+             	   q.push(to),flag[to]=true;
+            &#125;
+        &#125;
+    &#125;
+    return;
+&#125;
+int main()
+&#123;
+	scanf(&quot;%lld %lld %lld&quot;,&amp;n,&amp;m,&amp;st);
+	for(int i=1;i&lt;=n;i++)
+		dis[i]=2147483647;
+	for(long long i=1;i&lt;=m;i++)
+	&#123;
+	    long long x,y,z;
+	    scanf(&quot;%lld %lld %lld&quot;,&amp;x,&amp;y,&amp;z);
+	    g[x].push_back(node(y,z));
+	&#125;
+	spfa();
+	for(long long i=1;i&lt;=n;i++)
+		printf(&quot;%lld &quot;,dis[i]);
+    return 0;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Whispering&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Whispering
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script>
+    let clientID = "9696093cd1d92ad659a5",
+        clientSecret = "5cd57248f573a64384afb01e67ded6adf4d8465b";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "ntmydb.github.io",
+        owner: "ntmydb",
+        admin: ["ntmydb"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+        proxy: "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token",
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+
+
+
+        
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

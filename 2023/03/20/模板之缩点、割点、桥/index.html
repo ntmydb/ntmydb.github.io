@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <title>模板之缩点、割点、桥 | Whispering&#39;s Blog</title>
+        <meta name="author" content="Whispering" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>WHISPERING&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WHISPERING&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>模板之缩点、割点、桥</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E7%AE%97%E6%B3%95/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/C/" style="color: #00a596">C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">图论</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="tarjan缩点-割点和桥的模板"><a class="markdownIt-Anchor" href="#tarjan缩点-割点和桥的模板"></a> Tarjan缩点、割点和桥的模板</h1>
+<span id="more"></span>
+<h2 id="一-缩点"><a class="markdownIt-Anchor" href="#一-缩点"></a> 一、缩点</h2>
+<h3 id="缩点的前提是了解强联通分量强联通分量的定义是强联通分量中的每一个点都可以到达另一个强联通分量中的节点缩点就是把一个强联通分量缩成一个节点来帮助我们更好完成题目任务的一种方法"><a class="markdownIt-Anchor" href="#缩点的前提是了解强联通分量强联通分量的定义是强联通分量中的每一个点都可以到达另一个强联通分量中的节点缩点就是把一个强联通分量缩成一个节点来帮助我们更好完成题目任务的一种方法"></a> 缩点的前提是了解强联通分量，强联通分量的定义是强联通分量中的每一个点都可以到达另一个强联通分量中的节点，缩点就是把一个强联通分量缩成一个节点来帮助我们更好完成题目任务的一种方法</h3>
+<h3 id="例题受欢迎的牛g"><a class="markdownIt-Anchor" href="#例题受欢迎的牛g"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2341">例题:受欢迎的牛G</a></h3>
+<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=20001;
+stack &lt;int  &gt;s;
+vector &lt;int &gt; g[N];
+int low[N],dfn[N],col[N],n,m,cnt,T,count0[N],tot,in[N],out[N];
+bool flag[N];
+void tarjan(int pos)
+&#123;
+	dfn[pos]=low[pos]=++cnt;
+	s.push(pos);
+	int size=g[pos].size();
+	flag[pos]=true;
+	for(int i=0;i&lt;size;i++)
+	&#123;
+		int to=g[pos][i];
+		if(!dfn[to])
+		&#123;
+			tarjan(to);
+			low[pos]=min(low[pos],low[to]);
+		&#125;
+		else if(flag[to])
+			low[pos]=min(low[pos],low[to]);
+	&#125;
+	if(dfn[pos]==low[pos])
+	&#123;
+		flag[pos]=false;
+		col[pos]=++tot;
+		while(!s.empty() &amp;&amp; s.top()!=pos)
+		&#123;
+			flag[s.top()]=false;
+			col[s.top()]=tot;
+			s.pop();
+		&#125;
+		s.pop();
+	&#125;
+	return;
+&#125;
+int main()
+&#123;
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++)
+	&#123;
+		int x,y;
+		scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+		g[x].push_back(y);
+	&#125;
+	for(int i=1;i&lt;=n;i++)
+		g[i].push_back(i);
+	for(int i=1;i&lt;=n;i++)
+	&#123;
+		if(!dfn[i])
+			tarjan(i);
+	&#125;
+	for(int i=1;i&lt;=n;i++)
+    	count0[col[i]]++;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+    	int size=g[i].size();
+    	for(int j=0;j&lt;size;j++)
+    	&#123;
+    		if(col[i]!=col[g[i][j]])
+    			in[col[g[i][j]]]=1,out[col[i]]=1;
+		&#125;
+	&#125;
+	int anspos=0,ans=0;
+	for(int i=1;i&lt;=tot;i++)
+	&#123;
+		if(!out[i])
+		&#123;
+			ans++;
+			anspos=i;
+		&#125;
+	&#125;
+	if(ans&gt;1)
+		printf(&quot;0\n&quot;);
+	else
+		printf(&quot;%d\n&quot;,count0[anspos]);
+	return 0;
+&#125;
+</code></pre>
+<h2 id="二-割点"><a class="markdownIt-Anchor" href="#二-割点"></a> 二、割点</h2>
+<h3 id="割点的定义是如果一张连通图删去此节点那么这张连通图变为不连通图此节点就被称为割点"><a class="markdownIt-Anchor" href="#割点的定义是如果一张连通图删去此节点那么这张连通图变为不连通图此节点就被称为割点"></a> 割点的定义是如果一张连通图删去此节点，那么这张连通图变为不连通图，此节点就被称为割点</h3>
+<h3 id="例题割点"><a class="markdownIt-Anchor" href="#例题割点"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3388">例题:割点</a></h3>
+<h3 id="code-2"><a class="markdownIt-Anchor" href="#code-2"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=200001;
+int n,m,dfn[N],low[N],root,cnt;
+bool flag[N],cut[N];
+vector &lt;int &gt; g[N];
+void tarjan(int cur)
+&#123;
+	dfn[cur]=low[cur]=++cnt;
+	int size=g[cur].size();
+	int flag=0;
+	for(int i=0;i&lt;size;i++)
+	&#123;
+		int to=g[cur][i];
+		if(!dfn[to])
+		&#123;
+			tarjan(to);
+			low[cur]=min(low[cur],low[to]);
+			if(low[to]&gt;=dfn[cur])
+			&#123;
+				flag++;
+				if(cur!=root || flag&gt;1)
+					cut[cur]=true;
+			&#125;
+		&#125;
+		else
+			low[cur]=min(low[cur],dfn[to]);
+	&#125;
+	return;
+&#125;
+int main()
+&#123;
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++)
+	&#123;
+		int a,b;
+		scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+		g[a].push_back(b);
+		g[b].push_back(a);
+	&#125;
+	for(int i=1;i&lt;=n;i++)
+		if(!dfn[i])
+			root=i,tarjan(i);
+	long long ans=0;
+	for(int i=1;i&lt;=n;i++)
+		if(cut[i])
+			ans++;
+	printf(&quot;%lld\n&quot;,ans);
+	for(int i=1;i&lt;=n;i++)
+		if(cut[i])
+			printf(&quot;%d &quot;,i);
+	return 0;
+&#125;
+</code></pre>
+<h2 id="三-桥"><a class="markdownIt-Anchor" href="#三-桥"></a> 三、桥</h2>
+<h3 id="桥的定义和割点很像区别在于割点是一个点而桥是一条边也就是一张连通图少了一个桥就会变成非连通图"><a class="markdownIt-Anchor" href="#桥的定义和割点很像区别在于割点是一个点而桥是一条边也就是一张连通图少了一个桥就会变成非连通图"></a> 桥的定义和割点很像，区别在于割点是一个点，而桥是一条边，也就是一张连通图少了一个桥就会变成非连通图</h3>
+<h3 id="没有好的例题直接上代码"><a class="markdownIt-Anchor" href="#没有好的例题直接上代码"></a> 没有好的例题，直接上代码：</h3>
+<h3 id="code-3"><a class="markdownIt-Anchor" href="#code-3"></a> Code:</h3>
+<pre><code>struct node
+&#123;
+    int to,id;
+    node(int tt,int ii)
+    &#123;
+        to=tt,id=ii;
+    &#125;
+    node()
+    &#123;
+    &#125;
+&#125;;
+vector &lt;node &gt; g[N];
+int dfn[N],low[N];
+bool qiao[N];
+
+void tarjan(int cur)
+&#123;
+    dfn[cur]=low[cur]=++cnt;
+    int size=g[cur].size();
+    for(int i=0;i&lt;size;i++)
+    &#123;
+        int to=g[cur][i].to;
+        if(!dfn[to])
+        &#123;
+            tarjan(to);
+            low[cur]=min(low[cur],low[to]);
+            if(low[to]&gt;dfn[cur])
+                qiao[g[cur][i].id]=true;
+        &#125;
+        else
+            low[cur]=min(low[cur],dfn[to]);
+    &#125;
+    return;
+&#125;
+</code></pre>
+<h3 id="本篇文章只贴模板具体分析移步另一篇文章"><a class="markdownIt-Anchor" href="#本篇文章只贴模板具体分析移步另一篇文章"></a> 本篇文章只贴模板，具体分析移步另一篇文章</h3>
+
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Whispering&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Whispering
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script>
+    let clientID = "9696093cd1d92ad659a5",
+        clientSecret = "5cd57248f573a64384afb01e67ded6adf4d8465b";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "ntmydb.github.io",
+        owner: "ntmydb",
+        admin: ["ntmydb"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+        proxy: "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token",
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+
+
+
+        
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

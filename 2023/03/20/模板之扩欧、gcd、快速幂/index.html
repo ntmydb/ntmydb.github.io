@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <title>模板之扩欧、gcd和快速幂 | Whispering&#39;s Blog</title>
+        <meta name="author" content="Whispering" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>WHISPERING&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WHISPERING&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>模板之扩欧、gcd和快速幂</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E7%AE%97%E6%B3%95/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/C/" style="color: #03a9f4">C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%95%B0%E5%AD%A6/" style="color: #ffa2c4">数学</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="扩展欧几里得-gcd-快速幂模板"><a class="markdownIt-Anchor" href="#扩展欧几里得-gcd-快速幂模板"></a> 扩展欧几里得、gcd、快速幂模板</h1>
+<span id="more"></span>
+<h2 id="一-gcd模板"><a class="markdownIt-Anchor" href="#一-gcd模板"></a> 一、gcd模板</h2>
+<h3 id="gcd全称就是最大公约数lcm是最小公倍数而lcm可以很容易根据gcd得出所以这里只给出gcd的代码"><a class="markdownIt-Anchor" href="#gcd全称就是最大公约数lcm是最小公倍数而lcm可以很容易根据gcd得出所以这里只给出gcd的代码"></a> gcd全称就是最大公约数，lcm是最小公倍数，而lcm可以很容易根据gcd得出，所以这里只给出gcd的代码</h3>
+<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
+<pre><code>typedef long long ll;
+ll gcd(ll a,ll b)
+&#123;
+    return b?gcd(b,a%b):a;
+&#125;
+</code></pre>
+<h2 id="二-扩展欧几里得"><a class="markdownIt-Anchor" href="#二-扩展欧几里得"></a> 二、扩展欧几里得</h2>
+<h3 id="万恶的数学但不得不写"><a class="markdownIt-Anchor" href="#万恶的数学但不得不写"></a> 万恶的数学，但不得不写</h3>
+<h3 id="先简单介绍一下其作用"><a class="markdownIt-Anchor" href="#先简单介绍一下其作用"></a> 先简单介绍一下其作用：</h3>
+<h3 id="1-求解不定方程"><a class="markdownIt-Anchor" href="#1-求解不定方程"></a> 1、求解不定方程</h3>
+<h3 id="2-求解模的逆元"><a class="markdownIt-Anchor" href="#2-求解模的逆元"></a> 2、求解模的逆元</h3>
+<h3 id="3-求解线性同余方程"><a class="markdownIt-Anchor" href="#3-求解线性同余方程"></a> 3、求解线性同余方程</h3>
+<h3 id="例题有理数取余"><a class="markdownIt-Anchor" href="#例题有理数取余"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2613">例题:有理数取余</a></h3>
+<h3 id="code-2"><a class="markdownIt-Anchor" href="#code-2"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int mod=19260817;
+const int N=10001;
+typedef long long ll;
+int a[N],b[N];
+ll expand(ll a,ll b,ll &amp;x,ll &amp;y)
+&#123;
+    if(b==0)
+    &#123;
+        x=1,y=0;
+        return a;
+    &#125;
+    ll r=expand(b,a%b,x,y);
+    ll t=y;
+    y=x-(a/b)*y;
+    x=t;
+    return r;
+&#125;
+int main()
+&#123;
+	char ch[N];
+	scanf(&quot;%s&quot;,ch);
+	int len=strlen(ch);
+	ll aa=0,bb=0;
+	for(int i=0;i&lt;len;i++)
+		aa=(aa*10+ch[i]-'0')%mod;
+	scanf(&quot;%s&quot;,ch);
+	len=strlen(ch);
+	for(int i=0;i&lt;len;i++)
+		bb=(bb*10+ch[i]-'0')%mod;
+	ll x0,y0;
+	expand(bb,mod,x0,y0);
+	if(bb==0)
+		printf(&quot;Angry!\n&quot;);
+	else
+		printf(&quot;%lld\n&quot;,(aa*((x0%mod+mod)%mod))%mod);
+	return 0;
+&#125;
+</code></pre>
+<h3 id="原理方面请移步另一篇文章"><a class="markdownIt-Anchor" href="#原理方面请移步另一篇文章"></a> 原理方面请移步另一篇文章</h3>
+<h2 id="三-快速幂"><a class="markdownIt-Anchor" href="#三-快速幂"></a> 三、快速幂</h2>
+<h3 id="正常的求xn需要on的时间复杂度快速幂就是把on时间复杂度缩减为ologn的算法本质上运用了分治的思想"><a class="markdownIt-Anchor" href="#正常的求xn需要on的时间复杂度快速幂就是把on时间复杂度缩减为ologn的算法本质上运用了分治的思想"></a> 正常的求<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">x^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>需要<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>的时间复杂度，快速幂就是把<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>时间复杂度缩减为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>的算法，本质上运用了分治的思想</h3>
+<h3 id="code-3"><a class="markdownIt-Anchor" href="#code-3"></a> Code:</h3>
+<pre><code>typedef long long ll;
+ll mod; 
+ll quickpow(ll x,ll zs)
+&#123;
+    ll ans=0;
+    while(zs)
+    &#123;
+        if(zs&amp;1)
+        &#123;
+            ans=ans*x%mod;
+            ans%=mod;
+        &#125;
+        x*=x;
+        x%=mod;
+        zs/=2;
+    &#125;
+    return ans%mod;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Whispering&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Whispering
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script>
+    let clientID = "9696093cd1d92ad659a5",
+        clientSecret = "5cd57248f573a64384afb01e67ded6adf4d8465b";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "ntmydb.github.io",
+        owner: "ntmydb",
+        admin: ["ntmydb"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+        proxy: "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token",
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+
+
+
+        
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

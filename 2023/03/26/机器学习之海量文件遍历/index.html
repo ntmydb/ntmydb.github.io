@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <title>机器学习之海量文件遍历 | Whispering&#39;s Blog</title>
+        <meta name="author" content="Whispering" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>WHISPERING&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WHISPERING&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>机器学习之海量文件遍历</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/26
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                机器学习
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Python/" style="color: #00a596">Python</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="海量文件遍历"><a class="markdownIt-Anchor" href="#海量文件遍历"></a> 海量文件遍历</h1>
+<span id="more"></span>
+<h3 id="机器学习往往需要大量的数据来训练模型因此对数据的处理肯定是不能少的而数据往往很多大多数以压缩文件zip出现的所以本篇记录文件遍历的方法"><a class="markdownIt-Anchor" href="#机器学习往往需要大量的数据来训练模型因此对数据的处理肯定是不能少的而数据往往很多大多数以压缩文件zip出现的所以本篇记录文件遍历的方法"></a> 机器学习往往需要大量的数据来训练模型，因此对数据的处理肯定是不能少的，而数据往往很多，大多数以压缩文件.zip出现的，所以本篇记录文件遍历的方法</h3>
+<h2 id="一-所需要调用的库"><a class="markdownIt-Anchor" href="#一-所需要调用的库"></a> 一、所需要调用的库</h2>
+<h4 id="1-zipfile库"><a class="markdownIt-Anchor" href="#1-zipfile库"></a> 1、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mi>i</mi><mi>p</mi><mi>f</mi><mi>i</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">zipfile</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span>库</h4>
+<h4 id="2-os库"><a class="markdownIt-Anchor" href="#2-os库"></a> 2、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">os</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">s</span></span></span></span>库</h4>
+<h2 id="二-具体代码-注释及效果图"><a class="markdownIt-Anchor" href="#二-具体代码-注释及效果图"></a> 二、具体代码、注释及效果图</h2>
+<pre><code>import zipfile
+import os
+def unzip_data(src_path,target_path):
+#解压原始数据集，将src_path路径下的zip压缩包解压到target_path目录下
+    if (not os.path.isdir(target_path)):  #os.path.isdir(path)判断path路径是否是一个目录
+        z = zipfile.ZipFile(src_path,'r')
+        z.extractall(path=target_path)
+        z.close()
+unzip_data('data/data00001/test_data.zip','data/data00001/test_data')
+unzip_data('data/data00001/train_data.zip','data/data00001/train_data')
+</code></pre>
+<h4 id="执行这一段代码后效果如下"><a class="markdownIt-Anchor" href="#执行这一段代码后效果如下"></a> 执行这一段代码后效果如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%861.png" alt="生效前图" /><br />
+<img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%862.png" alt="生效后图" /></p>
+<h4 id="点开这两个文件夹可以发现压缩文件的内容已经被解压到这两个文件夹里了"><a class="markdownIt-Anchor" href="#点开这两个文件夹可以发现压缩文件的内容已经被解压到这两个文件夹里了"></a> 点开这两个文件夹，可以发现压缩文件的内容已经被解压到这两个文件夹里了</h4>
+<h4 id="下面是通过指定目录统计所有的不同文件类型及占用内存的代码"><a class="markdownIt-Anchor" href="#下面是通过指定目录统计所有的不同文件类型及占用内存的代码"></a> 下面是通过指定目录，统计所有的不同文件类型及占用内存的代码</h4>
+<pre><code>import os
+size_dict = &#123;&#125;
+type_dict = &#123;&#125;
+def get_size_type(path):
+    files = os.listdir(path) # 返回目录文件夹中所有文件名或文件夹的列表
+    for filename in files:
+        temp_path = os.path.join(path,filename) # 构建绝对路径
+        if os.path.isdir(temp_path):  #如果这是一个文件夹，那么递归解析这个文件夹
+            get_size_type(temp_path)
+        elif os.path.isfile(temp_path): #如果这是一个文件
+            type_name = os.path.splitext(temp_path)[1] #分离文件名和扩展名，返回的是有两个元素的列表，放着分建名和扩展名
+            if not type_name: #如果这个文件没有扩展名
+                type_dict.setdefault(&quot;None&quot;,0)
+                type_dict[&quot;None&quot;] += 1
+                size_dict.setdefault(&quot;None&quot;,0)
+                size_dict[&quot;None&quot;] += os.path.getsize(temp_path)
+            else:  #如果有扩展名
+                type_dict.setdefault(type_name,0)
+                type_dict[type_name] += 1
+                size_dict.setdefault(type_name,0)
+                size_dict[type_name] += os.path.getsize(temp_path)
+path = &quot;data/&quot;
+get_size_type(path)
+for each_type in type_dict.keys():
+    print (&quot;%5s下共有【%5s】的文件【%5d】个,占用内存【%7.2f】MB&quot; %     
+            (path,each_type,type_dict[each_type],\
+            size_dict[each_type]/(1024*1024)))
+print(&quot;总文件数：【%d】&quot;%(sum(type_dict.values())))    
+print(&quot;总内存大小：【%.2f】GB&quot;%(sum(size_dict.values())/(1024**3)))
+</code></pre>
+<h3 id="输出结果如下"><a class="markdownIt-Anchor" href="#输出结果如下"></a> 输出结果如下:</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%863.png" alt="输出结果" /></p>
+
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Whispering&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Whispering
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script>
+    let clientID = "9696093cd1d92ad659a5",
+        clientSecret = "5cd57248f573a64384afb01e67ded6adf4d8465b";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "ntmydb.github.io",
+        owner: "ntmydb",
+        admin: ["ntmydb"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+        proxy: "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token",
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+
+
+
+        
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

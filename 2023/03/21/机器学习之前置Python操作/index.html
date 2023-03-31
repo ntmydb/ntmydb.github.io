@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <title>机器学习之前置Python操作 | Whispering&#39;s Blog</title>
+        <meta name="author" content="Whispering" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>WHISPERING&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WHISPERING&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>机器学习之前置Python操作</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/21
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                机器学习
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Python/" style="color: #00bcd4">Python</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="python初级操作"><a class="markdownIt-Anchor" href="#python初级操作"></a> Python初级操作</h1>
+<span id="more"></span>
+<h2 id="一-数字"><a class="markdownIt-Anchor" href="#一-数字"></a> 一、数字</h2>
+<h3 id="编程语言的数字都差不多包括整形-长整型-浮点型-复数"><a class="markdownIt-Anchor" href="#编程语言的数字都差不多包括整形-长整型-浮点型-复数"></a> 编程语言的数字都差不多，包括整形、长整型、浮点型、复数</h3>
+<h3 id="常用运算函数大多数在math模块中"><a class="markdownIt-Anchor" href="#常用运算函数大多数在math模块中"></a> 常用运算函数大多数在math模块中</h3>
+<pre><code>import math
+print(math.ceil(4.1)) #返回数字上的向上取整   -&gt;5
+print(math.floor(4.9)) #返回数字上的向下取整  -&gt;4
+print(math.fabs(-10.3)) #返回数字的绝对值     -&gt;10.3
+print(math.sqrt(9)) #返回数字的开放           -&gt;3.0
+print(math.exp(1)) #返回e的x次幂             -&gt;2.718281828459045
+</code></pre>
+<h2 id="二-字符串"><a class="markdownIt-Anchor" href="#二-字符串"></a> 二、字符串</h2>
+<h3 id="python中的字符串可以用单引号-双引号和三引号三个单引号或三个双引号扩起来使用反斜杠转义特殊字符"><a class="markdownIt-Anchor" href="#python中的字符串可以用单引号-双引号和三引号三个单引号或三个双引号扩起来使用反斜杠转义特殊字符"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>y</mi><mi>t</mi><mi>h</mi><mi>o</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">Python</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span></span></span></span>中的字符串可以用单引号、双引号和三引号（三个单引号或三个双引号）扩起来，使用反斜杠<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">\\</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="mspace newline"></span></span></span>转义特殊字符</h3>
+<h3 id="正常字符串输出如下"><a class="markdownIt-Anchor" href="#正常字符串输出如下"></a> 正常字符串输出如下:</h3>
+<pre><code>print('Hello World!')   -&gt;Hello World!
+print(&quot;Hello World!&quot;)   -&gt;Hello World!
+</code></pre>
+<h3 id="带有特殊字符的输出如下这部分和latex的表示方法很像"><a class="markdownIt-Anchor" href="#带有特殊字符的输出如下这部分和latex的表示方法很像"></a> 带有特殊字符的输出如下,这部分和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>a</mi><mi>T</mi><mi>e</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>的表示方法很像</h3>
+<pre><code>print(&quot;The \t is a tab&quot;) -&gt;The      is a tab
+print('I\'m going to the movies') -&gt;I'm going to the movies
+</code></pre>
+<h3 id="三引号的使用方法"><a class="markdownIt-Anchor" href="#三引号的使用方法"></a> 三引号的使用方法</h3>
+<pre><code>print('''I'm going to the movies''') -&gt;I'm going to the movies
+html = '''
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;
+Friends CGI Demo&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;&lt;H3&gt;ERORR&lt;/H3&gt;
+&lt;B&gt;%s&lt;/B&gt;&lt;P&gt;
+&lt;FORM&gt;&lt;INPUT TYPE=button VALUE=Back
+ONCLICK=&quot;window.history.back()&quot;&gt;&lt;/FORM&gt;
+&lt;BODY&gt;&lt;/HTML&gt;
+'''
+print(html)  -&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;
+Friends CGI Demo&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;&lt;H3&gt;ERORR&lt;/H3&gt;
+&lt;B&gt;%s&lt;/B&gt;&lt;P&gt;
+&lt;FORM&gt;&lt;INPUT TYPE=button VALUE=Back
+ONCLICK=&quot;window.history.back()&quot;&gt;&lt;/FORM&gt;
+&lt;BODY&gt;&lt;/HTML&gt;
+</code></pre>
+<h3 id="字符串的连接分为两种"><a class="markdownIt-Anchor" href="#字符串的连接分为两种"></a> 字符串的连接分为两种</h3>
+<h3 id="1-使用运算符"><a class="markdownIt-Anchor" href="#1-使用运算符"></a> 1、使用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">+</span></span></span></span>运算符</h3>
+<pre><code>str1=&quot;Hello &quot;
+str2=&quot;World!&quot;
+print(str1+str2)
+-&gt;Hello World
+</code></pre>
+<h3 id="2-使用join运算符"><a class="markdownIt-Anchor" href="#2-使用join运算符"></a> 2、使用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mi>o</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">join</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span></span></span></span>运算符</h3>
+<pre><code>new_str = '-'.join('Hello')
+print(new_str)
+-&gt;H-e-l-l-o
+</code></pre>
+<h2 id="三-列表list"><a class="markdownIt-Anchor" href="#三-列表list"></a> 三、列表（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>i</mi><mi>s</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">List</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span></span></span></span>）</h2>
+<h3 id="声明一个列表"><a class="markdownIt-Anchor" href="#声明一个列表"></a> 声明一个列表</h3>
+<pre><code>#声明一个列表
+names=['jack','tom','tonney','superman','jay']
+#通过下标或索引获取元素
+print(names[0])  -&gt;jack
+print(names[1])  -&gt;tom
+</code></pre>
+<h3 id="访问最后一个元素"><a class="markdownIt-Anchor" href="#访问最后一个元素"></a> 访问最后一个元素</h3>
+<pre><code>#获取最后一个元素
+print(names[-1])  -&gt;jay
+print(names[len(names)-1])  -&gt;jay
+</code></pre>
+<h3 id="访问第一个元素"><a class="markdownIt-Anchor" href="#访问第一个元素"></a> 访问第一个元素</h3>
+<pre><code>#获取第一个元素
+print(names[0]) -&gt;jack
+print(names[-5]) -&gt;jack
+</code></pre>
+<h3 id="查询列表中有没有值为superman的元素"><a class="markdownIt-Anchor" href="#查询列表中有没有值为superman的元素"></a> 查询列表中有没有值为’superman’的元素</h3>
+<pre><code># 查询列表中有没有值为'superman'的元素
+flag = 0
+for name in names:
+	if name == &quot;superman&quot;:
+		print(&quot;Yes&quot;)
+		flag = 1
+		break
+if flag == 0:
+	print(&quot;No&quot;)
+# 更简便的方法
+if 'superman' in names:
+	print(&quot;Yes&quot;)
+else:
+	print(&quot;No&quot;)
+</code></pre>
+<h3 id="添加元素-删除元素与统计元素"><a class="markdownIt-Anchor" href="#添加元素-删除元素与统计元素"></a> 添加元素、删除元素与统计元素</h3>
+<pre><code>#声明空列表
+girls = []
+#append(),末尾增加
+girls.append('Alice')
+print(girls) -&gt; ['Alice']
+#extend(): 合并列表
+models = ['Cindy','Mary']
+girls.extend(models)
+#girls = girls + models
+print(girls) -&gt; ['Alice','Cindy','Mary']
+#insert(),在指定位置增加
+girls.insert(1,'Jane')
+print(girls) -&gt; ['Alice','Jane','Cindy','Mary']
+#del，删除列表元素
+del girls[3]
+print(girls) -&gt; ['Alice','Jane','Cindy']
+#遍历方法
+for i in range(0,len(girls)))
+	print(i)
+-&gt; Alice Jane Cindy
+for girl in girls:
+	print(girl)
+-&gt; Alice Jane Cindy
+#截取方法
+print(girls[1:]) -&gt; ['Jane','Cindy']
+#count(),统计某个元素的出现次数
+print(girls.count('Jane')) -&gt; 1
+#index(),获得某个元素第一个匹配项的索引位置
+print(girls.index('Cindy')) -&gt; 2
+#pop(),移除列表的一个元素(默认是最后一个元素),并返回该元素的值
+print(girls.pop(index=-1)) -&gt; Cindy
+#remove(),移除某一个值的第一个匹配项
+#reverse(),翻转列表中的元素
+#sort(cmp=None,key=None,reverse=None) 对原列表排序，cmp确定从大到小还是从小到大，key确定排序关键字，reverse确定是否翻转
+</code></pre>
+<h2 id="四-元组"><a class="markdownIt-Anchor" href="#四-元组"></a> 四、元组</h2>
+<h3 id="特性与列表类似但元组内容不可修改"><a class="markdownIt-Anchor" href="#特性与列表类似但元组内容不可修改"></a> 特性：与列表类似，但元组内容不可修改</h3>
+<h3 id="与列表转换方法"><a class="markdownIt-Anchor" href="#与列表转换方法"></a> 与列表转换方法:</h3>
+<pre><code>tuple1 = ('hello','world')
+list1 = list(tuple1)
+print(list1) -&gt; ['hello','world']
+</code></pre>
+<h3 id="定义元组只有一个元素时最后面要加逗号"><a class="markdownIt-Anchor" href="#定义元组只有一个元素时最后面要加逗号"></a> 定义元组（只有一个元素时，最后面要加逗号）</h3>
+<pre><code>tuple1 = ()
+print(type(tuple1)) -&gt; &lt;class 'tuple'&gt;
+tuple2 = ('hello')
+print(type(tuple2)) -&gt; &lt;class 'str'&gt;
+tuple3 = ('hello',)
+print(type(tuple3)) -&gt; &lt;class 'tuple'&gt;
+</code></pre>
+<h3 id="访问元组"><a class="markdownIt-Anchor" href="#访问元组"></a> 访问元组</h3>
+<pre><code>tup1 = ('I','am','a','dog',233)
+print(tup1[0])  -&gt; I
+</code></pre>
+<h3 id="遍历元组和遍历列表的方法是一样的"><a class="markdownIt-Anchor" href="#遍历元组和遍历列表的方法是一样的"></a> 遍历元组和遍历列表的方法是一样的</h3>
+<h3 id="无任何符号的对象而且用逗号隔开默认为元组"><a class="markdownIt-Anchor" href="#无任何符号的对象而且用逗号隔开默认为元组"></a> 无任何符号的对象而且用逗号隔开默认为元组</h3>
+<h2 id="五-字典"><a class="markdownIt-Anchor" href="#五-字典"></a> 五、字典</h2>
+<h3 id="定义空字典"><a class="markdownIt-Anchor" href="#定义空字典"></a> 定义空字典</h3>
+<pre><code>dict1 = &#123;&#125;
+</code></pre>
+<h3 id="定义一个字典时并初始化"><a class="markdownIt-Anchor" href="#定义一个字典时并初始化"></a> 定义一个字典时并初始化</h3>
+<pre><code>dict2 = &#123;'name':'Alice','weight':45,'age':25&#125;
+print(dict2['name'])  -&gt;Alice
+</code></pre>
+<h3 id="定义一个字典后添加元素"><a class="markdownIt-Anchor" href="#定义一个字典后添加元素"></a> 定义一个字典后添加元素</h3>
+<pre><code>dict3 = &#123;&#125;
+dict3['name'] = 'Cindy'
+dict3['weight'] = 43
+print(dict3) -&gt;  &#123;'name':'Cindy','weight':43&#125;
+</code></pre>
+<h3 id="修改字典元素"><a class="markdownIt-Anchor" href="#修改字典元素"></a> 修改字典元素</h3>
+<pre><code>dict3['weight'] = 44
+print(dict3) -&gt; &#123;'name':'Cindy','weight':44&#125;
+</code></pre>
+<h3 id="字典元素删除"><a class="markdownIt-Anchor" href="#字典元素删除"></a> 字典元素删除</h3>
+<pre><code>del dict3['name'] # 删除键是'name'的条目
+dict3.clear()     # 清空字典所有条目
+del dict3         # 删除字典
+</code></pre>
+<h3 id="字典内置函数"><a class="markdownIt-Anchor" href="#字典内置函数"></a> 字典内置函数</h3>
+<pre><code>cmp(dict1,dict2) # 比较两个字典元素
+len(dict1)       # 计算字典元素个数，即key的个数
+str(dict1)       # 输出字典可打印的字符串
+</code></pre>
+<h3 id="字典内置方法"><a class="markdownIt-Anchor" href="#字典内置方法"></a> 字典内置方法</h3>
+<pre><code>dict.copy()  # 返回字典的一个复制品
+dict.fromkeys(seq[,val])  # 创建一个新字典，以序列seq中的元素做字典的key，val为所有key的对应初始值
+dict.get(key,default=None)  # 返回指定key的值，如果值不在字典中返回default
+#dict.item() 返回可遍历的(key,value)
+dict5 = &#123;'Alice':165,'Cindy':166,'Jane':164&#125;
+print(dict5.items())
+-&gt;dict_items([('Alice',165),('Cindy',166),('Jane',164)])
+for key,value in dict5.items():
+	if value &gt; 165:
+		print(key)
+-&gt; Cindy
+#dict.keys() 返回可遍历的keys
+names =  dict5.keys()
+print(names)   -&gt;dict_keys(['Alice','Cindy','Jane'])
+#dict.value() 返回可遍历的vales
+values = dict5.keys()
+print(values)  -&gt;dict_values[165,166,164]
+#dict.has_key(key)  返回字典里是否存在key值，是则返回true，否则返回false
+</code></pre>
+
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Whispering&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Whispering
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script>
+    let clientID = "9696093cd1d92ad659a5",
+        clientSecret = "5cd57248f573a64384afb01e67ded6adf4d8465b";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "ntmydb.github.io",
+        owner: "ntmydb",
+        admin: ["ntmydb"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+        proxy: "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token",
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+
+
+
+        
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
