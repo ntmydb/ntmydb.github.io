@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <title>机器学习之KMeans聚类算法 | Whispering&#39;s Blog</title>
+        <meta name="author" content="Whispering" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>WHISPERING&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WHISPERING&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>机器学习之KMeans聚类算法</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/1
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                机器学习
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Python/" style="color: #ffa2c4">Python</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="kmeans聚类算法"><a class="markdownIt-Anchor" href="#kmeans聚类算法"></a> KMeans聚类算法</h1>
+<span id="more"></span>
+<h3 id="一-数据集"><a class="markdownIt-Anchor" href="#一-数据集"></a> 一、数据集</h3>
+<h4 id="sklearn库自带了一些数据集本次k-mean算法实践就用的skleandatasets的鸢尾花数据集下面的这张表记录了一些不需要下载的数据集"><a class="markdownIt-Anchor" href="#sklearn库自带了一些数据集本次k-mean算法实践就用的skleandatasets的鸢尾花数据集下面的这张表记录了一些不需要下载的数据集"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sklearn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span></span></span></span>库自带了一些数据集，本次<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>−</mo><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">K-mean</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span></span></span></span>算法实践就用的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>n</mi><mi mathvariant="normal">.</mi><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi><mi>s</mi><mi>e</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">sklean.datasets</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord">.</span><span class="mord mathnormal">d</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span></span></span></span>的鸢尾花数据集，下面的这张表记录了一些不需要下载的数据集</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">导入数据的函数</th>
+<th style="text-align:center">简介</th>
+<th style="text-align:center">任务</th>
+<th style="text-align:center">数据规模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">load_boston()</td>
+<td style="text-align:center">加载和返回一个boston房屋价格的数据集</td>
+<td style="text-align:center">回归</td>
+<td style="text-align:center">506*13</td>
+</tr>
+<tr>
+<td style="text-align:center">load_iris()</td>
+<td style="text-align:center">加载和返回一个鸢尾花数据集</td>
+<td style="text-align:center">分类</td>
+<td style="text-align:center">150*4</td>
+</tr>
+<tr>
+<td style="text-align:center">load_diabetes()</td>
+<td style="text-align:center">加载和返回一个糖尿病数据集</td>
+<td style="text-align:center">回归</td>
+<td style="text-align:center">442*10</td>
+</tr>
+<tr>
+<td style="text-align:center">load_digits()</td>
+<td style="text-align:center">加载和返回一个手写字数据集</td>
+<td style="text-align:center">分类</td>
+<td style="text-align:center">1797*64</td>
+</tr>
+<tr>
+<td style="text-align:center">load_linnerud()</td>
+<td style="text-align:center">加载和返回一个健身数据集</td>
+<td style="text-align:center">多分类</td>
+<td style="text-align:center">20</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二-手写实现k-means算法"><a class="markdownIt-Anchor" href="#二-手写实现k-means算法"></a> 二、手写实现<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>−</mo><mi>M</mi><mi>e</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">K-Means</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span>算法</h3>
+<h4 id="1-导入前置库"><a class="markdownIt-Anchor" href="#1-导入前置库"></a> 1、导入前置库</h4>
+<pre><code>import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.cluster import KMeans 
+from sklearn import datasets 
+</code></pre>
+<h4 id="2-导入数据集"><a class="markdownIt-Anchor" href="#2-导入数据集"></a> 2、导入数据集</h4>
+<pre><code># 直接从sklearn中获取数据集
+iris = datasets.load_iris()
+X = iris.data[:, :4]    # 表示我们取特征空间中的4个维度
+print(X.shape)
+-&gt; output = (150,4)
+</code></pre>
+<h4 id="3-取前两个维度萼片长度-萼片宽度绘制数据分布图"><a class="markdownIt-Anchor" href="#3-取前两个维度萼片长度-萼片宽度绘制数据分布图"></a> 3、取前两个维度（萼片长度、萼片宽度）,绘制数据分布图</h4>
+<pre><code>plt.scatter(X[:, 0], X[:, 1], c=&quot;red&quot;, marker='o', label='see')
+plt.xlabel('sepal length')
+plt.ylabel('sepal width')
+plt.legend(loc=2)
+plt.show() 
+</code></pre>
+<p><img src="" alt="分布图" /></p>
+<h4 id="4-具体算法代码"><a class="markdownIt-Anchor" href="#4-具体算法代码"></a> 4、具体算法代码</h4>
+<pre><code># 计算欧式距离
+def distEclud(x,y):
+	return np.sqrt(np.sum((x-y)**2))
+# 为给定数据集构建一个包含K个随机质心centroids的集合
+def randCent(dataSet,k):
+	m,n = dataSet.shape # m=150,n=4
+	centroids = np.zeros((k,n)) # k*4
+	for i in range(k): # 执行4次
+		index = int(np.random.uniform(0,m)) # 产生0到150的随机数(即在数据集中随机挑选一个向量作为质心的初始值)
+		centroids[i,:] = dataSet[index,:] # 把对应的四个维度传给质心的集合
+	return centroids
+# k均值聚类算法
+def KMeans(dataSet,k):
+	m = np.shape(dataSet)[0] # 行数150
+	# 第一列存每个样本属于哪一个簇
+	# 第二列存每个样本到簇中心的误差
+	clusterAssment = np.mat(np.zeros((m,2))) # mat() 创建150*2的矩阵
+	clusterChange = True
+	
+	#1、初始化质心centroids
+	centroids = randCent(dataSet,k) # k*4
+	while clusterChange:
+		# 样本所属簇不再更新时停止迭代
+		clusterChange = False
+		#遍历所有的样本(行数150)
+		for i in range(m):
+			minDist = 1000000.0
+			minIndex = -1
+			# 遍历所有质心
+			# 2、找出最近的质心
+			for j in range(k):
+				# 计算每个样本到k个质心的距离
+				distance = disEclud(centroids[j,:],dataSet[i,:])
+				if distance &lt; minDist:
+					minDist = distance
+					minIndex = j
+			# 3、更新该行样本的所属的簇
+			if clusterAssment[i,0] != minIndex:
+				clusterChange = True
+				clusterAssment[i,:] = minIndex,minDist**2
+		# 更新质心
+		for j in range(k):
+			# np.nonzero(x)返回值不为零的元素的下标，它的返回值是一个长度为x.ndim(x的轴数)的元组
+            # 元组的每个元素都是一个整数数组，其值为非零元素的下标在对应轴上的值。
+            # 矩阵名.A 代表将 矩阵转化为array数组类型
+            
+            # 这里取矩阵clusterAssment所有行的第一列，转为一个array数组，与j（簇类标签值）比较，返回true or false
+            # 通过np.nonzero产生一个array，其中是对应簇类所有的点的下标值（x个）
+            # 再用这些下标值求出dataSet数据集中的对应行，保存为pointsInCluster（x*4）
+            pointsInCluster = dataSet[np.nonzero(clusterAssment[:,0].A == j)[0]]  # 获取对应簇类所有的点（x*4）
+            centroids[j,:] = np.mean(pointsInCluster,axis=0)   # 求均值，产生新的质心
+            # axis=0，那么输出是1行4列，求的是pointsInCluster每一列的平均值，即axis是几，那就表明哪一维度被压缩成1
+	print(&quot;cluster complete&quot;)
+	return centroids,clusterAssment
+
+def draw(data,center,assment):
+    length=len(center)
+    fig=plt.figure
+    data1=data[np.nonzero(assment[:,0].A == 0)[0]]
+    data2=data[np.nonzero(assment[:,0].A == 1)[0]]
+    data3=data[np.nonzero(assment[:,0].A == 2)[0]]
+    # 选取前两个维度绘制原始数据的散点图
+    plt.scatter(data1[:,0],data1[:,1],c=&quot;red&quot;,marker='o',label='label0')
+    plt.scatter(data2[:,0],data2[:,1],c=&quot;green&quot;, marker='*', label='label1')
+    plt.scatter(data3[:,0],data3[:,1],c=&quot;blue&quot;, marker='+', label='label2')
+    # 绘制簇的质心点
+    for i in range(length):
+        plt.annotate('center',xy=(center[i,0],center[i,1]),xytext=\
+        (center[i,0]+1,center[i,1]+1),arrowprops=dict(facecolor='yellow'))
+        #  plt.annotate('center',xy=(center[i,0],center[i,1]),xytext=\
+        # (center[i,0]+1,center[i,1]+1),arrowprops=dict(facecolor='red'))
+    plt.show()
+    
+    # 选取后两个维度绘制原始数据的散点图
+    plt.scatter(data1[:,2],data1[:,3],c=&quot;red&quot;,marker='o',label='label0')
+    plt.scatter(data2[:,2],data2[:,3],c=&quot;green&quot;, marker='*', label='label1')
+    plt.scatter(data3[:,2],data3[:,3],c=&quot;blue&quot;, marker='+', label='label2')
+    # 绘制簇的质心点
+    for i in range(length):
+        plt.annotate('center',xy=(center[i,2],center[i,3]),xytext=\
+        (center[i,2]+1,center[i,3]+1),arrowprops=dict(facecolor='yellow'))
+    plt.show()
+
+dataSet = X
+k = 3
+centroids,clusterAssment = KMeans(dataSet,k)
+draw(dataSet,centroids,clusterAssment)
+</code></pre>
+<h4 id="5-结果截图"><a class="markdownIt-Anchor" href="#5-结果截图"></a> 5、结果截图：</h4>
+<p><img src="" alt="结果截图1" /></p>
+<h3 id="三-利用sklearn的库进行k-means算法"><a class="markdownIt-Anchor" href="#三-利用sklearn的库进行k-means算法"></a> 三、利用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sklearn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span></span></span></span>的库进行<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>−</mo><mi>M</mi><mi>e</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">K-Means</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span>算法</h3>
+<h4 id="前置库和数据的导入和手写板是一样的区别在于后面具体算法实现"><a class="markdownIt-Anchor" href="#前置库和数据的导入和手写板是一样的区别在于后面具体算法实现"></a> 前置库和数据的导入和手写板是一样的，区别在于后面具体算法实现</h4>
+<h4 id="1-具体算法代码"><a class="markdownIt-Anchor" href="#1-具体算法代码"></a> 1、具体算法代码</h4>
+<pre><code>def Model(n_clusters):
+    estimator = KMeans(n_clusters) # 构造聚类器
+    return estimator
+
+def train(estimator):
+    estimator.fit(X)
+# 训练模型
+estimator=Model(3)
+train(estimator)
+# 画出分类结果
+label_pred = estimator.labels_ #获取聚类标签
+# 绘制k-means结果
+x0 = X[label_pred == 0]
+x1 = X[label_pred == 1]
+x2 = X[label_pred == 2]
+plt.scatter(x0[:,0],x0[:,1],c='red',marker='o',label='label0')
+plt.scatter(x1[:,0],x1[:,1],c='green',marker='*',label='label1')
+plt.scatter(x2[:,0],x2[:,1],c='blue',marker='+',label='label2')
+plt.xlabel('seqal length')
+plt.ylabel('seqal length')
+plt.legend(loc=2)
+plt.show()
+</code></pre>
+<h4 id="2-结果截图"><a class="markdownIt-Anchor" href="#2-结果截图"></a> 2、结果截图：</h4>
+<p><img src="" alt="结果图片" /></p>
+<h3 id="四-不同k值结果对比"><a class="markdownIt-Anchor" href="#四-不同k值结果对比"></a> 四、不同k值结果对比</h3>
+<h4 id="k值为2"><a class="markdownIt-Anchor" href="#k值为2"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span>值为2:</h4>
+<p><img src="" alt="k值为2" /></p>
+<h4 id="k值为3"><a class="markdownIt-Anchor" href="#k值为3"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span>值为3:</h4>
+<p><img src="" alt="k值为3" /></p>
+<h4 id="k值为4"><a class="markdownIt-Anchor" href="#k值为4"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span>值为4:</h4>
+<p><img src="" alt="k值为4" /></p>
+
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Whispering&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Whispering
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script>
+    let clientID = "9696093cd1d92ad659a5",
+        clientSecret = "5cd57248f573a64384afb01e67ded6adf4d8465b";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "ntmydb.github.io",
+        owner: "ntmydb",
+        admin: ["ntmydb"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+        proxy: "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token",
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+
+
+
+        
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
