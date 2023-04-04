@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #ff7d73">C++</a>
+                <a href="/tags/C/" style="color: #03a9f4">C++</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">图论</a>
+                <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">图论</a>
             </span>
             
             <span class="tag">
@@ -198,13 +198,8 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="最大流和二分图匹配的模板"><a class="markdownIt-Anchor" href="#最大流和二分图匹配的模板"></a> 最大流和二分图匹配的模板</h1>
-<span id="more"></span>
-<h2 id="一-二分图匹配"><a class="markdownIt-Anchor" href="#一-二分图匹配"></a> 一、二分图匹配</h2>
-<h3 id="二分图是一种特殊的图图中每一条边所关联的两个节点都属于两个不同的点集匹配的定义是在二分图的一个子图中任意一条边都不依附于同一个节点称为是一个匹配最大匹配是所有匹配中边数最多的匹配"><a class="markdownIt-Anchor" href="#二分图是一种特殊的图图中每一条边所关联的两个节点都属于两个不同的点集匹配的定义是在二分图的一个子图中任意一条边都不依附于同一个节点称为是一个匹配最大匹配是所有匹配中边数最多的匹配"></a> 二分图是一种特殊的图，图中每一条边所关联的两个节点都属于两个不同的点集，匹配的定义是在二分图的一个子图中任意一条边都不依附于同一个节点，称为是一个匹配，最大匹配是所有匹配中边数最多的匹配。</h3>
-<h3 id="例题二分图匹配"><a class="markdownIt-Anchor" href="#例题二分图匹配"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3386">例题:二分图匹配</a></h3>
-<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
-<pre><code>#include &lt;bits/stdc++.h&gt;
+        <h1 id="最大流和二分图匹配的模板"><a href="#最大流和二分图匹配的模板" class="headerlink" title="最大流和二分图匹配的模板"></a>最大流和二分图匹配的模板</h1><span id="more"></span>
+<h2 id="一、二分图匹配"><a href="#一、二分图匹配" class="headerlink" title="一、二分图匹配"></a>一、二分图匹配</h2><h3 id="二分图是一种特殊的图，图中每一条边所关联的两个节点都属于两个不同的点集，匹配的定义是在二分图的一个子图中任意一条边都不依附于同一个节点，称为是一个匹配，最大匹配是所有匹配中边数最多的匹配。"><a href="#二分图是一种特殊的图，图中每一条边所关联的两个节点都属于两个不同的点集，匹配的定义是在二分图的一个子图中任意一条边都不依附于同一个节点，称为是一个匹配，最大匹配是所有匹配中边数最多的匹配。" class="headerlink" title="二分图是一种特殊的图，图中每一条边所关联的两个节点都属于两个不同的点集，匹配的定义是在二分图的一个子图中任意一条边都不依附于同一个节点，称为是一个匹配，最大匹配是所有匹配中边数最多的匹配。"></a>二分图是一种特殊的图，图中每一条边所关联的两个节点都属于两个不同的点集，匹配的定义是在二分图的一个子图中任意一条边都不依附于同一个节点，称为是一个匹配，最大匹配是所有匹配中边数最多的匹配。</h3><h3 id="例题-二分图匹配"><a href="#例题-二分图匹配" class="headerlink" title="例题:二分图匹配"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3386">例题:二分图匹配</a></h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=1001;
 
@@ -213,60 +208,55 @@ bool use[N],link[N][N];
 
 bool find(int x)
 &#123;
-	for(int i=1;i&lt;=m;i++)
-	&#123;
-		if(link[x][i] &amp;&amp; !use[i])
-		&#123;
-			use[i]=true;
-			if(!rgh[i] || find(rgh[i]))
-			&#123;
-				rgh[i]=x;
-				return true;
-			&#125;
-		&#125;
-	&#125;
-	return false;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        if(link[x][i] &amp;&amp; !use[i])
+        &#123;
+            use[i]=true;
+            if(!rgh[i] || find(rgh[i]))
+            &#123;
+                rgh[i]=x;
+                return true;
+            &#125;
+        &#125;
+    &#125;
+    return false;
 &#125;
 
 int main()
 &#123;
-	scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;E);
-	for(int i=1;i&lt;=E;i++)
-	&#123;
-		int zuo,you;
-		scanf(&quot;%d %d&quot;,&amp;zuo,&amp;you);
-		if(zuo&gt;n || you&gt;m)
-			continue;
-		link[zuo][you]=true;
-	&#125;
-	int sum=0;
-	for(int i=1;i&lt;=n;i++)
-	&#123;
-		memset(use,0,sizeof(use));
-		if(find(i))
-			sum++;
-	&#125;
-	printf(&quot;%d\n&quot;,sum);
-	return 0;
+    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;E);
+    for(int i=1;i&lt;=E;i++)
+    &#123;
+        int zuo,you;
+        scanf(&quot;%d %d&quot;,&amp;zuo,&amp;you);
+        if(zuo&gt;n || you&gt;m)
+            continue;
+        link[zuo][you]=true;
+    &#125;
+    int sum=0;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        memset(use,0,sizeof(use));
+        if(find(i))
+            sum++;
+    &#125;
+    printf(&quot;%d\n&quot;,sum);
+    return 0;
 &#125;
-</code></pre>
-<h2 id="二-最大流"><a class="markdownIt-Anchor" href="#二-最大流"></a> 二、最大流</h2>
-<h3 id="给定一个图图中每一条边都有一个权值把每一条边当做是水管权值是就是最大流量最大流问题就是满足这些性质的情况下源点到汇点的最大流量"><a class="markdownIt-Anchor" href="#给定一个图图中每一条边都有一个权值把每一条边当做是水管权值是就是最大流量最大流问题就是满足这些性质的情况下源点到汇点的最大流量"></a> 给定一个图，图中每一条边都有一个权值，把每一条边当做是水管，权值是就是最大流量，最大流问题，就是满足这些性质的情况下，源点到汇点的最大流量</h3>
-<h3 id="例题网络最大流"><a class="markdownIt-Anchor" href="#例题网络最大流"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3376">例题:网络最大流</a></h3>
-<h3 id="code-2"><a class="markdownIt-Anchor" href="#code-2"></a> Code:</h3>
-<pre><code>#include &lt;bits/stdc++.h&gt;
+</code></pre><h2 id="二、最大流"><a href="#二、最大流" class="headerlink" title="二、最大流"></a>二、最大流</h2><h3 id="给定一个图，图中每一条边都有一个权值，把每一条边当做是水管，权值是就是最大流量，最大流问题，就是满足这些性质的情况下，源点到汇点的最大流量"><a href="#给定一个图，图中每一条边都有一个权值，把每一条边当做是水管，权值是就是最大流量，最大流问题，就是满足这些性质的情况下，源点到汇点的最大流量" class="headerlink" title="给定一个图，图中每一条边都有一个权值，把每一条边当做是水管，权值是就是最大流量，最大流问题，就是满足这些性质的情况下，源点到汇点的最大流量"></a>给定一个图，图中每一条边都有一个权值，把每一条边当做是水管，权值是就是最大流量，最大流问题，就是满足这些性质的情况下，源点到汇点的最大流量</h3><h3 id="例题-网络最大流"><a href="#例题-网络最大流" class="headerlink" title="例题:网络最大流"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3376">例题:网络最大流</a></h3><h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=100001;
 struct node
 &#123;
-	int to,len,id;
-	node(int tt,int ll,int ii)
-	&#123;
-		to=tt,len=ll,id=ii;
-	&#125;
-	node()
-	&#123;
-	&#125;
+    int to,len,id;
+    node(int tt,int ll,int ii)
+    &#123;
+        to=tt,len=ll,id=ii;
+    &#125;
+    node()
+    &#123;
+    &#125;
 &#125;;
 vector &lt;node &gt; g[N];
 vector &lt;node &gt; v[N];
@@ -275,156 +265,241 @@ bool vis[N],flag[N];
 queue &lt;int &gt; q;
 bool bfs()
 &#123;
-	q.push(st),vis[st]=true;
-	while(!q.empty())
-	&#123;
-		int t=q.front();
-		q.pop();
-		int size=g[t].size();
-		for(int i=0;i&lt;size;i++)
-		&#123;
-			int to=g[t][i].to;
-			int len=g[t][i].len;
-			if(!vis[to] &amp;&amp; len&gt;0)
-			&#123;
-				vis[to]=true;
-				pre[to][0]=t,pre[to][1]=len;
-				if(to==ed)
-					return true;
-				q.push(to);
-			&#125;
-		&#125;
-	&#125;
-	return false;
+    q.push(st),vis[st]=true;
+    while(!q.empty())
+    &#123;
+        int t=q.front();
+        q.pop();
+        int size=g[t].size();
+        for(int i=0;i&lt;size;i++)
+        &#123;
+            int to=g[t][i].to;
+            int len=g[t][i].len;
+            if(!vis[to] &amp;&amp; len&gt;0)
+            &#123;
+                vis[to]=true;
+                pre[to][0]=t,pre[to][1]=len;
+                if(to==ed)
+                    return true;
+                q.push(to);
+            &#125;
+        &#125;
+    &#125;
+    return false;
 &#125;
 void dfs(int cur,int &amp;val)
 &#123;
-	int size=v[cur].size();
-	for(int i=0;i&lt;size;i++)
-	&#123;
-		if(v[cur][i].to==pre[cur][0])
-		&#123;
-			flag[v[cur][i].id]=true;
-			val=min(pre[cur][1],val);
-			dfs(v[cur][i].to,val);
-		&#125;
-	&#125;
-	return;
+    int size=v[cur].size();
+    for(int i=0;i&lt;size;i++)
+    &#123;
+        if(v[cur][i].to==pre[cur][0])
+        &#123;
+            flag[v[cur][i].id]=true;
+            val=min(pre[cur][1],val);
+            dfs(v[cur][i].to,val);
+        &#125;
+    &#125;
+    return;
 &#125;
 int ek()
 &#123;
-	int ans=0;
-	while(bfs())
-	&#123;
-		int minn=0x7f7f7f7f;
-		dfs(ed,minn);
-		for(int i=1;i&lt;=n;i++)
-		&#123;
-			int s1=g[i].size();
-			int s2=v[i].size();
-			for(int j=0;j&lt;s1;j++)
-				if(flag[g[i][j].id])
-					g[i][j].len-=minn;
-			for(int j=0;j&lt;s2;j++)
-				if(flag[v[i][j].id])
-					v[i][j].len+=minn;
-		&#125;
-		ans+=minn;
-		memset(vis,0,sizeof(vis));
-		memset(flag,0,sizeof(flag));
-		memset(pre,0,sizeof(pre));
-		while(!q.empty()) q.pop();
-	&#125;
-	return ans;
+    int ans=0;
+    while(bfs())
+    &#123;
+        int minn=0x7f7f7f7f;
+        dfs(ed,minn);
+        for(int i=1;i&lt;=n;i++)
+        &#123;
+            int s1=g[i].size();
+            int s2=v[i].size();
+            for(int j=0;j&lt;s1;j++)
+                if(flag[g[i][j].id])
+                    g[i][j].len-=minn;
+            for(int j=0;j&lt;s2;j++)
+                if(flag[v[i][j].id])
+                    v[i][j].len+=minn;
+        &#125;
+        ans+=minn;
+        memset(vis,0,sizeof(vis));
+        memset(flag,0,sizeof(flag));
+        memset(pre,0,sizeof(pre));
+        while(!q.empty()) q.pop();
+    &#125;
+    return ans;
 &#125;
 int main()
 &#123;
-	scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;m,&amp;st,&amp;ed);
-	for(int i=1;i&lt;=m;i++)
-	&#123;
-		int a,b,c;
-		scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
-		g[a].push_back(node(b,c,i));
-		v[b].push_back(node(a,0,i));
-	&#125;
-	printf(&quot;%d\n&quot;,ek());
-	return 0;
+    scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;m,&amp;st,&amp;ed);
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int a,b,c;
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        g[a].push_back(node(b,c,i));
+        v[b].push_back(node(a,0,i));
+    &#125;
+    printf(&quot;%d\n&quot;,ek());
+    return 0;
 &#125;
-</code></pre>
-<h3 id="另一种写法"><a class="markdownIt-Anchor" href="#另一种写法"></a> 另一种写法：</h3>
-<pre><code>#include &lt;bits/stdc++.h&gt;
+</code></pre><h3 id="另一种写法："><a href="#另一种写法：" class="headerlink" title="另一种写法："></a>另一种写法：</h3><pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=100001;
 const int INF=0x7f7f7f7f;
 struct node
 &#123;
-	int to;
-	int cap;
-	int flink;
-	node(int tt,int cc,int ff)
-	&#123;
-		to=tt,cap=cc,flink=ff;
-	&#125;
-	node()
-	&#123;
-	&#125;
+    int to;
+    int cap;
+    int flink;
+    node(int tt,int cc,int ff)
+    &#123;
+        to=tt,cap=cc,flink=ff;
+    &#125;
+    node()
+    &#123;
+    &#125;
 &#125;;
 vector &lt;node &gt; g[N];
 bool vis[N];
 int n,m,st,ed;
 int dfs(int now,int aim,int val)
 &#123;
-	if(now==aim)
-		return val;
-	vis[now]=true;
-	int size=g[now].size();
-	for(int i=0;i&lt;size;i++)
-	&#123;
-		int to=g[now][i].to;
-		int len=g[now][i].cap;
-		int f=g[now][i].flink;
-		if(!vis[to] &amp;&amp; len&gt;0)
-		&#123;
-			int v=dfs(to,aim,min(len,val));
-			if(v&gt;0)
-			&#123;
-				g[now][i].cap-=v;
-				g[to][f].cap+=v;
-				return v;
-			&#125;
-		&#125;
-	&#125;
-	return 0;
+    if(now==aim)
+        return val;
+    vis[now]=true;
+    int size=g[now].size();
+    for(int i=0;i&lt;size;i++)
+    &#123;
+        int to=g[now][i].to;
+        int len=g[now][i].cap;
+        int f=g[now][i].flink;
+        if(!vis[to] &amp;&amp; len&gt;0)
+        &#123;
+            int v=dfs(to,aim,min(len,val));
+            if(v&gt;0)
+            &#123;
+                g[now][i].cap-=v;
+                g[to][f].cap+=v;
+                return v;
+            &#125;
+        &#125;
+    &#125;
+    return 0;
 &#125;
 int EK()
 &#123;
-	int ans=0;
-	while(1)
-	&#123;
-		memset(vis,0,sizeof(vis));
-		int flow=dfs(st,ed,INF);
-		if(!flow)
-			return ans;
-		ans+=flow;
-	&#125;
-	return ans;
+    int ans=0;
+    while(1)
+    &#123;
+        memset(vis,0,sizeof(vis));
+        int flow=dfs(st,ed,INF);
+        if(!flow)
+            return ans;
+        ans+=flow;
+    &#125;
+    return ans;
 &#125;
 int main()
 &#123;
-	scanf(&quot;%d %d %d %d&quot;,&amp;m,&amp;n,&amp;st,&amp;ed);
-	for(int i=0;i&lt;m;i++)
-	&#123;
-		int a,b,c;
-		scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
-		g[a].push_back(node(b,c,g[b].size()));
-		g[b].push_back(node(a,0,g[a].size()-1));
-	&#125;
-	printf(&quot;%d\n&quot;,EK());
-	return 0;
+    scanf(&quot;%d %d %d %d&quot;,&amp;m,&amp;n,&amp;st,&amp;ed);
+    for(int i=0;i&lt;m;i++)
+    &#123;
+        int a,b,c;
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+        g[a].push_back(node(b,c,g[b].size()));
+        g[b].push_back(node(a,0,g[a].size()-1));
+    &#125;
+    printf(&quot;%d\n&quot;,EK());
+    return 0;
 &#125;
-</code></pre>
-<h3 id="两种算法的具体解析请移步另一篇文章"><a class="markdownIt-Anchor" href="#两种算法的具体解析请移步另一篇文章"></a> 两种算法的具体解析请移步另一篇文章</h3>
-
+</code></pre><h2 id="三、最小费用最大流"><a href="#三、最小费用最大流" class="headerlink" title="三、最小费用最大流"></a>三、最小费用最大流</h2><h4 id="这部分用的是增广路算法，代码如下："><a href="#这部分用的是增广路算法，代码如下：" class="headerlink" title="这部分用的是增广路算法，代码如下："></a>这部分用的是增广路算法，代码如下：</h4><pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=100001;
+const int INF=0x7f7f7f7f;
+struct node
+&#123;
+    int to;
+    int len;
+    int flink;
+    int cost;
+    node(int tt,int ll,int ff,int oo)
+    &#123;
+        to=tt,len=ll,flink=ff,cost=oo;
+    &#125;
+    node()
+    &#123;
+    &#125;
+&#125;;
+vector &lt;node &gt; g[N];
+bool flag[N];
+int n,m,S,T,dis[N],flow[N],pre[N][2];
+bool spfa()
+&#123;
+    memset(pre,0,sizeof(pre));
+    memset(dis,0x3f,sizeof(dis));
+    memset(flow,0x3f,sizeof(flow));
+    memset(flag,0,sizeof(flag));
+    queue &lt;int &gt; q;
+    q.push(S),dis[S]=0,pre[T][0]=-1,flag[S]=true;
+    while(!q.empty())
+    &#123;
+        int t=q.front();
+        q.pop();
+        flag[t]=false;
+        int size=g[t].size();
+        for(int i=0;i&lt;size;i++)
+        &#123;
+            int to=g[t][i].to;
+            int len=g[t][i].len;
+            int cos=g[t][i].cost;
+            if(len&gt;0 &amp;&amp; dis[to]&gt;dis[t]+cos)
+            &#123;
+                dis[to]=dis[t]+cos;
+                flow[to]=min(flow[t],len);
+                pre[to][0]=t;
+                pre[to][1]=i;
+                if(!flag[to])
+                    q.push(to),flag[to]=true;
+            &#125;
+        &#125;
+    &#125;
+    return dis[T]!=0x3f3f3f3f;
+&#125;
+int maxflow,mincost;
+void MDMF()
+&#123;
+    while(spfa())
+    &#123;
+        int now=T;
+        maxflow+=flow[T];
+        mincost+=flow[T]*dis[T];
+        while(now!=S)
+        &#123;
+            g[pre[now][0]][pre[now][1]].len-=flow[T];
+            g[now][g[pre[now][0]][pre[now][1]].flink].len+=flow[T];
+            now=pre[now][0];
+        &#125;
+    &#125;
+    return;
+&#125;
+void add(int now,int to,int len,int cos)
+&#123;
+    g[now].push_back(node(to,len,g[to].size(),cos));
+    g[to].push_back(node(now,0,g[now].size()-1,-cos));
+    return;
+&#125;
+int main()
+&#123;
+    scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;m,&amp;S,&amp;T);
+    for(int i=0;i&lt;m;i++)
+    &#123;
+        int a,b,c,d;
+        scanf(&quot;%d %d %d %d&quot;,&amp;a,&amp;b,&amp;c,&amp;d);
+        add(a,b,c,d);
+    &#125;
+    MDMF();
+    printf(&quot;%d %d\n&quot;,maxflow,mincost);
+    return 0;
+&#125;
+</code></pre><h3 id="例题如下："><a href="#例题如下：" class="headerlink" title="例题如下："></a>例题如下：</h3><h3 id="最小费用最大流"><a href="#最小费用最大流" class="headerlink" title="最小费用最大流"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/list?keyword=%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E5%8A%9B&amp;page=1">最小费用最大流</a></h3><h3 id="两种算法的具体解析请移步另一篇文章"><a href="#两种算法的具体解析请移步另一篇文章" class="headerlink" title="两种算法的具体解析请移步另一篇文章"></a>两种算法的具体解析请移步另一篇文章</h3>
     </div>
     
     
