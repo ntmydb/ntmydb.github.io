@@ -180,7 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #00a596">C++</a>
+                <a href="/tags/C/" style="color: #ffa2c4">C++</a>
             </span>
             
             <span class="tag">
@@ -193,9 +193,16 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="线段树模板"><a href="#线段树模板" class="headerlink" title="线段树模板"></a>线段树模板</h1><span id="more"></span>
-<h2 id="一、线段树基本概念"><a href="#一、线段树基本概念" class="headerlink" title="一、线段树基本概念"></a>一、线段树基本概念</h2><h3 id="1、线段树是一颗二叉树，储存的是一个区间的信息，每个节点都是一个结构体，结构体里面包含区间左端点，区间右端点，区间所需要维护的信息"><a href="#1、线段树是一颗二叉树，储存的是一个区间的信息，每个节点都是一个结构体，结构体里面包含区间左端点，区间右端点，区间所需要维护的信息" class="headerlink" title="1、线段树是一颗二叉树，储存的是一个区间的信息，每个节点都是一个结构体，结构体里面包含区间左端点，区间右端点，区间所需要维护的信息"></a>1、线段树是一颗二叉树，储存的是一个区间的信息，每个节点都是一个结构体，结构体里面包含区间左端点，区间右端点，区间所需要维护的信息</h3><h3 id="2、线段树基本思想是二分"><a href="#2、线段树基本思想是二分" class="headerlink" title="2、线段树基本思想是二分"></a>2、线段树基本思想是二分</h3><h3 id="3、线段树一般结构如下图"><a href="#3、线段树一般结构如下图" class="headerlink" title="3、线段树一般结构如下图"></a>3、线段树一般结构如下图</h3><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%BB%93%E6%9E%84.png" alt="线段树基本结构"></p>
-<h3 id="本人线段树一般书写方法不太一样，如下："><a href="#本人线段树一般书写方法不太一样，如下：" class="headerlink" title="本人线段树一般书写方法不太一样，如下："></a>本人线段树一般书写方法不太一样，如下：</h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>struct node
+        <h1 id="线段树模板"><a class="markdownIt-Anchor" href="#线段树模板"></a> 线段树模板</h1>
+<span id="more"></span>
+<h2 id="一-线段树基本概念"><a class="markdownIt-Anchor" href="#一-线段树基本概念"></a> 一、线段树基本概念</h2>
+<h3 id="1-线段树是一颗二叉树储存的是一个区间的信息每个节点都是一个结构体结构体里面包含区间左端点区间右端点区间所需要维护的信息"><a class="markdownIt-Anchor" href="#1-线段树是一颗二叉树储存的是一个区间的信息每个节点都是一个结构体结构体里面包含区间左端点区间右端点区间所需要维护的信息"></a> 1、线段树是一颗二叉树，储存的是一个区间的信息，每个节点都是一个结构体，结构体里面包含区间左端点，区间右端点，区间所需要维护的信息</h3>
+<h3 id="2-线段树基本思想是二分"><a class="markdownIt-Anchor" href="#2-线段树基本思想是二分"></a> 2、线段树基本思想是二分</h3>
+<h3 id="3-线段树一般结构如下图"><a class="markdownIt-Anchor" href="#3-线段树一般结构如下图"></a> 3、线段树一般结构如下图</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%BB%93%E6%9E%84.png" alt="线段树基本结构" /></p>
+<h3 id="本人线段树一般书写方法不太一样如下"><a class="markdownIt-Anchor" href="#本人线段树一般书写方法不太一样如下"></a> 本人线段树一般书写方法不太一样，如下：</h3>
+<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
+<pre><code>struct node
 &#123;
     int l,r,left_child,right_child;
     int sum,delay;
@@ -287,40 +294,44 @@ void change(int root,int id,int v) //单点修改
     push_up(root);
     return;
 &#125;
-</code></pre><h2 id="二、线段树板子（包含区间求和，单点修改，区间修改）"><a href="#二、线段树板子（包含区间求和，单点修改，区间修改）" class="headerlink" title="二、线段树板子（包含区间求和，单点修改，区间修改）"></a>二、线段树板子（包含区间求和，单点修改，区间修改）</h2><h3 id="例题-线段树模板1"><a href="#例题-线段树模板1" class="headerlink" title="例题:线段树模板1"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3372">例题:线段树模板1</a></h3><h3 id="例题-线段树模板2"><a href="#例题-线段树模板2" class="headerlink" title="例题:线段树模板2"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3373">例题:线段树模板2</a></h3><pre><code>#include &lt;bits/stdc++.h&gt;
+</code></pre>
+<h2 id="二-线段树板子包含区间求和单点修改区间修改"><a class="markdownIt-Anchor" href="#二-线段树板子包含区间求和单点修改区间修改"></a> 二、线段树板子（包含区间求和，单点修改，区间修改）</h2>
+<h3 id="例题线段树模板1"><a class="markdownIt-Anchor" href="#例题线段树模板1"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3372">例题:线段树模板1</a></h3>
+<h3 id="例题线段树模板2"><a class="markdownIt-Anchor" href="#例题线段树模板2"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3373">例题:线段树模板2</a></h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const long long N=100001;
 struct node
 &#123;
-    long long l,r,left_child,right_child;
-    long long sum,delay1,delay2;
+	long long l,r,left_child,right_child;
+	long long sum,delay1,delay2;
 &#125;tree[N*2];
 long long n,m,root,tot,d[N],mod;
 void fix(long long root)
 &#123;
-    long long a=tree[root].left_child,b=tree[root].right_child;
-    tree[root].sum=tree[a].sum+tree[b].sum;
-    tree[root].sum%=mod;
-    return;
+	long long a=tree[root].left_child,b=tree[root].right_child;
+	tree[root].sum=tree[a].sum+tree[b].sum;
+	tree[root].sum%=mod;
+	return;
 &#125;
 void build(long long &amp; root,long long l,long long r)
 &#123;
-    root=++tot,tree[root].l=l,tree[root].r=r;
-    tree[root].delay2=1;
-    if(l==r)
-    &#123;
-        tree[root].sum=d[l];
-        return;
-    &#125;
-    long long mid=(l+r)/2;
-    build(tree[root].left_child,l,mid);
-    build(tree[root].right_child,mid+1,r);
-    fix(root);
-    return;
+	root=++tot,tree[root].l=l,tree[root].r=r;
+	tree[root].delay2=1;
+	if(l==r)
+	&#123;
+		tree[root].sum=d[l];
+		return;
+	&#125;
+	long long mid=(l+r)/2;
+	build(tree[root].left_child,l,mid);
+	build(tree[root].right_child,mid+1,r);
+	fix(root);
+	return;
 &#125;
 void push_down(long long root)
 &#123;
-    long long a=tree[root].left_child,b=tree[root].right_child;
+	long long a=tree[root].left_child,b=tree[root].right_child;
     tree[a].sum*=tree[root].delay2,tree[a].sum+=(tree[a].r-tree[a].l+1)*tree[root].delay1;
     tree[a].delay1=tree[a].delay1*tree[root].delay2+tree[root].delay1,tree[a].delay2*=tree[root].delay2;
     tree[a].delay1%=mod,tree[a].delay2%=mod,tree[a].sum%=mod;
@@ -332,512 +343,533 @@ void push_down(long long root)
 &#125;
 void update(long long root,long long l,long long r,long long v)
 &#123;
-    if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
-    &#123;
-        tree[root].sum+=(tree[root].r-tree[root].l+1)*v;
-        tree[root].delay1+=v;
-        return;
-    &#125;
-    push_down(root);
-    long long mid=(tree[root].l+tree[root].r)/2;
-    if(mid&gt;=r)
-        update(tree[root].left_child,l,r,v);
-    else if(mid&lt;l)
-        update(tree[root].right_child,l,r,v);
-    else
-        update(tree[root].left_child,l,mid,v),update(tree[root].right_child,mid+1,r,v);
-    fix(root);
-    return;
+	if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+	&#123;
+		tree[root].sum+=(tree[root].r-tree[root].l+1)*v;
+		tree[root].delay1+=v;
+		return;
+	&#125;
+	push_down(root);
+	long long mid=(tree[root].l+tree[root].r)/2;
+	if(mid&gt;=r)
+		update(tree[root].left_child,l,r,v);
+	else if(mid&lt;l)
+		update(tree[root].right_child,l,r,v);
+	else
+		update(tree[root].left_child,l,mid,v),update(tree[root].right_child,mid+1,r,v);
+	fix(root);
+	return;
 &#125;
 void change(long long root,long long l,long long r,long long v)
 &#123;
-    if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
-    &#123;
-        tree[root].sum*=v,tree[root].delay1*=v,tree[root].delay2*=v;
-        tree[root].sum%=mod,tree[root].delay1%=mod,tree[root].delay2%=mod;
-        return;
-    &#125;
-    push_down(root);
-    long long mid=(tree[root].l+tree[root].r)/2;
-    if(mid&gt;=r)
-        change(tree[root].left_child,l,r,v);
-    else if(mid&lt;l)
-        change(tree[root].right_child,l,r,v);
-    else
-        change(tree[root].left_child,l,mid,v),change(tree[root].right_child,mid+1,r,v);
-    fix(root);
-    return;
+	if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+	&#123;
+		tree[root].sum*=v,tree[root].delay1*=v,tree[root].delay2*=v;
+		tree[root].sum%=mod,tree[root].delay1%=mod,tree[root].delay2%=mod;
+		return;
+	&#125;
+	push_down(root);
+	long long mid=(tree[root].l+tree[root].r)/2;
+	if(mid&gt;=r)
+		change(tree[root].left_child,l,r,v);
+	else if(mid&lt;l)
+		change(tree[root].right_child,l,r,v);
+	else
+		change(tree[root].left_child,l,mid,v),change(tree[root].right_child,mid+1,r,v);
+	fix(root);
+	return;
 &#125;
 long long query(long long root,long long l,long long r)
 &#123;
-    if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
-        return tree[root].sum%mod;
-    long long mid=(tree[root].l+tree[root].r)/2;
-    push_down(root);
-    if(mid&gt;=r)
-        return query(tree[root].left_child,l,r)%mod;
-    else if(mid&lt;l)
-        return query(tree[root].right_child,l,r)%mod;
-    else
-        return query(tree[root].left_child,l,mid)%mod+query(tree[root].right_child,mid+1,r)%mod;
+	if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+		return tree[root].sum%mod;
+	long long mid=(tree[root].l+tree[root].r)/2;
+	push_down(root);
+	if(mid&gt;=r)
+		return query(tree[root].left_child,l,r)%mod;
+	else if(mid&lt;l)
+		return query(tree[root].right_child,l,r)%mod;
+	else
+		return query(tree[root].left_child,l,mid)%mod+query(tree[root].right_child,mid+1,r)%mod;
 &#125;
 int main()
 &#123;
-    scanf(&quot;%lld %lld %lld&quot;,&amp;n,&amp;m,&amp;mod);
-    for(long long i=1;i&lt;=n;i++)
-        scanf(&quot;%lld&quot;,&amp;d[i]);
-    build(root,1,n);
-    for(long long i=1;i&lt;=m;i++)
-    &#123;
-        long long op;
-        scanf(&quot;%lld&quot;,&amp;op);
-        if(op==1)
-        &#123;
-            long long l,r,x;
-            scanf(&quot;%lld %lld %lld&quot;,&amp;l,&amp;r,&amp;x);
-            change(root,l,r,x);
-        &#125;
-        else if(op==2)
-        &#123;
-            long long l,r,x;
-            scanf(&quot;%lld %lld %lld&quot;,&amp;l,&amp;r,&amp;x);
-            update(root,l,r,x);
-        &#125;
-        else
-        &#123;
-            long long l,r;
-            scanf(&quot;%lld %lld&quot;,&amp;l,&amp;r);
-            printf(&quot;%lld\n&quot;,query(root,l,r)%mod);
-        &#125;
-    &#125;
-    return 0;
+	scanf(&quot;%lld %lld %lld&quot;,&amp;n,&amp;m,&amp;mod);
+	for(long long i=1;i&lt;=n;i++)
+		scanf(&quot;%lld&quot;,&amp;d[i]);
+	build(root,1,n);
+	for(long long i=1;i&lt;=m;i++)
+	&#123;
+		long long op;
+		scanf(&quot;%lld&quot;,&amp;op);
+		if(op==1)
+		&#123;
+			long long l,r,x;
+			scanf(&quot;%lld %lld %lld&quot;,&amp;l,&amp;r,&amp;x);
+			change(root,l,r,x);
+		&#125;
+		else if(op==2)
+		&#123;
+			long long l,r,x;
+			scanf(&quot;%lld %lld %lld&quot;,&amp;l,&amp;r,&amp;x);
+			update(root,l,r,x);
+		&#125;
+		else
+		&#123;
+			long long l,r;
+			scanf(&quot;%lld %lld&quot;,&amp;l,&amp;r);
+			printf(&quot;%lld\n&quot;,query(root,l,r)%mod);
+		&#125;
+	&#125;
+	return 0;
 &#125;
-</code></pre><h3 id="线段树还可以进行其他操作，如区间最大、小值等功能，这些功能待补充"><a href="#线段树还可以进行其他操作，如区间最大、小值等功能，这些功能待补充" class="headerlink" title="线段树还可以进行其他操作，如区间最大、小值等功能，这些功能待补充"></a>线段树还可以进行其他操作，如区间最大、小值等功能，这些功能待补充</h3><h2 id="三、可持久化线段树"><a href="#三、可持久化线段树" class="headerlink" title="三、可持久化线段树"></a>三、可持久化线段树</h2><h3 id="光看标题不明所以，其主要功能是可以求区间任意第k小的值，k是可输入改变的"><a href="#光看标题不明所以，其主要功能是可以求区间任意第k小的值，k是可输入改变的" class="headerlink" title="光看标题不明所以，其主要功能是可以求区间任意第k小的值，k是可输入改变的"></a>光看标题不明所以，其主要功能是可以求区间任意第k小的值，k是可输入改变的</h3><h3 id="例题-可持久化线段树"><a href="#例题-可持久化线段树" class="headerlink" title="例题:可持久化线段树"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">例题:可持久化线段树</a></h3><h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
+</code></pre>
+<h3 id="线段树还可以进行其他操作如区间最大-小值等功能这些功能待补充"><a class="markdownIt-Anchor" href="#线段树还可以进行其他操作如区间最大-小值等功能这些功能待补充"></a> 线段树还可以进行其他操作，如区间最大、小值等功能，这些功能待补充</h3>
+<h2 id="三-可持久化线段树"><a class="markdownIt-Anchor" href="#三-可持久化线段树"></a> 三、可持久化线段树</h2>
+<h3 id="光看标题不明所以其主要功能是可以求区间任意第k小的值k是可输入改变的"><a class="markdownIt-Anchor" href="#光看标题不明所以其主要功能是可以求区间任意第k小的值k是可输入改变的"></a> 光看标题不明所以，其主要功能是可以求区间任意第k小的值，k是可输入改变的</h3>
+<h3 id="例题可持久化线段树"><a class="markdownIt-Anchor" href="#例题可持久化线段树"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">例题:可持久化线段树</a></h3>
+<h3 id="code-2"><a class="markdownIt-Anchor" href="#code-2"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=200001;
 struct node
 &#123;
-    int left,right,sum;
+	int left,right,sum;
 &#125;tree[20*N];
 struct edge
 &#123;
-    int v,old,new_id;
-    bool operator &lt; (const edge &amp; ot) const
-    &#123;
-        return v&lt;ot.v;
-    &#125;
+	int v,old,new_id;
+	bool operator &lt; (const edge &amp; ot) const
+	&#123;
+		return v&lt;ot.v;
+	&#125;
 &#125;d[N];
 int n,m,root[20*N],tot=1;
 void update(int &amp; now,int l,int r,int pos)
 &#123;
-    tree[tot++]=tree[now];
-    now=tot-1;
-    tree[now].sum++;
-    if(l==r)
-        return;
-    int mid=(l+r)/2;
-    if(pos&lt;=mid)
-        update(tree[now].left,l,mid,pos);
-    else
-        update(tree[now].right,mid+1,r,pos);
-    return;
+	tree[tot++]=tree[now];
+	now=tot-1;
+	tree[now].sum++;
+	if(l==r)
+		return;
+	int mid=(l+r)/2;
+	if(pos&lt;=mid)
+		update(tree[now].left,l,mid,pos);
+	else
+		update(tree[now].right,mid+1,r,pos);
+	return;
 &#125;
 int query(int last,int now,int l,int r,int pos)
 &#123;
-    int sum=tree[tree[now].left].sum-tree[tree[last].left].sum;
-    if(l==r)
-        return l;
-    int mid=(l+r)/2;
-    if(pos&lt;=sum)
-        return query(tree[last].left,tree[now].left,l,mid,pos);
-    else
-        return query(tree[last].right,tree[now].right,mid+1,r,pos-sum);
+	int sum=tree[tree[now].left].sum-tree[tree[last].left].sum;
+	if(l==r)
+		return l;
+	int mid=(l+r)/2;
+	if(pos&lt;=sum)
+		return query(tree[last].left,tree[now].left,l,mid,pos);
+	else
+		return query(tree[last].right,tree[now].right,mid+1,r,pos-sum);
 &#125;
 int main()
 &#123;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    for(int i=1;i&lt;=n;i++)
-        scanf(&quot;%d&quot;,&amp;d[i].v),d[i].old=i;
-    sort(d+1,d+1+n);
-    for(int i=1;i&lt;=n;i++)
-        d[d[i].old].new_id=i;
-    for(int i=1;i&lt;=n;i++)
-    &#123;
-        root[i]=root[i-1];
-        update(root[i],1,n,d[i].new_id);
-    &#125;
-    for(int i=1;i&lt;=m;i++)
-    &#123;
-        int l,r,k;
-        scanf(&quot;%d %d %d&quot;,&amp;l,&amp;r,&amp;k);
-        printf(&quot;%d\n&quot;,d[query(root[l-1],root[r],1,n,k)].v);
-    &#125;
-    return 0;
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=n;i++)
+		scanf(&quot;%d&quot;,&amp;d[i].v),d[i].old=i;
+	sort(d+1,d+1+n);
+	for(int i=1;i&lt;=n;i++)
+		d[d[i].old].new_id=i;
+	for(int i=1;i&lt;=n;i++)
+	&#123;
+		root[i]=root[i-1];
+		update(root[i],1,n,d[i].new_id);
+	&#125;
+	for(int i=1;i&lt;=m;i++)
+	&#123;
+		int l,r,k;
+		scanf(&quot;%d %d %d&quot;,&amp;l,&amp;r,&amp;k);
+		printf(&quot;%d\n&quot;,d[query(root[l-1],root[r],1,n,k)].v);
+	&#125;
+	return 0;
 &#125;
-</code></pre><h2 id="四、普通平衡树"><a href="#四、普通平衡树" class="headerlink" title="四、普通平衡树"></a>四、普通平衡树</h2><h3 id="普通平衡树是一颗二叉树，特点是可以动态插入删除，也可以动态查询某个数的排名及其前驱和后继"><a href="#普通平衡树是一颗二叉树，特点是可以动态插入删除，也可以动态查询某个数的排名及其前驱和后继" class="headerlink" title="普通平衡树是一颗二叉树，特点是可以动态插入删除，也可以动态查询某个数的排名及其前驱和后继"></a>普通平衡树是一颗二叉树，特点是可以动态插入删除，也可以动态查询某个数的排名及其前驱和后继</h3><h3 id="例题-普通平衡树"><a href="#例题-普通平衡树" class="headerlink" title="例题:普通平衡树"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3369">例题:普通平衡树</a></h3><h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
+</code></pre>
+<h2 id="四-普通平衡树"><a class="markdownIt-Anchor" href="#四-普通平衡树"></a> 四、普通平衡树</h2>
+<h3 id="普通平衡树是一颗二叉树特点是可以动态插入删除也可以动态查询某个数的排名及其前驱和后继"><a class="markdownIt-Anchor" href="#普通平衡树是一颗二叉树特点是可以动态插入删除也可以动态查询某个数的排名及其前驱和后继"></a> 普通平衡树是一颗二叉树，特点是可以动态插入删除，也可以动态查询某个数的排名及其前驱和后继</h3>
+<h3 id="例题普通平衡树"><a class="markdownIt-Anchor" href="#例题普通平衡树"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3369">例题:普通平衡树</a></h3>
+<h3 id="code-3"><a class="markdownIt-Anchor" href="#code-3"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=100001;
 int ch[N][2],par[N],size[N],cnt[N],val[N],n,tot,root;
 bool flag[N];
 int chk(int x) 
 &#123;
-    if(ch[par[x]][1]==x)  
-        return 1;
-    else
-        return 0;
+	if(ch[par[x]][1]==x)  
+		return 1;
+	else
+		return 0;
 &#125;
 void push_up(int x) 
 &#123;
-    size[x]=size[ch[x][0]]+size[ch[x][1]]+cnt[x];
-    return;
+	size[x]=size[ch[x][0]]+size[ch[x][1]]+cnt[x];
+	return;
 &#125;
 void rotate(int cur)
 &#123;
-    int x=par[cur],y=par[par[cur]],k=chk(cur);
-    int which=ch[cur][k^1]; 
-    ch[x][k]=which,par[which]=x; 
-    ch[y][chk(x)]=cur,par[cur]=y;
-    ch[cur][k^1]=x,par[x]=cur;
-    push_up(x),push_up(cur);
-    return;
+	int x=par[cur],y=par[par[cur]],k=chk(cur);
+	int which=ch[cur][k^1]; 
+	ch[x][k]=which,par[which]=x; 
+	ch[y][chk(x)]=cur,par[cur]=y;
+	ch[cur][k^1]=x,par[x]=cur;
+	push_up(x),push_up(cur);
+	return;
 &#125;
 void splay(int cur,int aim=0)
 &#123;
-    while(par[cur]!=aim)
-    &#123;
-        int x=par[cur],y=par[par[cur]];
-        if(y!=aim)
-        &#123;
-            if(chk(cur)==chk(x))
-                rotate(x);
-            else
-                rotate(cur);
-        &#125;
-        rotate(cur);
-    &#125;
-    if(!aim)
-        root=cur;
-    return;
+	while(par[cur]!=aim)
+	&#123;
+		int x=par[cur],y=par[par[cur]];
+		if(y!=aim)
+		&#123;
+			if(chk(cur)==chk(x))
+				rotate(x);
+			else
+				rotate(cur);
+		&#125;
+		rotate(cur);
+	&#125;
+	if(!aim)
+		root=cur;
+	return;
 &#125;
 void insert(int x)
 &#123;
-    int cur=root,fa=0;
-    while(cur &amp;&amp; val[cur]!=x)
-    &#123;
-        fa=cur;
-        if(x&gt;val[cur]) 
-            cur=ch[cur][1];  
-        else
-            cur=ch[cur][0];
-    &#125;
-    if(cur)
-        cnt[cur]++;
-    else 
-    &#123;
-        cur=++tot;
-        if(fa) 
-        &#123;
-            if(x&gt;val[fa]) 
-                ch[fa][1]=cur;
-            else
-                ch[fa][0]=cur;
-        &#125;
-        ch[cur][0]=ch[cur][1]=0,par[cur]=fa,val[cur]=x,cnt[cur]=size[cur]=1; 
-    &#125;
-    splay(cur); 
-    return;
+	int cur=root,fa=0;
+	while(cur &amp;&amp; val[cur]!=x)
+	&#123;
+		fa=cur;
+		if(x&gt;val[cur]) 
+			cur=ch[cur][1];  
+		else
+			cur=ch[cur][0];
+	&#125;
+	if(cur)
+		cnt[cur]++;
+	else 
+	&#123;
+		cur=++tot;
+		if(fa) 
+		&#123;
+			if(x&gt;val[fa]) 
+				ch[fa][1]=cur;
+			else
+				ch[fa][0]=cur;
+		&#125;
+		ch[cur][0]=ch[cur][1]=0,par[cur]=fa,val[cur]=x,cnt[cur]=size[cur]=1; 
+	&#125;
+	splay(cur); 
+	return;
 &#125;
 void pushdown(int x)
 &#123;
-    if(flag[x])
-    &#123;
-        swap(ch[x][0],ch[x][1]);
-        flag[ch[x][0]]=!flag[ch[x][0]];
-        flag[ch[x][1]]=!flag[ch[x][1]];
-        flag[x]=false;
-    &#125;
-    return;
+	if(flag[x])
+	&#123;
+		swap(ch[x][0],ch[x][1]);
+		flag[ch[x][0]]=!flag[ch[x][0]];
+		flag[ch[x][1]]=!flag[ch[x][1]];
+		flag[x]=false;
+	&#125;
+	return;
 &#125;
 int kth(int x)
 &#123;
-    int cur=root;
-    for(;;)
-    &#123;
-        if(ch[cur][0] &amp;&amp; x&lt;=size[ch[cur][0]])
-            cur=ch[cur][0];
-        else if(x&gt;size[ch[cur][0]]+cnt[cur])
-        &#123;
-            x-=size[ch[cur][0]]+cnt[cur];
-            cur=ch[cur][1];
-        &#125;
-        else
-            return cur;
-    &#125;
-    return cur;
+	int cur=root;
+	for(;;)
+	&#123;
+		if(ch[cur][0] &amp;&amp; x&lt;=size[ch[cur][0]])
+			cur=ch[cur][0];
+		else if(x&gt;size[ch[cur][0]]+cnt[cur])
+		&#123;
+			x-=size[ch[cur][0]]+cnt[cur];
+			cur=ch[cur][1];
+		&#125;
+		else
+			return cur;
+	&#125;
+	return cur;
 &#125;
 void update(int x,int y)
 &#123;
-    int t1=kth(x),t2=kth(y+2);
-    splay(t1),splay(t2,t1);
-    flag[ch[t2][0]]=!flag[ch[t2][0]];
-    return;
+	int t1=kth(x),t2=kth(y+2);
+	splay(t1),splay(t2,t1);
+	flag[ch[t2][0]]=!flag[ch[t2][0]];
+	return;
 &#125;
 void find(int x)
 &#123;
-    int cur=root;
-    while(ch[cur][x&gt;val[cur]] &amp;&amp; val[cur]!=x)
-        cur=ch[cur][x&gt;val[cur]];
-    splay(cur);
-    return;
+	int cur=root;
+	while(ch[cur][x&gt;val[cur]] &amp;&amp; val[cur]!=x)
+		cur=ch[cur][x&gt;val[cur]];
+	splay(cur);
+	return;
 &#125;
 int pre(int x)
 &#123;
-    find(x);
-    if(val[root]&lt;x)
-        return root;
-    int cur=ch[root][0];
-    while(ch[cur][1])
-        cur=ch[cur][1];
-    return cur;
+	find(x);
+	if(val[root]&lt;x)
+		return root;
+	int cur=ch[root][0];
+	while(ch[cur][1])
+		cur=ch[cur][1];
+	return cur;
 &#125;
 int succ(int x)
 &#123;
-    find(x);
-    if(val[root]&gt;x)
-        return root;
-    int cur=ch[root][1];
-    while(ch[cur][0])
-        cur=ch[cur][0];
-    return cur;
+	find(x);
+	if(val[root]&gt;x)
+		return root;
+	int cur=ch[root][1];
+	while(ch[cur][0])
+		cur=ch[cur][0];
+	return cur;
 &#125;
 void print(int x)
 &#123;
-    pushdown(x);
-    if(ch[x][0])
-        print(ch[x][0]);
-    if(val[x] &amp;&amp; val[x]&lt;=n)
-        printf(&quot;%d &quot;,val[x]);
-    if(ch[x][1])
-        print(ch[x][1]);
-    return;
+	pushdown(x);
+	if(ch[x][0])
+		print(ch[x][0]);
+	if(val[x] &amp;&amp; val[x]&lt;=n)
+		printf(&quot;%d &quot;,val[x]);
+	if(ch[x][1])
+		print(ch[x][1]);
+	return;
 &#125;
 void del(int x)
 &#123;
-    int last=pre(x),next=succ(x);
-    splay(last),splay(next,last);
-    int cut=ch[next][0];
-    if(cnt[cut]&gt;1)
-    &#123;
-        cnt[cut]--;
-        splay(cut);
-    &#125;
-    else
-        ch[next][0]=0,push_up(next),push_up(root);
-    return;
+	int last=pre(x),next=succ(x);
+	splay(last),splay(next,last);
+	int cut=ch[next][0];
+	if(cnt[cut]&gt;1)
+	&#123;
+		cnt[cut]--;
+		splay(cut);
+	&#125;
+	else
+		ch[next][0]=0,push_up(next),push_up(root);
+	return;
 &#125;
 int main()
 &#123;
-    scanf(&quot;%d&quot;,&amp;n);
-    insert(0x7f7f7f7f),insert(0xcfcfcfcf);
-    while(n--)
-    &#123;
-        int op,x;
-        scanf(&quot;%d %d&quot;,&amp;op,&amp;x);
-        if(op==1)
-            insert(x);
-        else if(op==2)
-            del(x);
-        else if(op==3)
-        &#123;
-            find(x);
-            printf(&quot;%d\n&quot;,size[ch[root][0]]);
-        &#125;
-        else if(op==4)
-            printf(&quot;%d\n&quot;,val[kth(x+1)]);
-        else if(op==5)
-            printf(&quot;%d\n&quot;,val[pre(x)]);
-        else
-            printf(&quot;%d\n&quot;,val[succ(x)]);
-    &#125;
-    return 0;
+	scanf(&quot;%d&quot;,&amp;n);
+	insert(0x7f7f7f7f),insert(0xcfcfcfcf);
+	while(n--)
+	&#123;
+		int op,x;
+		scanf(&quot;%d %d&quot;,&amp;op,&amp;x);
+		if(op==1)
+			insert(x);
+		else if(op==2)
+			del(x);
+		else if(op==3)
+		&#123;
+			find(x);
+			printf(&quot;%d\n&quot;,size[ch[root][0]]);
+		&#125;
+		else if(op==4)
+			printf(&quot;%d\n&quot;,val[kth(x+1)]);
+		else if(op==5)
+			printf(&quot;%d\n&quot;,val[pre(x)]);
+		else
+			printf(&quot;%d\n&quot;,val[succ(x)]);
+	&#125;
+	return 0;
 &#125;
-</code></pre><h3 id="这篇文章只是单纯的模板记录文章，要想了解原理请移步另一篇文章"><a href="#这篇文章只是单纯的模板记录文章，要想了解原理请移步另一篇文章" class="headerlink" title="这篇文章只是单纯的模板记录文章，要想了解原理请移步另一篇文章"></a>这篇文章只是单纯的模板记录文章，要想了解原理请移步另一篇文章</h3><h3 id="下面是二叉平衡树的应用，利用二叉平衡树来维护一个有序序列"><a href="#下面是二叉平衡树的应用，利用二叉平衡树来维护一个有序序列" class="headerlink" title="下面是二叉平衡树的应用，利用二叉平衡树来维护一个有序序列"></a>下面是二叉平衡树的应用，利用二叉平衡树来维护一个有序序列</h3><h3 id="例题-文艺平衡树"><a href="#例题-文艺平衡树" class="headerlink" title="例题:文艺平衡树"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3391">例题:文艺平衡树</a></h3><h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
+</code></pre>
+<h3 id="这篇文章只是单纯的模板记录文章要想了解原理请移步另一篇文章"><a class="markdownIt-Anchor" href="#这篇文章只是单纯的模板记录文章要想了解原理请移步另一篇文章"></a> 这篇文章只是单纯的模板记录文章，要想了解原理请移步另一篇文章</h3>
+<h3 id="下面是二叉平衡树的应用利用二叉平衡树来维护一个有序序列"><a class="markdownIt-Anchor" href="#下面是二叉平衡树的应用利用二叉平衡树来维护一个有序序列"></a> 下面是二叉平衡树的应用，利用二叉平衡树来维护一个有序序列</h3>
+<h3 id="例题文艺平衡树"><a class="markdownIt-Anchor" href="#例题文艺平衡树"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3391">例题:文艺平衡树</a></h3>
+<h3 id="code-4"><a class="markdownIt-Anchor" href="#code-4"></a> Code:</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=100001;
 int ch[N][2],par[N],size[N],cnt[N],val[N],n,m,tot,root;
 bool flag[N];
 int chk(int x)//查询子节点在父节点左边还是右边 
 &#123;
-    if(ch[par[x]][1]==x)  
-        return 1;
-    else
-        return 0;
+	if(ch[par[x]][1]==x)  
+		return 1;
+	else
+		return 0;
 &#125;
 void push_up(int x) //更新此节点的size 
 &#123;
-    size[x]=size[ch[x][0]]+size[ch[x][1]]+cnt[x];
-    return;
+	size[x]=size[ch[x][0]]+size[ch[x][1]]+cnt[x];
+	return;
 &#125;
 void rotate(int cur)
 &#123;
-    int x=par[cur],y=par[par[cur]],k=chk(cur),which=ch[cur][k^1]; 
-    //x为此节点的父亲，y为此节点的爷爷 
-    ch[x][k]=which,par[which]=x; //父亲的儿子改成 
-    ch[y][chk(x)]=cur,par[cur]=y;
-    ch[cur][k^1]=x,par[x]=cur;
-    push_up(x),push_up(cur);
-    return;
+	int x=par[cur],y=par[par[cur]],k=chk(cur),which=ch[cur][k^1]; 
+	//x为此节点的父亲，y为此节点的爷爷 
+	ch[x][k]=which,par[which]=x; //父亲的儿子改成 
+	ch[y][chk(x)]=cur,par[cur]=y;
+	ch[cur][k^1]=x,par[x]=cur;
+	push_up(x),push_up(cur);
+	return;
 &#125;
 void splay(int cur,int aim=0)
 &#123;
-    while(par[cur]!=aim)
-    &#123;
-        int x=par[cur],y=par[par[cur]];
-        if(y!=aim)
-        &#123;
-            if(chk(cur)==chk(x))
-                rotate(x);
-            else
-                rotate(cur);
-        &#125;
-        rotate(cur);
-    &#125;
-    if(!aim)
-        root=cur;
-    return;
+	while(par[cur]!=aim)
+	&#123;
+		int x=par[cur],y=par[par[cur]];
+		if(y!=aim)
+		&#123;
+			if(chk(cur)==chk(x))
+				rotate(x);
+			else
+				rotate(cur);
+		&#125;
+		rotate(cur);
+	&#125;
+	if(!aim)
+		root=cur;
+	return;
 &#125;
 void insert(int x)
 &#123;
-    int cur=root,fa=0;
-    while(cur &amp;&amp; val[cur]!=x) //当树不为空且这个点的值不是插入值 
-    &#123;
-        fa=cur;//更新father 
-        if(x&gt;val[cur]) //这个值大于当前节点值 
-            cur=ch[cur][1]; //右儿子 
-        else
-            cur=ch[cur][0]; //左二子 
-    &#125;
-    if(cur) //出循环还没到底部，说明已经有这个值 
-        cnt[cur]++;
-    else //新建节点 
-    &#123;
-        cur=++tot;
-        if(fa) //如果这个点不是第一个点 
-        &#123;
-            if(x&gt;val[fa]) //同上 
-                ch[fa][1]=cur;
-            else
-                ch[fa][0]=cur;
-        &#125;
-        ch[cur][0]=ch[cur][1]=0,par[cur]=fa,val[cur]=x,cnt[cur]=size[cur]=1;//新节点信息 
-    &#125;
-    splay(cur); //平衡一下 
-    return;
+	int cur=root,fa=0;
+	while(cur &amp;&amp; val[cur]!=x) //当树不为空且这个点的值不是插入值 
+	&#123;
+		fa=cur;//更新father 
+		if(x&gt;val[cur]) //这个值大于当前节点值 
+			cur=ch[cur][1]; //右儿子 
+		else
+			cur=ch[cur][0]; //左二子 
+	&#125;
+	if(cur) //出循环还没到底部，说明已经有这个值 
+		cnt[cur]++;
+	else //新建节点 
+	&#123;
+		cur=++tot;
+		if(fa) //如果这个点不是第一个点 
+		&#123;
+			if(x&gt;val[fa]) //同上 
+				ch[fa][1]=cur;
+			else
+				ch[fa][0]=cur;
+		&#125;
+		ch[cur][0]=ch[cur][1]=0,par[cur]=fa,val[cur]=x,cnt[cur]=size[cur]=1;//新节点信息 
+	&#125;
+	splay(cur); //平衡一下 
+	return;
 &#125;
 void pushdown(int x)
 &#123;
-    if(flag[x])
-    &#123;
-        swap(ch[x][0],ch[x][1]);
-        flag[ch[x][0]]=!flag[ch[x][0]];
-        flag[ch[x][1]]=!flag[ch[x][1]];
-        flag[x]=false;
-    &#125;
-    return;
+	if(flag[x])
+	&#123;
+		swap(ch[x][0],ch[x][1]);
+		flag[ch[x][0]]=!flag[ch[x][0]];
+		flag[ch[x][1]]=!flag[ch[x][1]];
+		flag[x]=false;
+	&#125;
+	return;
 &#125;
 int kth(int x)
 &#123;
-    int cur=root;
-    for(;;)
-    &#123;
-        pushdown(cur);
-        if(ch[cur][0] &amp;&amp; x&lt;=size[ch[cur][0]])
-            cur=ch[cur][0];
-        else if(x&gt;size[ch[cur][0]]+cnt[cur])
-        &#123;
-            x-=size[ch[cur][0]]+cnt[cur];
-            cur=ch[cur][1];
-        &#125;
-        else
-            return cur;
-    &#125;
-    return cur;
+	int cur=root;
+	for(;;)
+	&#123;
+		pushdown(cur);
+		if(ch[cur][0] &amp;&amp; x&lt;=size[ch[cur][0]])
+			cur=ch[cur][0];
+		else if(x&gt;size[ch[cur][0]]+cnt[cur])
+		&#123;
+			x-=size[ch[cur][0]]+cnt[cur];
+			cur=ch[cur][1];
+		&#125;
+		else
+			return cur;
+	&#125;
+	return cur;
 &#125;
 void update(int x,int y)
 &#123;
-    int t1=kth(x),t2=kth(y+2);
-    splay(t1),splay(t2,t1);
-    flag[ch[t2][0]]=!flag[ch[t2][0]];
-    return;
+	int t1=kth(x),t2=kth(y+2);
+	splay(t1),splay(t2,t1);
+	flag[ch[t2][0]]=!flag[ch[t2][0]];
+	return;
 &#125;
 void find(int x)
 &#123;
-    int cur=root;
-    while(ch[cur][x&gt;val[cur]] &amp;&amp; val[cur]!=x)
-        cur=ch[cur][x&gt;val[cur]];
-    splay(cur);
-    return;
+	int cur=root;
+	while(ch[cur][x&gt;val[cur]] &amp;&amp; val[cur]!=x)
+		cur=ch[cur][x&gt;val[cur]];
+	splay(cur);
+	return;
 &#125;
 int pre(int x)
 &#123;
-    find(x);
-    if(val[root]&gt;x)
-        return root;
-    int cur=ch[root][0];
-    while(ch[cur][1])
-        cur=ch[cur][1];
-    return cur;
+	find(x);
+	if(val[root]&gt;x)
+		return root;
+	int cur=ch[root][0];
+	while(ch[cur][1])
+		cur=ch[cur][1];
+	return cur;
 &#125;
 int succ(int x)
 &#123;
-    find(x);
-    if(val[root]&lt;x)
-        return root;
-    int cur=ch[root][1];
-    while(ch[cur][0])
-        cur=ch[cur][1];
-    return cur;
+	find(x);
+	if(val[root]&lt;x)
+		return root;
+	int cur=ch[root][1];
+	while(ch[cur][0])
+		cur=ch[cur][1];
+	return cur;
 &#125;
 void print(int x)
 &#123;
-    pushdown(x);
-    if(ch[x][0])
-        print(ch[x][0]);
-    if(val[x] &amp;&amp; val[x]&lt;=n)
-        printf(&quot;%d &quot;,val[x]);
-    if(ch[x][1])
-        print(ch[x][1]);
-    return;
+	pushdown(x);
+	if(ch[x][0])
+		print(ch[x][0]);
+	if(val[x] &amp;&amp; val[x]&lt;=n)
+		printf(&quot;%d &quot;,val[x]);
+	if(ch[x][1])
+		print(ch[x][1]);
+	return;
 &#125;
 void del(int x)
 &#123;
-    int last=pre(x),next=succ(x);
-    splay(last),splay(next,last);
-    int cut=ch[next][0];
-    if(cnt[cut]&gt;1)
-    &#123;
-        cnt[cut]--;
-        splay(cut);
-    &#125;
-    else
-        ch[next][0]=0,push_up(next),push_up(root);
-    return;
+	int last=pre(x),next=succ(x);
+	splay(last),splay(next,last);
+	int cut=ch[next][0];
+	if(cnt[cut]&gt;1)
+	&#123;
+		cnt[cut]--;
+		splay(cut);
+	&#125;
+	else
+		ch[next][0]=0,push_up(next),push_up(root);
+	return;
 &#125;
 int main()
 &#123;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    for(int i=0;i&lt;=n+1;i++)
-        insert(i);
-    for(int i=1;i&lt;=m;i++)
-    &#123;
-        int x,y;
-        scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
-        update(x,y);
-    &#125;
-    print(root);
-    return 0;
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	for(int i=0;i&lt;=n+1;i++)
+		insert(i);
+	for(int i=1;i&lt;=m;i++)
+	&#123;
+		int x,y;
+		scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+		update(x,y);
+	&#125;
+	print(root);
+	return 0;
 &#125;
-</code></pre><h2 id="五、树链剖分"><a href="#五、树链剖分" class="headerlink" title="五、树链剖分"></a>五、树链剖分</h2><h3 id="树链剖分是为了对树上进行区间修改而发明的算法，很长，很难写，但应用很多"><a href="#树链剖分是为了对树上进行区间修改而发明的算法，很长，很难写，但应用很多" class="headerlink" title="树链剖分是为了对树上进行区间修改而发明的算法，很长，很难写，但应用很多"></a>树链剖分是为了对树上进行区间修改而发明的算法，很长，很难写，但应用很多</h3><h3 id="例题-重链剖分"><a href="#例题-重链剖分" class="headerlink" title="例题:重链剖分"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3384">例题:重链剖分</a></h3><h3 id="Code-4"><a href="#Code-4" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;cstdio&gt;
+</code></pre>
+<h2 id="五-树链剖分"><a class="markdownIt-Anchor" href="#五-树链剖分"></a> 五、树链剖分</h2>
+<h3 id="树链剖分是为了对树上进行区间修改而发明的算法很长很难写但应用很多"><a class="markdownIt-Anchor" href="#树链剖分是为了对树上进行区间修改而发明的算法很长很难写但应用很多"></a> 树链剖分是为了对树上进行区间修改而发明的算法，很长，很难写，但应用很多</h3>
+<h3 id="例题重链剖分"><a class="markdownIt-Anchor" href="#例题重链剖分"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3384">例题:重链剖分</a></h3>
+<h3 id="code-5"><a class="markdownIt-Anchor" href="#code-5"></a> Code:</h3>
+<pre><code>#include &lt;cstdio&gt;
 #include &lt;cstdlib&gt;
 #include &lt;vector&gt;
 using namespace std;
@@ -1077,7 +1109,9 @@ int main()
     &#125;
     return 0;
 &#125;
-</code></pre><h3 id="和二叉平衡树一样，本篇只做记录，不做详解，详解请移步另一篇文章"><a href="#和二叉平衡树一样，本篇只做记录，不做详解，详解请移步另一篇文章" class="headerlink" title="和二叉平衡树一样，本篇只做记录，不做详解，详解请移步另一篇文章"></a>和二叉平衡树一样，本篇只做记录，不做详解，详解请移步另一篇文章</h3>
+</code></pre>
+<h3 id="和二叉平衡树一样本篇只做记录不做详解详解请移步另一篇文章"><a class="markdownIt-Anchor" href="#和二叉平衡树一样本篇只做记录不做详解详解请移步另一篇文章"></a> 和二叉平衡树一样，本篇只做记录，不做详解，详解请移步另一篇文章</h3>
+
     </div>
     
     

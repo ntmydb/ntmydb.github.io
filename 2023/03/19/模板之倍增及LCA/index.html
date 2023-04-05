@@ -180,17 +180,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%80%8D%E5%A2%9E/" style="color: #ff7d73">倍增</a>
+                <a href="/tags/%E5%80%8D%E5%A2%9E/" style="color: #00a596">倍增</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/LCA/" style="color: #00a596">LCA</a>
+                <a href="/tags/LCA/" style="color: #ff7d73">LCA</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E6%A0%91/" style="color: #00bcd4">树</a>
+                <a href="/tags/%E6%A0%91/" style="color: #00a596">树</a>
             </span>
             
         </span>
@@ -198,8 +198,16 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="倍增和LCA的模板"><a href="#倍增和LCA的模板" class="headerlink" title="倍增和LCA的模板"></a>倍增和LCA的模板</h1><span id="more"></span>
-<h2 id="一、倍增"><a href="#一、倍增" class="headerlink" title="一、倍增"></a>一、倍增</h2><h3 id="倍增及成倍增长，其时间复杂度为-O-nlogn-，初始化为-O-nlogn-，查询为-O-1"><a href="#倍增及成倍增长，其时间复杂度为-O-nlogn-，初始化为-O-nlogn-，查询为-O-1" class="headerlink" title="倍增及成倍增长，其时间复杂度为$O(nlogn)$，初始化为$O(nlogn)$，查询为$O(1)$"></a>倍增及成倍增长，其时间复杂度为$O(nlogn)$，初始化为$O(nlogn)$，查询为$O(1)$</h3><h3 id="至于倍增例题，没有特别好的只用倍增的例题，大部分倍增都是直接有应用了，最多的还是LCA，具体代码可以在下面LCA的部分查看"><a href="#至于倍增例题，没有特别好的只用倍增的例题，大部分倍增都是直接有应用了，最多的还是LCA，具体代码可以在下面LCA的部分查看" class="headerlink" title="至于倍增例题，没有特别好的只用倍增的例题，大部分倍增都是直接有应用了，最多的还是LCA，具体代码可以在下面LCA的部分查看"></a>至于倍增例题，没有特别好的只用倍增的例题，大部分倍增都是直接有应用了，最多的还是LCA，具体代码可以在下面LCA的部分查看</h3><h2 id="二、LCA（即最近公共祖先）"><a href="#二、LCA（即最近公共祖先）" class="headerlink" title="二、LCA（即最近公共祖先）"></a>二、LCA（即最近公共祖先）</h2><h3 id="最基础的LCA基本上可以说是倍增算法的应用（当然如果你是究极大佬直接用树剖当我没说）-LCA每次查询为-logn-，整体时间复杂度还是倍增的时间复杂度，为-O-nlogn"><a href="#最基础的LCA基本上可以说是倍增算法的应用（当然如果你是究极大佬直接用树剖当我没说）-LCA每次查询为-logn-，整体时间复杂度还是倍增的时间复杂度，为-O-nlogn" class="headerlink" title="最基础的LCA基本上可以说是倍增算法的应用（当然如果你是究极大佬直接用树剖当我没说）,LCA每次查询为$logn$，整体时间复杂度还是倍增的时间复杂度，为$O(nlogn)$"></a>最基础的LCA基本上可以说是倍增算法的应用（当然如果你是究极大佬直接用树剖当我没说）,LCA每次查询为$logn$，整体时间复杂度还是倍增的时间复杂度，为$O(nlogn)$</h3><h3 id="例题：最近公共祖先"><a href="#例题：最近公共祖先" class="headerlink" title="例题：最近公共祖先"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3379">例题：最近公共祖先</a></h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;cstdio&gt;
+        <h1 id="倍增和lca的模板"><a class="markdownIt-Anchor" href="#倍增和lca的模板"></a> 倍增和LCA的模板</h1>
+<span id="more"></span>
+<h2 id="一-倍增"><a class="markdownIt-Anchor" href="#一-倍增"></a> 一、倍增</h2>
+<h3 id="倍增及成倍增长其时间复杂度为onlogn初始化为onlogn查询为o1"><a class="markdownIt-Anchor" href="#倍增及成倍增长其时间复杂度为onlogn初始化为onlogn查询为o1"></a> 倍增及成倍增长，其时间复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>，初始化为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>，查询为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></h3>
+<h3 id="至于倍增例题没有特别好的只用倍增的例题大部分倍增都是直接有应用了最多的还是lca具体代码可以在下面lca的部分查看"><a class="markdownIt-Anchor" href="#至于倍增例题没有特别好的只用倍增的例题大部分倍增都是直接有应用了最多的还是lca具体代码可以在下面lca的部分查看"></a> 至于倍增例题，没有特别好的只用倍增的例题，大部分倍增都是直接有应用了，最多的还是LCA，具体代码可以在下面LCA的部分查看</h3>
+<h2 id="二-lca即最近公共祖先"><a class="markdownIt-Anchor" href="#二-lca即最近公共祖先"></a> 二、LCA（即最近公共祖先）</h2>
+<h3 id="最基础的lca基本上可以说是倍增算法的应用当然如果你是究极大佬直接用树剖当我没说lca每次查询为logn整体时间复杂度还是倍增的时间复杂度为onlogn"><a class="markdownIt-Anchor" href="#最基础的lca基本上可以说是倍增算法的应用当然如果你是究极大佬直接用树剖当我没说lca每次查询为logn整体时间复杂度还是倍增的时间复杂度为onlogn"></a> 最基础的LCA基本上可以说是倍增算法的应用（当然如果你是究极大佬直接用树剖当我没说）,LCA每次查询为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">logn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span></span></span></span>，整体时间复杂度还是倍增的时间复杂度，为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></h3>
+<h3 id="例题最近公共祖先"><a class="markdownIt-Anchor" href="#例题最近公共祖先"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3379">例题：最近公共祖先</a></h3>
+<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
+<pre><code>#include &lt;cstdio&gt;
 #include &lt;cstdlib&gt;
 #include &lt;vector&gt;
 #include &lt;algorithm&gt;
@@ -216,27 +224,27 @@ void dfs(int pre,int cur)
     fa[cur][0]=pre;
     h[cur]=h[pre]+1;
     for(int i=1;i&lt;20;i++)
-        fa[cur][i]=fa[fa[cur][i-1]][i-1];
+    	fa[cur][i]=fa[fa[cur][i-1]][i-1];
     for(int i=0;i&lt;son[cur].size();i++)
-        if(son[cur][i]!=pre)
-            dfs(cur,son[cur][i]);
+    	if(son[cur][i]!=pre)
+    		dfs(cur,son[cur][i]);
     return;
 &#125;
 int lca(int a,int b)
 &#123;
     if(h[a]&lt;h[b])
-        swap(a,b);
+    	swap(a,b);
     for(int i=19;i&gt;=0;i--)
     &#123;
         if(h[a]-(1&lt;&lt;i)&gt;=h[b])
-            a=fa[a][i];
+        	a=fa[a][i];
     &#125;
     if(a==b)
-        return a;
+    	return a;
     for(int i=19;i&gt;=0;i--)
     &#123;
         if(fa[a][i]!=fa[b][i])
-            a=fa[a][i],b=fa[b][i];
+        	a=fa[a][i],b=fa[b][i];
     &#125;
     return fa[a][0];
 &#125;
@@ -254,24 +262,25 @@ int main()
     dfs(0,root);
     for(int i=1;i&lt;=m;i++)
     &#123;
-        int q1,q2;
-        scanf(&quot;%d %d&quot;,&amp;q1,&amp;q2);
-        if(q1&gt;20000 || q2&gt;20000)
-        &#123;
-            printf(&quot;%d\n&quot;,lca(q1,q2));
-            continue; 
-        &#125;
-        if(ans[q1][q2]!=0)
-            printf(&quot;%d\n&quot;,ans[q1][q2]);
-        else
-        &#123;
-            ans[q1][q2]=ans[q2][q1]=lca(q1,q2);
-            printf(&quot;%d\n&quot;,ans[q1][q2]);
-        &#125;
-    &#125;
+	    int q1,q2;
+	    scanf(&quot;%d %d&quot;,&amp;q1,&amp;q2);
+	    if(q1&gt;20000 || q2&gt;20000)
+		&#123;
+			printf(&quot;%d\n&quot;,lca(q1,q2));
+			continue; 
+		&#125;
+	    if(ans[q1][q2]!=0)
+	    	printf(&quot;%d\n&quot;,ans[q1][q2]);
+	    else
+	    &#123;
+	    	ans[q1][q2]=ans[q2][q1]=lca(q1,q2);
+	    	printf(&quot;%d\n&quot;,ans[q1][q2]);
+		&#125;
+	&#125;
     return 0;
 &#125;
 </code></pre>
+
     </div>
     
     

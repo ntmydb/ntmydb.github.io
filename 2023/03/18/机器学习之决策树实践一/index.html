@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/Python/" style="color: #00bcd4">Python</a>
+                <a href="/tags/Python/" style="color: #03a9f4">Python</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91/" style="color: #03a9f4">决策树</a>
+                <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91/" style="color: #ffa2c4">决策树</a>
             </span>
             
         </span>
@@ -193,9 +193,22 @@
     </div>
     
     <div class="content" v-pre>
-        <h4 id="机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型"><a href="#机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型" class="headerlink" title="机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型"></a>机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型</h4><span id="more"></span>
-<h4 id="先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm-也可能是真的）"><a href="#先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm-也可能是真的）" class="headerlink" title="先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm,也可能是真的）"></a>先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm,也可能是真的）</h4><h4 id="吐槽一下感觉舒服多了，开始写点实际的"><a href="#吐槽一下感觉舒服多了，开始写点实际的" class="headerlink" title="吐槽一下感觉舒服多了，开始写点实际的"></a>吐槽一下感觉舒服多了，开始写点实际的</h4><h4 id="先看看各个数据集吧"><a href="#先看看各个数据集吧" class="headerlink" title="先看看各个数据集吧"></a>先看看各个数据集吧</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%95%B0%E6%8D%AE%E9%9B%86.png" alt="数据集"><br><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%B5%8B%E8%AF%95%E9%9B%86.png" alt="测试集"><br><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%B5%8B%E8%AF%95%E9%9B%86%E7%AD%94%E6%A1%88.png" alt="测试集"></p>
-<h4 id="很经典的数据集，接下来要用决策树来模拟预测"><a href="#很经典的数据集，接下来要用决策树来模拟预测" class="headerlink" title="很经典的数据集，接下来要用决策树来模拟预测"></a>很经典的数据集，接下来要用决策树来模拟预测</h4><h4 id="（华丽的分割线）"><a href="#（华丽的分割线）" class="headerlink" title="==========================================（华丽的分割线）"></a>==========================================（华丽的分割线）</h4><h3 id="先进行数据处理"><a href="#先进行数据处理" class="headerlink" title="先进行数据处理"></a>先进行数据处理</h3><h3 id="第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；"><a href="#第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；" class="headerlink" title="第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；"></a>第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；</h3><h3 id="第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；"><a href="#第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；" class="headerlink" title="第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；"></a>第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；</h3><h3 id="第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理"><a href="#第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理" class="headerlink" title="第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理"></a>第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理</h3><h3 id="以上面数据为例："><a href="#以上面数据为例：" class="headerlink" title="以上面数据为例："></a>以上面数据为例：</h3><font size="4">
+        <h4 id="机器学习的第一篇文章第一次从零开始尝试用决策树预测模型"><a class="markdownIt-Anchor" href="#机器学习的第一篇文章第一次从零开始尝试用决策树预测模型"></a> 机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型</h4>
+<span id="more"></span>
+<h4 id="先不得不吐槽一下这门课程的设置讲课很抽象全是理论没有代码讲完理论直接实践很是让我无语上完课给我一种我好想什么都没学的错觉emmm也可能是真的"><a class="markdownIt-Anchor" href="#先不得不吐槽一下这门课程的设置讲课很抽象全是理论没有代码讲完理论直接实践很是让我无语上完课给我一种我好想什么都没学的错觉emmm也可能是真的"></a> 先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm,也可能是真的）</h4>
+<h4 id="吐槽一下感觉舒服多了开始写点实际的"><a class="markdownIt-Anchor" href="#吐槽一下感觉舒服多了开始写点实际的"></a> 吐槽一下感觉舒服多了，开始写点实际的</h4>
+<h4 id="先看看各个数据集吧"><a class="markdownIt-Anchor" href="#先看看各个数据集吧"></a> 先看看各个数据集吧</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%95%B0%E6%8D%AE%E9%9B%86.png" alt="数据集" /><br />
+<img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%B5%8B%E8%AF%95%E9%9B%86.png" alt="测试集" /><br />
+<img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%B5%8B%E8%AF%95%E9%9B%86%E7%AD%94%E6%A1%88.png" alt="测试集" /></p>
+<h4 id="很经典的数据集接下来要用决策树来模拟预测"><a class="markdownIt-Anchor" href="#很经典的数据集接下来要用决策树来模拟预测"></a> 很经典的数据集，接下来要用决策树来模拟预测</h4>
+<h4 id="华丽的分割线"><a class="markdownIt-Anchor" href="#华丽的分割线"></a> ==========================================（华丽的分割线）</h4>
+<h3 id="先进行数据处理"><a class="markdownIt-Anchor" href="#先进行数据处理"></a> 先进行数据处理</h3>
+<h3 id="第一一般实际的数据很少没有缺失值的所以要考虑把缺失值补上"><a class="markdownIt-Anchor" href="#第一一般实际的数据很少没有缺失值的所以要考虑把缺失值补上"></a> 第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；</h3>
+<h3 id="第二决策树训练需要特征值也就是将特征值处理出来有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助"><a class="markdownIt-Anchor" href="#第二决策树训练需要特征值也就是将特征值处理出来有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助"></a> 第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；</h3>
+<h3 id="第三决策树的特征值只能是小数或者是整数因此字符串的特征值需要进行映射处理"><a class="markdownIt-Anchor" href="#第三决策树的特征值只能是小数或者是整数因此字符串的特征值需要进行映射处理"></a> 第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理</h3>
+<h3 id="以上面数据为例"><a class="markdownIt-Anchor" href="#以上面数据为例"></a> 以上面数据为例：</h3>
+<font size="4">
 1. Name这个特征很杂很散，而且是字符串，很难映射成数值，因此抛弃掉。 <br/>
 2. Sex这个特征值虽然是字符串，但只有两种，很好映射，因此保留并映射成0和1。<br/>
 3. Age这个特征值很明显有空缺，然后根据大佬推荐用其他Age的平均值补上空缺。 <br/>
@@ -205,16 +218,16 @@
 7. Cabin数据缺失值很多，而且也是字符串型的特征值，舍弃 <br/>
 8. Embarked只有C,S,Q三种字符，可以映射后当做特征值，保留<br/>
 </font>
-
-<h3 id="Python处理数据代码段如下："><a href="#Python处理数据代码段如下：" class="headerlink" title="Python处理数据代码段如下："></a>Python处理数据代码段如下：</h3><pre><code>import pandas as pd
+<h3 id="python处理数据代码段如下"><a class="markdownIt-Anchor" href="#python处理数据代码段如下"></a> Python处理数据代码段如下：</h3>
+<pre><code>import pandas as pd
 import numpy as np
 import math
 def get_dataset():
-    path = &#39;F:/机器学习/titanic/train.csv&#39;
+    path = 'F:/机器学习/titanic/train.csv'
     data = pd.read_csv(path)
-    data[&#39;Sex&#39;] = data[&#39;Sex&#39;].map(&#123;&#39;male&#39;:0,&#39;female&#39;:1&#125;)
-    data[&#39;Embarked&#39;] = data[&#39;Embarked&#39;].map(&#123;&#39;C&#39;:0,&#39;S&#39;:1,&#39;Q&#39;:2&#125;)
-    age = data[&#39;Age&#39;]
+    data['Sex'] = data['Sex'].map(&#123;'male':0,'female':1&#125;)
+    data['Embarked'] = data['Embarked'].map(&#123;'C':0,'S':1,'Q':2&#125;)
+    age = data['Age']
     Age = np.array(age)
     tot = 0
     num = 0
@@ -227,7 +240,7 @@ def get_dataset():
         if(np.isnan(Age[i]) == True):
             Age[i] = average
         Age[i] = math.ceil(Age[i])
-    fare = data[&#39;Fare&#39;]
+    fare = data['Fare']
     Fare = np.array(fare)
     tot = 0
     num = 0
@@ -239,7 +252,7 @@ def get_dataset():
     for i in range(0,len(Fare)):
         if(np.isnan(Fare[i]) == True):
             Fare[i] = average
-    em = data[&#39;Embarked&#39;]
+    em = data['Embarked']
     Em = np.array(em)
     tot = 0
     num = 0
@@ -254,18 +267,20 @@ def get_dataset():
         Em[i] = math.ceil(Em[i])
     x_train = []
     for i in range(0,len(Em)):
-        features = [data[&#39;Pclass&#39;][i],data[&#39;Sex&#39;][i],Age[i],data[&#39;SibSp&#39;][i],data[&#39;Parch&#39;][i],Fare[i],Em[i]]
+        features = [data['Pclass'][i],data['Sex'][i],Age[i],data['SibSp'][i],data['Parch'][i],Fare[i],Em[i]]
         x_train.append(features)
-    y_train = np.array(data[&#39;Survived&#39;])
+    y_train = np.array(data['Survived'])
     return np.array(x_train),y_train
-</code></pre><h4 id="上面这一部分是处理训练集的代码"><a href="#上面这一部分是处理训练集的代码" class="headerlink" title="上面这一部分是处理训练集的代码"></a>上面这一部分是处理训练集的代码</h4><pre><code>def get_test_data():
-    path = &#39;F:/机器学习/titanic/test.csv&#39;
-    path1 = &#39;F:/机器学习/titanic/gender_submission.csv&#39;
+</code></pre>
+<h4 id="上面这一部分是处理训练集的代码"><a class="markdownIt-Anchor" href="#上面这一部分是处理训练集的代码"></a> 上面这一部分是处理训练集的代码</h4>
+<pre><code>def get_test_data():
+    path = 'F:/机器学习/titanic/test.csv'
+    path1 = 'F:/机器学习/titanic/gender_submission.csv'
     data = pd.read_csv(path)
     data1 = pd.read_csv(path1)
-    data[&#39;Sex&#39;] = data[&#39;Sex&#39;].map(&#123;&#39;male&#39;:0,&#39;female&#39;:1&#125;)
-    data[&#39;Embarked&#39;] = data[&#39;Embarked&#39;].map(&#123;&#39;C&#39;:0,&#39;S&#39;:1,&#39;Q&#39;:2&#125;)
-    age = data[&#39;Age&#39;]
+    data['Sex'] = data['Sex'].map(&#123;'male':0,'female':1&#125;)
+    data['Embarked'] = data['Embarked'].map(&#123;'C':0,'S':1,'Q':2&#125;)
+    age = data['Age']
     Age = np.array(age)
     tot = 0
     num = 0
@@ -278,7 +293,7 @@ def get_dataset():
         if(np.isnan(Age[i]) == True):
             Age[i] = average
         Age[i] = math.ceil(Age[i])
-    fare = data[&#39;Fare&#39;]
+    fare = data['Fare']
     Fare = np.array(fare)
     tot = 0
     num = 0
@@ -290,7 +305,7 @@ def get_dataset():
     for i in range(0,len(Fare)):
         if(np.isnan(Fare[i]) == True):
             Fare[i] = average
-    em = data[&#39;Embarked&#39;]
+    em = data['Embarked']
     Em = np.array(em)
     tot = 0
     num = 0
@@ -305,41 +320,53 @@ def get_dataset():
         Em[i] = math.ceil(Em[i])
     x_test = []
     for i in range(0,len(Em)):
-        features = [data[&#39;Pclass&#39;][i],data[&#39;Sex&#39;][i],Age[i],data[&#39;SibSp&#39;][i],data[&#39;Parch&#39;][i],Fare[i],Em[i]]
+        features = [data['Pclass'][i],data['Sex'][i],Age[i],data['SibSp'][i],data['Parch'][i],Fare[i],Em[i]]
         x_test.append(features)
-    y_test = np.array(data1[&#39;Survived&#39;])
+    y_test = np.array(data1['Survived'])
     return np.array(x_test),y_test
-</code></pre><h4 id="这一部分是处理测试集的"><a href="#这一部分是处理测试集的" class="headerlink" title="这一部分是处理测试集的"></a>这一部分是处理测试集的</h4><h4 id="处理完了数据，就可以开始训练模型了，这里因为是初学者，手模一个决策树对本萌新还是太困难，所以调用了sklearn的库来解决的"><a href="#处理完了数据，就可以开始训练模型了，这里因为是初学者，手模一个决策树对本萌新还是太困难，所以调用了sklearn的库来解决的" class="headerlink" title="处理完了数据，就可以开始训练模型了，这里因为是初学者，手模一个决策树对本萌新还是太困难，所以调用了sklearn的库来解决的"></a>处理完了数据，就可以开始训练模型了，这里因为是初学者，手模一个决策树对本萌新还是太困难，所以调用了sklearn的库来解决的</h4><pre><code>from sklearn import tree
+</code></pre>
+<h4 id="这一部分是处理测试集的"><a class="markdownIt-Anchor" href="#这一部分是处理测试集的"></a> 这一部分是处理测试集的</h4>
+<h4 id="处理完了数据就可以开始训练模型了这里因为是初学者手模一个决策树对本萌新还是太困难所以调用了sklearn的库来解决的"><a class="markdownIt-Anchor" href="#处理完了数据就可以开始训练模型了这里因为是初学者手模一个决策树对本萌新还是太困难所以调用了sklearn的库来解决的"></a> 处理完了数据，就可以开始训练模型了，这里因为是初学者，手模一个决策树对本萌新还是太困难，所以调用了sklearn的库来解决的</h4>
+<pre><code>from sklearn import tree
 from sklearn.metrics import f1_score, accuracy_score, plot_confusion_matrix
 
 X_train,Y_train = get_dataset()
 X_test,Y_test = get_test_data()
 clf = tree.DecisionTreeClassifier(random_state=2021)
 clf = clf.fit(X_train,Y_train)
-</code></pre><h4 id="然后写一个评价函数来看看预测正确率是多少"><a href="#然后写一个评价函数来看看预测正确率是多少" class="headerlink" title="然后写一个评价函数来看看预测正确率是多少"></a>然后写一个评价函数来看看预测正确率是多少</h4><pre><code>def eval(clf,X_train, X_test, y_train, y_test):
+</code></pre>
+<h4 id="然后写一个评价函数来看看预测正确率是多少"><a class="markdownIt-Anchor" href="#然后写一个评价函数来看看预测正确率是多少"></a> 然后写一个评价函数来看看预测正确率是多少</h4>
+<pre><code>def eval(clf,X_train, X_test, y_train, y_test):
     predicted = clf.predict(X_train)  # 模型预测
     accuracy = accuracy_score(y_train, predicted)
     print(&quot;训练集准确率&quot;, accuracy)
-    f1 = f1_score(y_train, predicted,average=&#39;macro&#39;)
+    f1 = f1_score(y_train, predicted,average='macro')
     print(&quot;训练集f1_score&quot;, f1)
-
+    
     predicted = clf.predict(X_test)  
     accuracy = accuracy_score(y_test, predicted)
     print(&quot;测试集准确率&quot;, accuracy)
-    f1 = f1_score(y_test, predicted,average=&#39;macro&#39;)
+    f1 = f1_score(y_test, predicted,average='macro')
     print(&quot;测试集f1_score&quot;, f1)
-
+    
     plot_confusion_matrix(clf, X_test, y_test,cmap=&quot;GnBu&quot;) 
-</code></pre><h4 id="执行函数"><a href="#执行函数" class="headerlink" title="执行函数"></a>执行函数</h4><pre><code>eval(clf,X_train, X_test, Y_train, Y_test)
-</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C.png" alt="预测结果"></p>
-<h4 id="可以看到准确率不是特别好，但以这种简单粗暴的方式构建的模型来说算是不错了，有78-9-的正确率，接近80-。在外网上看到大佬已经可以达到100-的预测准确率了，还没有过拟合，太强了orz。"><a href="#可以看到准确率不是特别好，但以这种简单粗暴的方式构建的模型来说算是不错了，有78-9-的正确率，接近80-。在外网上看到大佬已经可以达到100-的预测准确率了，还没有过拟合，太强了orz。" class="headerlink" title="可以看到准确率不是特别好，但以这种简单粗暴的方式构建的模型来说算是不错了，有78.9%的正确率，接近80%。在外网上看到大佬已经可以达到100%的预测准确率了，还没有过拟合，太强了orz。"></a>可以看到准确率不是特别好，但以这种简单粗暴的方式构建的模型来说算是不错了，有78.9%的正确率，接近80%。在外网上看到大佬已经可以达到100%的预测准确率了，还没有过拟合，太强了orz。</h4><h4 id="最后把决策树的树形画出来："><a href="#最后把决策树的树形画出来：" class="headerlink" title="最后把决策树的树形画出来："></a>最后把决策树的树形画出来：</h4><pre><code>from sklearn.tree import DecisionTreeClassifier,export_graphviz
+</code></pre>
+<h4 id="执行函数"><a class="markdownIt-Anchor" href="#执行函数"></a> 执行函数</h4>
+<pre><code>eval(clf,X_train, X_test, Y_train, Y_test)
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C.png" alt="预测结果" /></p>
+<h4 id="可以看到准确率不是特别好但以这种简单粗暴的方式构建的模型来说算是不错了有789的正确率接近80-在外网上看到大佬已经可以达到100的预测准确率了还没有过拟合太强了orz"><a class="markdownIt-Anchor" href="#可以看到准确率不是特别好但以这种简单粗暴的方式构建的模型来说算是不错了有789的正确率接近80-在外网上看到大佬已经可以达到100的预测准确率了还没有过拟合太强了orz"></a> 可以看到准确率不是特别好，但以这种简单粗暴的方式构建的模型来说算是不错了，有78.9%的正确率，接近80%。在外网上看到大佬已经可以达到100%的预测准确率了，还没有过拟合，太强了orz。</h4>
+<h4 id="最后把决策树的树形画出来"><a class="markdownIt-Anchor" href="#最后把决策树的树形画出来"></a> 最后把决策树的树形画出来：</h4>
+<pre><code>from sklearn.tree import DecisionTreeClassifier,export_graphviz
 import graphviz
 from graphviz import Digraph
 dot_data = tree.export_graphviz(clf, out_file=None) 
 graph = graphviz.Source(dot_data) 
 graph.render(&quot;F:/机器学习/demo&quot;) 
-</code></pre><p><a href="https://raw.githubusercontent.com/ntmydb/blog_profile/main/demo.pdf" target="_blank" >demo.pdf</a><br/></p>
-<font size="4">大工告成,完结撒花</font>
+</code></pre>
+<p><a href="https://raw.githubusercontent.com/ntmydb/blog_profile/main/demo.pdf" target="_blank" >demo.pdf</a><br/><br />
+<font size="4">大工告成,完结撒花</font></p>
+
     </div>
     
     

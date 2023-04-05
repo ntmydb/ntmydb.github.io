@@ -180,7 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Python/" style="color: #03a9f4">Python</a>
+                <a href="/tags/Python/" style="color: #00bcd4">Python</a>
             </span>
             
         </span>
@@ -188,76 +188,87 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="简单计算器的实现"><a href="#简单计算器的实现" class="headerlink" title="简单计算器的实现"></a>简单计算器的实现</h1><span id="more"></span>
-<h3 id="本篇更像是-Python-的实践学习，也是数据处理学习的深入，把不是我们需要的格式处理成我们需要的格式"><a href="#本篇更像是-Python-的实践学习，也是数据处理学习的深入，把不是我们需要的格式处理成我们需要的格式" class="headerlink" title="本篇更像是$Python$的实践学习，也是数据处理学习的深入，把不是我们需要的格式处理成我们需要的格式"></a>本篇更像是$Python$的实践学习，也是数据处理学习的深入，把不是我们需要的格式处理成我们需要的格式</h3><h3 id="计算器可以抽样出几个函数出来"><a href="#计算器可以抽样出几个函数出来" class="headerlink" title="计算器可以抽样出几个函数出来"></a>计算器可以抽样出几个函数出来</h3><h3 id="1、弹栈时计算两个数字和运算符组成的算式结果的函数"><a href="#1、弹栈时计算两个数字和运算符组成的算式结果的函数" class="headerlink" title="1、弹栈时计算两个数字和运算符组成的算式结果的函数"></a>1、弹栈时计算两个数字和运算符组成的算式结果的函数</h3><h3 id="2、判断元素是数字还是运算符的函数"><a href="#2、判断元素是数字还是运算符的函数" class="headerlink" title="2、判断元素是数字还是运算符的函数"></a>2、判断元素是数字还是运算符的函数</h3><h3 id="3、把算式处理成列表形式的函数，如’-1-2-2-3-2-2-’要处理成-‘-1’-’-‘-’2’-’‘-’-‘-’-‘-’-2’-’-’-’3’-’-’-’-’-’-‘-’-2’-’-‘-’2’-’-’-’-’"><a href="#3、把算式处理成列表形式的函数，如’-1-2-2-3-2-2-’要处理成-‘-1’-’-‘-’2’-’‘-’-‘-’-‘-’-2’-’-’-’3’-’-’-’-’-’-‘-’-2’-’-‘-’2’-’-’-’-’" class="headerlink" title="3、把算式处理成列表形式的函数，如’-1-2((-2+3)+(-2/2))’要处理成[‘-1’,’-‘,’2’,’‘,’(‘,’(‘,’-2’,’+’,’3’,’)’,’+’,’(‘,’-2’,’/‘,’2’,’)’,’)’]"></a>3、把算式处理成列表形式的函数，如’-1-2<em>((-2+3)+(-2/2))’要处理成[‘-1’,’-‘,’2’,’</em>‘,’(‘,’(‘,’-2’,’+’,’3’,’)’,’+’,’(‘,’-2’,’/‘,’2’,’)’,’)’]</h3><h3 id="4、决策函数，决定应该是入栈，弹栈运算，还是弹栈丢弃"><a href="#4、决策函数，决定应该是入栈，弹栈运算，还是弹栈丢弃" class="headerlink" title="4、决策函数，决定应该是入栈，弹栈运算，还是弹栈丢弃"></a>4、决策函数，决定应该是入栈，弹栈运算，还是弹栈丢弃</h3><h3 id="5、主函数，遍历算式列表，计算最终结果"><a href="#5、主函数，遍历算式列表，计算最终结果" class="headerlink" title="5、主函数，遍历算式列表，计算最终结果"></a>5、主函数，遍历算式列表，计算最终结果</h3><h2 id="一、所需要使用的库"><a href="#一、所需要使用的库" class="headerlink" title="一、所需要使用的库"></a>一、所需要使用的库</h2><pre><code>import re
-</code></pre><h2 id="二、代码以及结果"><a href="#二、代码以及结果" class="headerlink" title="二、代码以及结果"></a>二、代码以及结果</h2><pre><code># 这部分用于计算器的具体计算功能实现
+        <h1 id="简单计算器的实现"><a class="markdownIt-Anchor" href="#简单计算器的实现"></a> 简单计算器的实现</h1>
+<span id="more"></span>
+<h3 id="本篇更像是python的实践学习也是数据处理学习的深入把不是我们需要的格式处理成我们需要的格式"><a class="markdownIt-Anchor" href="#本篇更像是python的实践学习也是数据处理学习的深入把不是我们需要的格式处理成我们需要的格式"></a> 本篇更像是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>y</mi><mi>t</mi><mi>h</mi><mi>o</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">Python</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span></span></span></span>的实践学习，也是数据处理学习的深入，把不是我们需要的格式处理成我们需要的格式</h3>
+<h3 id="计算器可以抽样出几个函数出来"><a class="markdownIt-Anchor" href="#计算器可以抽样出几个函数出来"></a> 计算器可以抽样出几个函数出来</h3>
+<h3 id="1-弹栈时计算两个数字和运算符组成的算式结果的函数"><a class="markdownIt-Anchor" href="#1-弹栈时计算两个数字和运算符组成的算式结果的函数"></a> 1、弹栈时计算两个数字和运算符组成的算式结果的函数</h3>
+<h3 id="2-判断元素是数字还是运算符的函数"><a class="markdownIt-Anchor" href="#2-判断元素是数字还是运算符的函数"></a> 2、判断元素是数字还是运算符的函数</h3>
+<h3 id="3-把算式处理成列表形式的函数如-1-2-23-22要处理成-1-2-23-22"><a class="markdownIt-Anchor" href="#3-把算式处理成列表形式的函数如-1-2-23-22要处理成-1-2-23-22"></a> 3、把算式处理成列表形式的函数，如’-1-2*((-2+3)+(-2/2))‘要处理成[’-1’,‘-’,‘2’,‘*’,‘(’,‘(’,‘-2’,‘+’,‘3’,‘)’,‘+’,‘(’,‘-2’,‘/’,‘2’,‘)’,‘)’]</h3>
+<h3 id="4-决策函数决定应该是入栈弹栈运算还是弹栈丢弃"><a class="markdownIt-Anchor" href="#4-决策函数决定应该是入栈弹栈运算还是弹栈丢弃"></a> 4、决策函数，决定应该是入栈，弹栈运算，还是弹栈丢弃</h3>
+<h3 id="5-主函数遍历算式列表计算最终结果"><a class="markdownIt-Anchor" href="#5-主函数遍历算式列表计算最终结果"></a> 5、主函数，遍历算式列表，计算最终结果</h3>
+<h2 id="一-所需要使用的库"><a class="markdownIt-Anchor" href="#一-所需要使用的库"></a> 一、所需要使用的库</h2>
+<pre><code>import re
+</code></pre>
+<h2 id="二-代码以及结果"><a class="markdownIt-Anchor" href="#二-代码以及结果"></a> 二、代码以及结果</h2>
+<pre><code># 这部分用于计算器的具体计算功能实现
 def caculate(n1,n2,operator):
-    # n1:float
-    # n2:float
-    # operator: + - * /
-    # return float
-    result = 0
-    if operator == &quot;+&quot;:
-        return n1 + n2
-    if operator == &quot;-&quot;:
-        return n1 - n2
-    if operator == &quot;*&quot;:
-        return n1*n2
-    if operator == &quot;/&quot;:
-        return n1/n2
-    return result
+	# n1:float
+	# n2:float
+	# operator: + - * /
+	# return float
+	result = 0
+	if operator == &quot;+&quot;:
+		return n1 + n2
+	if operator == &quot;-&quot;:
+		return n1 - n2
+	if operator == &quot;*&quot;:
+		return n1*n2
+	if operator == &quot;/&quot;:
+		return n1/n2
+	return result
 # 这部分判断是否是运算符，如果是就返回True否则就返回False
 def is_operator(e):
-    # e: str
-    # return bool
-    opers = [&#39;+&#39;,&#39;-&#39;,&#39;*&#39;,&#39;/&#39;,&#39;(&#39;,&#39;)&#39;]
-    return True if e in opers else False
-# 将算式处理成列表，解决&#39;-&#39;是负数还是列表
+	# e: str
+	# return bool
+	opers = ['+','-','*','/','(',')']
+	return True if e in opers else False
+# 将算式处理成列表，解决'-'是负数还是列表
 def formula_format(formula):
-    # 去掉算式中的空格
-    formula = re.sub(&#39; &#39;,&#39;&#39;,formula)
-    # 以&#39;横杠+数字&#39;分割，其中正则表达式:(\-\d+\.?\d*) 括号内：
-    # \- 表示匹配横杠开头； \d+ 表示匹配数字1次或多次；\.?表示匹配小数点0次或1次;\d*表示匹配数字1次或多次。
-    formula_list = [i for i in re.split(&#39;(\-\d+\.?\d*)&#39;,formula) if i]
-    # 最终算式列表
-    final_formula = []
-    for item in formula_list:
-        #第一个是以横杠开头的数字（包括小数）final_formula,即第一个是负数，横杠就不是减号
-        if len(final_formula) == 0 and re.search(&#39;^\-\d+\.?\d*$&#39;,item):
-            final_formula.append(item)
-            continue
-        if len(final_formula) &gt; 0:
-            #如果final_formal最后一个运算符[&#39;+&#39;, &#39;-&#39;, &#39;*&#39;, &#39;/&#39;, &#39;(&#39;],则横杠数组不是负数
-            if re.search(&#39;[\+\-\*\/\(]$&#39;,final_formal[-1]):
-                final_formula.append(item)
-                continue
-        # 按照运算符分割开
-        item_split = [i for i in re.split(&#39;([\+\-\*\/\(\)])&#39;,item) if i]
-        final_formula += item_split
-    return final_formula
+	# 去掉算式中的空格
+	formula = re.sub(' ','',formula)
+	# 以'横杠+数字'分割，其中正则表达式:(\-\d+\.?\d*) 括号内：
+	# \- 表示匹配横杠开头； \d+ 表示匹配数字1次或多次；\.?表示匹配小数点0次或1次;\d*表示匹配数字1次或多次。
+	formula_list = [i for i in re.split('(\-\d+\.?\d*)',formula) if i]
+	# 最终算式列表
+	final_formula = []
+	for item in formula_list:
+		#第一个是以横杠开头的数字（包括小数）final_formula,即第一个是负数，横杠就不是减号
+		if len(final_formula) == 0 and re.search('^\-\d+\.?\d*$',item):
+			final_formula.append(item)
+			continue
+		if len(final_formula) &gt; 0:
+			#如果final_formal最后一个运算符['+', '-', '*', '/', '('],则横杠数组不是负数
+			if re.search('[\+\-\*\/\(]$',final_formal[-1]):
+				final_formula.append(item)
+				continue
+		# 按照运算符分割开
+		item_split = [i for i in re.split('([\+\-\*\/\(\)])',item) if i]
+		final_formula += item_split
+	return final_formula
 def decision(tail_op, now_op):
     # tail_op: 运算符栈的最后一个运算符
     # now_op: 从算式列表取出的当前运算符
     # return: 1 代表弹栈运算，0 代表弹运算符栈最后一个元素， -1 表示入栈
     # 定义4种运算符级别
-    rate1 = [&#39;+&#39;, &#39;-&#39;]
-    rate2 = [&#39;*&#39;, &#39;/&#39;]
-    rate3 = [&#39;(&#39;]
-    rate4 = [&#39;)&#39;]
-
+    rate1 = ['+', '-']
+    rate2 = ['*', '/']
+    rate3 = ['(']
+    rate4 = [')']
+ 
     if tail_op in rate1:
         if now_op in rate2 or now_op in rate3:
             # 说明连续两个运算优先级不一样，需要入栈
             return -1
         else:
             return 1
-
+ 
     elif tail_op in rate2:
         if now_op in rate3:
             return -1
         else:
             return 1
-
+ 
     elif tail_op in rate3:
         if now_op in rate4:
             return 0   # ( 遇上 ) 需要弹出 (，丢掉 )
@@ -281,7 +292,7 @@ def final_calc(formula_list):
                 if len(op_stack) == 0:
                     op_stack.append(e)
                     break
-
+ 
                 # decision 函数做决策
                 tag = decision(op_stack[-1], e)
                 if tag == -1:
@@ -306,15 +317,17 @@ def final_calc(formula_list):
         num2 = num_stack.pop()
         num1 = num_stack.pop()
         num_stack.append(calculate(num1, num2, op))
-
+ 
     return num_stack, op_stack
-if __name__ == &#39;__main__&#39;:
-    formula = input(&#39;请输入：\n&#39;)
+if __name__ == '__main__':
+    formula = input('请输入：\n')
     print(&quot;算式：&quot;, formula)
     formula_list = formula_format(formula)
     result, _ = final_calc(formula_list)
     print(&quot;计算结果：&quot;, result[0])
-</code></pre><h2 id="三、结果图示："><a href="#三、结果图示：" class="headerlink" title="三、结果图示："></a>三、结果图示：</h2><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8.png" alt="效果图"></p>
+</code></pre>
+<h2 id="三-结果图示"><a class="markdownIt-Anchor" href="#三-结果图示"></a> 三、结果图示：</h2>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8.png" alt="效果图" /></p>
 
     </div>
     

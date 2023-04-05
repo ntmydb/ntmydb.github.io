@@ -180,7 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Python/" style="color: #00a596">Python</a>
+                <a href="/tags/Python/" style="color: #ff7d73">Python</a>
             </span>
             
         </span>
@@ -188,19 +188,30 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="海量文件遍历"><a href="#海量文件遍历" class="headerlink" title="海量文件遍历"></a>海量文件遍历</h1><span id="more"></span>
-<h3 id="机器学习往往需要大量的数据来训练模型，因此对数据的处理肯定是不能少的，而数据往往很多，大多数以压缩文件-zip出现的，所以本篇记录文件遍历的方法"><a href="#机器学习往往需要大量的数据来训练模型，因此对数据的处理肯定是不能少的，而数据往往很多，大多数以压缩文件-zip出现的，所以本篇记录文件遍历的方法" class="headerlink" title="机器学习往往需要大量的数据来训练模型，因此对数据的处理肯定是不能少的，而数据往往很多，大多数以压缩文件.zip出现的，所以本篇记录文件遍历的方法"></a>机器学习往往需要大量的数据来训练模型，因此对数据的处理肯定是不能少的，而数据往往很多，大多数以压缩文件.zip出现的，所以本篇记录文件遍历的方法</h3><h2 id="一、所需要调用的库"><a href="#一、所需要调用的库" class="headerlink" title="一、所需要调用的库"></a>一、所需要调用的库</h2><h4 id="1、-zipfile-库"><a href="#1、-zipfile-库" class="headerlink" title="1、$zipfile$库"></a>1、$zipfile$库</h4><h4 id="2、-os-库"><a href="#2、-os-库" class="headerlink" title="2、$os$库"></a>2、$os$库</h4><h2 id="二、具体代码、注释及效果图"><a href="#二、具体代码、注释及效果图" class="headerlink" title="二、具体代码、注释及效果图"></a>二、具体代码、注释及效果图</h2><pre><code>import zipfile
+        <h1 id="海量文件遍历"><a class="markdownIt-Anchor" href="#海量文件遍历"></a> 海量文件遍历</h1>
+<span id="more"></span>
+<h3 id="机器学习往往需要大量的数据来训练模型因此对数据的处理肯定是不能少的而数据往往很多大多数以压缩文件zip出现的所以本篇记录文件遍历的方法"><a class="markdownIt-Anchor" href="#机器学习往往需要大量的数据来训练模型因此对数据的处理肯定是不能少的而数据往往很多大多数以压缩文件zip出现的所以本篇记录文件遍历的方法"></a> 机器学习往往需要大量的数据来训练模型，因此对数据的处理肯定是不能少的，而数据往往很多，大多数以压缩文件.zip出现的，所以本篇记录文件遍历的方法</h3>
+<h2 id="一-所需要调用的库"><a class="markdownIt-Anchor" href="#一-所需要调用的库"></a> 一、所需要调用的库</h2>
+<h4 id="1-zipfile库"><a class="markdownIt-Anchor" href="#1-zipfile库"></a> 1、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mi>i</mi><mi>p</mi><mi>f</mi><mi>i</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">zipfile</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span>库</h4>
+<h4 id="2-os库"><a class="markdownIt-Anchor" href="#2-os库"></a> 2、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">os</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">s</span></span></span></span>库</h4>
+<h2 id="二-具体代码-注释及效果图"><a class="markdownIt-Anchor" href="#二-具体代码-注释及效果图"></a> 二、具体代码、注释及效果图</h2>
+<pre><code>import zipfile
 import os
 def unzip_data(src_path,target_path):
 #解压原始数据集，将src_path路径下的zip压缩包解压到target_path目录下
     if (not os.path.isdir(target_path)):  #os.path.isdir(path)判断path路径是否是一个目录
-        z = zipfile.ZipFile(src_path,&#39;r&#39;)
+        z = zipfile.ZipFile(src_path,'r')
         z.extractall(path=target_path)
         z.close()
-unzip_data(&#39;data/data00001/test_data.zip&#39;,&#39;data/data00001/test_data&#39;)
-unzip_data(&#39;data/data00001/train_data.zip&#39;,&#39;data/data00001/train_data&#39;)
-</code></pre><h4 id="执行这一段代码后效果如下"><a href="#执行这一段代码后效果如下" class="headerlink" title="执行这一段代码后效果如下:"></a>执行这一段代码后效果如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%861.png" alt="生效前图"><br><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%862.png" alt="生效后图"></p>
-<h4 id="点开这两个文件夹，可以发现压缩文件的内容已经被解压到这两个文件夹里了"><a href="#点开这两个文件夹，可以发现压缩文件的内容已经被解压到这两个文件夹里了" class="headerlink" title="点开这两个文件夹，可以发现压缩文件的内容已经被解压到这两个文件夹里了"></a>点开这两个文件夹，可以发现压缩文件的内容已经被解压到这两个文件夹里了</h4><h4 id="下面是通过指定目录，统计所有的不同文件类型及占用内存的代码"><a href="#下面是通过指定目录，统计所有的不同文件类型及占用内存的代码" class="headerlink" title="下面是通过指定目录，统计所有的不同文件类型及占用内存的代码"></a>下面是通过指定目录，统计所有的不同文件类型及占用内存的代码</h4><pre><code>import os
+unzip_data('data/data00001/test_data.zip','data/data00001/test_data')
+unzip_data('data/data00001/train_data.zip','data/data00001/train_data')
+</code></pre>
+<h4 id="执行这一段代码后效果如下"><a class="markdownIt-Anchor" href="#执行这一段代码后效果如下"></a> 执行这一段代码后效果如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%861.png" alt="生效前图" /><br />
+<img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%862.png" alt="生效后图" /></p>
+<h4 id="点开这两个文件夹可以发现压缩文件的内容已经被解压到这两个文件夹里了"><a class="markdownIt-Anchor" href="#点开这两个文件夹可以发现压缩文件的内容已经被解压到这两个文件夹里了"></a> 点开这两个文件夹，可以发现压缩文件的内容已经被解压到这两个文件夹里了</h4>
+<h4 id="下面是通过指定目录统计所有的不同文件类型及占用内存的代码"><a class="markdownIt-Anchor" href="#下面是通过指定目录统计所有的不同文件类型及占用内存的代码"></a> 下面是通过指定目录，统计所有的不同文件类型及占用内存的代码</h4>
+<pre><code>import os
 size_dict = &#123;&#125;
 type_dict = &#123;&#125;
 def get_size_type(path):
@@ -229,7 +240,9 @@ for each_type in type_dict.keys():
             size_dict[each_type]/(1024*1024)))
 print(&quot;总文件数：【%d】&quot;%(sum(type_dict.values())))    
 print(&quot;总内存大小：【%.2f】GB&quot;%(sum(size_dict.values())/(1024**3)))
-</code></pre><h3 id="输出结果如下"><a href="#输出结果如下" class="headerlink" title="输出结果如下:"></a>输出结果如下:</h3><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%863.png" alt="输出结果"></p>
+</code></pre>
+<h3 id="输出结果如下"><a class="markdownIt-Anchor" href="#输出结果如下"></a> 输出结果如下:</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%81%8D%E5%8E%863.png" alt="输出结果" /></p>
 
     </div>
     
