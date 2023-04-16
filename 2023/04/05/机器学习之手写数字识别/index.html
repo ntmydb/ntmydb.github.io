@@ -3,7 +3,7 @@
 <html lang="zh-Hans">
     <head>
         <meta charset="UTF-8" />
-        <title>模板之RMQ | Whispering&#39;s Blog</title>
+        <title>机器学习之手写数字识别 | Whispering&#39;s Blog</title>
         <meta name="author" content="Whispering" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -153,22 +153,22 @@
 
                 <div class="article">
     <div>
-        <h1>模板之RMQ</h1>
+        <h1>机器学习之手写数字识别</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/20
+            2023/4/5
         </span>
         
         <span class="category">
-            <a href="/categories/%E7%AE%97%E6%B3%95/">
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                算法
+                机器学习
             </a>
         </span>
         
@@ -180,12 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%80%8D%E5%A2%9E/" style="color: #03a9f4">倍增</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/RMQ/" style="color: #ff7d73">RMQ</a>
+                <a href="/tags/Python/" style="color: #00a596">Python</a>
             </span>
             
         </span>
@@ -193,60 +188,8 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="rmq模板"><a class="markdownIt-Anchor" href="#rmq模板"></a> RMQ模板</h1>
+        <h1 id="手写数字识别"><a class="markdownIt-Anchor" href="#手写数字识别"></a> 手写数字识别</h1>
 <span id="more"></span>
-<h2 id="一-rmq简介"><a class="markdownIt-Anchor" href="#一-rmq简介"></a> 一、RMQ简介</h2>
-<h3 id="中文全名为区间最值查询有人说区间最值不就循环扫一遍就出来了吗好想法-但是如果区间长度为100000以上而且需要连续查询m次呢"><a class="markdownIt-Anchor" href="#中文全名为区间最值查询有人说区间最值不就循环扫一遍就出来了吗好想法-但是如果区间长度为100000以上而且需要连续查询m次呢"></a> 中文全名为区间最值查询，有人说区间最值不就循环扫一遍就出来了吗，好想法。但是，如果区间长度为100000以上而且需要连续查询m次呢</h3>
-<h3 id="显然你会看到满屏的font-colorffc116-size6tlefont谁不喜欢绿色的font-color52a41a-size6acfont呢所以rmq算法就是把黄色绿掉的算法"><a class="markdownIt-Anchor" href="#显然你会看到满屏的font-colorffc116-size6tlefont谁不喜欢绿色的font-color52a41a-size6acfont呢所以rmq算法就是把黄色绿掉的算法"></a> 显然你会看到满屏的<font color="#ffc116" size="6">TLE</font>，谁不喜欢绿色的<font color="#52a41a" size="6">AC</font>呢？所以RMQ算法就是把黄色绿掉的算法</h3>
-<h3 id="rmq算法一般预处理时间较长时间复杂度为onlogn但查询速度很快只需要o1rmq本质上还是用到了倍增的思想记录连续2j个数的最值因此提高查找效率"><a class="markdownIt-Anchor" href="#rmq算法一般预处理时间较长时间复杂度为onlogn但查询速度很快只需要o1rmq本质上还是用到了倍增的思想记录连续2j个数的最值因此提高查找效率"></a> RMQ算法一般预处理时间较长，时间复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>,但查询速度很快，只需要<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，RMQ本质上还是用到了倍增的思想，记录连续<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">2^j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span></span></span></span>个数的最值，因此提高查找效率</h3>
-<h2 id="二-例题及代码"><a class="markdownIt-Anchor" href="#二-例题及代码"></a> 二、例题及代码</h2>
-<h3 id="例题忠诚"><a class="markdownIt-Anchor" href="#例题忠诚"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1816">例题:忠诚</a></h3>
-<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
-<pre><code>#include &lt;cstdlib&gt;
-#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int N=100001;
-int z[N][20];
-int n,m;
-int count1(int x)
-&#123;
-    int need=1;
-    for(int i=0;i&lt;x;i++)
-        need=need*2;
-    return need;
-&#125;
-void create(int n)
-&#123;
-    for(int i=1;count1(i)&lt;=n;i++)
-    &#123;
-        for(int j=1;j+count1(i)-1&lt;=n;j++)
-            z[j][i]=min(z[j][i-1],z[j+(1&lt;&lt;(i-1))][i-1]);
-    &#125;
-    return;
-&#125;
-int work(int l,int r)
-&#123;
-    int t=(int)(log((r-l+1)*1.0)/log(2.0));
-    return min(z[l][t],z[r-(1&lt;&lt;t)+1][t]);
-&#125;
-int main()
-&#123;
-    scanf(&quot;%d%d&quot;,&amp;m,&amp;n);
-    for(int i=1;i&lt;=m;i++)
-        scanf(&quot;%d&quot;,&amp;z[i][0]);
-    create(m);
-    for(int i=1;i&lt;=n;i++)
-    &#123;
-        int a,b;
-        scanf(&quot; %d %d&quot;,&amp;a,&amp;b);
-        printf(&quot;%d &quot;,work(a,b));
-    &#125;
-    return 0;
-&#125;
-</code></pre>
-<h3 id="具体算法原理请移步另一篇文章"><a class="markdownIt-Anchor" href="#具体算法原理请移步另一篇文章"></a> 具体算法原理请移步另一篇文章</h3>
 
     </div>
     
