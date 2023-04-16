@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="color: #00a596">字符串匹配</a>
+                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="color: #ff7d73">字符串匹配</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #ff7d73">C++</a>
+                <a href="/tags/C/" style="color: #00a596">C++</a>
             </span>
             
             <span class="tag">
@@ -198,7 +198,8 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="后缀数组模板"><a href="#后缀数组模板" class="headerlink" title="后缀数组模板"></a>后缀数组模板</h1><span id="more"></span>
+        <h1 id="后缀数组模板"><a class="markdownIt-Anchor" href="#后缀数组模板"></a> 后缀数组模板</h1>
+<span id="more"></span>
 <pre><code>#include &lt;cstdio&gt;
 #include &lt;cstdlib&gt;
 #include &lt;cstring&gt;
@@ -252,17 +253,17 @@ void get_sa()
 &#125;
 void get_h()
 &#123;
-    int l=0;
-    for(int i=1;i&lt;=len;i++)
-    &#123;
-        int j=sa[rnk1[i]-1];
-        while(i+l&lt;=len &amp;&amp; j+l&lt;=len &amp;&amp; s[i+l]==s[j+l])
-            l++;
-        h[rnk1[i]]=l;
-        if(l&gt;0)
-            l--;
-    &#125;
-    return;
+	int l=0;
+	for(int i=1;i&lt;=len;i++)
+	&#123;
+		int j=sa[rnk1[i]-1];
+		while(i+l&lt;=len &amp;&amp; j+l&lt;=len &amp;&amp; s[i+l]==s[j+l])
+			l++;
+		h[rnk1[i]]=l;
+		if(l&gt;0)
+			l--;
+	&#125;
+	return;
 &#125;
 int main()
 &#123;
@@ -274,7 +275,10 @@ int main()
         printf(&quot;%d &quot;,sa[i]);
     return 0;
 &#125;
-</code></pre><h3 id="例题-后缀排序"><a href="#例题-后缀排序" class="headerlink" title="例题:后缀排序"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3809">例题:后缀排序</a></h3><h4 id="有人可能问后缀数组都有了那么后缀自动机呢？这个问题很容易解释，那就是——————————————————————————笔者不会。。。"><a href="#有人可能问后缀数组都有了那么后缀自动机呢？这个问题很容易解释，那就是——————————————————————————笔者不会。。。" class="headerlink" title="有人可能问后缀数组都有了那么后缀自动机呢？这个问题很容易解释，那就是——————————————————————————笔者不会。。。"></a>有人可能问后缀数组都有了那么后缀自动机呢？这个问题很容易解释，那就是——————————————————————————笔者不会。。。</h4>
+</code></pre>
+<h3 id="例题后缀排序"><a class="markdownIt-Anchor" href="#例题后缀排序"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3809">例题:后缀排序</a></h3>
+<h4 id="有人可能问后缀数组都有了那么后缀自动机呢这个问题很容易解释那就是笔者不会"><a class="markdownIt-Anchor" href="#有人可能问后缀数组都有了那么后缀自动机呢这个问题很容易解释那就是笔者不会"></a> 有人可能问后缀数组都有了那么后缀自动机呢？这个问题很容易解释，那就是——————————————————————————笔者不会。。。</h4>
+
     </div>
     
     

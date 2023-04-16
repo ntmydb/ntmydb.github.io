@@ -180,7 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Python/" style="color: #03a9f4">Python</a>
+                <a href="/tags/Python/" style="color: #00bcd4">Python</a>
             </span>
             
         </span>
@@ -188,11 +188,15 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="文本词频分析"><a href="#文本词频分析" class="headerlink" title="文本词频分析"></a>文本词频分析</h1><span id="more"></span>
-<h3 id="一、前置库"><a href="#一、前置库" class="headerlink" title="一、前置库"></a>一、前置库</h3><h4 id="jieba-库"><a href="#jieba-库" class="headerlink" title="$jieba$库"></a>$jieba$库</h4><h3 id="二、词频分析代码及结果"><a href="#二、词频分析代码及结果" class="headerlink" title="二、词频分析代码及结果"></a>二、词频分析代码及结果</h3><pre><code>import jieba
-    with open(&#39;C:/Users/asus/Desktop/test.txt&#39;,&#39;r&#39;,encoding=&#39;UTF-8&#39;) as novelFile:
+        <h1 id="文本词频分析"><a class="markdownIt-Anchor" href="#文本词频分析"></a> 文本词频分析</h1>
+<span id="more"></span>
+<h3 id="一-前置库"><a class="markdownIt-Anchor" href="#一-前置库"></a> 一、前置库</h3>
+<h4 id="jieba库"><a class="markdownIt-Anchor" href="#jieba库"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mi>i</mi><mi>e</mi><mi>b</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">jieba</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">i</span><span class="mord mathnormal">e</span><span class="mord mathnormal">b</span><span class="mord mathnormal">a</span></span></span></span>库</h4>
+<h3 id="二-词频分析代码及结果"><a class="markdownIt-Anchor" href="#二-词频分析代码及结果"></a> 二、词频分析代码及结果</h3>
+<pre><code>import jieba
+	with open('C:/Users/asus/Desktop/test.txt','r',encoding='UTF-8') as novelFile:
     novel = novelFile.read()
-stopwords = [line.strip() for line in open(&#39;C:/Users/asus/Desktop/stopword.txt&#39;,&#39;r&#39;,encoding=&#39;UTF-8&#39;).readlines()]
+stopwords = [line.strip() for line in open('C:/Users/asus/Desktop/stopword.txt','r',encoding='UTF-8').readlines()]
 novelList = list(jieba.lcut(novel))
 novelDict = &#123;&#125;
 
@@ -213,14 +217,20 @@ novelListSorted.sort(key=lambda e: e[1],reverse=True)
 topWordNum = 0
 for topWordTup in novelListSorted[:10]:
     print(topWordTup)
-</code></pre><h4 id="输出结果如下："><a href="#输出结果如下：" class="headerlink" title="输出结果如下："></a>输出结果如下：</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%901.png" alt="词频结果"></p>
-<h4 id="这一段是输出词频统计图的代码"><a href="#这一段是输出词频统计图的代码" class="headerlink" title="这一段是输出词频统计图的代码"></a>这一段是输出词频统计图的代码</h4><pre><code>from matplotlib import pyplot as plt
+</code></pre>
+<h4 id="输出结果如下"><a class="markdownIt-Anchor" href="#输出结果如下"></a> 输出结果如下：</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%901.png" alt="词频结果" /></p>
+<h4 id="这一段是输出词频统计图的代码"><a class="markdownIt-Anchor" href="#这一段是输出词频统计图的代码"></a> 这一段是输出词频统计图的代码</h4>
+<pre><code>from matplotlib import pyplot as plt
 x = [c for c,v in novelListSorted]
 y = [v for c,v in novelListSorted]
-plt.plot(x[:10],y[:10],color=&#39;r&#39;)
+plt.plot(x[:10],y[:10],color='r')
 plt.show()
-</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%902.png" alt="词频图"></p>
-<h4 id="使用的文章和分词文本如下"><a href="#使用的文章和分词文本如下" class="headerlink" title="使用的文章和分词文本如下:"></a>使用的文章和分词文本如下:</h4><p><a target="_blank" rel="noopener" href="https://github.com/ntmydb/blog_profile/blob/main/test.txt">test.txt</a><br/><br><a target="_blank" rel="noopener" href="https://github.com/ntmydb/blog_profile/blob/main/stopword.txt">stopwords.txt</a></p>
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%902.png" alt="词频图" /></p>
+<h4 id="使用的文章和分词文本如下"><a class="markdownIt-Anchor" href="#使用的文章和分词文本如下"></a> 使用的文章和分词文本如下:</h4>
+<p><a target="_blank" rel="noopener" href="https://github.com/ntmydb/blog_profile/blob/main/test.txt">test.txt</a><br/><br />
+<a target="_blank" rel="noopener" href="https://github.com/ntmydb/blog_profile/blob/main/stopword.txt">stopwords.txt</a></p>
 
     </div>
     

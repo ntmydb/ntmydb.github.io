@@ -180,7 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Python/" style="color: #03a9f4">Python</a>
+                <a href="/tags/Python/" style="color: #ff7d73">Python</a>
             </span>
             
         </span>
@@ -188,8 +188,10 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="手写数字识别"><a href="#手写数字识别" class="headerlink" title="手写数字识别"></a>手写数字识别</h1><span id="more"></span>
-<h2 id="一、前置库"><a href="#一、前置库" class="headerlink" title="一、前置库"></a>一、前置库</h2><pre><code>import numpy as np
+        <h1 id="手写数字识别"><a class="markdownIt-Anchor" href="#手写数字识别"></a> 手写数字识别</h1>
+<span id="more"></span>
+<h2 id="一-前置库"><a class="markdownIt-Anchor" href="#一-前置库"></a> 一、前置库</h2>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 import os
 from array import array as pyarray
@@ -201,48 +203,65 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
-</code></pre><h2 id="二、数据集"><a href="#二、数据集" class="headerlink" title="二、数据集"></a>二、数据集</h2><h3 id="数据集采用的从官网上下载的mnist数据集，下载地址为http-yann-lecun-com-exdb-mnist"><a href="#数据集采用的从官网上下载的mnist数据集，下载地址为http-yann-lecun-com-exdb-mnist" class="headerlink" title="数据集采用的从官网上下载的mnist数据集，下载地址为http://yann.lecun.com/exdb/mnist/"></a>数据集采用的从官网上下载的mnist数据集，下载地址为<a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></h3><h3 id="一共包含了4个部分"><a href="#一共包含了4个部分" class="headerlink" title="一共包含了4个部分"></a>一共包含了4个部分</h3><h4 id="1、训练数据集：train-images-idx3-ubyte-gz-（9-45-MB，包含60-000个样本）"><a href="#1、训练数据集：train-images-idx3-ubyte-gz-（9-45-MB，包含60-000个样本）" class="headerlink" title="1、训练数据集：train-images-idx3-ubyte.gz （9.45 MB，包含60,000个样本）"></a>1、训练数据集：train-images-idx3-ubyte.gz （9.45 MB，包含60,000个样本）</h4><h4 id="2、训练数据集标签-train-labels-idx1-ubyte-gz（28-2-KB，包含60-000个标签）"><a href="#2、训练数据集标签-train-labels-idx1-ubyte-gz（28-2-KB，包含60-000个标签）" class="headerlink" title="2、训练数据集标签:train-labels-idx1-ubyte.gz（28.2 KB，包含60,000个标签）"></a>2、训练数据集标签:train-labels-idx1-ubyte.gz（28.2 KB，包含60,000个标签）</h4><h4 id="3、测试数据集：t10k-images-idx3-ubyte-gz（1-57-MB-，包含10-000个样本）"><a href="#3、测试数据集：t10k-images-idx3-ubyte-gz（1-57-MB-，包含10-000个样本）" class="headerlink" title="3、测试数据集：t10k-images-idx3-ubyte.gz（1.57 MB ，包含10,000个样本）"></a>3、测试数据集：t10k-images-idx3-ubyte.gz（1.57 MB ，包含10,000个样本）</h4><h4 id="4、测试数据集标签：t10k-labels-idx1-ubyte-gz（4-43-KB，包含10-000个样本的标签）"><a href="#4、测试数据集标签：t10k-labels-idx1-ubyte-gz（4-43-KB，包含10-000个样本的标签）" class="headerlink" title="4、测试数据集标签：t10k-labels-idx1-ubyte.gz（4.43 KB，包含10,000个样本的标签）"></a>4、测试数据集标签：t10k-labels-idx1-ubyte.gz（4.43 KB，包含10,000个样本的标签）</h4><h3 id="可以看到这些数据集和以往的数据集不太一样，需要一些特殊的方法才可以将它们读出来，处理代码如下："><a href="#可以看到这些数据集和以往的数据集不太一样，需要一些特殊的方法才可以将它们读出来，处理代码如下：" class="headerlink" title="可以看到这些数据集和以往的数据集不太一样，需要一些特殊的方法才可以将它们读出来，处理代码如下："></a>可以看到这些数据集和以往的数据集不太一样，需要一些特殊的方法才可以将它们读出来，处理代码如下：</h3><pre><code>def load_mnist(image_file,label_file,path=&quot;F:/Mechine Learning/Handy Writing/mnist&quot;):
+</code></pre>
+<h2 id="二-数据集"><a class="markdownIt-Anchor" href="#二-数据集"></a> 二、数据集</h2>
+<h3 id="数据集采用的从官网上下载的mnist数据集下载地址为httpyannlecuncomexdbmnist"><a class="markdownIt-Anchor" href="#数据集采用的从官网上下载的mnist数据集下载地址为httpyannlecuncomexdbmnist"></a> 数据集采用的从官网上下载的mnist数据集，下载地址为<a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></h3>
+<h3 id="一共包含了4个部分"><a class="markdownIt-Anchor" href="#一共包含了4个部分"></a> 一共包含了4个部分</h3>
+<h4 id="1-训练数据集train-images-idx3-ubytegz-945-mb包含60000个样本"><a class="markdownIt-Anchor" href="#1-训练数据集train-images-idx3-ubytegz-945-mb包含60000个样本"></a> 1、训练数据集：train-images-idx3-ubyte.gz （9.45 MB，包含60,000个样本）</h4>
+<h4 id="2-训练数据集标签train-labels-idx1-ubytegz282-kb包含60000个标签"><a class="markdownIt-Anchor" href="#2-训练数据集标签train-labels-idx1-ubytegz282-kb包含60000个标签"></a> 2、训练数据集标签:train-labels-idx1-ubyte.gz（28.2 KB，包含60,000个标签）</h4>
+<h4 id="3-测试数据集t10k-images-idx3-ubytegz157-mb-包含10000个样本"><a class="markdownIt-Anchor" href="#3-测试数据集t10k-images-idx3-ubytegz157-mb-包含10000个样本"></a> 3、测试数据集：t10k-images-idx3-ubyte.gz（1.57 MB ，包含10,000个样本）</h4>
+<h4 id="4-测试数据集标签t10k-labels-idx1-ubytegz443-kb包含10000个样本的标签"><a class="markdownIt-Anchor" href="#4-测试数据集标签t10k-labels-idx1-ubytegz443-kb包含10000个样本的标签"></a> 4、测试数据集标签：t10k-labels-idx1-ubyte.gz（4.43 KB，包含10,000个样本的标签）</h4>
+<h3 id="可以看到这些数据集和以往的数据集不太一样需要一些特殊的方法才可以将它们读出来处理代码如下"><a class="markdownIt-Anchor" href="#可以看到这些数据集和以往的数据集不太一样需要一些特殊的方法才可以将它们读出来处理代码如下"></a> 可以看到这些数据集和以往的数据集不太一样，需要一些特殊的方法才可以将它们读出来，处理代码如下：</h3>
+<pre><code>def load_mnist(image_file,label_file,path=&quot;F:/Mechine Learning/Handy Writing/mnist&quot;):
     digits = np.arange(10)
     fname_image = os.path.join(path,image_file)
     fname_label = os.path.join(path,label_file)
-
-    flbl = open(fname_label,&#39;rb&#39;)
+    
+    flbl = open(fname_label,'rb')
     magic_nr,size = struct.unpack(&quot;&gt;II&quot;,flbl.read(8))
     lbl = pyarray(&quot;b&quot;,flbl.read())
     flbl.close()
-
-    fimg = open(fname_image,&#39;rb&#39;)
+    
+    fimg = open(fname_image,'rb')
     magic_nr,size,rows,cols = struct.unpack(&quot;&gt;IIII&quot;,fimg.read(16))
     img = pyarray(&quot;B&quot;,fimg.read())
     fimg.close()
-
+    
     ind = [k for k in range(size) if lbl[k] in digits ]
     N = len(ind)
-
+    
     images = np.zeros((N,rows*cols),dtype=np.uint8)
     labels = np.zeros((N,1),dtype=np.uint8)
     for i in range(len(ind)):
         images[i] = np.array(img[ ind[i]*rows*cols : (ind[i]+1)*rows*cols]).reshape((1,rows*cols))
         labels[i] = lbl[ind[i]]
-
+    
     return images,labels
 
 train_image,train_label = load_mnist(&quot;train-images.idx3-ubyte&quot;,&quot;train-labels.idx1-ubyte&quot;)
 test_image,test_label = load_mnist(&quot;t10k-images.idx3-ubyte&quot;,&quot;t10k-labels.idx1-ubyte&quot;)
-</code></pre><h3 id="这样所有数据被读进来了，下面看看部分图片"><a href="#这样所有数据被读进来了，下面看看部分图片" class="headerlink" title="这样所有数据被读进来了，下面看看部分图片"></a>这样所有数据被读进来了，下面看看部分图片</h3><pre><code>def show_image(imgdata,imgtarget,show_column,show_row):
+</code></pre>
+<h3 id="这样所有数据被读进来了下面看看部分图片"><a class="markdownIt-Anchor" href="#这样所有数据被读进来了下面看看部分图片"></a> 这样所有数据被读进来了，下面看看部分图片</h3>
+<pre><code>def show_image(imgdata,imgtarget,show_column,show_row):
     for index,(im,it) in enumerate(list(zip(imgdata,imgtarget))):
         xx = im.reshape(28,28)
         plt.subplots_adjust(left=1,bottom=None,right=3,top=2,wspace=None,hspace=None)
         plt.subplot(show_row,show_column,index+1)
-        plt.axis(&#39;off&#39;)
-        plt.imshow(xx,cmap=&#39;gray&#39;,interpolation=&#39;nearest&#39;)
-        plt.title(&#39;label:%i&#39;%it)
+        plt.axis('off')
+        plt.imshow(xx,cmap='gray',interpolation='nearest')
+        plt.title('label:%i'%it)
 
 show_image(train_image[:50],train_label[:50],10,5)
-</code></pre><h3 id="显示如下："><a href="#显示如下：" class="headerlink" title="显示如下："></a>显示如下：</h3><p><img src="" alt="部分图片显示"></p>
-<h3 id="对数据再进行一些处理，进行归一化"><a href="#对数据再进行一些处理，进行归一化" class="headerlink" title="对数据再进行一些处理，进行归一化"></a>对数据再进行一些处理，进行归一化</h3><pre><code>train_image = [im/255.0 for im in train_image]
+</code></pre>
+<h3 id="显示如下"><a class="markdownIt-Anchor" href="#显示如下"></a> 显示如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB1.png" alt="部分图片显示" /></p>
+<h3 id="对数据再进行一些处理进行归一化"><a class="markdownIt-Anchor" href="#对数据再进行一些处理进行归一化"></a> 对数据再进行一些处理，进行归一化</h3>
+<pre><code>train_image = [im/255.0 for im in train_image]
 test_image = [im/255.0 for im in test_image]
-</code></pre><h3 id="接下来用不同的方法进行分类，大部分模型都是用的-sklearn-里的"><a href="#接下来用不同的方法进行分类，大部分模型都是用的-sklearn-里的" class="headerlink" title="接下来用不同的方法进行分类，大部分模型都是用的$sklearn$里的"></a>接下来用不同的方法进行分类，大部分模型都是用的$sklearn$里的</h3><h2 id="一、-KNeighbors"><a href="#一、-KNeighbors" class="headerlink" title="一、$KNeighbors$"></a>一、$KNeighbors$</h2><pre><code>from sklearn.metrics import accuracy_score,classification_report
+</code></pre>
+<h3 id="接下来用不同的方法进行分类大部分模型都是用的sklearn里的"><a class="markdownIt-Anchor" href="#接下来用不同的方法进行分类大部分模型都是用的sklearn里的"></a> 接下来用不同的方法进行分类，大部分模型都是用的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sklearn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span></span></span></span>里的</h3>
+<h2 id="一-kneighbors"><a class="markdownIt-Anchor" href="#一-kneighbors"></a> 一、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>N</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>b</mi><mi>o</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">KNeighbors</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">b</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">s</span></span></span></span></h2>
+<pre><code>from sklearn.metrics import accuracy_score,classification_report
 from sklearn.neighbors import KNeighborsClassifier
 
 knc = KNeighborsClassifier(n_neighbors=10)
@@ -250,47 +269,65 @@ knc.fit(train_image,train_label.ravel())
 predict = knc.predict(test_image)\
 print(&quot;accuracy_score:%.4lf&quot; % accuracy_score(predict,test_label))
 print(&quot;Classification report for classifier %s:\n%s\n&quot; % (knc,classification_report(test_label,predict)))
-</code></pre><h3 id="结果如下："><a href="#结果如下：" class="headerlink" title="结果如下："></a>结果如下：</h3><p><img src="" alt="KNeighbors结果"></p>
-<h3 id="准确率为：-accuracy-score-0-9665"><a href="#准确率为：-accuracy-score-0-9665" class="headerlink" title="准确率为：$accuracy_score:0.9665$"></a>准确率为：$accuracy_score:0.9665$</h3><h2 id="二、-MultinomialNB"><a href="#二、-MultinomialNB" class="headerlink" title="二、$MultinomialNB$"></a>二、$MultinomialNB$</h2><pre><code>from sklearn.naive_bayes import MultinomialNB
+</code></pre>
+<h3 id="结果如下"><a class="markdownIt-Anchor" href="#结果如下"></a> 结果如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB2.png" alt="KNeighbors结果" /></p>
+<h3 id="准确率为accuracy_score09665"><a class="markdownIt-Anchor" href="#准确率为accuracy_score09665"></a> 准确率为：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>c</mi><mi>c</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>y</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>:</mo><mn>0.9665</mn></mrow><annotation encoding="application/x-tex">accuracy\_score:0.9665</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74056em;vertical-align:-0.31em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal">c</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">s</span><span class="mord mathnormal">c</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">9</span><span class="mord">6</span><span class="mord">6</span><span class="mord">5</span></span></span></span></h3>
+<h2 id="二-multinomialnb"><a class="markdownIt-Anchor" href="#二-multinomialnb"></a> 二、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>u</mi><mi>l</mi><mi>t</mi><mi>i</mi><mi>n</mi><mi>o</mi><mi>m</mi><mi>i</mi><mi>a</mi><mi>l</mi><mi>N</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">MultinomialNB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></h2>
+<pre><code>from sklearn.naive_bayes import MultinomialNB
 
 mnb = MultinomialNB()
 mnb.fit(train_image,train_label.ravel())
 predict1 = mnb.predict(test_image)
 print(&quot;accuracy_score:%.4lf&quot; % accuracy_score(predict1,test_label))
 print(&quot;Classification report for classifier %s:\n%s\n&quot; % (mnb, classification_report(test_label, predict1)))
-</code></pre><h3 id="结果如下：-1"><a href="#结果如下：-1" class="headerlink" title="结果如下："></a>结果如下：</h3><p><img src="" alt="MultinomialNB结果"></p>
-<h2 id="三、决策树"><a href="#三、决策树" class="headerlink" title="三、决策树"></a>三、决策树</h2><pre><code>from sklearn.tree import DecisionTreeClassifier
+</code></pre>
+<h3 id="结果如下-2"><a class="markdownIt-Anchor" href="#结果如下-2"></a> 结果如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB3.png" alt="MultinomialNB结果" /></p>
+<h2 id="三-决策树"><a class="markdownIt-Anchor" href="#三-决策树"></a> 三、决策树</h2>
+<pre><code>from sklearn.tree import DecisionTreeClassifier
 
 dtc = DecisionTreeClassifier()
 dtc.fit(train_image,train_label.ravel())
 predict2 = dtc.predict(test_image)
 print(&quot;accuracy_score:%.4lf&quot; % accuracy_score(predict2,test_label))
 print(&quot;Classification report for classifier %s:\n%s\n&quot; % (dtc, classification_report(test_label, predict2)))
-</code></pre><h3 id="结果如下：-2"><a href="#结果如下：-2" class="headerlink" title="结果如下："></a>结果如下：</h3><p><img src="" alt="决策树结果"></p>
-<h2 id="四、随机森林"><a href="#四、随机森林" class="headerlink" title="四、随机森林"></a>四、随机森林</h2><pre><code>from sklearn.ensemble import RandomForestClassifier
+</code></pre>
+<h3 id="结果如下-3"><a class="markdownIt-Anchor" href="#结果如下-3"></a> 结果如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB4.png" alt="决策树结果" /></p>
+<h2 id="四-随机森林"><a class="markdownIt-Anchor" href="#四-随机森林"></a> 四、随机森林</h2>
+<pre><code>from sklearn.ensemble import RandomForestClassifier
 
 rfc = RandomForestClassifier()
 rfc.fit(train_image,train_label.ravel())
 predict3 = rfc.predict(test_image)
 print(&quot;accuracy_score:%.4lf&quot; % accuracy_score(predict3,test_label))
 print(&quot;Classification report for classifier %s:\n%s\n&quot; % (rfc, classification_report(test_label, predict3)))
-</code></pre><h3 id="结果如下：-3"><a href="#结果如下：-3" class="headerlink" title="结果如下："></a>结果如下：</h3><p><img src="" alt="随机森林结果"></p>
-<h2 id="五、逻辑回归"><a href="#五、逻辑回归" class="headerlink" title="五、逻辑回归"></a>五、逻辑回归</h2><pre><code>from sklearn.linear_model import LogisticRegression
+</code></pre>
+<h3 id="结果如下-4"><a class="markdownIt-Anchor" href="#结果如下-4"></a> 结果如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB5.png" alt="随机森林结果" /></p>
+<h2 id="五-逻辑回归"><a class="markdownIt-Anchor" href="#五-逻辑回归"></a> 五、逻辑回归</h2>
+<pre><code>from sklearn.linear_model import LogisticRegression
 
 lr = LogisticRegression()
 lr.fit(train_image,train_label.ravel())
 predict4 = lr.predict(test_image)
 print(&quot;accuracy_score: %.4lf&quot; % accuracy_score(predict4,test_label))
 print(&quot;Classification report for classifier %s:\n%s\n&quot; % (lr, classification_report(test_label, predict4)))
-</code></pre><h3 id="结果如下：-4"><a href="#结果如下：-4" class="headerlink" title="结果如下："></a>结果如下：</h3><p><img src="" alt="逻辑回归结果"></p>
-<h2 id="六、-SVM"><a href="#六、-SVM" class="headerlink" title="六、$SVM$"></a>六、$SVM$</h2><pre><code>from sklearn.svm import SVC
+</code></pre>
+<h3 id="结果如下-5"><a class="markdownIt-Anchor" href="#结果如下-5"></a> 结果如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB6.png" alt="逻辑回归结果" /></p>
+<h2 id="六-svm"><a class="markdownIt-Anchor" href="#六-svm"></a> 六、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>V</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">SVM</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span></h2>
+<pre><code>from sklearn.svm import SVC
 
 svc = SVC()
 svc.fit(train_image,train_label.ravel())
 predict5 = svc.predict(test_image)
 print(&quot;accuracy_score: %.4lf&quot; % accuracy_score(predict5,test_label))
 print(&quot;Classification report for classifier %s:\n%s\n&quot; % (svc, classification_report(test_label, predict5)))
-</code></pre><h3 id="结果如下：-5"><a href="#结果如下：-5" class="headerlink" title="结果如下："></a>结果如下：</h3><p><img src="" alt="SVM结果"></p>
+</code></pre>
+<h3 id="结果如下-6"><a class="markdownIt-Anchor" href="#结果如下-6"></a> 结果如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB7.png" alt="SVM结果" /></p>
 
     </div>
     

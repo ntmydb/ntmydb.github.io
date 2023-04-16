@@ -180,7 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Python/" style="color: #ffa2c4">Python</a>
+                <a href="/tags/Python/" style="color: #00bcd4">Python</a>
             </span>
             
         </span>
@@ -188,21 +188,33 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Python机器学习常用库的使用"><a href="#Python机器学习常用库的使用" class="headerlink" title="Python机器学习常用库的使用"></a>Python机器学习常用库的使用</h1><span id="more"></span>
-<h2 id="一、-Numpy-库"><a href="#一、-Numpy-库" class="headerlink" title="一、$Numpy$库"></a>一、$Numpy$库</h2><h3 id="1、array函数创建数组对象"><a href="#1、array函数创建数组对象" class="headerlink" title="1、array函数创建数组对象"></a>1、array函数创建数组对象</h3><pre><code>import numpy as np
-arr1 = np.array([1,2,3],dtype=&#39;float&#39;) #创建一个一维数组，其数据类型为float
+        <h1 id="python机器学习常用库的使用"><a class="markdownIt-Anchor" href="#python机器学习常用库的使用"></a> Python机器学习常用库的使用</h1>
+<span id="more"></span>
+<h2 id="一-numpy库"><a class="markdownIt-Anchor" href="#一-numpy库"></a> 一、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>u</mi><mi>m</mi><mi>p</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">Numpy</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>库</h2>
+<h3 id="1-array函数创建数组对象"><a class="markdownIt-Anchor" href="#1-array函数创建数组对象"></a> 1、array函数创建数组对象</h3>
+<pre><code>import numpy as np
+arr1 = np.array([1,2,3],dtype='float') #创建一个一维数组，其数据类型为float
 print(arr1)  -&gt; [1 2 3]
 arr2 = np.array([[1,2,3],[4,5,6]]) #创建一个二维数组
 print(arr2)  -&gt; [[1 2 3][4 5 6]]
-</code></pre><h3 id="2、通过arange、linspace函数创建等差数组对象"><a href="#2、通过arange、linspace函数创建等差数组对象" class="headerlink" title="2、通过arange、linspace函数创建等差数组对象"></a>2、通过arange、linspace函数创建等差数组对象</h3><h4 id="bullet-arrage函数语法格式：np-arrange-start-end-step-dtype-None-左闭右开区间"><a href="#bullet-arrage函数语法格式：np-arrange-start-end-step-dtype-None-左闭右开区间" class="headerlink" title="$\bullet$ arrage函数语法格式：np.arrange(start,end,step,dtype=None) 左闭右开区间"></a>$\bullet$ arrage函数语法格式：np.arrange(start,end,step,dtype=None) 左闭右开区间</h4><h4 id="bullet-linspace函数语法格式：np-linspace-start-end-step-dtype-True-闭区间"><a href="#bullet-linspace函数语法格式：np-linspace-start-end-step-dtype-True-闭区间" class="headerlink" title="$\bullet$ linspace函数语法格式：np.linspace(start,end,step,dtype=True)  闭区间"></a>$\bullet$ linspace函数语法格式：np.linspace(start,end,step,dtype=True)  闭区间</h4><pre><code>import numpy as np
+</code></pre>
+<h3 id="2-通过arange-linspace函数创建等差数组对象"><a class="markdownIt-Anchor" href="#2-通过arange-linspace函数创建等差数组对象"></a> 2、通过arange、linspace函数创建等差数组对象</h3>
+<h4 id="bullet-arrage函数语法格式nparrangestartendstepdtypenone-左闭右开区间"><a class="markdownIt-Anchor" href="#bullet-arrage函数语法格式nparrangestartendstepdtypenone-左闭右开区间"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo></mrow><annotation encoding="application/x-tex">\bullet</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord">∙</span></span></span></span> arrage函数语法格式：np.arrange(start,end,step,dtype=None) 左闭右开区间</h4>
+<h4 id="bullet-linspace函数语法格式nplinspacestartendstepdtypetrue-闭区间"><a class="markdownIt-Anchor" href="#bullet-linspace函数语法格式nplinspacestartendstepdtypetrue-闭区间"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo></mrow><annotation encoding="application/x-tex">\bullet</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord">∙</span></span></span></span> linspace函数语法格式：np.linspace(start,end,step,dtype=True)  闭区间</h4>
+<pre><code>import numpy as np
 a_arange = np.arrage(1,20,5)
 print(a_arange) -&gt; [1 6 11 16]
 a_linespace = np.linspace(-1,2,5)
 print(a_linespace)  -&gt; [-1 0.25 0.5 1.25 2]
-</code></pre><h3 id="3、通过logspace函数创建等比数组"><a href="#3、通过logspace函数创建等比数组" class="headerlink" title="3、通过logspace函数创建等比数组"></a>3、通过logspace函数创建等比数组</h3><h4 id="bullet-语法格式：np-logspace-start-end-num-endpoint-True-base-10-0"><a href="#bullet-语法格式：np-logspace-start-end-num-endpoint-True-base-10-0" class="headerlink" title="$\bullet$ 语法格式：np.logspace(start,end,num,endpoint=True,base=10.0)"></a>$\bullet$ 语法格式：np.logspace(start,end,num,endpoint=True,base=10.0)</h4><pre><code>import numpy as np
+</code></pre>
+<h3 id="3-通过logspace函数创建等比数组"><a class="markdownIt-Anchor" href="#3-通过logspace函数创建等比数组"></a> 3、通过logspace函数创建等比数组</h3>
+<h4 id="bullet-语法格式nplogspacestartendnumendpointtruebase100"><a class="markdownIt-Anchor" href="#bullet-语法格式nplogspacestartendnumendpointtruebase100"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo></mrow><annotation encoding="application/x-tex">\bullet</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord">∙</span></span></span></span> 语法格式：np.logspace(start,end,num,endpoint=True,base=10.0)</h4>
+<pre><code>import numpy as np
 a_logspace = np.logspace(0,0,10,base=2)
 print(a_logspace)  -&gt;[1,2,4,8,16,32,64,128,256,512]
-</code></pre><h3 id="4、函数zeros-ones-diag-eye-full的使用"><a href="#4、函数zeros-ones-diag-eye-full的使用" class="headerlink" title="4、函数zeros,ones,diag,eye,full的使用"></a>4、函数zeros,ones,diag,eye,full的使用</h3><pre><code>import numpy as np
+</code></pre>
+<h3 id="4-函数zerosonesdiageyefull的使用"><a class="markdownIt-Anchor" href="#4-函数zerosonesdiageyefull的使用"></a> 4、函数zeros,ones,diag,eye,full的使用</h3>
+<pre><code>import numpy as np
 a_zeros1 = np.zeros(3,dtype=int) #创建元素值都为0的一维数组，数据类型为int
 print(a_zeros1)  -&gt;[0 0 0]
 a_zeros2 = np.zeros([3,4]) #创建元素值都是0的二维数组
@@ -214,7 +226,9 @@ d_eye = np.eye(3) #创建单位数组
 print(d_eye)   -&gt;[[1 0 0][0 1 0][0 0 1]]
 e_full = np.full([4 4],3) #创建值相同的二维数组
 print(e_full)  -&gt;[[3 3 3 3][3 3 3 3][3 3 3 3][3 3 3 3]]
-</code></pre><h3 id="5、Numpy多维数组产生随机数"><a href="#5、Numpy多维数组产生随机数" class="headerlink" title="5、Numpy多维数组产生随机数"></a>5、Numpy多维数组产生随机数</h3><pre><code>import numpy as np
+</code></pre>
+<h3 id="5-numpy多维数组产生随机数"><a class="markdownIt-Anchor" href="#5-numpy多维数组产生随机数"></a> 5、Numpy多维数组产生随机数</h3>
+<pre><code>import numpy as np
 np.random.seed(100) #同一随机数种子生成的随机数相同
 a = np.random.randint(0,20,5) #生成随机一维数组，5个0到20的整数
 print(a)  -&gt; [8 3 7 15 16]
@@ -224,14 +238,18 @@ c = np.random.rand(5) #5个介于[0,1)的随机数一维数组
 print(c) -&gt;[0.56229626,0.003124,0.3413341,0.6352321,0.4235985]
 d = np.random.randn(5) #产生5个标准正态随机分布组成的一维数组
 print(d) -&gt;[-0.23198063 -0.51772213  1.43018797  0.94971126  0.65692046]
-</code></pre><h4 id="其次，还有一个shuffle函数"><a href="#其次，还有一个shuffle函数" class="headerlink" title="其次，还有一个shuffle函数"></a>其次，还有一个shuffle函数</h4><pre><code>import numpy as np
+</code></pre>
+<h4 id="其次还有一个shuffle函数"><a class="markdownIt-Anchor" href="#其次还有一个shuffle函数"></a> 其次，还有一个shuffle函数</h4>
+<pre><code>import numpy as np
 a = np.arrange(10)
 np.random.shuffle(a)
 print(a) -&gt; [8 1 4 6 7 2 5 3 0 9]
 b = np.arrange(1,13).reshape(3,4)
 np.random.shuffle(b)
 print(b) -&gt; [[5  6  7  8][9 10 11 12][1  2  3  4]]
-</code></pre><h3 id="6、Numpy多维数组的属性"><a href="#6、Numpy多维数组的属性" class="headerlink" title="6、Numpy多维数组的属性"></a>6、Numpy多维数组的属性</h3><pre><code>import numpy as np
+</code></pre>
+<h3 id="6-numpy多维数组的属性"><a class="markdownIt-Anchor" href="#6-numpy多维数组的属性"></a> 6、Numpy多维数组的属性</h3>
+<pre><code>import numpy as np
 a = np.arange(1,13)
 # a.ndim() 返回数组维度
 print(format(a.ndim))  -&gt;1
@@ -244,9 +262,11 @@ b = a.reshape(3,4)
 print(b) -&gt; [[1 2 3 4][5 6 7 8][9 10 11 12]]
 c = b.flatten()
 print(c) -&gt; [1 2 3 4 5 6 7 8 9 10 11 12]
-</code></pre><h3 id="7、数组合并"><a href="#7、数组合并" class="headerlink" title="7、数组合并"></a>7、数组合并</h3><pre><code>import numpy as np
+</code></pre>
+<h3 id="7-数组合并"><a class="markdownIt-Anchor" href="#7-数组合并"></a> 7、数组合并</h3>
+<pre><code>import numpy as np
 A = np.zeros([2,3])
-B = np.ones([2,4])    
+B = np.ones([2,4])	
 # hstack 为水平合并
 print(np.hstack(A,B))
 # -&gt;
@@ -258,33 +278,44 @@ print(np.concatenate((A,B),axis=1))
 # [[0 0 0 1 1 1 1]
 # [0 0 0 1 1 1 1]]
 A = np.zeros([2,4])
-B = np.ones([2,4])    
+B = np.ones([2,4])	
 print(np.vstack(A,B))
 # -&gt;
 # [[0 0 0 0]
 # [0 0 0 0]
 # [1 1 1 1]
 # [1 1 1 1]]
-</code></pre><h3 id="8、数组分割"><a href="#8、数组分割" class="headerlink" title="8、数组分割"></a>8、数组分割</h3><pre><code>import numpy as np
+</code></pre>
+<h3 id="8-数组分割"><a class="markdownIt-Anchor" href="#8-数组分割"></a> 8、数组分割</h3>
+<pre><code>import numpy as np
 a = np.arange(12).reshape(3,4)
 print(np.hsplit(a,2)) #水平分割
 # -&gt; [array([[0,1],[4,5],[8,9]]),array([[2,3],[6,7],[10,11]])]
 print(np.vsplit(a,3)) #垂直分割
 # -&gt; [array([[0,1,2,3]]),array([[4,5,6,7]]),array([[8,9,10,11]])]
 print(np.split(a,2,axis=1)) #axis=1为水平分割，axis=0为垂直分割
-</code></pre><h3 id="9、一维数组索引和切片"><a href="#9、一维数组索引和切片" class="headerlink" title="9、一维数组索引和切片"></a>9、一维数组索引和切片</h3><h4 id="这个和列表-list-的用法是差不多的"><a href="#这个和列表-list-的用法是差不多的" class="headerlink" title="这个和列表$list$的用法是差不多的"></a>这个和列表$list$的用法是差不多的</h4><pre><code># arr[0,1] 索引访问指定某个元素，第一行第二列
+</code></pre>
+<h3 id="9-一维数组索引和切片"><a class="markdownIt-Anchor" href="#9-一维数组索引和切片"></a> 9、一维数组索引和切片</h3>
+<h4 id="这个和列表list的用法是差不多的"><a class="markdownIt-Anchor" href="#这个和列表list的用法是差不多的"></a> 这个和列表<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>i</mi><mi>s</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">list</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span></span></span></span>的用法是差不多的</h4>
+<pre><code># arr[0,1] 索引访问指定某个元素，第一行第二列
 # arr[[1,3],:] 索引访问指定某行元素，第2,4行元素
 # arr[:,0:3]  索引访问指定某些列的元素，第1,2,3列的元素
 # arr[2:,2:]  索引访问指定某些元素，从第三行第三列开始的元素
 # arr[-2:,-3:] 数组最后两行最后三列的元素
-</code></pre><h3 id="10、数组的访问"><a href="#10、数组的访问" class="headerlink" title="10、数组的访问"></a>10、数组的访问</h3><pre><code># np.append(arr,x) 在数组arr后面增加一个元素为x
+</code></pre>
+<h3 id="10-数组的访问"><a class="markdownIt-Anchor" href="#10-数组的访问"></a> 10、数组的访问</h3>
+<pre><code># np.append(arr,x) 在数组arr后面增加一个元素为x
 # np.insert(arr,pos,x) 在数组arr索引为pos的位置插入元素x
 # np.delete(arr,pos) 删除数组arr索引为pos的元素
-</code></pre><h3 id="11、数组的去重与重复"><a href="#11、数组的去重与重复" class="headerlink" title="11、数组的去重与重复"></a>11、数组的去重与重复</h3><pre><code># np.unique 找出数组的唯一值并返回已经排序的结果
+</code></pre>
+<h3 id="11-数组的去重与重复"><a class="markdownIt-Anchor" href="#11-数组的去重与重复"></a> 11、数组的去重与重复</h3>
+<pre><code># np.unique 找出数组的唯一值并返回已经排序的结果
 # np.tile(arr,3) 返回arr数组重复3次的数组
 # np.repeat(arr,2,axis=0) 返回arr数组按行重复2次的数组，即[[1][2]]变为[[1][1][2][2]]
 # axis=0是行重复，1是列重复
-</code></pre><h3 id="12、统计函数"><a href="#12、统计函数" class="headerlink" title="12、统计函数"></a>12、统计函数</h3><pre><code># np.sum(a,axis) 计算数组中沿指定轴的和
+</code></pre>
+<h3 id="12-统计函数"><a class="markdownIt-Anchor" href="#12-统计函数"></a> 12、统计函数</h3>
+<pre><code># np.sum(a,axis) 计算数组中沿指定轴的和
 # np.min(a,axis) 计算数组中沿指定轴的最小值
 # np.argmin(a,axis) 计算数组中沿指定轴的最小值的索引
 # np.max(a,axis) 计算数组中沿指定轴的最大值
@@ -294,20 +325,34 @@ print(np.split(a,2,axis=1)) #axis=1为水平分割，axis=0为垂直分割
 # np.std(a,axis)  计算数组标准差
 # np.var(a,axis)  计算数组方差
 # np.cov(a)       计算数组协方差矩阵
-</code></pre><h2 id="二、-Matplotlib-库"><a href="#二、-Matplotlib-库" class="headerlink" title="二、$Matplotlib$库"></a>二、$Matplotlib$库</h2><h3 id="1、-Figure"><a href="#1、-Figure" class="headerlink" title="1、$Figure$"></a>1、$Figure$</h3><h4 id="Figure-对象可以理解成是一个画板"><a href="#Figure-对象可以理解成是一个画板" class="headerlink" title="$Figure$对象可以理解成是一个画板"></a>$Figure$对象可以理解成是一个画板</h4><pre><code>import matplotlib as plt
+</code></pre>
+<h2 id="二-matplotlib库"><a class="markdownIt-Anchor" href="#二-matplotlib库"></a> 二、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>a</mi><mi>t</mi><mi>p</mi><mi>l</mi><mi>o</mi><mi>t</mi><mi>l</mi><mi>i</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">Matplotlib</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal">b</span></span></span></span>库</h2>
+<h3 id="1-figure"><a class="markdownIt-Anchor" href="#1-figure"></a> 1、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>i</mi><mi>g</mi><mi>u</mi><mi>r</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Figure</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span></span></span></span></h3>
+<h4 id="figure对象可以理解成是一个画板"><a class="markdownIt-Anchor" href="#figure对象可以理解成是一个画板"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>i</mi><mi>g</mi><mi>u</mi><mi>r</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Figure</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span></span></span></span>对象可以理解成是一个画板</h4>
+<pre><code>import matplotlib as plt
 fig = plt.figure()
-</code></pre><h3 id="2、-Axes"><a href="#2、-Axes" class="headerlink" title="2、$Axes$"></a>2、$Axes$</h3><h4 id="Axes-就是轴，一幅图总有x轴，y轴，z轴之类的轴来确定"><a href="#Axes-就是轴，一幅图总有x轴，y轴，z轴之类的轴来确定" class="headerlink" title="$Axes$就是轴，一幅图总有x轴，y轴，z轴之类的轴来确定"></a>$Axes$就是轴，一幅图总有x轴，y轴，z轴之类的轴来确定</h4><pre><code>fig = plt.figure()
+</code></pre>
+<h3 id="2-axes"><a class="markdownIt-Anchor" href="#2-axes"></a> 2、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Axes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span></span></span></span></h3>
+<h4 id="axes就是轴一幅图总有x轴y轴z轴之类的轴来确定"><a class="markdownIt-Anchor" href="#axes就是轴一幅图总有x轴y轴z轴之类的轴来确定"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Axes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span></span></span></span>就是轴，一幅图总有x轴，y轴，z轴之类的轴来确定</h4>
+<pre><code>fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
 # 在figure的第一行第一列的第一个位置生成一个Axes对象作画
-ax.set(xlim=[0.5,4.5],ylim=[-2,8],title=&#39;Example&#39;,ylabel=&#39;Y&#39;,xlabel=&#39;X&#39;)
+ax.set(xlim=[0.5,4.5],ylim=[-2,8],title='Example',ylabel='Y',xlabel='X')
 plt.show()
-</code></pre><h4 id="效果如下图："><a href="#效果如下图：" class="headerlink" title="效果如下图："></a>效果如下图：</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A81.png" alt="效果图"></p>
-<h3 id="3、-add-subplot-函数"><a href="#3、-add-subplot-函数" class="headerlink" title="3、$add_subplot$函数"></a>3、$add_subplot$函数</h3><pre><code>fig = plt.figure()
+</code></pre>
+<h4 id="效果如下图"><a class="markdownIt-Anchor" href="#效果如下图"></a> 效果如下图：</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A81.png" alt="效果图" /></p>
+<h3 id="3-add_subplot函数"><a class="markdownIt-Anchor" href="#3-add_subplot函数"></a> 3、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>d</mi><mi>d</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>u</mi><mi>b</mi><mi>p</mi><mi>l</mi><mi>o</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">add\_subplot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal">d</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal">b</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span></span></span></span>函数</h3>
+<pre><code>fig = plt.figure()
 ax1 = fig.add_subplot(2,2,1)
 ax2 = fig.add_subplot(2,2,2)
 ax3 = fig.add_subplot(2,2,4)
-</code></pre><h3 id="效果如如下："><a href="#效果如如下：" class="headerlink" title="效果如如下："></a>效果如如下：</h3><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A82.png" alt="效果图"></p>
-<h3 id="4、画函数"><a href="#4、画函数" class="headerlink" title="4、画函数"></a>4、画函数</h3><h4 id="plot-函数画出一系列点并用线将它们连接起来"><a href="#plot-函数画出一系列点并用线将它们连接起来" class="headerlink" title="$plot$函数画出一系列点并用线将它们连接起来"></a>$plot$函数画出一系列点并用线将它们连接起来</h4><pre><code>import numpy as np
+</code></pre>
+<h3 id="效果如如下"><a class="markdownIt-Anchor" href="#效果如如下"></a> 效果如如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A82.png" alt="效果图" /></p>
+<h3 id="4-画函数"><a class="markdownIt-Anchor" href="#4-画函数"></a> 4、画函数</h3>
+<h4 id="plot函数画出一系列点并用线将它们连接起来"><a class="markdownIt-Anchor" href="#plot函数画出一系列点并用线将它们连接起来"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>l</mi><mi>o</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">plot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span></span></span></span>函数画出一系列点并用线将它们连接起来</h4>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 x = np.linspace(0,np.pi)
 y_sin = np.sin(x)
@@ -317,66 +362,84 @@ ax1 = fig.add_subplot(2,2,1)
 ax2 = fig.add_subplot(2,2,2)
 ax3 = fig.add_subplot(2,2,4)
 ax1.plot(x,y_sin)
-ax2.plot(x,y_sin,&#39;go--&#39;,linewidth=2,markersize=12)
-ax3.plot(x,y_cos,color=&#39;red&#39;,marker=&#39;+&#39;,linestyle=&#39;dashed&#39;)
+ax2.plot(x,y_sin,'go--',linewidth=2,markersize=12)
+ax3.plot(x,y_cos,color='red',marker='+',linestyle='dashed')
 plt.show()
-</code></pre><h4 id="效果如如下"><a href="#效果如如下" class="headerlink" title="效果如如下"></a>效果如如下</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A83.png" alt="效果图"></p>
-<h3 id="5、画散点图"><a href="#5、画散点图" class="headerlink" title="5、画散点图"></a>5、画散点图</h3><pre><code>import numpy as np
+</code></pre>
+<h4 id="效果如如下-2"><a class="markdownIt-Anchor" href="#效果如如下-2"></a> 效果如如下</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A83.png" alt="效果图" /></p>
+<h3 id="5-画散点图"><a class="markdownIt-Anchor" href="#5-画散点图"></a> 5、画散点图</h3>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 x = np.arange(10)
 y = np.random.randn(10)
-plt.scatter(x,y,color=&#39;red&#39;,marker=&#39;+&#39;)
+plt.scatter(x,y,color='red',marker='+')
 plt.show()
-</code></pre><h4 id="效果图如下"><a href="#效果图如下" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A84.png" alt="效果图"></p>
-<h3 id="6、条形图"><a href="#6、条形图" class="headerlink" title="6、条形图"></a>6、条形图</h3><h4 id="条形图分为水平的和垂直的"><a href="#条形图分为水平的和垂直的" class="headerlink" title="条形图分为水平的和垂直的"></a>条形图分为水平的和垂直的</h4><pre><code>import numpy as np
+</code></pre>
+<h4 id="效果图如下"><a class="markdownIt-Anchor" href="#效果图如下"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A84.png" alt="效果图" /></p>
+<h3 id="6-条形图"><a class="markdownIt-Anchor" href="#6-条形图"></a> 6、条形图</h3>
+<h4 id="条形图分为水平的和垂直的"><a class="markdownIt-Anchor" href="#条形图分为水平的和垂直的"></a> 条形图分为水平的和垂直的</h4>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 np.random.seed(1)
 x = np.arange(5)
 y= np.random.randn(5)
 fig,axes = plt.subplots(ncols=2,figsize=plt.figaspect(1./2))
-vert_bars = axes[0].bar(x,y,color=&#39;lightblue&#39;,align=&#39;center&#39;)
-horiz_bars = axes[1].barh(x,y,color=&#39;lightblue&#39;,align=&#39;center&#39;)
-axes[0].axhline(0,color=&#39;gray&#39;,linewidth=2)
-axes[1].axvline(0,color=&#39;gray&#39;,linewidth=2)
+vert_bars = axes[0].bar(x,y,color='lightblue',align='center')
+horiz_bars = axes[1].barh(x,y,color='lightblue',align='center')
+axes[0].axhline(0,color='gray',linewidth=2)
+axes[1].axvline(0,color='gray',linewidth=2)
 plt.show()
-</code></pre><h4 id="效果如如下-1"><a href="#效果如如下-1" class="headerlink" title="效果如如下:"></a>效果如如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A85.png" alt="效果图"></p>
-<h3 id="7、直方图"><a href="#7、直方图" class="headerlink" title="7、直方图"></a>7、直方图</h3><h4 id="直方图用于统计出现的次数或者频率，有多种参数可以调整"><a href="#直方图用于统计出现的次数或者频率，有多种参数可以调整" class="headerlink" title="直方图用于统计出现的次数或者频率，有多种参数可以调整"></a>直方图用于统计出现的次数或者频率，有多种参数可以调整</h4><pre><code>import numpy as np
+</code></pre>
+<h4 id="效果如如下-3"><a class="markdownIt-Anchor" href="#效果如如下-3"></a> 效果如如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A85.png" alt="效果图" /></p>
+<h3 id="7-直方图"><a class="markdownIt-Anchor" href="#7-直方图"></a> 7、直方图</h3>
+<h4 id="直方图用于统计出现的次数或者频率有多种参数可以调整"><a class="markdownIt-Anchor" href="#直方图用于统计出现的次数或者频率有多种参数可以调整"></a> 直方图用于统计出现的次数或者频率，有多种参数可以调整</h4>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 np.random.seed(114514)
 n_bins = 10
 x = np.random.randn(1000,3)
 fig,axes = plt.subplots(nrows=2,ncols=2)
 ax0,ax1,ax2,ax3 = axes.flatten()
-colors = [&#39;red&#39;,&#39;tan&#39;,&#39;lime&#39;]
-ax0.hist(x,n_bins,density=True,histtype=&#39;bar&#39;,color=colors,label=colors)
-ax0.legend(prop=&#123;&#39;size&#39;:10&#125;)
-ax0.set_title(&#39;bar with legend&#39;)
+colors = ['red','tan','lime']
+ax0.hist(x,n_bins,density=True,histtype='bar',color=colors,label=colors)
+ax0.legend(prop=&#123;'size':10&#125;)
+ax0.set_title('bar with legend')
 
-ax1.hist(x, n_bins, density=True, histtype=&#39;barstacked&#39;)
-ax1.set_title(&#39;stacked bar&#39;)
+ax1.hist(x, n_bins, density=True, histtype='barstacked')
+ax1.set_title('stacked bar')
 
-ax2.hist(x,  histtype=&#39;barstacked&#39;, rwidth=0.9)
+ax2.hist(x,  histtype='barstacked', rwidth=0.9)
 
 ax3.hist(x[:, 0], rwidth=0.9)
-ax3.set_title(&#39;different sample sizes&#39;)
+ax3.set_title('different sample sizes')
 
 fig.tight_layout()
 plt.show()
-</code></pre><h4 id="效果图如下-1"><a href="#效果图如下-1" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A86.png" alt="效果图"></p>
-<h3 id="8、饼状图"><a href="#8、饼状图" class="headerlink" title="8、饼状图"></a>8、饼状图</h3><pre><code>import matplotlib.pyplot as plt
-labels = (&#39;Frogs&#39;,&#39;Hogs&#39;,&#39;Dogs&#39;,&#39;Logs&#39;)
+</code></pre>
+<h4 id="效果图如下-2"><a class="markdownIt-Anchor" href="#效果图如下-2"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A86.png" alt="效果图" /></p>
+<h3 id="8-饼状图"><a class="markdownIt-Anchor" href="#8-饼状图"></a> 8、饼状图</h3>
+<pre><code>import matplotlib.pyplot as plt
+labels = ('Frogs','Hogs','Dogs','Logs')
 sizes = [15,30,45,10]
 explode =(0,0.1,0,0)
 
 fig1,(ax1,ax2) = plt.subplots(2)
-ax1.pie(sizes,labels=labels,autopct=&#39;%1.1f%%&#39;,shadow=True)
-ax1.axis(&#39;equal&#39;)
-ax2.pie(sizes,autopct=&#39;%1.2%%&#39;,shadow=True,startangle=90,explode=explode,pctdistance=1.12)
-ax2.axis(&#39;equal&#39;)
-ax2.legend(labels=labels,loc=&#39;upper right&#39;)
+ax1.pie(sizes,labels=labels,autopct='%1.1f%%',shadow=True)
+ax1.axis('equal')
+ax2.pie(sizes,autopct='%1.2%%',shadow=True,startangle=90,explode=explode,pctdistance=1.12)
+ax2.axis('equal')
+ax2.legend(labels=labels,loc='upper right')
 plt.show() 
-</code></pre><h4 id="效果图如下-2"><a href="#效果图如下-2" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A87.png" alt="效果图"></p>
-<h3 id="9、箱型图"><a href="#9、箱型图" class="headerlink" title="9、箱型图"></a>9、箱型图</h3><h4 id="虽然用的不多吧，但毕竟是一个用于总结的文章，加上吧"><a href="#虽然用的不多吧，但毕竟是一个用于总结的文章，加上吧" class="headerlink" title="虽然用的不多吧，但毕竟是一个用于总结的文章，加上吧"></a>虽然用的不多吧，但毕竟是一个用于总结的文章，加上吧</h4><pre><code>import matplotlib.pyplot as plt
+</code></pre>
+<h4 id="效果图如下-3"><a class="markdownIt-Anchor" href="#效果图如下-3"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A87.png" alt="效果图" /></p>
+<h3 id="9-箱型图"><a class="markdownIt-Anchor" href="#9-箱型图"></a> 9、箱型图</h3>
+<h4 id="虽然用的不多吧但毕竟是一个用于总结的文章加上吧"><a class="markdownIt-Anchor" href="#虽然用的不多吧但毕竟是一个用于总结的文章加上吧"></a> 虽然用的不多吧，但毕竟是一个用于总结的文章，加上吧</h4>
+<pre><code>import matplotlib.pyplot as plt
 import numpy as np
 np.random.seed(114514)
 fig, (ax1, ax2) = plt.subplots(2)
@@ -384,8 +447,12 @@ data = np.random.randn(1000,1)
 data2 = np.random.randn(1000,3)
 ax1.boxplot(data)
 ax2.boxplot(data2, vert=False) #控制方向
-</code></pre><h4 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A88.png" alt="效果图"></p>
-<h3 id="10、泡泡图"><a href="#10、泡泡图" class="headerlink" title="10、泡泡图"></a>10、泡泡图</h3><h4 id="和箱型图一样，加上吧"><a href="#和箱型图一样，加上吧" class="headerlink" title="和箱型图一样，加上吧"></a>和箱型图一样，加上吧</h4><pre><code>import numpy as np
+</code></pre>
+<h4 id="效果如下"><a class="markdownIt-Anchor" href="#效果如下"></a> 效果如下：</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A88.png" alt="效果图" /></p>
+<h3 id="10-泡泡图"><a class="markdownIt-Anchor" href="#10-泡泡图"></a> 10、泡泡图</h3>
+<h4 id="和箱型图一样加上吧"><a class="markdownIt-Anchor" href="#和箱型图一样加上吧"></a> 和箱型图一样，加上吧</h4>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 np.random.seed(114514)
 n = 50
@@ -396,8 +463,12 @@ area = (30 * np.random.rand(n))**2
 
 plt.scatter(x, y, s=area, c=colors, alpha=0.5)
 plt.show()
-</code></pre><h4 id="效果图如下-3"><a href="#效果图如下-3" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A89.png" alt="效果图"></p>
-<h3 id="11、等高线"><a href="#11、等高线" class="headerlink" title="11、等高线"></a>11、等高线</h3><h4 id="同上，一般不会用"><a href="#同上，一般不会用" class="headerlink" title="同上，一般不会用"></a>同上，一般不会用</h4><pre><code>import numpy as np
+</code></pre>
+<h4 id="效果图如下-4"><a class="markdownIt-Anchor" href="#效果图如下-4"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A89.png" alt="效果图" /></p>
+<h3 id="11-等高线"><a class="markdownIt-Anchor" href="#11-等高线"></a> 11、等高线</h3>
+<h4 id="同上一般不会用"><a class="markdownIt-Anchor" href="#同上一般不会用"></a> 同上，一般不会用</h4>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 fig,(ax1,ax2) = plt.subplots(2)
 x = np.arange(-5,5,0.1)
@@ -406,15 +477,20 @@ xx,yy=np.meshgrid(x,y,sparse=True)
 z = np.sin(xx**2+yy**2)/(xx**2+yy**2)
 ax1.contourf(x,y,z) #contourf会填充轮廓间的颜色
 ax2.contour(x,y,z)
-</code></pre><h4 id="效果图如下-4"><a href="#效果图如下-4" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A810.png" alt="效果图"></p>
-<h3 id="12、区间调整"><a href="#12、区间调整" class="headerlink" title="12、区间调整"></a>12、区间调整</h3><pre><code>import numpy as np
+</code></pre>
+<h4 id="效果图如下-5"><a class="markdownIt-Anchor" href="#效果图如下-5"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A810.png" alt="效果图" /></p>
+<h3 id="12-区间调整"><a class="markdownIt-Anchor" href="#12-区间调整"></a> 12、区间调整</h3>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 ax.set_xlim([xmin,xmax]) #设置x轴区间
 ax.set_ylim([ymin,ymax]) #设置y轴区间
 ax.axis([xmin,xmax,ymin,ymax]) #设置x，y轴区间
 ax.set_ylim(bottom=-10) #Y轴下限
 ax.set_xlim(right=25) #X轴上限
-</code></pre><h4 id="实例演示："><a href="#实例演示：" class="headerlink" title="实例演示："></a>实例演示：</h4><pre><code>import numpy as np
+</code></pre>
+<h4 id="实例演示"><a class="markdownIt-Anchor" href="#实例演示"></a> 实例演示：</h4>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 x = np.linspace(0,2*np.pi)
 y = np.sin(x)
@@ -424,16 +500,21 @@ ax2.plot(x,y)
 ax2.set_xlim([-1,6])
 ax2.set_ylim([-1,3])
 plt.show()
-</code></pre><h4 id="效果图如下-5"><a href="#效果图如下-5" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A811.png" alt="效果图"></p>
-<h3 id="13、设置标注名"><a href="#13、设置标注名" class="headerlink" title="13、设置标注名"></a>13、设置标注名</h3><pre><code>import matplotlib.pyplot as plt
+</code></pre>
+<h4 id="效果图如下-6"><a class="markdownIt-Anchor" href="#效果图如下-6"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A811.png" alt="效果图" /></p>
+<h3 id="13-设置标注名"><a class="markdownIt-Anchor" href="#13-设置标注名"></a> 13、设置标注名</h3>
+<pre><code>import matplotlib.pyplot as plt
 fig ,ax = plt.subplots()
-ax.plot([1,2,3,4],[10,20,25,30],label=&#39;BeiJing&#39;)
-ax.plot([1,2,3,4],[30,23,13,4],label=&#39;NanJing&#39;)
-ax.set(ylabel=&#39;Temperature(deg C)&#39;,xlabel=&#39;Time&#39;)
+ax.plot([1,2,3,4],[10,20,25,30],label='BeiJing')
+ax.plot([1,2,3,4],[30,23,13,4],label='NanJing')
+ax.set(ylabel='Temperature(deg C)',xlabel='Time')
 ax.legend()
 plt.show()
-</code></pre><h4 id="效果图如下-6"><a href="#效果图如下-6" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A812.png" alt="效果图"></p>
-<h4 id="其中legend-里面可以传参数loc，用来调整图例的位置，参数表如下"><a href="#其中legend-里面可以传参数loc，用来调整图例的位置，参数表如下" class="headerlink" title="其中legend()里面可以传参数loc，用来调整图例的位置，参数表如下:"></a>其中legend()里面可以传参数loc，用来调整图例的位置，参数表如下:</h4><div class="table-container">
+</code></pre>
+<h4 id="效果图如下-7"><a class="markdownIt-Anchor" href="#效果图如下-7"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A812.png" alt="效果图" /></p>
+<h4 id="其中legend里面可以传参数loc用来调整图例的位置参数表如下"><a class="markdownIt-Anchor" href="#其中legend里面可以传参数loc用来调整图例的位置参数表如下"></a> 其中legend()里面可以传参数loc，用来调整图例的位置，参数表如下:</h4>
 <table>
 <thead>
 <tr>
@@ -488,57 +569,70 @@ plt.show()
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="14、区间分段"><a href="#14、区间分段" class="headerlink" title="14、区间分段"></a>14、区间分段</h3><pre><code>import numpy as np
+<h3 id="14-区间分段"><a class="markdownIt-Anchor" href="#14-区间分段"></a> 14、区间分段</h3>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
-data = [(&#39;apples&#39;,2),(&#39;oranges&#39;,3),(&#39;peaches&#39;,1)]
+data = [('apples',2),('oranges',3),('peaches',1)]
 fruit,value = zip(*data)
 fig , (ax1,ax2) = plt.subplots(2)
 x = np.arange(len(fruit))
-ax1.bar(x,value,align=&#39;center&#39;,color=&#39;lightblue&#39;)
-ax2.bar(x,value,align=&#39;center&#39;,color=&#39;lightblue&#39;)
+ax1.bar(x,value,align='center',color='lightblue')
+ax2.bar(x,value,align='center',color='lightblue')
 ax2.set(xticks=x,xticklabels=fruit)
-#ax.tick_params(axis=&#39;y&#39;,direction=&#39;inout&#39;,length=10) 修改ticks的方向和长度
+#ax.tick_params(axis='y',direction='inout',length=10) 修改ticks的方向和长度
 plt.show()
-</code></pre><h4 id="效果图如下-7"><a href="#效果图如下-7" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A813.png" alt="效果图"></p>
-<h3 id="15、子图布局"><a href="#15、子图布局" class="headerlink" title="15、子图布局"></a>15、子图布局</h3><h4 id="这一部分可以调整子图之间的间隔，子图与画板的外边间距以及子图的内边间距等功能"><a href="#这一部分可以调整子图之间的间隔，子图与画板的外边间距以及子图的内边间距等功能" class="headerlink" title="这一部分可以调整子图之间的间隔，子图与画板的外边间距以及子图的内边间距等功能"></a>这一部分可以调整子图之间的间隔，子图与画板的外边间距以及子图的内边间距等功能</h4><pre><code>import matplotlib.pyplot as plt
+</code></pre>
+<h4 id="效果图如下-8"><a class="markdownIt-Anchor" href="#效果图如下-8"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A813.png" alt="效果图" /></p>
+<h3 id="15-子图布局"><a class="markdownIt-Anchor" href="#15-子图布局"></a> 15、子图布局</h3>
+<h4 id="这一部分可以调整子图之间的间隔子图与画板的外边间距以及子图的内边间距等功能"><a class="markdownIt-Anchor" href="#这一部分可以调整子图之间的间隔子图与画板的外边间距以及子图的内边间距等功能"></a> 这一部分可以调整子图之间的间隔，子图与画板的外边间距以及子图的内边间距等功能</h4>
+<pre><code>import matplotlib.pyplot as plt
 fig,axes = plt.subplots(2,2,figsize=(9,9))
 fig.subplots_adjust(wspace=0.5,hspace=0.3,left=0.125,right=0.9,top=0.9,bottom=0.1)
 #fig.tight_layout() #自动调整布局，使标题不重叠
 plt.show()
-</code></pre><h4 id="效果图如下-8"><a href="#效果图如下-8" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A814.png" alt="效果图"></p>
-<h4 id="这四个子图的X-Y区间是一致的，可以调整它们使用一样的X-Y"><a href="#这四个子图的X-Y区间是一致的，可以调整它们使用一样的X-Y" class="headerlink" title="这四个子图的X,Y区间是一致的，可以调整它们使用一样的X,Y"></a>这四个子图的X,Y区间是一致的，可以调整它们使用一样的X,Y</h4><pre><code>import matplotlib.pyplot as plt
+</code></pre>
+<h4 id="效果图如下-9"><a class="markdownIt-Anchor" href="#效果图如下-9"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A814.png" alt="效果图" /></p>
+<h4 id="这四个子图的xy区间是一致的可以调整它们使用一样的xy"><a class="markdownIt-Anchor" href="#这四个子图的xy区间是一致的可以调整它们使用一样的xy"></a> 这四个子图的X,Y区间是一致的，可以调整它们使用一样的X,Y</h4>
+<pre><code>import matplotlib.pyplot as plt
 fig,(ax1,ax2)=plt.subplots(1,2,sharex=True,sharey=True)
 ax1.plot([1,2,3,4],[1,2,3,4])
 ax2.plot([1,2,3,4],[5,6,7,8])
 plt.show()
-</code></pre><h4 id="效果图如下-9"><a href="#效果图如下-9" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A815.png" alt="效果图"></p>
-<h3 id="16、边框去除"><a href="#16、边框去除" class="headerlink" title="16、边框去除"></a>16、边框去除</h3><pre><code>import numpy as np
+</code></pre>
+<h4 id="效果图如下-10"><a class="markdownIt-Anchor" href="#效果图如下-10"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A815.png" alt="效果图" /></p>
+<h3 id="16-边框去除"><a class="markdownIt-Anchor" href="#16-边框去除"></a> 16、边框去除</h3>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 fig ,ax =plt.subplots()
 ax.plot([-2,2,3,4],[-10,20,25,5])
-ax.spines[&#39;top&#39;].set_visible(False)
-ax.xaxis.set_ticks_position(&#39;bottom&#39;)
-ax.spines[&#39;right&#39;].set_visible(False)
-ax.yaxis.set_ticks_position(&#39;left&#39;)
+ax.spines['top'].set_visible(False)
+ax.xaxis.set_ticks_position('bottom')
+ax.spines['right'].set_visible(False)
+ax.yaxis.set_ticks_position('left')
 
 # outward
 # 移动左、下边界离 Axes 10个距离
-# ax.spines[&#39;bottom&#39;].set_position((&#39;outward&#39;,10))
-# ax.spines[&#39;left&#39;].set_position((&#39;outward&#39;,10))
+# ax.spines['bottom'].set_position(('outward',10))
+# ax.spines['left'].set_position(('outward',10))
 
 # data
 # 移动左、下边界到(0,0)处相交
-ax.spines[&#39;bottom&#39;].set_position((&#39;data&#39;,0))
-ax.spines[&#39;left&#39;].set_position((&#39;data&#39;,0))
+ax.spines['bottom'].set_position(('data',0))
+ax.spines['left'].set_position(('data',0))
 
 # axes
 # 移动边界，按Axes的百分比位置
-# ax.spines[&#39;bottom&#39;].set_position((&#39;axes&#39;,0.75))
-# ax.spines[&#39;left&#39;].set_position((&#39;axes&#39;,0.3))
+# ax.spines['bottom'].set_position(('axes',0.75))
+# ax.spines['left'].set_position(('axes',0.3))
 plt.show()
-</code></pre><h4 id="效果图如下-10"><a href="#效果图如下-10" class="headerlink" title="效果图如下:"></a>效果图如下:</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A816.png" alt="效果图"></p>
-<h2 id="三、-Re-库"><a href="#三、-Re-库" class="headerlink" title="三、$Re$库"></a>三、$Re$库</h2><h4 id="Re-库主要是用于字符串匹配，在处理数据方面有着较为重要的作用，其主要功能函数表如下："><a href="#Re-库主要是用于字符串匹配，在处理数据方面有着较为重要的作用，其主要功能函数表如下：" class="headerlink" title="$Re$库主要是用于字符串匹配，在处理数据方面有着较为重要的作用，其主要功能函数表如下："></a>$Re$库主要是用于字符串匹配，在处理数据方面有着较为重要的作用，其主要功能函数表如下：</h4><div class="table-container">
+</code></pre>
+<h4 id="效果图如下-11"><a class="markdownIt-Anchor" href="#效果图如下-11"></a> 效果图如下:</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Matplotlib%E5%BA%93%E4%BD%BF%E7%94%A816.png" alt="效果图" /></p>
+<h2 id="三-re库"><a class="markdownIt-Anchor" href="#三-re库"></a> 三、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Re</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">e</span></span></span></span>库</h2>
+<h4 id="re库主要是用于字符串匹配在处理数据方面有着较为重要的作用其主要功能函数表如下"><a class="markdownIt-Anchor" href="#re库主要是用于字符串匹配在处理数据方面有着较为重要的作用其主要功能函数表如下"></a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Re</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">e</span></span></span></span>库主要是用于字符串匹配，在处理数据方面有着较为重要的作用，其主要功能函数表如下：</h4>
 <table>
 <thead>
 <tr>
@@ -573,31 +667,37 @@ plt.show()
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="1、-search"><a href="#1、-search" class="headerlink" title="1、$search()$"></a>1、$search()$</h3><pre><code>import re
+<h3 id="1-search"><a class="markdownIt-Anchor" href="#1-search"></a> 1、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>c</mi><mi>h</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">search()</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mclose">)</span></span></span></span></h3>
+<pre><code>import re
 s = &quot;I have a dream that one day&quot;
-ret = re.seach(&quot;^I.*day$&quot;,s) # 检查字符串以&#39;I&#39;开头，以&#39;day&#39;结尾
+ret = re.seach(&quot;^I.*day$&quot;,s) # 检查字符串以'I'开头，以'day'结尾
 ret1 = re.search(&quot;\s&quot;,s) # 在字符串中搜索第一个空白字符
 ret2 = re.search(&quot;the&quot;,s) # 在字符串中检索特定内容，如果没有检索到就返回None
 ret3 = re.search(&quot;HAVE&quot;,s,re.I) #忽略大小写匹配
 print(ret)
 print(ret.group())
 print(ret[0])
-</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A81.png" alt="输出结果"><br><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A82.png" alt="Ret3输出结果"></p>
-<h3 id="2、-match"><a href="#2、-match" class="headerlink" title="2、$match()$"></a>2、$match()$</h3><pre><code>import re
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A81.png" alt="输出结果" /><br />
+<img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A82.png" alt="Ret3输出结果" /></p>
+<h3 id="2-match"><a class="markdownIt-Anchor" href="#2-match"></a> 2、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>a</mi><mi>t</mi><mi>c</mi><mi>h</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">match()</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mclose">)</span></span></span></span></h3>
+<pre><code>import re
 s = &quot;I have a dream that one day&quot;
-ret1 = re.match(&#39;dream&#39;,s)
+ret1 = re.match('dream',s)
 print(ret1)
-ret2 = re.match(&#39;the&#39;,s)
+ret2 = re.match('the',s)
 print(ret2)
 # 由于是第一个开始匹配，所以匹配失败返回None
-password = &#39;deepdark114514fantancy&#39;
-if re.match(r&#39;.*[0-9].*&#39;,password):
-    print(&#39;Access granted&#39;)
+password = 'deepdark114514fantancy'
+if re.match(r'.*[0-9].*',password):
+	print('Access granted')
 else:
-    print(&#39;Access deny&#39;)
-</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A83.png" alt="输出结果1"><br><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A84.png" alt="输出结果2"></p>
-<h3 id="3、-split"><a href="#3、-split" class="headerlink" title="3、$split()$"></a>3、$split()$</h3><pre><code>import re
+	print('Access deny')
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A83.png" alt="输出结果1" /><br />
+<img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A84.png" alt="输出结果2" /></p>
+<h3 id="3-split"><a class="markdownIt-Anchor" href="#3-split"></a> 3、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>p</mi><mi>l</mi><mi>i</mi><mi>t</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">split()</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mclose">)</span></span></span></span></h3>
+<pre><code>import re
 s = &quot;I have a dream that one day&quot;
 ret1 = re.split(&quot;\s&quot;,s)
 print(ret1)
@@ -616,52 +716,68 @@ print(ret5)
 
 ret6 = re.split(&quot;(?:[:,!])&quot;,ss) # 多个切割符并捕获分组，不保留分隔符
 print(ret6)
-</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A85.png" alt="输出结果"></p>
-<h3 id="4、-sub"><a href="#4、-sub" class="headerlink" title="4、$sub()$"></a>4、$sub()$</h3><pre><code>import re
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Re%E5%BA%93%E4%BD%BF%E7%94%A85.png" alt="输出结果" /></p>
+<h3 id="4-sub"><a class="markdownIt-Anchor" href="#4-sub"></a> 4、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>u</mi><mi>b</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">sub()</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal">b</span><span class="mopen">(</span><span class="mclose">)</span></span></span></span></h3>
+<pre><code>import re
 s = &quot;我最喜欢的数字是114514&quot;
-ss = re.sub(r&#39;[0-9]&#39;,&#39;*&#39;,s)
+ss = re.sub(r'[0-9]','*',s)
 print(ss)
 # 输出是&quot;我最喜欢的数字是******&quot;
-</code></pre><h2 id="四、-cv2-库"><a href="#四、-cv2-库" class="headerlink" title="四、$cv2$库"></a>四、$cv2$库</h2><h4 id="必须要写的一点是这个库的安装流程"><a href="#必须要写的一点是这个库的安装流程" class="headerlink" title="必须要写的一点是这个库的安装流程"></a>必须要写的一点是这个库的安装流程</h4><h4 id="首先先检查自己的-Python-版本，本人用的是3-6版本的，直接输入"><a href="#首先先检查自己的-Python-版本，本人用的是3-6版本的，直接输入" class="headerlink" title="首先先检查自己的$Python$版本，本人用的是3.6版本的，直接输入"></a>首先先检查自己的$Python$版本，本人用的是3.6版本的，直接输入</h4><pre><code>pip install opencv-python
-</code></pre><h4 id="会安装失败，报一大堆错误，而且很慢，所以考虑安装老一点的版本然后用国内镜像安装"><a href="#会安装失败，报一大堆错误，而且很慢，所以考虑安装老一点的版本然后用国内镜像安装" class="headerlink" title="会安装失败，报一大堆错误，而且很慢，所以考虑安装老一点的版本然后用国内镜像安装"></a>会安装失败，报一大堆错误，而且很慢，所以考虑安装老一点的版本然后用国内镜像安装</h4><pre><code>pip install -i https://pypi.douban.com/simple/ pip install opencv-python==4.3.0.38
-</code></pre><h4 id="完成安装后就可以调用了"><a href="#完成安装后就可以调用了" class="headerlink" title="完成安装后就可以调用了"></a>完成安装后就可以调用了</h4><h4 id="下面这张图是用来实践-cv2-库的"><a href="#下面这张图是用来实践-cv2-库的" class="headerlink" title="下面这张图是用来实践$cv2$库的"></a>下面这张图是用来实践$cv2$库的</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Assassin&#39;s%20Creed.jpg" alt="使用图片"></p>
-<h3 id="1、读入图像并画出直方图"><a href="#1、读入图像并画出直方图" class="headerlink" title="1、读入图像并画出直方图"></a>1、读入图像并画出直方图</h3><pre><code>import numpy as np
+</code></pre>
+<h2 id="四-cv2库"><a class="markdownIt-Anchor" href="#四-cv2库"></a> 四、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>v</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">cv2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord">2</span></span></span></span>库</h2>
+<h4 id="必须要写的一点是这个库的安装流程"><a class="markdownIt-Anchor" href="#必须要写的一点是这个库的安装流程"></a> 必须要写的一点是这个库的安装流程</h4>
+<h4 id="首先先检查自己的python版本本人用的是36版本的直接输入"><a class="markdownIt-Anchor" href="#首先先检查自己的python版本本人用的是36版本的直接输入"></a> 首先先检查自己的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>y</mi><mi>t</mi><mi>h</mi><mi>o</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">Python</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span></span></span></span>版本，本人用的是3.6版本的，直接输入</h4>
+<pre><code>pip install opencv-python
+</code></pre>
+<h4 id="会安装失败报一大堆错误而且很慢所以考虑安装老一点的版本然后用国内镜像安装"><a class="markdownIt-Anchor" href="#会安装失败报一大堆错误而且很慢所以考虑安装老一点的版本然后用国内镜像安装"></a> 会安装失败，报一大堆错误，而且很慢，所以考虑安装老一点的版本然后用国内镜像安装</h4>
+<pre><code>pip install -i https://pypi.douban.com/simple/ pip install opencv-python==4.3.0.38
+</code></pre>
+<h4 id="完成安装后就可以调用了"><a class="markdownIt-Anchor" href="#完成安装后就可以调用了"></a> 完成安装后就可以调用了</h4>
+<h4 id="下面这张图是用来实践cv2库的"><a class="markdownIt-Anchor" href="#下面这张图是用来实践cv2库的"></a> 下面这张图是用来实践<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>v</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">cv2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord">2</span></span></span></span>库的</h4>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/Assassin's%20Creed.jpg" alt="使用图片" /></p>
+<h3 id="1-读入图像并画出直方图"><a class="markdownIt-Anchor" href="#1-读入图像并画出直方图"></a> 1、读入图像并画出直方图</h3>
+<pre><code>import numpy as np
 import cv2
 from matplotlib import pyplot as plt
-img = cv2.imread(&#39;F:/images/Assassin\&#39;s Creed.jpg&#39;,1)
+img = cv2.imread('F:/images/Assassin\'s Creed.jpg',1)
 plt.hist(img.reshape([-1]),256,[0,256])
 plt.show()
-</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/cv2%E5%BA%93%E4%BD%BF%E7%94%A81.png" alt="效果图"></p>
-<h3 id="2、画出-rgb-三色图像直方图"><a href="#2、画出-rgb-三色图像直方图" class="headerlink" title="2、画出$rgb$三色图像直方图"></a>2、画出$rgb$三色图像直方图</h3><pre><code>import cv2
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/cv2%E5%BA%93%E4%BD%BF%E7%94%A81.png" alt="效果图" /></p>
+<h3 id="2-画出rgb三色图像直方图"><a class="markdownIt-Anchor" href="#2-画出rgb三色图像直方图"></a> 2、画出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>g</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">rgb</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">b</span></span></span></span>三色图像直方图</h3>
+<pre><code>import cv2
 from matplotlib import pyplot as plt
-img = cv2.imread(&#39;F:/images/Assassin\&#39;s Creed.jpg&#39;,1)
-color = (&#39;b&#39;,&#39;g&#39;,&#39;r&#39;)
+img = cv2.imread('F:/images/Assassin\'s Creed.jpg',1)
+color = ('b','g','r')
 for i,col in enumerate(color):
     histr = cv2.calcHist([img],[i],None,[256],[0,256])
     plt.plot(histr,color=col)
     plt.xlim([0,256])
 plt.show()
-</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/cv2%E5%BA%93%E4%BD%BF%E7%94%A82.png" alt="效果图"></p>
-<h3 id="3、画出灰度直方图"><a href="#3、画出灰度直方图" class="headerlink" title="3、画出灰度直方图"></a>3、画出灰度直方图</h3><pre><code>import sys
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/cv2%E5%BA%93%E4%BD%BF%E7%94%A82.png" alt="效果图" /></p>
+<h3 id="3-画出灰度直方图"><a class="markdownIt-Anchor" href="#3-画出灰度直方图"></a> 3、画出灰度直方图</h3>
+<pre><code>import sys
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
 def main():
-    img = cv2.imread(&#39;F:/images/Assassin\&#39;s Creed.jpg&#39;,0)
+    img = cv2.imread('F:/images/Assassin\'s Creed.jpg',0)
     # 得到计算灰度直方图的值
     n = np.array(img)
     xy = xygray(img)
-
+    
     # 画出灰度直方图
     x_range = range(256)
-    plt.plot(x_range,xy,&quot;r&quot;,linewidth=2,c=&#39;black&#39;)
+    plt.plot(x_range,xy,&quot;r&quot;,linewidth=2,c='black')
     # 设置坐标轴的范围
     y_maxValue=np.max(xy)
     plt.axis([0,255,0,y_maxValue])
     # 设置坐标轴标签
-    plt.xlabel(&#39;gray Level&#39;)
-    plt.ylabel(&#39;number of pixels&#39;)
+    plt.xlabel('gray Level')
+    plt.ylabel('number of pixels')
     plt.show()
 
 def xygray(img):
@@ -678,7 +794,8 @@ def xygray(img):
     return xy
 
 main()
-</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/cv2%E5%BA%93%E4%BD%BF%E7%94%A83.png" alt="效果图"></p>
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/cv2%E5%BA%93%E4%BD%BF%E7%94%A83.png" alt="效果图" /></p>
 
     </div>
     
