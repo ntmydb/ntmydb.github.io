@@ -180,17 +180,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #00bcd4">C++</a>
+                <a href="/tags/C/" style="color: #ff7d73">C++</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%88%86%E5%9D%97/" style="color: #00a596">分块</a>
+                <a href="/tags/%E5%88%86%E5%9D%97/" style="color: #03a9f4">分块</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E8%8E%AB%E9%98%9F/" style="color: #03a9f4">莫队</a>
+                <a href="/tags/%E8%8E%AB%E9%98%9F/" style="color: #ff7d73">莫队</a>
             </span>
             
         </span>
@@ -198,37 +198,20 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="莫队算法的模板"><a class="markdownIt-Anchor" href="#莫队算法的模板"></a> 莫队算法的模板</h1>
-<span id="more"></span>
-<h2 id="一-简介"><a class="markdownIt-Anchor" href="#一-简介"></a> 一、简介</h2>
-<h3 id="莫队算法是由莫涛大神提出的一种区间操作的算法这个算法的基础是分块和排序整体复杂度为onsqrt-x"><a class="markdownIt-Anchor" href="#莫队算法是由莫涛大神提出的一种区间操作的算法这个算法的基础是分块和排序整体复杂度为onsqrt-x"></a> 莫队算法是由莫涛大神提出的一种区间操作的算法，这个算法的基础是分块和排序，整体复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><msqrt><mi>x</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\sqrt x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05028em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="padding-left:0.833em;">x</span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
-c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
-c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
-c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
-s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
-c69,-144,104.5,-217.7,106.5,-221
-l0 -0
-c5.3,-9.3,12,-14,20,-14
-H400000v40H845.2724
-s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
-c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></h3>
-<h3 id="这里不细讲莫队的原理细节原理和细节请移步另一篇文章上例题和代码"><a class="markdownIt-Anchor" href="#这里不细讲莫队的原理细节原理和细节请移步另一篇文章上例题和代码"></a> 这里不细讲莫队的原理细节，原理和细节请移步另一篇文章，上例题和代码</h3>
-<h3 id="例题小z的袜子"><a class="markdownIt-Anchor" href="#例题小z的袜子"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1494">例题:小Z的袜子</a></h3>
-<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
-<pre><code>#include &lt;bits/stdc++.h&gt;
+        <h1 id="莫队算法的模板"><a href="#莫队算法的模板" class="headerlink" title="莫队算法的模板"></a>莫队算法的模板</h1><span id="more"></span>
+<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><h3 id="莫队算法是由莫涛大神提出的一种区间操作的算法，这个算法的基础是分块和排序，整体复杂度为-O-n-sqrt-x"><a href="#莫队算法是由莫涛大神提出的一种区间操作的算法，这个算法的基础是分块和排序，整体复杂度为-O-n-sqrt-x" class="headerlink" title="莫队算法是由莫涛大神提出的一种区间操作的算法，这个算法的基础是分块和排序，整体复杂度为$O(n\sqrt x)$"></a>莫队算法是由莫涛大神提出的一种区间操作的算法，这个算法的基础是分块和排序，整体复杂度为$O(n\sqrt x)$</h3><h3 id="这里不细讲莫队的原理细节，原理和细节请移步另一篇文章，上例题和代码"><a href="#这里不细讲莫队的原理细节，原理和细节请移步另一篇文章，上例题和代码" class="headerlink" title="这里不细讲莫队的原理细节，原理和细节请移步另一篇文章，上例题和代码"></a>这里不细讲莫队的原理细节，原理和细节请移步另一篇文章，上例题和代码</h3><h3 id="例题-小Z的袜子"><a href="#例题-小Z的袜子" class="headerlink" title="例题:小Z的袜子"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1494">例题:小Z的袜子</a></h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=100001;
 long long block,n,m,d[N],ans,answer[N][2],cnt[2*N],K;
 struct node
 &#123;
-	long long block_id,l,r,id;
-	bool operator &lt; (const node &amp; ot) const
-	&#123;
-		if(block_id==ot.block_id)
-			return r&lt;ot.r;
-		return block_id&lt;ot.block_id;
-	&#125;
+    long long block_id,l,r,id;
+    bool operator &lt; (const node &amp; ot) const
+    &#123;
+        if(block_id==ot.block_id)
+            return r&lt;ot.r;
+        return block_id&lt;ot.block_id;
+    &#125;
 &#125;que[N],ys[N];
 long long gcd(long long a,long long b)
 &#123;
@@ -237,72 +220,71 @@ long long gcd(long long a,long long b)
 inline void read(long long &amp; a)
 &#123;
     char ch;
-    while(!(((ch=getchar())&gt;='0')&amp;&amp;(ch&lt;='9')));
-    a=ch-'0';
-    while(((ch=getchar())&gt;='0')&amp;&amp;(ch&lt;='9'))(a*=10)+=ch-'0';
+    while(!(((ch=getchar())&gt;=&#39;0&#39;)&amp;&amp;(ch&lt;=&#39;9&#39;)));
+    a=ch-&#39;0&#39;;
+    while(((ch=getchar())&gt;=&#39;0&#39;)&amp;&amp;(ch&lt;=&#39;9&#39;))(a*=10)+=ch-&#39;0&#39;;
 &#125;
 void add(long long x)
 &#123;
-	ans+=cnt[d[x]];
-	cnt[d[x]]++;
-	return;
+    ans+=cnt[d[x]];
+    cnt[d[x]]++;
+    return;
 &#125;
 void del(long long x)
 &#123;
-	if(cnt[d[x]]&gt;1)
-		ans-=cnt[d[x]]-1;
-	cnt[d[x]]--;
-	return;
+    if(cnt[d[x]]&gt;1)
+        ans-=cnt[d[x]]-1;
+    cnt[d[x]]--;
+    return;
 &#125;
 int main()
 &#123;
-	read(n),read(m);
-	for(long long i=1;i&lt;=n;i++)
-		read(d[i]);
-	block=n/sqrt(m*2/3);
-	for(long long i=1;i&lt;=m;i++)
-	&#123;
-		read(que[i].l),read(que[i].r);
-		que[i].id=i;
-		ys[i].l=que[i].l,ys[i].r=que[i].r;
-		if(que[i].l%block==0)
-			que[i].block_id=que[i].l/block;
-		else
-			que[i].block_id=que[i].l/block+1;
-	&#125;
-	sort(que+1,que+1+m);
-	long long l=1,r=0;
-	for(long long i=1;i&lt;=m;i++)
-	&#123;
-		if(que[i].l==que[i].r)
-			continue;
-		while(l&gt;que[i].l)
-			add(--l);
-		while(r&lt;que[i].r)
-			add(++r);
-		while(l&lt;que[i].l)
-			del(l++);
-		while(r&gt;que[i].r)
-			del(r--);
-		answer[que[i].id][0]=ans,answer[que[i].id][1]=(que[i].r-que[i].l+1)*(que[i].r-que[i].l)/2;
-	&#125;
-	for(long long i=1;i&lt;=m;i++)
-	&#123;
-		if(ys[i].l==ys[i].r)
-		&#123;
-			printf(&quot;0/1\n&quot;);
-			continue;
-		&#125;
-		long long g=gcd(answer[i][0],answer[i][1]);
-		if(answer[i][0]!=0)
-			printf(&quot;%lld/%lld\n&quot;,answer[i][0]/g,answer[i][1]/g);
-		else
-			printf(&quot;0/1\n&quot;);
-	&#125;
-	return 0;
+    read(n),read(m);
+    for(long long i=1;i&lt;=n;i++)
+        read(d[i]);
+    block=n/sqrt(m*2/3);
+    for(long long i=1;i&lt;=m;i++)
+    &#123;
+        read(que[i].l),read(que[i].r);
+        que[i].id=i;
+        ys[i].l=que[i].l,ys[i].r=que[i].r;
+        if(que[i].l%block==0)
+            que[i].block_id=que[i].l/block;
+        else
+            que[i].block_id=que[i].l/block+1;
+    &#125;
+    sort(que+1,que+1+m);
+    long long l=1,r=0;
+    for(long long i=1;i&lt;=m;i++)
+    &#123;
+        if(que[i].l==que[i].r)
+            continue;
+        while(l&gt;que[i].l)
+            add(--l);
+        while(r&lt;que[i].r)
+            add(++r);
+        while(l&lt;que[i].l)
+            del(l++);
+        while(r&gt;que[i].r)
+            del(r--);
+        answer[que[i].id][0]=ans,answer[que[i].id][1]=(que[i].r-que[i].l+1)*(que[i].r-que[i].l)/2;
+    &#125;
+    for(long long i=1;i&lt;=m;i++)
+    &#123;
+        if(ys[i].l==ys[i].r)
+        &#123;
+            printf(&quot;0/1\n&quot;);
+            continue;
+        &#125;
+        long long g=gcd(answer[i][0],answer[i][1]);
+        if(answer[i][0]!=0)
+            printf(&quot;%lld/%lld\n&quot;,answer[i][0]/g,answer[i][1]/g);
+        else
+            printf(&quot;0/1\n&quot;);
+    &#125;
+    return 0;
 &#125;
 </code></pre>
-
     </div>
     
     

@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #03a9f4">C++</a>
+                <a href="/tags/C/" style="color: #ffa2c4">C++</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="color: #ffa2c4">并查集</a>
+                <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="color: #03a9f4">并查集</a>
             </span>
             
         </span>
@@ -193,52 +193,48 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="并查集模板"><a class="markdownIt-Anchor" href="#并查集模板"></a> 并查集模板</h1>
-<span id="more"></span>
+        <h1 id="并查集模板"><a href="#并查集模板" class="headerlink" title="并查集模板"></a>并查集模板</h1><span id="more"></span>
 <pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=10001;
 int fa[N],n,m;
 int find(int x)
 &#123;
-	if(fa[x]==x)
-		return x;
-	fa[x]=find(fa[x]);
-	return fa[x];
+    if(fa[x]==x)
+        return x;
+    fa[x]=find(fa[x]);
+    return fa[x];
 &#125;
 void hb(int a,int b)
 &#123;
-	int faa=find(a),fab=find(b);
-	if(faa!=fab)
-		fa[fab]=faa;
-	return;
+    int faa=find(a),fab=find(b);
+    if(faa!=fab)
+        fa[fab]=faa;
+    return;
 &#125;
 int main()
 &#123;
-	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-	for(int i=1;i&lt;=n;i++)
-		fa[i]=i;
-	for(int i=1;i&lt;=m;i++)
-	&#123;
-		int op,x,y;
-		scanf(&quot;%d %d %d&quot;,&amp;op,&amp;x,&amp;y);
-		if(op==1)
-			hb(x,y);
-		else
-		&#123;
-			int faa=find(x),fab=find(y);
-			if(faa==fab)
-				printf(&quot;Y\n&quot;);
-			else
-				printf(&quot;N\n&quot;);
-		&#125;
-	&#125;
-	return 0;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++)
+        fa[i]=i;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int op,x,y;
+        scanf(&quot;%d %d %d&quot;,&amp;op,&amp;x,&amp;y);
+        if(op==1)
+            hb(x,y);
+        else
+        &#123;
+            int faa=find(x),fab=find(y);
+            if(faa==fab)
+                printf(&quot;Y\n&quot;);
+            else
+                printf(&quot;N\n&quot;);
+        &#125;
+    &#125;
+    return 0;
 &#125;
-</code></pre>
-<h4 id="例题"><a class="markdownIt-Anchor" href="#例题"></a> 例题：</h4>
-<h3 id="并查集模板-2"><a class="markdownIt-Anchor" href="#并查集模板-2"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3367">并查集(模板)</a></h3>
-
+</code></pre><h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><h3 id="并查集-模板"><a href="#并查集-模板" class="headerlink" title="并查集(模板)"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3367">并查集(模板)</a></h3>
     </div>
     
     

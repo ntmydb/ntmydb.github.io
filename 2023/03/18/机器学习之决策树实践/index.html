@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/Python/" style="color: #03a9f4">Python</a>
+                <a href="/tags/Python/" style="color: #ffa2c4">Python</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91/" style="color: #00bcd4">决策树</a>
+                <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91/" style="color: #ff7d73">决策树</a>
             </span>
             
         </span>
@@ -193,22 +193,9 @@
     </div>
     
     <div class="content" v-pre>
-        <h4 id="机器学习的第一篇文章第一次从零开始尝试用决策树预测模型"><a class="markdownIt-Anchor" href="#机器学习的第一篇文章第一次从零开始尝试用决策树预测模型"></a> 机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型</h4>
-<span id="more"></span>
-<h4 id="先不得不吐槽一下这门课程的设置讲课很抽象全是理论没有代码讲完理论直接实践很是让我无语上完课给我一种我好想什么都没学的错觉emmm也可能是真的"><a class="markdownIt-Anchor" href="#先不得不吐槽一下这门课程的设置讲课很抽象全是理论没有代码讲完理论直接实践很是让我无语上完课给我一种我好想什么都没学的错觉emmm也可能是真的"></a> 先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm,也可能是真的）</h4>
-<h4 id="吐槽一下感觉舒服多了开始写点实际的"><a class="markdownIt-Anchor" href="#吐槽一下感觉舒服多了开始写点实际的"></a> 吐槽一下感觉舒服多了，开始写点实际的</h4>
-<h4 id="先看看各个数据集吧"><a class="markdownIt-Anchor" href="#先看看各个数据集吧"></a> 先看看各个数据集吧</h4>
-<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%95%B0%E6%8D%AE%E9%9B%86.png" alt="数据集" /><br />
-<img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%B5%8B%E8%AF%95%E9%9B%86.png" alt="测试集" /><br />
-<img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%B5%8B%E8%AF%95%E9%9B%86%E7%AD%94%E6%A1%88.png" alt="测试集" /></p>
-<h4 id="很经典的数据集接下来要用决策树来模拟预测"><a class="markdownIt-Anchor" href="#很经典的数据集接下来要用决策树来模拟预测"></a> 很经典的数据集，接下来要用决策树来模拟预测</h4>
-<h3 id="华丽的分割线"><a class="markdownIt-Anchor" href="#华丽的分割线"></a> ==========================================（华丽的分割线）</h3>
-<h3 id="先进行数据处理"><a class="markdownIt-Anchor" href="#先进行数据处理"></a> 先进行数据处理</h3>
-<h3 id="第一一般实际的数据很少没有缺失值的所以要考虑把缺失值补上"><a class="markdownIt-Anchor" href="#第一一般实际的数据很少没有缺失值的所以要考虑把缺失值补上"></a> 第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；</h3>
-<h3 id="第二决策树训练需要特征值也就是将特征值处理出来有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助"><a class="markdownIt-Anchor" href="#第二决策树训练需要特征值也就是将特征值处理出来有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助"></a> 第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；</h3>
-<h3 id="第三决策树的特征值只能是小数或者是整数因此字符串的特征值需要进行映射处理"><a class="markdownIt-Anchor" href="#第三决策树的特征值只能是小数或者是整数因此字符串的特征值需要进行映射处理"></a> 第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理</h3>
-<h3 id="以上面数据为例"><a class="markdownIt-Anchor" href="#以上面数据为例"></a> 以上面数据为例：</h3>
-<font size="4">
+        <h4 id="机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型"><a href="#机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型" class="headerlink" title="机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型"></a>机器学习的第一篇文章，第一次从零开始尝试用决策树预测模型</h4><span id="more"></span>
+<h4 id="先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm-也可能是真的）"><a href="#先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm-也可能是真的）" class="headerlink" title="先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm,也可能是真的）"></a>先不得不吐槽一下这门课程的设置，讲课很抽象，全是理论，没有代码，讲完理论直接实践，很是让我无语，上完课给我一种我好想什么都没学的错觉（emmm,也可能是真的）</h4><h4 id="吐槽一下感觉舒服多了，开始写点实际的"><a href="#吐槽一下感觉舒服多了，开始写点实际的" class="headerlink" title="吐槽一下感觉舒服多了，开始写点实际的"></a>吐槽一下感觉舒服多了，开始写点实际的</h4><h4 id="先看看各个数据集吧"><a href="#先看看各个数据集吧" class="headerlink" title="先看看各个数据集吧"></a>先看看各个数据集吧</h4><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%95%B0%E6%8D%AE%E9%9B%86.png" alt="数据集"><br><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%B5%8B%E8%AF%95%E9%9B%86.png" alt="测试集"><br><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E4%B8%80%E6%B5%8B%E8%AF%95%E9%9B%86%E7%AD%94%E6%A1%88.png" alt="测试集"></p>
+<h4 id="很经典的数据集，接下来要用决策树来模拟预测"><a href="#很经典的数据集，接下来要用决策树来模拟预测" class="headerlink" title="很经典的数据集，接下来要用决策树来模拟预测"></a>很经典的数据集，接下来要用决策树来模拟预测</h4><h3 id="（华丽的分割线）"><a href="#（华丽的分割线）" class="headerlink" title="==========================================（华丽的分割线）"></a>==========================================（华丽的分割线）</h3><h3 id="先进行数据处理"><a href="#先进行数据处理" class="headerlink" title="先进行数据处理"></a>先进行数据处理</h3><h3 id="第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；"><a href="#第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；" class="headerlink" title="第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；"></a>第一，一般实际的数据很少没有缺失值的，所以要考虑把缺失值补上；</h3><h3 id="第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；"><a href="#第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；" class="headerlink" title="第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；"></a>第二，决策树训练需要特征值，也就是将特征值处理出来，有些字段不仅很难处理成特征值而且即使处理后也对训练模型没有多大帮助；</h3><h3 id="第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理"><a href="#第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理" class="headerlink" title="第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理"></a>第三，决策树的特征值只能是小数或者是整数，因此字符串的特征值需要进行映射处理</h3><h3 id="以上面数据为例："><a href="#以上面数据为例：" class="headerlink" title="以上面数据为例："></a>以上面数据为例：</h3><font size="4">
 1. Name这个特征很杂很散，而且是字符串，很难映射成数值，因此抛弃掉。 <br/>
 2. Sex这个特征值虽然是字符串，但只有两种，很好映射，因此保留并映射成0和1。<br/>
 3. Age这个特征值很明显有空缺，然后根据大佬推荐用其他Age的平均值补上空缺。 <br/>
@@ -218,8 +205,8 @@
 7. Cabin数据缺失值很多，而且也是字符串型的特征值，舍弃 <br/>
 8. Embarked只有C,S,Q三种字符，可以映射后当做特征值，保留<br/>
 </font>
-<h3 id="这是初步的想法在kaggle上看了一下别人的数据处理方式深有体会别人的处理方法可以保留更多信息下面是他们的处理方法"><a class="markdownIt-Anchor" href="#这是初步的想法在kaggle上看了一下别人的数据处理方式深有体会别人的处理方法可以保留更多信息下面是他们的处理方法"></a> 这是初步的想法，在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>a</mi><mi>g</mi><mi>g</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Kaggle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span>上看了一下别人的数据处理方式，深有体会，别人的处理方法可以保留更多信息，下面是他们的处理方法</h3>
-<font size="4">
+
+<h3 id="这是初步的想法，在-Kaggle-上看了一下别人的数据处理方式，深有体会，别人的处理方法可以保留更多信息，下面是他们的处理方法"><a href="#这是初步的想法，在-Kaggle-上看了一下别人的数据处理方式，深有体会，别人的处理方法可以保留更多信息，下面是他们的处理方法" class="headerlink" title="这是初步的想法，在$Kaggle$上看了一下别人的数据处理方式，深有体会，别人的处理方法可以保留更多信息，下面是他们的处理方法"></a>这是初步的想法，在$Kaggle$上看了一下别人的数据处理方式，深有体会，别人的处理方法可以保留更多信息，下面是他们的处理方法</h3><font size="4">
 1. Name这个特征虽然很复杂，但是英文名往往会有头衔，如Mr、Mrs、Master等，可以抽象出来成一个特征。 <br/>
 2. Sex这个特征值虽然是字符串，但只有两种，很好映射，因此保留并映射成0和1。<br/>
 3. Age这个特征值很明显有空缺，用平均值补全。 <br/>
@@ -229,97 +216,80 @@
 7. Cabin数据缺失值很多，但我们可以抽取出HasCabin特征，如果有，则为1，否则为0 <br/>
 8. Embarked只有C,S,Q三种字符，可以映射后当做特征值，保留<br/>
 </font>
-<h3 id="还有一点就是上面的测试集答案即gender_submissioncsv是用来提示你输出格式的不代表真正答案因此剪枝的时候我们从训练集也就是traincsv分割出一部分用来后剪枝"><a class="markdownIt-Anchor" href="#还有一点就是上面的测试集答案即gender_submissioncsv是用来提示你输出格式的不代表真正答案因此剪枝的时候我们从训练集也就是traincsv分割出一部分用来后剪枝"></a> 还有一点就是上面的测试集答案即gender_submission.csv是用来提示你输出格式的，不代表真正答案，因此剪枝的时候，我们从训练集，也就是train.csv分割出一部分用来后剪枝</h3>
-<h3 id="下面用决策树解决这个问题分两种写法一种是用sklearn库来解决的很简便正确率很高一种是我自己手模的决策树解决的很长正确率不高"><a class="markdownIt-Anchor" href="#下面用决策树解决这个问题分两种写法一种是用sklearn库来解决的很简便正确率很高一种是我自己手模的决策树解决的很长正确率不高"></a> 下面用决策树解决这个问题，分两种写法，一种是用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sklearn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span></span></span></span>库来解决的，很简便，正确率很高，一种是我自己手模的决策树解决的，很长，正确率不高</h3>
-<h2 id="一-sklearn库解决"><a class="markdownIt-Anchor" href="#一-sklearn库解决"></a> 一、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sklearn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span></span></span></span>库解决</h2>
-<h3 id="python处理数据代码段如下"><a class="markdownIt-Anchor" href="#python处理数据代码段如下"></a> Python处理数据代码段如下：</h3>
-<pre><code>def load_data():
-    train=pd.read_csv('F:/机器学习/titanic/train.csv')
-    test=pd.read_csv('F:/机器学习/titanic/test.csv')
-    true=pd.read_csv('F:/机器学习/titanic/gender_submission.csv')
-	# 处理数据
-    x_train=train[['Pclass','Sex','Age']]
-    y_train=train['Survived']
-    x_test = test[['Pclass', 'Sex', 'Age']]
-    y_true=true['Survived']
-	# 填补缺失值
-	x_train['Age'].fillna(x_train['Age'].mean(),inplace=True)
-	x_test['Age'].fillna(x_test['Age'].mean(), inplace=True)
-	# 字典处理
-	dict=DictVectorizer(sparse=False)
-	X_train=dict.fit_transform(x_train.to_dict(orient='record'))
-	X_test=dict.transform(x_test.to_dict(orient='record'))
-	return X_train,X_test,y_train,y_true
-</code></pre>
-<h4 id="处理完了数据就可以开始训练模型了"><a class="markdownIt-Anchor" href="#处理完了数据就可以开始训练模型了"></a> 处理完了数据，就可以开始训练模型了</h4>
-<pre><code>from sklearn import tree
+
+<h3 id="还有一点就是上面的测试集答案即gender-submission-csv是用来提示你输出格式的，不代表真正答案，因此剪枝的时候，我们从训练集，也就是train-csv分割出一部分用来后剪枝"><a href="#还有一点就是上面的测试集答案即gender-submission-csv是用来提示你输出格式的，不代表真正答案，因此剪枝的时候，我们从训练集，也就是train-csv分割出一部分用来后剪枝" class="headerlink" title="还有一点就是上面的测试集答案即gender_submission.csv是用来提示你输出格式的，不代表真正答案，因此剪枝的时候，我们从训练集，也就是train.csv分割出一部分用来后剪枝"></a>还有一点就是上面的测试集答案即gender_submission.csv是用来提示你输出格式的，不代表真正答案，因此剪枝的时候，我们从训练集，也就是train.csv分割出一部分用来后剪枝</h3><h3 id="下面用决策树解决这个问题，分两种写法，一种是用-sklearn-库来解决的，很简便，正确率很高，一种是我自己手模的决策树解决的，很长，正确率不高"><a href="#下面用决策树解决这个问题，分两种写法，一种是用-sklearn-库来解决的，很简便，正确率很高，一种是我自己手模的决策树解决的，很长，正确率不高" class="headerlink" title="下面用决策树解决这个问题，分两种写法，一种是用$sklearn$库来解决的，很简便，正确率很高，一种是我自己手模的决策树解决的，很长，正确率不高"></a>下面用决策树解决这个问题，分两种写法，一种是用$sklearn$库来解决的，很简便，正确率很高，一种是我自己手模的决策树解决的，很长，正确率不高</h3><h2 id="一、-sklearn-库解决"><a href="#一、-sklearn-库解决" class="headerlink" title="一、$sklearn$库解决"></a>一、$sklearn$库解决</h2><h3 id="Python处理数据代码段如下："><a href="#Python处理数据代码段如下：" class="headerlink" title="Python处理数据代码段如下："></a>Python处理数据代码段如下：</h3><pre><code>def load_data():
+    train=pd.read_csv(&#39;F:/机器学习/titanic/train.csv&#39;)
+    test=pd.read_csv(&#39;F:/机器学习/titanic/test.csv&#39;)
+    true=pd.read_csv(&#39;F:/机器学习/titanic/gender_submission.csv&#39;)
+    # 处理数据
+    x_train=train[[&#39;Pclass&#39;,&#39;Sex&#39;,&#39;Age&#39;]]
+    y_train=train[&#39;Survived&#39;]
+    x_test = test[[&#39;Pclass&#39;, &#39;Sex&#39;, &#39;Age&#39;]]
+    y_true=true[&#39;Survived&#39;]
+    # 填补缺失值
+    x_train[&#39;Age&#39;].fillna(x_train[&#39;Age&#39;].mean(),inplace=True)
+    x_test[&#39;Age&#39;].fillna(x_test[&#39;Age&#39;].mean(), inplace=True)
+    # 字典处理
+    dict=DictVectorizer(sparse=False)
+    X_train=dict.fit_transform(x_train.to_dict(orient=&#39;record&#39;))
+    X_test=dict.transform(x_test.to_dict(orient=&#39;record&#39;))
+    return X_train,X_test,y_train,y_true
+</code></pre><h4 id="处理完了数据，就可以开始训练模型了"><a href="#处理完了数据，就可以开始训练模型了" class="headerlink" title="处理完了数据，就可以开始训练模型了"></a>处理完了数据，就可以开始训练模型了</h4><pre><code>from sklearn import tree
 from sklearn.metrics import f1_score, accuracy_score, plot_confusion_matrix
 
 X_train,X_test,Y_train,Y_test = load_data()
 clf = tree.DecisionTreeClassifier(random_state=2021,max_depth=5)
 clf = clf.fit(X_train,Y_train)
-</code></pre>
-<h4 id="然后写一个评价函数来看看预测正确率是多少"><a class="markdownIt-Anchor" href="#然后写一个评价函数来看看预测正确率是多少"></a> 然后写一个评价函数来看看预测正确率是多少</h4>
-<pre><code>def eval(clf,X_train, X_test, y_train, y_test):
+</code></pre><h4 id="然后写一个评价函数来看看预测正确率是多少"><a href="#然后写一个评价函数来看看预测正确率是多少" class="headerlink" title="然后写一个评价函数来看看预测正确率是多少"></a>然后写一个评价函数来看看预测正确率是多少</h4><pre><code>def eval(clf,X_train, X_test, y_train, y_test):
     predicted = clf.predict(X_train)  # 模型预测
     accuracy = accuracy_score(y_train, predicted)
     print(&quot;训练集准确率&quot;, accuracy)
-    f1 = f1_score(y_train, predicted,average='macro')
+    f1 = f1_score(y_train, predicted,average=&#39;macro&#39;)
     print(&quot;训练集f1_score&quot;, f1)
-    
+
     predicted = clf.predict(X_test)  
     accuracy = accuracy_score(y_test, predicted)
     print(&quot;测试集准确率&quot;, accuracy)
-    f1 = f1_score(y_test, predicted,average='macro')
+    f1 = f1_score(y_test, predicted,average=&#39;macro&#39;)
     print(&quot;测试集f1_score&quot;, f1)
-    
+
     plot_confusion_matrix(clf, X_test, y_test,cmap=&quot;GnBu&quot;) 
-</code></pre>
-<h4 id="执行函数"><a class="markdownIt-Anchor" href="#执行函数"></a> 执行函数</h4>
-<pre><code>eval(clf,X_train, X_test, Y_train, Y_test)
-</code></pre>
-<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E4%B8%80%E8%B0%83%E5%BA%93%E7%BB%93%E6%9E%9C.jpg" alt="预测结果" /></p>
-<h4 id="可以看到准确率很高很好很强大"><a class="markdownIt-Anchor" href="#可以看到准确率很高很好很强大"></a> 可以看到准确率很高，很好，很强大。</h4>
-<h4 id="最后把决策树的树形画出来"><a class="markdownIt-Anchor" href="#最后把决策树的树形画出来"></a> 最后把决策树的树形画出来：</h4>
-<pre><code>from sklearn.tree import DecisionTreeClassifier,export_graphviz
+</code></pre><h4 id="执行函数"><a href="#执行函数" class="headerlink" title="执行函数"></a>执行函数</h4><pre><code>eval(clf,X_train, X_test, Y_train, Y_test)
+</code></pre><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E4%B8%80%E8%B0%83%E5%BA%93%E7%BB%93%E6%9E%9C.jpg" alt="预测结果"></p>
+<h4 id="可以看到准确率很高，很好，很强大。"><a href="#可以看到准确率很高，很好，很强大。" class="headerlink" title="可以看到准确率很高，很好，很强大。"></a>可以看到准确率很高，很好，很强大。</h4><h4 id="最后把决策树的树形画出来："><a href="#最后把决策树的树形画出来：" class="headerlink" title="最后把决策树的树形画出来："></a>最后把决策树的树形画出来：</h4><pre><code>from sklearn.tree import DecisionTreeClassifier,export_graphviz
 import graphviz
 from graphviz import Digraph
 dot_data = tree.export_graphviz(clf, out_file=None) 
 graph = graphviz.Source(dot_data) 
 graph.render(&quot;F:/机器学习/demo&quot;) 
-</code></pre>
-<p><a href="https://raw.githubusercontent.com/ntmydb/blog_profile/main/demo.pdf" target="_blank" >demo.pdf</a><br/></p>
-<h2 id="二-手模决策树解决"><a class="markdownIt-Anchor" href="#二-手模决策树解决"></a> 二、手模决策树解决</h2>
-<h3 id="1-前置使用库"><a class="markdownIt-Anchor" href="#1-前置使用库"></a> 1、前置使用库</h3>
-<pre><code>from math import log,inf
+</code></pre><p><a href="https://raw.githubusercontent.com/ntmydb/blog_profile/main/demo.pdf" target="_blank" >demo.pdf</a><br/></p>
+<h2 id="二、手模决策树解决"><a href="#二、手模决策树解决" class="headerlink" title="二、手模决策树解决"></a>二、手模决策树解决</h2><h3 id="1、前置使用库"><a href="#1、前置使用库" class="headerlink" title="1、前置使用库"></a>1、前置使用库</h3><pre><code>from math import log,inf
 import operator
 import numpy as np
 import pandas as pd
 import copy
-</code></pre>
-<h3 id="2-数据集处理"><a class="markdownIt-Anchor" href="#2-数据集处理"></a> 2、数据集处理</h3>
-<pre><code>def get_title(name):
-    title_search = re.search('([A-Za-z]+)\.',name)
+</code></pre><h3 id="2、数据集处理"><a href="#2、数据集处理" class="headerlink" title="2、数据集处理"></a>2、数据集处理</h3><pre><code>def get_title(name):
+    title_search = re.search(&#39;([A-Za-z]+)\.&#39;,name)
     if title_search:
         return title_search.group(1)
     return &quot;&quot;
 def load_data():
-    train=pd.read_csv('F:/机器学习/titanic/train.csv')
-    test=pd.read_csv('F:/机器学习/titanic/test.csv')
-    true=pd.read_csv('F:/机器学习/titanic/gender_submission.csv')
-    train_y = train['Survived']
+    train=pd.read_csv(&#39;F:/机器学习/titanic/train.csv&#39;)
+    test=pd.read_csv(&#39;F:/机器学习/titanic/test.csv&#39;)
+    true=pd.read_csv(&#39;F:/机器学习/titanic/gender_submission.csv&#39;)
+    train_y = train[&#39;Survived&#39;]
     train.drop([&quot;PassengerId&quot;,&quot;Ticket&quot;,&quot;Survived&quot;],axis=1,inplace=True)
     test.drop([&quot;PassengerId&quot;,&quot;Ticket&quot;],axis=1,inplace=True)
     train[&quot;Title&quot;]=train[&quot;Name&quot;].apply(get_title)
-    train[&quot;Title&quot;]=train[&quot;Title&quot;].replace(['Lady','Countess','Capt','Col','Don','Dr','Major','Rev','Sir','Jonkheer','Dona'],'Rare')
-    train[&quot;Title&quot;]=train[&quot;Title&quot;].replace('Mlle','Miss')
-    train[&quot;Title&quot;]=train[&quot;Title&quot;].replace('Ms','Miss')
-    train[&quot;Title&quot;]=train[&quot;Title&quot;].replace('Mme','Mrs')
+    train[&quot;Title&quot;]=train[&quot;Title&quot;].replace([&#39;Lady&#39;,&#39;Countess&#39;,&#39;Capt&#39;,&#39;Col&#39;,&#39;Don&#39;,&#39;Dr&#39;,&#39;Major&#39;,&#39;Rev&#39;,&#39;Sir&#39;,&#39;Jonkheer&#39;,&#39;Dona&#39;],&#39;Rare&#39;)
+    train[&quot;Title&quot;]=train[&quot;Title&quot;].replace(&#39;Mlle&#39;,&#39;Miss&#39;)
+    train[&quot;Title&quot;]=train[&quot;Title&quot;].replace(&#39;Ms&#39;,&#39;Miss&#39;)
+    train[&quot;Title&quot;]=train[&quot;Title&quot;].replace(&#39;Mme&#39;,&#39;Mrs&#39;)
     test[&quot;Title&quot;]=test[&quot;Name&quot;].apply(get_title)
-    test[&quot;Title&quot;]=test[&quot;Title&quot;].replace(['Lady','Countess','Capt','Col','Don','Dr','Major','Rev','Sir','Jonkheer','Dona'],'Rare')
-    test[&quot;Title&quot;]=test[&quot;Title&quot;].replace('Mlle','Miss')
-    test[&quot;Title&quot;]=test[&quot;Title&quot;].replace('Ms','Miss')
-    test[&quot;Title&quot;]=test[&quot;Title&quot;].replace('Mme','Mrs')
+    test[&quot;Title&quot;]=test[&quot;Title&quot;].replace([&#39;Lady&#39;,&#39;Countess&#39;,&#39;Capt&#39;,&#39;Col&#39;,&#39;Don&#39;,&#39;Dr&#39;,&#39;Major&#39;,&#39;Rev&#39;,&#39;Sir&#39;,&#39;Jonkheer&#39;,&#39;Dona&#39;],&#39;Rare&#39;)
+    test[&quot;Title&quot;]=test[&quot;Title&quot;].replace(&#39;Mlle&#39;,&#39;Miss&#39;)
+    test[&quot;Title&quot;]=test[&quot;Title&quot;].replace(&#39;Ms&#39;,&#39;Miss&#39;)
+    test[&quot;Title&quot;]=test[&quot;Title&quot;].replace(&#39;Mme&#39;,&#39;Mrs&#39;)
     title_mapping = &#123;&quot;Mr&quot;:1,&quot;Master&quot;:2,&quot;Mrs&quot;:3,&quot;Miss&quot;:4,&quot;Rare&quot;:5&#125;
     train[&quot;Title&quot;]=train[&quot;Title&quot;].map(title_mapping)
     train[&quot;Title&quot;]=train[&quot;Title&quot;].fillna(0)
@@ -337,7 +307,7 @@ def load_data():
     test[&quot;IsAlone&quot;]=(train.FamilySize==1).astype(&quot;int&quot;)
     train.drop([&quot;SibSp&quot;,&quot;Parch&quot;,&quot;Cabin&quot;],axis=1,inplace=True)
     test.drop([&quot;SibSp&quot;,&quot;Parch&quot;,&quot;Cabin&quot;],axis=1,inplace=True)
-    test_y = true['Survived']
+    test_y = true[&#39;Survived&#39;]
     dict1 = &#123;&quot;S&quot;:0,&quot;C&quot;:1,&quot;Q&quot;:2&#125;
     train.Embarked = train.Embarked.map(dict1)
     test.Embarked = test.Embarked.map(dict1)
@@ -388,10 +358,7 @@ def load_data():
             one_case.append(test_y[i])
             true_test.append(one_case)
     return labels,train_dataset,test_dataset,true_test,test_y
-</code></pre>
-<h4 id="最后处理出来的labels是训练集的各种标签train_dataset是训练集test_dataset是用来后剪枝的训练集true_test是真正的测试集test_y是gender_submission的答案"><a class="markdownIt-Anchor" href="#最后处理出来的labels是训练集的各种标签train_dataset是训练集test_dataset是用来后剪枝的训练集true_test是真正的测试集test_y是gender_submission的答案"></a> 最后处理出来的labels是训练集的各种标签，train_dataset是训练集，test_dataset是用来后剪枝的训练集，true_test是真正的测试集，test_y是gender_submission的答案</h4>
-<h3 id="3-决策树具体实现代码"><a class="markdownIt-Anchor" href="#3-决策树具体实现代码"></a> 3、决策树具体实现代码</h3>
-<pre><code>def calcShannonEnt(dataSet): # 计算香农熵
+</code></pre><h4 id="最后处理出来的labels是训练集的各种标签，train-dataset是训练集，test-dataset是用来后剪枝的训练集，true-test是真正的测试集，test-y是gender-submission的答案"><a href="#最后处理出来的labels是训练集的各种标签，train-dataset是训练集，test-dataset是用来后剪枝的训练集，true-test是真正的测试集，test-y是gender-submission的答案" class="headerlink" title="最后处理出来的labels是训练集的各种标签，train_dataset是训练集，test_dataset是用来后剪枝的训练集，true_test是真正的测试集，test_y是gender_submission的答案"></a>最后处理出来的labels是训练集的各种标签，train_dataset是训练集，test_dataset是用来后剪枝的训练集，true_test是真正的测试集，test_y是gender_submission的答案</h4><h3 id="3、决策树具体实现代码"><a href="#3、决策树具体实现代码" class="headerlink" title="3、决策树具体实现代码"></a>3、决策树具体实现代码</h3><pre><code>def calcShannonEnt(dataSet): # 计算香农熵
     numEntries = len(dataSet)
     labelCounts = &#123;&#125;
     for featVec in dataSet:
@@ -415,9 +382,9 @@ def splitDataSet(dataSet,axis,value): # 这部分是处理离散值的分割数�
             retDataSet.append(reducedFeatVec)
     return retDataSet
 
-def splitDataSet_c(dataSet,axis,value,LorR='L'): # 这部分是处理连续值的分割数据集
+def splitDataSet_c(dataSet,axis,value,LorR=&#39;L&#39;): # 这部分是处理连续值的分割数据集
     retDataSet = []
-    if LorR == 'L':
+    if LorR == &#39;L&#39;:
         for featVec in dataSet:
             if float(featVec[axis]) &lt; value: # value 是为了分割数据集选定的一个数
                 retDataSet.append(featVec)
@@ -449,8 +416,8 @@ def chooseBestFeatureToSplit(dataSet,labelProperty):
             minEntropy = inf
             for j in range(len(sortedUniqueVals) - 1):
                 partValue = (float(sortedUniqueVals[j]) + float(sortedUniqueVals[j + 1]))/2 # 分割值取两个数的平均值
-                dataSetLeft = splitDataSet_c(dataSet,i,partValue,'L') # 分割左右数据集
-                dataSetRight = splitDataSet_c(dataSet,i,partValue,'R')
+                dataSetLeft = splitDataSet_c(dataSet,i,partValue,&#39;L&#39;) # 分割左右数据集
+                dataSetRight = splitDataSet_c(dataSet,i,partValue,&#39;R&#39;)
                 probLeft = len(dataSetLeft)/float(len(dataSet))
                 probRight = len(dataSetRight)/float(len(dataSet))
                 Entropy = probLeft*calcShannonEnt(dataSetLeft) + probRight*calcShannonEnt(dataSetRight)
@@ -497,20 +464,20 @@ def createTree(dataSet,labels,labelProperty,depth,maxdepth): #这里也加了一
             subLabelsProperty = labelPropertyNew[:]
             myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet,bestFeat,value),subLabels,subLabelsProperty,depth+1,maxdepth)
     else:
-        bestFeatLabel = labels[bestFeat] + '&lt;' + str(bestPartValue)
+        bestFeatLabel = labels[bestFeat] + &#39;&lt;&#39; + str(bestPartValue)
         myTree = &#123;bestFeatLabel:&#123;&#125;&#125;
         subLabels = labels[:]
         subLabelProperty = labelProperty[:]
-        valueLeft = '1'
-        myTree[bestFeatLabel][valueLeft] = createTree(splitDataSet_c(dataSet,bestFeat,bestPartValue,'L'),subLabels,subLabelProperty,depth+1,maxdepth)
-        valueRight = '0'
-        myTree[bestFeatLabel][valueRight] = createTree(splitDataSet_c(dataSet,bestFeat,bestPartValue,'R'),subLabels,subLabelProperty,depth+1,maxdepth)
+        valueLeft = &#39;1&#39;
+        myTree[bestFeatLabel][valueLeft] = createTree(splitDataSet_c(dataSet,bestFeat,bestPartValue,&#39;L&#39;),subLabels,subLabelProperty,depth+1,maxdepth)
+        valueRight = &#39;0&#39;
+        myTree[bestFeatLabel][valueRight] = createTree(splitDataSet_c(dataSet,bestFeat,bestPartValue,&#39;R&#39;),subLabels,subLabelProperty,depth+1,maxdepth)
     return myTree
 
 def classify(inputTree,featLabels,featLabelProperty,testVec):
     firstStr = list(inputTree.keys())[0]
     firstLabel = firstStr
-    lessIndex = str(firstStr).find('&lt;')
+    lessIndex = str(firstStr).find(&#39;&lt;&#39;)
     if lessIndex &gt; -1: # 如果找到了小于号，说明这是个离散值处理
         firstLabel = str(firstStr)[:lessIndex]
     secondDict = inputTree[firstStr]
@@ -519,26 +486,24 @@ def classify(inputTree,featLabels,featLabelProperty,testVec):
     for key in secondDict.keys():
         if featLabelProperty[featIndex] == 0: # 离散值
             if testVec[featIndex] == key:
-                if type(secondDict[key]).__name__ == 'dict':
+                if type(secondDict[key]).__name__ == &#39;dict&#39;:
                     classLabel = classify(secondDict[key],featLabels,featLabelProperty,testVec)
                 else:
                     classLabel = secondDict[key]
         else: # 连续值
             partValue = float(str(firstStr)[lessIndex + 1:])
             if testVec[featIndex] &lt; partValue:
-                if type(secondDict['1']).__name__ == 'dict':
-                    classLabel = classify(secondDict['1'],featLabels,featLabelProperty,testVec)
+                if type(secondDict[&#39;1&#39;]).__name__ == &#39;dict&#39;:
+                    classLabel = classify(secondDict[&#39;1&#39;],featLabels,featLabelProperty,testVec)
                 else:
-                    classLabel = secondDict['1']
+                    classLabel = secondDict[&#39;1&#39;]
             else:
-                if type(secondDict['0']).__name__ == 'dict':
-                    classLabel = classify(secondDict['0'],featLabels,featLabelProperty,testVec)
+                if type(secondDict[&#39;0&#39;]).__name__ == &#39;dict&#39;:
+                    classLabel = classify(secondDict[&#39;0&#39;],featLabels,featLabelProperty,testVec)
                 else:
-                    classLabel = secondDict['0']
+                    classLabel = secondDict[&#39;0&#39;]
     return classLabel
-</code></pre>
-<h3 id="4-预测准确率"><a class="markdownIt-Anchor" href="#4-预测准确率"></a> 4、预测准确率</h3>
-<pre><code>labels,train,test,true = load_data()
+</code></pre><h3 id="4、预测准确率"><a href="#4、预测准确率" class="headerlink" title="4、预测准确率"></a>4、预测准确率</h3><pre><code>labels,train,test,true = load_data()
 labelProperty = [0,0,1,1,0]
 Trees = createTree(train,labels,labelProperty)
 predict = []
@@ -547,15 +512,13 @@ for test_data in test:
     predict.append(result)
 right = 0
 for i in range(len(predict)):
-    if predict[i] == true['Survived'][i]:
+    if predict[i] == true[&#39;Survived&#39;][i]:
         right += 1
 print(float(right)/float(len(predict)))
-</code></pre>
-<h4 id="最后的正确率为07631578947368421不高不咋地但是再仔细观察一下数据集训练数据集和测试数据集里面男性极大部分都死了女性极大部分都活下来了所以只要一开始根据性别分类就可以极大提高正确率也就是说这次数据并不能说明这个决策树的性能所以进行一次后剪枝"><a class="markdownIt-Anchor" href="#最后的正确率为07631578947368421不高不咋地但是再仔细观察一下数据集训练数据集和测试数据集里面男性极大部分都死了女性极大部分都活下来了所以只要一开始根据性别分类就可以极大提高正确率也就是说这次数据并不能说明这个决策树的性能所以进行一次后剪枝"></a> 最后的正确率为：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.7631578947368421</mn></mrow><annotation encoding="application/x-tex">0.7631578947368421</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">7</span><span class="mord">6</span><span class="mord">3</span><span class="mord">1</span><span class="mord">5</span><span class="mord">7</span><span class="mord">8</span><span class="mord">9</span><span class="mord">4</span><span class="mord">7</span><span class="mord">3</span><span class="mord">6</span><span class="mord">8</span><span class="mord">4</span><span class="mord">2</span><span class="mord">1</span></span></span></span>，不高，不咋地，但是再仔细观察一下数据集，训练数据集和测试数据集里面男性极大部分都死了，女性极大部分都活下来了，所以只要一开始根据性别分类就可以极大提高正确率，也就是说这次数据并不能说明这个决策树的性能，所以进行一次后剪枝</h4>
-<pre><code>def classify(inputTree,featLabels,featLabelProperty,testVec):
+</code></pre><h4 id="最后的正确率为：-0-7631578947368421-，不高，不咋地，但是再仔细观察一下数据集，训练数据集和测试数据集里面男性极大部分都死了，女性极大部分都活下来了，所以只要一开始根据性别分类就可以极大提高正确率，也就是说这次数据并不能说明这个决策树的性能，所以进行一次后剪枝"><a href="#最后的正确率为：-0-7631578947368421-，不高，不咋地，但是再仔细观察一下数据集，训练数据集和测试数据集里面男性极大部分都死了，女性极大部分都活下来了，所以只要一开始根据性别分类就可以极大提高正确率，也就是说这次数据并不能说明这个决策树的性能，所以进行一次后剪枝" class="headerlink" title="最后的正确率为：$0.7631578947368421$，不高，不咋地，但是再仔细观察一下数据集，训练数据集和测试数据集里面男性极大部分都死了，女性极大部分都活下来了，所以只要一开始根据性别分类就可以极大提高正确率，也就是说这次数据并不能说明这个决策树的性能，所以进行一次后剪枝"></a>最后的正确率为：$0.7631578947368421$，不高，不咋地，但是再仔细观察一下数据集，训练数据集和测试数据集里面男性极大部分都死了，女性极大部分都活下来了，所以只要一开始根据性别分类就可以极大提高正确率，也就是说这次数据并不能说明这个决策树的性能，所以进行一次后剪枝</h4><pre><code>def classify(inputTree,featLabels,featLabelProperty,testVec):
     firstStr = list(inputTree.keys())[0]
     firstLabel = firstStr
-    lessIndex = str(firstStr).find('&lt;')
+    lessIndex = str(firstStr).find(&#39;&lt;&#39;)
     if lessIndex &gt; -1: # 如果找到了小于号，说明这是个连续值处理
         firstLabel = str(firstStr)[:lessIndex]
     secondDict = inputTree[firstStr]
@@ -564,22 +527,22 @@ print(float(right)/float(len(predict)))
     for key in secondDict.keys():
         if featLabelProperty[featIndex] == 0: # 离散值
             if testVec[featIndex] == key:
-                if type(secondDict[key]).__name__ == 'dict':
+                if type(secondDict[key]).__name__ == &#39;dict&#39;:
                     classLabel = classify(secondDict[key],featLabels,featLabelProperty,testVec)
                 else:
                     classLabel = secondDict[key]
         else: # 连续值
             partValue = float(str(firstStr)[lessIndex + 1:])
             if testVec[featIndex] &lt; partValue:
-                if type(secondDict['1']).__name__ == 'dict':
-                    classLabel = classify(secondDict['1'],featLabels,featLabelProperty,testVec)
+                if type(secondDict[&#39;1&#39;]).__name__ == &#39;dict&#39;:
+                    classLabel = classify(secondDict[&#39;1&#39;],featLabels,featLabelProperty,testVec)
                 else:
-                    classLabel = secondDict['1']
+                    classLabel = secondDict[&#39;1&#39;]
             else:
-                if type(secondDict['0']).__name__ == 'dict':
-                    classLabel = classify(secondDict['0'],featLabels,featLabelProperty,testVec)
+                if type(secondDict[&#39;0&#39;]).__name__ == &#39;dict&#39;:
+                    classLabel = classify(secondDict[&#39;0&#39;],featLabels,featLabelProperty,testVec)
                 else:
-                    classLabel = secondDict['0']
+                    classLabel = secondDict[&#39;0&#39;]
     return classLabel
 #测试决策树正确率
 def testing(myTree,data_test,labels,labelProperty):
@@ -587,7 +550,7 @@ def testing(myTree,data_test,labels,labelProperty):
     for i in range(len(data_test)):
         if classify(myTree,labels,labelProperty,data_test[i])!=data_test[i][-1]:
             error+=1
-    #print 'myTree %d' %error
+    #print &#39;myTree %d&#39; %error
     return float(error)
 #测试投票节点正确率
 def testingMajor(major,data_test):
@@ -595,7 +558,7 @@ def testingMajor(major,data_test):
     for i in range(len(data_test)):
         if major!=data_test[i][-1]:
             error+=1
-    #print 'major %d' %error
+    #print &#39;major %d&#39; %error
     return float(error)
 #后剪枝
 def postPruningTree(inputTree, dataSet, data_test, labels, labelProperties):
@@ -603,7 +566,7 @@ def postPruningTree(inputTree, dataSet, data_test, labels, labelProperties):
     secondDict = inputTree[firstStr]
     classList = [example[-1] for example in dataSet]
     featkey = copy.deepcopy(firstStr)
-    if '&lt;' in firstStr:  # 对连续的特征值，使用正则表达式获得特征标签和value
+    if &#39;&lt;&#39; in firstStr:  # 对连续的特征值，使用正则表达式获得特征标签和value
         featkey = re.compile(&quot;(.+&lt;)&quot;).search(firstStr).group()[:-1]
         featvalue = float(re.compile(&quot;(&lt;.+)&quot;).search(firstStr).group()[1:])
     labelIndex = labels.index(featkey)
@@ -613,32 +576,32 @@ def postPruningTree(inputTree, dataSet, data_test, labels, labelProperties):
         del (labels[labelIndex])
         del (labelProperties[labelIndex])
     for key in secondDict.keys():  # 对每个分支
-        if type(secondDict[key]).__name__ == 'dict':  # 如果不是叶子节点
+        if type(secondDict[key]).__name__ == &#39;dict&#39;:  # 如果不是叶子节点
             if temp_labelProperties[labelIndex] == 0:  # 离散的
                 subDataSet = splitDataSet(dataSet, labelIndex, key)
                 subDataTest = splitDataSet(data_test, labelIndex, key)
             else:
-                if key == '1':
-                    subDataSet = splitDataSet_c(dataSet, labelIndex, featvalue,'L')
-                    subDataTest = splitDataSet_c(data_test, labelIndex,featvalue, 'L')
+                if key == &#39;1&#39;:
+                    subDataSet = splitDataSet_c(dataSet, labelIndex, featvalue,&#39;L&#39;)
+                    subDataTest = splitDataSet_c(data_test, labelIndex,featvalue, &#39;L&#39;)
                 else:
-                    subDataSet = splitDataSet_c(dataSet, labelIndex, featvalue,'R')
-                    subDataTest = splitDataSet_c(data_test, labelIndex,featvalue, 'R')
+                    subDataSet = splitDataSet_c(dataSet, labelIndex, featvalue,&#39;R&#39;)
+                    subDataTest = splitDataSet_c(data_test, labelIndex,featvalue, &#39;R&#39;)
             inputTree[firstStr][key] = postPruningTree(secondDict[key],subDataSet, subDataTest,copy.deepcopy(labels),copy.deepcopy(labelProperties))
     if testing(inputTree, data_test, temp_labels,temp_labelProperties) &lt;= testingMajor(majorityCnt(classList),data_test):
         return inputTree
     return majorityCnt(classList)
 
 def load_data():
-    train=pd.read_csv('F:/机器学习/titanic/train.csv')
-    test=pd.read_csv('F:/机器学习/titanic/test.csv')
-    true=pd.read_csv('F:/机器学习/titanic/gender_submission.csv')
-    train_y = train['Survived']
+    train=pd.read_csv(&#39;F:/机器学习/titanic/train.csv&#39;)
+    test=pd.read_csv(&#39;F:/机器学习/titanic/test.csv&#39;)
+    true=pd.read_csv(&#39;F:/机器学习/titanic/gender_submission.csv&#39;)
+    train_y = train[&#39;Survived&#39;]
     train.drop([&quot;PassengerId&quot;,&quot;Ticket&quot;,&quot;Name&quot;,&quot;Cabin&quot;,&quot;Survived&quot;,&quot;Parch&quot;,&quot;SibSp&quot;],axis=1,inplace=True)
     test.drop([&quot;PassengerId&quot;,&quot;Ticket&quot;,&quot;Name&quot;,&quot;Cabin&quot;,&quot;Parch&quot;,&quot;SibSp&quot;],axis=1,inplace=True)
     train[&quot;Sex&quot;]=(train.Sex == &quot;female&quot;).astype(&quot;int&quot;)
     test[&quot;Sex&quot;]=(test.Sex == &quot;female&quot;).astype(&quot;int&quot;)
-    test_y = true['Survived']
+    test_y = true[&#39;Survived&#39;]
     dict1 = &#123;&quot;S&quot;:0,&quot;C&quot;:1,&quot;Q&quot;:2&#125;
     train.Embarked = train.Embarked.map(dict1)
     test.Embarked = test.Embarked.map(dict1)
@@ -676,19 +639,16 @@ for test_data in test:
     predict.append(result)
 right = 0
 for i in range(len(predict)):
-    if predict[i] == true['Survived'][i]:
+    if predict[i] == true[&#39;Survived&#39;][i]:
         right += 1
 print(float(right)/float(len(predict)))
-</code></pre>
-<h4 id="正确率达到了9354但根据kaggel上的描述这是用了一个假设的预测值不是真正的测试答案在kaggle上提交了一下正确率为788还可以调参数但我调不出来了"><a class="markdownIt-Anchor" href="#正确率达到了9354但根据kaggel上的描述这是用了一个假设的预测值不是真正的测试答案在kaggle上提交了一下正确率为788还可以调参数但我调不出来了"></a> 正确率达到了93.54%，但根据<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>a</mi><mi>g</mi><mi>g</mi><mi>e</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">Kaggel</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>上的描述，这是用了一个假设的预测值，不是真正的测试答案，在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>a</mi><mi>g</mi><mi>g</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Kaggle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span>上提交了一下，正确率为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>78.8</mn></mrow><annotation encoding="application/x-tex">78.8%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span><span class="mord">8</span><span class="mord">.</span><span class="mord">8</span></span></span></span>,还可以调参数，但我调不出来了</h4>
-<h4 id="手写的决策树要画图有些困难但还是可以画出来代码如下"><a class="markdownIt-Anchor" href="#手写的决策树要画图有些困难但还是可以画出来代码如下"></a> 手写的决策树要画图有些困难，但还是可以画出来，代码如下：</h4>
-<pre><code># 获得叶子节点的数目
+</code></pre><h4 id="正确率达到了93-54-，但根据-Kaggel-上的描述，这是用了一个假设的预测值，不是真正的测试答案，在-Kaggle-上提交了一下，正确率为-78-8-还可以调参数，但我调不出来了"><a href="#正确率达到了93-54-，但根据-Kaggel-上的描述，这是用了一个假设的预测值，不是真正的测试答案，在-Kaggle-上提交了一下，正确率为-78-8-还可以调参数，但我调不出来了" class="headerlink" title="正确率达到了93.54%，但根据$Kaggel$上的描述，这是用了一个假设的预测值，不是真正的测试答案，在$Kaggle$上提交了一下，正确率为$78.8%$,还可以调参数，但我调不出来了"></a>正确率达到了93.54%，但根据$Kaggel$上的描述，这是用了一个假设的预测值，不是真正的测试答案，在$Kaggle$上提交了一下，正确率为$78.8%$,还可以调参数，但我调不出来了</h4><h4 id="手写的决策树要画图有些困难，但还是可以画出来，代码如下："><a href="#手写的决策树要画图有些困难，但还是可以画出来，代码如下：" class="headerlink" title="手写的决策树要画图有些困难，但还是可以画出来，代码如下："></a>手写的决策树要画图有些困难，但还是可以画出来，代码如下：</h4><pre><code># 获得叶子节点的数目
 def getNumLeafs(myTree):
     numLeafs = 0
     firstStr = list(myTree.keys())[0]
     secondDict = myTree[firstStr]
     for key in secondDict.keys():
-        if type(secondDict[key]).__name__=='dict':#test to see if the nodes are dictonaires, if not they are leaf nodes
+        if type(secondDict[key]).__name__==&#39;dict&#39;:#test to see if the nodes are dictonaires, if not they are leaf nodes
             numLeafs += getNumLeafs(secondDict[key])
         else:   numLeafs +=1
     return numLeafs
@@ -699,17 +659,17 @@ def getTreeDepth(myTree):
     firstStr = list(myTree.keys())[0]
     secondDict = myTree[firstStr]
     for key in secondDict.keys():
-        if type(secondDict[key]).__name__=='dict': # 查看是否为叶子节点
+        if type(secondDict[key]).__name__==&#39;dict&#39;: # 查看是否为叶子节点
             thisDepth = 1 + getTreeDepth(secondDict[key])
         else:   
-			thisDepth = 1
+            thisDepth = 1
         if thisDepth &gt; maxDepth: 
-			maxDepth = thisDepth
+            maxDepth = thisDepth
     return maxDepth
 
 def plotNode(nodeTxt, centerPt, parentPt, nodeType):
-    createPlot.ax1.annotate(nodeTxt, xy=parentPt,  xycoords='axes fraction',
-             xytext=centerPt, textcoords='axes fraction',
+    createPlot.ax1.annotate(nodeTxt, xy=parentPt,  xycoords=&#39;axes fraction&#39;,
+             xytext=centerPt, textcoords=&#39;axes fraction&#39;,
              va=&quot;center&quot;, ha=&quot;center&quot;, bbox=nodeType, arrowprops=arrow_args )
 
 def plotMidText(cntrPt, parentPt, txtString):
@@ -727,7 +687,7 @@ def plotTree(myTree, parentPt, nodeTxt):
     secondDict = myTree[firstStr]
     plotTree.yOff = plotTree.yOff - 1.0/plotTree.totalD
     for key in secondDict.keys():
-        if type(secondDict[key]).__name__=='dict': #不是叶子节点
+        if type(secondDict[key]).__name__==&#39;dict&#39;: #不是叶子节点
             plotTree(secondDict[key],cntrPt,str(key))        #递归
         else:   #是叶子节点
             plotTree.xOff = plotTree.xOff + 1.0/plotTree.totalW
@@ -736,25 +696,22 @@ def plotTree(myTree, parentPt, nodeTxt):
     plotTree.yOff = plotTree.yOff + 1.0/plotTree.totalD
 
 def createPlot(inTree):
-    fig = plt.figure(1, facecolor='white')
+    fig = plt.figure(1, facecolor=&#39;white&#39;)
     fig.clf()
     axprops = dict(xticks=[], yticks=[])
     createPlot.ax1 = plt.subplot(111, frameon=False, **axprops)
     plotTree.totalW = float(getNumLeafs(inTree))
     plotTree.totalD = float(getTreeDepth(inTree))
     plotTree.xOff = -0.5/plotTree.totalW; plotTree.yOff = 1.0;
-    plotTree(inTree, (0.5,1.0), '')
+    plotTree(inTree, (0.5,1.0), &#39;&#39;)
     plt.show()
 
 decisionNode = dict(boxstyle=&quot;sawtooth&quot;, fc=&quot;0.8&quot;)
 leafNode = dict(boxstyle=&quot;round4&quot;, fc=&quot;0.8&quot;)
 arrow_args = dict(arrowstyle=&quot;&lt;-&quot;)
 createPlot(Trees)
-</code></pre>
-<h3 id="画出来的图如下"><a class="markdownIt-Anchor" href="#画出来的图如下"></a> 画出来的图如下：</h3>
-<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E6%89%8B%E5%86%99%E5%86%B3%E7%AD%96%E6%A0%91%E5%9B%BE.png" alt="手写决策树图" /></p>
-<h2 id="大工告成完结撒花"><a class="markdownIt-Anchor" href="#大工告成完结撒花"></a> 大工告成,完结撒花</h2>
-
+</code></pre><h3 id="画出来的图如下："><a href="#画出来的图如下：" class="headerlink" title="画出来的图如下："></a>画出来的图如下：</h3><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5%E6%89%8B%E5%86%99%E5%86%B3%E7%AD%96%E6%A0%91%E5%9B%BE.png" alt="手写决策树图"></p>
+<h2 id="大工告成-完结撒花"><a href="#大工告成-完结撒花" class="headerlink" title="大工告成,完结撒花"></a>大工告成,完结撒花</h2>
     </div>
     
     

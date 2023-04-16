@@ -180,17 +180,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #03a9f4">C++</a>
+                <a href="/tags/C/" style="color: #ffa2c4">C++</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #ff7d73">数据结构</a>
+                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00bcd4">数据结构</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="color: #03a9f4">树状数组</a>
+                <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="color: #ffa2c4">树状数组</a>
             </span>
             
         </span>
@@ -198,19 +198,9 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="树状数组模板"><a class="markdownIt-Anchor" href="#树状数组模板"></a> 树状数组模板</h1>
-<span id="more"></span>
-<h2 id="一-树状数组大致介绍"><a class="markdownIt-Anchor" href="#一-树状数组大致介绍"></a> 一、树状数组大致介绍</h2>
-<h3 id="1-树状数组就是模拟树形结构的一个数组"><a class="markdownIt-Anchor" href="#1-树状数组就是模拟树形结构的一个数组"></a> 1、树状数组就是模拟树形结构的一个数组</h3>
-<h3 id="2-树状数组解决的问题大部分是区间上的更新以及求和"><a class="markdownIt-Anchor" href="#2-树状数组解决的问题大部分是区间上的更新以及求和"></a> 2、树状数组解决的问题大部分是区间上的更新以及求和</h3>
-<h3 id="3-树状数组的修改和查询的复杂度都是ologn"><a class="markdownIt-Anchor" href="#3-树状数组的修改和查询的复杂度都是ologn"></a> 3、树状数组的修改和查询的复杂度都是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></h3>
-<h3 id="4-树状数组的大致形状如下图"><a class="markdownIt-Anchor" href="#4-树状数组的大致形状如下图"></a> 4、树状数组的大致形状如下图：</h3>
-<p><img src="https://img2018.cnblogs.com/blog/1448672/201810/1448672-20181003121604644-268531484.png" alt="树状数组" /></p>
-<h3 id="具体原理请移步另一篇文章本篇只搬运模板"><a class="markdownIt-Anchor" href="#具体原理请移步另一篇文章本篇只搬运模板"></a> 具体原理请移步另一篇文章，本篇只搬运模板</h3>
-<h2 id="二-例题和模板"><a class="markdownIt-Anchor" href="#二-例题和模板"></a> 二、例题和模板</h2>
-<h3 id="例题树状数组"><a class="markdownIt-Anchor" href="#例题树状数组"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3368">例题:树状数组</a></h3>
-<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
-<pre><code>#include &lt;cstdio&gt;
+        <h1 id="树状数组模板"><a href="#树状数组模板" class="headerlink" title="树状数组模板"></a>树状数组模板</h1><span id="more"></span>
+<h2 id="一、树状数组大致介绍"><a href="#一、树状数组大致介绍" class="headerlink" title="一、树状数组大致介绍"></a>一、树状数组大致介绍</h2><h3 id="1、树状数组就是模拟树形结构的一个数组"><a href="#1、树状数组就是模拟树形结构的一个数组" class="headerlink" title="1、树状数组就是模拟树形结构的一个数组"></a>1、树状数组就是模拟树形结构的一个数组</h3><h3 id="2、树状数组解决的问题大部分是区间上的更新以及求和"><a href="#2、树状数组解决的问题大部分是区间上的更新以及求和" class="headerlink" title="2、树状数组解决的问题大部分是区间上的更新以及求和"></a>2、树状数组解决的问题大部分是区间上的更新以及求和</h3><h3 id="3、树状数组的修改和查询的复杂度都是-O-logn"><a href="#3、树状数组的修改和查询的复杂度都是-O-logn" class="headerlink" title="3、树状数组的修改和查询的复杂度都是$O(logn)$"></a>3、树状数组的修改和查询的复杂度都是$O(logn)$</h3><h3 id="4、树状数组的大致形状如下图："><a href="#4、树状数组的大致形状如下图：" class="headerlink" title="4、树状数组的大致形状如下图："></a>4、树状数组的大致形状如下图：</h3><p><img src="https://img2018.cnblogs.com/blog/1448672/201810/1448672-20181003121604644-268531484.png" alt="树状数组"></p>
+<h3 id="具体原理请移步另一篇文章，本篇只搬运模板"><a href="#具体原理请移步另一篇文章，本篇只搬运模板" class="headerlink" title="具体原理请移步另一篇文章，本篇只搬运模板"></a>具体原理请移步另一篇文章，本篇只搬运模板</h3><h2 id="二、例题和模板"><a href="#二、例题和模板" class="headerlink" title="二、例题和模板"></a>二、例题和模板</h2><h3 id="例题-树状数组"><a href="#例题-树状数组" class="headerlink" title="例题:树状数组"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3368">例题:树状数组</a></h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;cstdio&gt;
 #include &lt;cstdlib&gt;
 using namespace std;
 int n;
@@ -271,7 +261,6 @@ int main()
     return 0;
 &#125;
 </code></pre>
-
     </div>
     
     
