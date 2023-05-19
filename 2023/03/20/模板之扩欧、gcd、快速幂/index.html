@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #00a596">C++</a>
+                <a href="/tags/C/" style="color: #ffa2c4">C++</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E6%95%B0%E5%AD%A6/" style="color: #ff7d73">数学</a>
+                <a href="/tags/%E6%95%B0%E5%AD%A6/" style="color: #ffa2c4">数学</a>
             </span>
             
         </span>
@@ -193,26 +193,13 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="扩展欧几里得-gcd-快速幂模板"><a class="markdownIt-Anchor" href="#扩展欧几里得-gcd-快速幂模板"></a> 扩展欧几里得、gcd、快速幂模板</h1>
-<span id="more"></span>
-<h2 id="一-gcd模板"><a class="markdownIt-Anchor" href="#一-gcd模板"></a> 一、gcd模板</h2>
-<h3 id="gcd全称就是最大公约数lcm是最小公倍数而lcm可以很容易根据gcd得出所以这里只给出gcd的代码"><a class="markdownIt-Anchor" href="#gcd全称就是最大公约数lcm是最小公倍数而lcm可以很容易根据gcd得出所以这里只给出gcd的代码"></a> gcd全称就是最大公约数，lcm是最小公倍数，而lcm可以很容易根据gcd得出，所以这里只给出gcd的代码</h3>
-<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
-<pre><code>typedef long long ll;
+        <h1 id="扩展欧几里得、gcd、快速幂模板"><a href="#扩展欧几里得、gcd、快速幂模板" class="headerlink" title="扩展欧几里得、gcd、快速幂模板"></a>扩展欧几里得、gcd、快速幂模板</h1><span id="more"></span>
+<h2 id="一、gcd模板"><a href="#一、gcd模板" class="headerlink" title="一、gcd模板"></a>一、gcd模板</h2><h3 id="gcd全称就是最大公约数，lcm是最小公倍数，而lcm可以很容易根据gcd得出，所以这里只给出gcd的代码"><a href="#gcd全称就是最大公约数，lcm是最小公倍数，而lcm可以很容易根据gcd得出，所以这里只给出gcd的代码" class="headerlink" title="gcd全称就是最大公约数，lcm是最小公倍数，而lcm可以很容易根据gcd得出，所以这里只给出gcd的代码"></a>gcd全称就是最大公约数，lcm是最小公倍数，而lcm可以很容易根据gcd得出，所以这里只给出gcd的代码</h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>typedef long long ll;
 ll gcd(ll a,ll b)
 &#123;
     return b?gcd(b,a%b):a;
 &#125;
-</code></pre>
-<h2 id="二-扩展欧几里得"><a class="markdownIt-Anchor" href="#二-扩展欧几里得"></a> 二、扩展欧几里得</h2>
-<h3 id="万恶的数学但不得不写"><a class="markdownIt-Anchor" href="#万恶的数学但不得不写"></a> 万恶的数学，但不得不写</h3>
-<h3 id="先简单介绍一下其作用"><a class="markdownIt-Anchor" href="#先简单介绍一下其作用"></a> 先简单介绍一下其作用：</h3>
-<h3 id="1-求解不定方程"><a class="markdownIt-Anchor" href="#1-求解不定方程"></a> 1、求解不定方程</h3>
-<h3 id="2-求解模的逆元"><a class="markdownIt-Anchor" href="#2-求解模的逆元"></a> 2、求解模的逆元</h3>
-<h3 id="3-求解线性同余方程"><a class="markdownIt-Anchor" href="#3-求解线性同余方程"></a> 3、求解线性同余方程</h3>
-<h3 id="例题有理数取余"><a class="markdownIt-Anchor" href="#例题有理数取余"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2613">例题:有理数取余</a></h3>
-<h3 id="code-2"><a class="markdownIt-Anchor" href="#code-2"></a> Code:</h3>
-<pre><code>#include &lt;bits/stdc++.h&gt;
+</code></pre><h2 id="二、扩展欧几里得"><a href="#二、扩展欧几里得" class="headerlink" title="二、扩展欧几里得"></a>二、扩展欧几里得</h2><h3 id="万恶的数学，但不得不写"><a href="#万恶的数学，但不得不写" class="headerlink" title="万恶的数学，但不得不写"></a>万恶的数学，但不得不写</h3><h3 id="先简单介绍一下其作用："><a href="#先简单介绍一下其作用：" class="headerlink" title="先简单介绍一下其作用："></a>先简单介绍一下其作用：</h3><h3 id="1、求解不定方程"><a href="#1、求解不定方程" class="headerlink" title="1、求解不定方程"></a>1、求解不定方程</h3><h3 id="2、求解模的逆元"><a href="#2、求解模的逆元" class="headerlink" title="2、求解模的逆元"></a>2、求解模的逆元</h3><h3 id="3、求解线性同余方程"><a href="#3、求解线性同余方程" class="headerlink" title="3、求解线性同余方程"></a>3、求解线性同余方程</h3><h3 id="例题-有理数取余"><a href="#例题-有理数取余" class="headerlink" title="例题:有理数取余"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2613">例题:有理数取余</a></h3><h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int mod=19260817;
 const int N=10001;
@@ -233,30 +220,25 @@ ll expand(ll a,ll b,ll &amp;x,ll &amp;y)
 &#125;
 int main()
 &#123;
-	char ch[N];
-	scanf(&quot;%s&quot;,ch);
-	int len=strlen(ch);
-	ll aa=0,bb=0;
-	for(int i=0;i&lt;len;i++)
-		aa=(aa*10+ch[i]-'0')%mod;
-	scanf(&quot;%s&quot;,ch);
-	len=strlen(ch);
-	for(int i=0;i&lt;len;i++)
-		bb=(bb*10+ch[i]-'0')%mod;
-	ll x0,y0;
-	expand(bb,mod,x0,y0);
-	if(bb==0)
-		printf(&quot;Angry!\n&quot;);
-	else
-		printf(&quot;%lld\n&quot;,(aa*((x0%mod+mod)%mod))%mod);
-	return 0;
+    char ch[N];
+    scanf(&quot;%s&quot;,ch);
+    int len=strlen(ch);
+    ll aa=0,bb=0;
+    for(int i=0;i&lt;len;i++)
+        aa=(aa*10+ch[i]-&#39;0&#39;)%mod;
+    scanf(&quot;%s&quot;,ch);
+    len=strlen(ch);
+    for(int i=0;i&lt;len;i++)
+        bb=(bb*10+ch[i]-&#39;0&#39;)%mod;
+    ll x0,y0;
+    expand(bb,mod,x0,y0);
+    if(bb==0)
+        printf(&quot;Angry!\n&quot;);
+    else
+        printf(&quot;%lld\n&quot;,(aa*((x0%mod+mod)%mod))%mod);
+    return 0;
 &#125;
-</code></pre>
-<h3 id="原理方面请移步另一篇文章"><a class="markdownIt-Anchor" href="#原理方面请移步另一篇文章"></a> 原理方面请移步另一篇文章</h3>
-<h2 id="三-快速幂"><a class="markdownIt-Anchor" href="#三-快速幂"></a> 三、快速幂</h2>
-<h3 id="正常的求xn需要on的时间复杂度快速幂就是把on时间复杂度缩减为ologn的算法本质上运用了分治的思想"><a class="markdownIt-Anchor" href="#正常的求xn需要on的时间复杂度快速幂就是把on时间复杂度缩减为ologn的算法本质上运用了分治的思想"></a> 正常的求<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">x^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>需要<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>的时间复杂度，快速幂就是把<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>时间复杂度缩减为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>的算法，本质上运用了分治的思想</h3>
-<h3 id="code-3"><a class="markdownIt-Anchor" href="#code-3"></a> Code:</h3>
-<pre><code>typedef long long ll;
+</code></pre><h3 id="原理方面请移步另一篇文章"><a href="#原理方面请移步另一篇文章" class="headerlink" title="原理方面请移步另一篇文章"></a>原理方面请移步另一篇文章</h3><h2 id="三、快速幂"><a href="#三、快速幂" class="headerlink" title="三、快速幂"></a>三、快速幂</h2><h3 id="正常的求-x-n-需要-O-n-的时间复杂度，快速幂就是把-O-n-时间复杂度缩减为-O-logn-的算法，本质上运用了分治的思想"><a href="#正常的求-x-n-需要-O-n-的时间复杂度，快速幂就是把-O-n-时间复杂度缩减为-O-logn-的算法，本质上运用了分治的思想" class="headerlink" title="正常的求$x^n$需要$O(n)$的时间复杂度，快速幂就是把$O(n)$时间复杂度缩减为$O(logn)$的算法，本质上运用了分治的思想"></a>正常的求$x^n$需要$O(n)$的时间复杂度，快速幂就是把$O(n)$时间复杂度缩减为$O(logn)$的算法，本质上运用了分治的思想</h3><h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code:"></a>Code:</h3><pre><code>typedef long long ll;
 ll mod; 
 ll quickpow(ll x,ll zs)
 &#123;
@@ -275,7 +257,6 @@ ll quickpow(ll x,ll zs)
     return ans%mod;
 &#125;
 </code></pre>
-
     </div>
     
     

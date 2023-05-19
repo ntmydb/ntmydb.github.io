@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #ff7d73">C++</a>
+                <a href="/tags/C/" style="color: #03a9f4">C++</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" style="color: #00bcd4">高精度</a>
+                <a href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" style="color: #ffa2c4">高精度</a>
             </span>
             
         </span>
@@ -193,16 +193,8 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="高精度模板"><a class="markdownIt-Anchor" href="#高精度模板"></a> 高精度模板</h1>
-<span id="more"></span>
-<h2 id="一-高精度简介"><a class="markdownIt-Anchor" href="#一-高精度简介"></a> 一、高精度简介</h2>
-<h3 id="什么时候用高精度呢很简单当你的答案大到练long-long都存不下去的时候高精度就派上用场了-一般的高精度时间复杂度为on2的优化过后的算法可以降低到on157但一般的题目中用最朴素的高精度就可以解决大多数问题因此只上了一般的高精度代码"><a class="markdownIt-Anchor" href="#什么时候用高精度呢很简单当你的答案大到练long-long都存不下去的时候高精度就派上用场了-一般的高精度时间复杂度为on2的优化过后的算法可以降低到on157但一般的题目中用最朴素的高精度就可以解决大多数问题因此只上了一般的高精度代码"></a> 什么时候用高精度呢，很简单，当你的答案大到练<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">long long</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>都存不下去的时候，高精度就派上用场了。一般的高精度时间复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的，优化过后的算法可以降低到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>1.57</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^{1.57})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">.</span><span class="mord mtight">5</span><span class="mord mtight">7</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，但一般的题目中用最朴素的高精度就可以解决大多数问题，因此只上了一般的高精度代码</h3>
-<h2 id="二-例题和代码"><a class="markdownIt-Anchor" href="#二-例题和代码"></a> 二、例题和代码</h2>
-<h3 id="例题ab-problem-plus"><a class="markdownIt-Anchor" href="#例题ab-problem-plus"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1601">例题:A+B Problem plus</a></h3>
-<h3 id="例题ab-problem-plus-2"><a class="markdownIt-Anchor" href="#例题ab-problem-plus-2"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1303">例题:A*B Problem plus</a></h3>
-<h3 id="例题ab-problem-plus-3"><a class="markdownIt-Anchor" href="#例题ab-problem-plus-3"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1480">例题:A/B Problem plus</a></h3>
-<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
-<pre><code>struct biglong
+        <h1 id="高精度模板"><a href="#高精度模板" class="headerlink" title="高精度模板"></a>高精度模板</h1><span id="more"></span>
+<h2 id="一、高精度简介"><a href="#一、高精度简介" class="headerlink" title="一、高精度简介"></a>一、高精度简介</h2><h3 id="什么时候用高精度呢，很简单，当你的答案大到练-long-long-都存不下去的时候，高精度就派上用场了。一般的高精度时间复杂度为-O-n-2-的，优化过后的算法可以降低到-O-n-1-57-，但一般的题目中用最朴素的高精度就可以解决大多数问题，因此只上了一般的高精度代码"><a href="#什么时候用高精度呢，很简单，当你的答案大到练-long-long-都存不下去的时候，高精度就派上用场了。一般的高精度时间复杂度为-O-n-2-的，优化过后的算法可以降低到-O-n-1-57-，但一般的题目中用最朴素的高精度就可以解决大多数问题，因此只上了一般的高精度代码" class="headerlink" title="什么时候用高精度呢，很简单，当你的答案大到练$long long$都存不下去的时候，高精度就派上用场了。一般的高精度时间复杂度为$O(n^2)$的，优化过后的算法可以降低到$O(n^{1.57})$，但一般的题目中用最朴素的高精度就可以解决大多数问题，因此只上了一般的高精度代码"></a>什么时候用高精度呢，很简单，当你的答案大到练$long long$都存不下去的时候，高精度就派上用场了。一般的高精度时间复杂度为$O(n^2)$的，优化过后的算法可以降低到$O(n^{1.57})$，但一般的题目中用最朴素的高精度就可以解决大多数问题，因此只上了一般的高精度代码</h3><h2 id="二、例题和代码"><a href="#二、例题和代码" class="headerlink" title="二、例题和代码"></a>二、例题和代码</h2><h3 id="例题-A-B-Problem-plus"><a href="#例题-A-B-Problem-plus" class="headerlink" title="例题:A+B Problem plus"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1601">例题:A+B Problem plus</a></h3><h3 id="例题-A-B-Problem-plus-1"><a href="#例题-A-B-Problem-plus-1" class="headerlink" title="例题:A*B Problem plus"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1303">例题:A*B Problem plus</a></h3><h3 id="例题-A-B-Problem-plus-2"><a href="#例题-A-B-Problem-plus-2" class="headerlink" title="例题:A/B Problem plus"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1480">例题:A/B Problem plus</a></h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>struct biglong
 &#123;
     int d[N],fh;
 
@@ -363,7 +355,6 @@ biglong divison(biglong x,int cut)
     return ans2;
 &#125;
 </code></pre>
-
     </div>
     
     
