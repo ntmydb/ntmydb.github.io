@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%80%8D%E5%A2%9E/" style="color: #ff7d73">倍增</a>
+                <a href="/tags/%E5%80%8D%E5%A2%9E/" style="color: #03a9f4">倍增</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/RMQ/" style="color: #00bcd4">RMQ</a>
+                <a href="/tags/RMQ/" style="color: #ff7d73">RMQ</a>
             </span>
             
         </span>
@@ -193,8 +193,16 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="RMQ模板"><a href="#RMQ模板" class="headerlink" title="RMQ模板"></a>RMQ模板</h1><span id="more"></span>
-<h2 id="一、RMQ简介"><a href="#一、RMQ简介" class="headerlink" title="一、RMQ简介"></a>一、RMQ简介</h2><h3 id="中文全名为区间最值查询，有人说区间最值不就循环扫一遍就出来了吗，好想法。但是，如果区间长度为100000以上而且需要连续查询m次呢"><a href="#中文全名为区间最值查询，有人说区间最值不就循环扫一遍就出来了吗，好想法。但是，如果区间长度为100000以上而且需要连续查询m次呢" class="headerlink" title="中文全名为区间最值查询，有人说区间最值不就循环扫一遍就出来了吗，好想法。但是，如果区间长度为100000以上而且需要连续查询m次呢"></a>中文全名为区间最值查询，有人说区间最值不就循环扫一遍就出来了吗，好想法。但是，如果区间长度为100000以上而且需要连续查询m次呢</h3><h3 id="显然你会看到满屏的TLE，谁不喜欢绿色的AC呢？所以RMQ算法就是把黄色绿掉的算法"><a href="#显然你会看到满屏的TLE，谁不喜欢绿色的AC呢？所以RMQ算法就是把黄色绿掉的算法" class="headerlink" title="显然你会看到满屏的TLE，谁不喜欢绿色的AC呢？所以RMQ算法就是把黄色绿掉的算法"></a>显然你会看到满屏的<font color="#ffc116" size="6">TLE</font>，谁不喜欢绿色的<font color="#52a41a" size="6">AC</font>呢？所以RMQ算法就是把黄色绿掉的算法</h3><h3 id="RMQ算法一般预处理时间较长，时间复杂度为-O-nlogn-但查询速度很快，只需要-O-1-，RMQ本质上还是用到了倍增的思想，记录连续-2-j-个数的最值，因此提高查找效率"><a href="#RMQ算法一般预处理时间较长，时间复杂度为-O-nlogn-但查询速度很快，只需要-O-1-，RMQ本质上还是用到了倍增的思想，记录连续-2-j-个数的最值，因此提高查找效率" class="headerlink" title="RMQ算法一般预处理时间较长，时间复杂度为$O(nlogn)$,但查询速度很快，只需要$O(1)$，RMQ本质上还是用到了倍增的思想，记录连续$2^j$个数的最值，因此提高查找效率"></a>RMQ算法一般预处理时间较长，时间复杂度为$O(nlogn)$,但查询速度很快，只需要$O(1)$，RMQ本质上还是用到了倍增的思想，记录连续$2^j$个数的最值，因此提高查找效率</h3><h2 id="二、例题及代码"><a href="#二、例题及代码" class="headerlink" title="二、例题及代码"></a>二、例题及代码</h2><h3 id="例题-忠诚"><a href="#例题-忠诚" class="headerlink" title="例题:忠诚"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1816">例题:忠诚</a></h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>#include &lt;cstdlib&gt;
+        <h1 id="rmq模板"><a class="markdownIt-Anchor" href="#rmq模板"></a> RMQ模板</h1>
+<span id="more"></span>
+<h2 id="一-rmq简介"><a class="markdownIt-Anchor" href="#一-rmq简介"></a> 一、RMQ简介</h2>
+<h3 id="中文全名为区间最值查询有人说区间最值不就循环扫一遍就出来了吗好想法-但是如果区间长度为100000以上而且需要连续查询m次呢"><a class="markdownIt-Anchor" href="#中文全名为区间最值查询有人说区间最值不就循环扫一遍就出来了吗好想法-但是如果区间长度为100000以上而且需要连续查询m次呢"></a> 中文全名为区间最值查询，有人说区间最值不就循环扫一遍就出来了吗，好想法。但是，如果区间长度为100000以上而且需要连续查询m次呢</h3>
+<h3 id="显然你会看到满屏的font-colorffc116-size6tlefont谁不喜欢绿色的font-color52a41a-size6acfont呢所以rmq算法就是把黄色绿掉的算法"><a class="markdownIt-Anchor" href="#显然你会看到满屏的font-colorffc116-size6tlefont谁不喜欢绿色的font-color52a41a-size6acfont呢所以rmq算法就是把黄色绿掉的算法"></a> 显然你会看到满屏的<font color="#ffc116" size="6">TLE</font>，谁不喜欢绿色的<font color="#52a41a" size="6">AC</font>呢？所以RMQ算法就是把黄色绿掉的算法</h3>
+<h3 id="rmq算法一般预处理时间较长时间复杂度为onlogn但查询速度很快只需要o1rmq本质上还是用到了倍增的思想记录连续2j个数的最值因此提高查找效率"><a class="markdownIt-Anchor" href="#rmq算法一般预处理时间较长时间复杂度为onlogn但查询速度很快只需要o1rmq本质上还是用到了倍增的思想记录连续2j个数的最值因此提高查找效率"></a> RMQ算法一般预处理时间较长，时间复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>,但查询速度很快，只需要<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，RMQ本质上还是用到了倍增的思想，记录连续<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">2^j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span></span></span></span>个数的最值，因此提高查找效率</h3>
+<h2 id="二-例题及代码"><a class="markdownIt-Anchor" href="#二-例题及代码"></a> 二、例题及代码</h2>
+<h3 id="例题忠诚"><a class="markdownIt-Anchor" href="#例题忠诚"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1816">例题:忠诚</a></h3>
+<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
+<pre><code>#include &lt;cstdlib&gt;
 #include &lt;cstdio&gt;
 #include &lt;cmath&gt;
 #include &lt;algorithm&gt;
@@ -237,7 +245,9 @@ int main()
     &#125;
     return 0;
 &#125;
-</code></pre><h3 id="具体算法原理请移步另一篇文章"><a href="#具体算法原理请移步另一篇文章" class="headerlink" title="具体算法原理请移步另一篇文章"></a>具体算法原理请移步另一篇文章</h3>
+</code></pre>
+<h3 id="具体算法原理请移步另一篇文章"><a class="markdownIt-Anchor" href="#具体算法原理请移步另一篇文章"></a> 具体算法原理请移步另一篇文章</h3>
+
     </div>
     
     

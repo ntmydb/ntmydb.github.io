@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #03a9f4">C++</a>
+                <a href="/tags/C/" style="color: #ff7d73">C++</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99/" style="color: #ff7d73">数据读写</a>
+                <a href="/tags/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99/" style="color: #00a596">数据读写</a>
             </span>
             
         </span>
@@ -193,34 +193,41 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="快读、快写和对拍的模板"><a href="#快读、快写和对拍的模板" class="headerlink" title="快读、快写和对拍的模板"></a>快读、快写和对拍的模板</h1><span id="more"></span>
-<h2 id="一、用途介绍"><a href="#一、用途介绍" class="headerlink" title="一、用途介绍"></a>一、用途介绍</h2><h3 id="其实我觉得不需要介绍太多，写这东西不就为了卡个常数吗，不卡常数用-scanf-，-cin-不香吗"><a href="#其实我觉得不需要介绍太多，写这东西不就为了卡个常数吗，不卡常数用-scanf-，-cin-不香吗" class="headerlink" title="其实我觉得不需要介绍太多，写这东西不就为了卡个常数吗，不卡常数用$scanf$，$cin$不香吗"></a>其实我觉得不需要介绍太多，写这东西不就为了卡个常数吗，不卡常数用$scanf$，$cin$不香吗</h3><h2 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><pre><code>inline void read(int &amp; a)
+        <h1 id="快读-快写和对拍的模板"><a class="markdownIt-Anchor" href="#快读-快写和对拍的模板"></a> 快读、快写和对拍的模板</h1>
+<span id="more"></span>
+<h2 id="一-用途介绍"><a class="markdownIt-Anchor" href="#一-用途介绍"></a> 一、用途介绍</h2>
+<h3 id="其实我觉得不需要介绍太多写这东西不就为了卡个常数吗不卡常数用scanfcin不香吗"><a class="markdownIt-Anchor" href="#其实我觉得不需要介绍太多写这东西不就为了卡个常数吗不卡常数用scanfcin不香吗"></a> 其实我觉得不需要介绍太多，写这东西不就为了卡个常数吗，不卡常数用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>c</mi><mi>a</mi><mi>n</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">scanf</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">cin</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span></span></span></span>不香吗</h3>
+<h2 id="二-代码"><a class="markdownIt-Anchor" href="#二-代码"></a> 二、代码</h2>
+<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code:</h3>
+<pre><code>inline void read(int &amp; a)
 &#123;
     char ch;
     int fh=1;
     while(!(isdigit(ch)))
     &#123;
-        if(ch==&#39;-&#39;)
+        if(ch=='-')
             fh=-1;
         ch=getchar();
     &#125;
-    a=ch-&#39;0&#39;;
+    a=ch-'0';
     ch=getchar();
     while(isdigit(ch))
-        a=(a&lt;&lt;3)+(a&lt;&lt;1)+ch-&#39;0&#39;,ch=getchar();
+        a=(a&lt;&lt;3)+(a&lt;&lt;1)+ch-'0',ch=getchar();
     a*=fh;
 &#125;
 inline void write(int x)
 &#123;
     if(x&lt;0)
-    &#123;//判断负数
+	&#123;//判断负数
         x=-x;
-        putchar(&#39;-&#39;);
+        putchar('-');
     &#125;
     if(x&gt;9) write(x/10);//位值拆数，递归
-    putchar(x%10+&#39;0&#39;);//按位输出
+    putchar(x%10+'0');//按位输出
 &#125;
-</code></pre><h3 id="对拍的Code"><a href="#对拍的Code" class="headerlink" title="对拍的Code:"></a>对拍的Code:</h3><pre><code>#include &lt;windows.h&gt;
+</code></pre>
+<h3 id="对拍的code"><a class="markdownIt-Anchor" href="#对拍的code"></a> 对拍的Code:</h3>
+<pre><code>#include &lt;windows.h&gt;
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 int main()
@@ -244,6 +251,7 @@ bc为自己的暴力代码 记得每个文件点一下编译运行
 如果错误，数据在1.in中
 */
 </code></pre>
+
     </div>
     
     

@@ -180,7 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Python/" style="color: #ff7d73">Python</a>
+                <a href="/tags/Python/" style="color: #ffa2c4">Python</a>
             </span>
             
         </span>
@@ -188,8 +188,12 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="线性回归解决波士顿房价预测问题"><a href="#线性回归解决波士顿房价预测问题" class="headerlink" title="线性回归解决波士顿房价预测问题"></a>线性回归解决波士顿房价预测问题</h1><span id="more"></span>
-<h2 id="一、数据集"><a href="#一、数据集" class="headerlink" title="一、数据集"></a>一、数据集</h2><h4 id="波士顿房价预测也是个经典的数据集，利用-sklearn-datasets-的数据集直接进行训练"><a href="#波士顿房价预测也是个经典的数据集，利用-sklearn-datasets-的数据集直接进行训练" class="headerlink" title="波士顿房价预测也是个经典的数据集，利用$sklearn.datasets$的数据集直接进行训练"></a>波士顿房价预测也是个经典的数据集，利用$sklearn.datasets$的数据集直接进行训练</h4><h4 id="数据集获取以及相关库导入"><a href="#数据集获取以及相关库导入" class="headerlink" title="数据集获取以及相关库导入"></a>数据集获取以及相关库导入</h4><pre><code>import numpy as np
+        <h1 id="线性回归解决波士顿房价预测问题"><a class="markdownIt-Anchor" href="#线性回归解决波士顿房价预测问题"></a> 线性回归解决波士顿房价预测问题</h1>
+<span id="more"></span>
+<h2 id="一-数据集"><a class="markdownIt-Anchor" href="#一-数据集"></a> 一、数据集</h2>
+<h4 id="波士顿房价预测也是个经典的数据集利用sklearndatasets的数据集直接进行训练"><a class="markdownIt-Anchor" href="#波士顿房价预测也是个经典的数据集利用sklearndatasets的数据集直接进行训练"></a> 波士顿房价预测也是个经典的数据集，利用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi><mi mathvariant="normal">.</mi><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi><mi>s</mi><mi>e</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">sklearn.datasets</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span><span class="mord">.</span><span class="mord mathnormal">d</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span></span></span></span>的数据集直接进行训练</h4>
+<h4 id="数据集获取以及相关库导入"><a class="markdownIt-Anchor" href="#数据集获取以及相关库导入"></a> 数据集获取以及相关库导入</h4>
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import sklearn.datasets as datasets
@@ -197,74 +201,87 @@ from sklearn.linear_model import Lasso
 from sklearn.linear_model import Ridge
 from sklearn.linear_model import LinearRegression
 def load_dataset():
-    boston = datasets.load_boston()
-    feature_name = boston[&#39;feature_names&#39;]
-    train = boston.data
-    target = boston.target
-    X_train,X_test,Y_train,Y_test = train_test_split(train,target,test_size=0.3,random_state=666)
-    return X_train,X_test,Y_train,Y_test
-    # 0.3的测试集，0.7的训练集
-</code></pre><h2 id="二、-Lasso-回归预测"><a href="#二、-Lasso-回归预测" class="headerlink" title="二、$Lasso$回归预测"></a>二、$Lasso$回归预测</h2><h3 id="1、利用-sklearn-库进行预测"><a href="#1、利用-sklearn-库进行预测" class="headerlink" title="1、利用$sklearn$库进行预测"></a>1、利用$sklearn$库进行预测</h3><pre><code>def Lasso_train(X_train,Y_train): # 训练模型
-    lasso = Lasso()
-    lasso.fit(X_train,Y_train)
-    predict = lasso.predict(X_train)
-    return lasso,predict
+	boston = datasets.load_boston()
+	feature_name = boston['feature_names']
+	train = boston.data
+	target = boston.target
+	X_train,X_test,Y_train,Y_test = train_test_split(train,target,test_size=0.3,random_state=666)
+	return X_train,X_test,Y_train,Y_test
+	# 0.3的测试集，0.7的训练集
+</code></pre>
+<h2 id="二-lasso回归预测"><a class="markdownIt-Anchor" href="#二-lasso回归预测"></a> 二、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">Lasso</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span></span></span></span>回归预测</h2>
+<h3 id="1-利用sklearn库进行预测"><a class="markdownIt-Anchor" href="#1-利用sklearn库进行预测"></a> 1、利用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sklearn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span></span></span></span>库进行预测</h3>
+<pre><code>def Lasso_train(X_train,Y_train): # 训练模型
+	lasso = Lasso()
+	lasso.fit(X_train,Y_train)
+	predict = lasso.predict(X_train)
+	return lasso,predict
 def Lasso_draw(Y_test,Y_predict):
-    plt.plot(Y_test,label=&#39;Y_True&#39;)
-    plt.plot(Y_predict,&#39;r:&#39;,label=&#39;Y_Predict&#39;)
-    plt.legend()
-    plt.show()
+	plt.plot(Y_test,label='Y_True')
+	plt.plot(Y_predict,'r:',label='Y_Predict')
+	plt.legend()
+	plt.show()
 
 X_train,X_test,Y_train,Y_test = load_dataset()
 lasso,lasso_predict = Lasso_train(X_train,Y_train)
-print(&#39;w=&#39;,lasso.coef_) # w向量
-print(&#39;b=&#39;,lasson.intercept_)  # b向量
+print('w=',lasso.coef_) # w向量
+print('b=',lasson.intercept_)  # b向量
 print(&quot;训练集得分：&#123;:.2f&#125;&quot;.format(lasso.score(X_train, Y_train)))
 print(&quot;测试集得分：&#123;:.2f&#125;&quot;.format(lasso.score(X_test, Y_test)))
 Lasso_draw()
-</code></pre><h3 id="2、输出图片如下："><a href="#2、输出图片如下：" class="headerlink" title="2、输出图片如下："></a>2、输出图片如下：</h3><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png" alt="输出图片"></p>
-<h2 id="三、-Ridge-回归预测"><a href="#三、-Ridge-回归预测" class="headerlink" title="三、$Ridge$回归预测"></a>三、$Ridge$回归预测</h2><h3 id="1、利用-sklearn-库进行检测"><a href="#1、利用-sklearn-库进行检测" class="headerlink" title="1、利用$sklearn$库进行检测"></a>1、利用$sklearn$库进行检测</h3><pre><code>def Ridge_train(X_train,Y_train): # 训练模型
-    ridge = Ridge(alpha=1,max_iter=1000)
-    # alpha: 正则化力度，必须是一个浮点整数。正则化提升问题条件，减少估计器的方差
-    # max_iter:共轭梯度求解器的最大迭代次数
-    ridge.fit(X_train,Y_train)
-    predict = lasso.predict(X_train)
-    return ridge,predict
+</code></pre>
+<h3 id="2-输出图片如下"><a class="markdownIt-Anchor" href="#2-输出图片如下"></a> 2、输出图片如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png" alt="输出图片" /></p>
+<h2 id="三-ridge回归预测"><a class="markdownIt-Anchor" href="#三-ridge回归预测"></a> 三、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>i</mi><mi>d</mi><mi>g</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Ridge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span></span></span></span>回归预测</h2>
+<h3 id="1-利用sklearn库进行检测"><a class="markdownIt-Anchor" href="#1-利用sklearn库进行检测"></a> 1、利用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sklearn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span></span></span></span>库进行检测</h3>
+<pre><code>def Ridge_train(X_train,Y_train): # 训练模型
+	ridge = Ridge(alpha=1,max_iter=1000)
+	# alpha: 正则化力度，必须是一个浮点整数。正则化提升问题条件，减少估计器的方差
+	# max_iter:共轭梯度求解器的最大迭代次数
+	ridge.fit(X_train,Y_train)
+	predict = lasso.predict(X_train)
+	return ridge,predict
 def Ridge_draw(Y_test,Y_predict):
-    plt.plot(Y_test,label=&#39;Y_True&#39;)
-    plt.plot(Y_predict,&#39;r:&#39;,label=&#39;Y_Predict&#39;)
-    plt.legend()
-    plt.show()
+	plt.plot(Y_test,label='Y_True')
+	plt.plot(Y_predict,'r:',label='Y_Predict')
+	plt.legend()
+	plt.show()
 
 X_train,X_test,Y_train,Y_test = load_dataset()
 Ridge,Ridge_predict = Ridge_train(X_train,Y_train)
-print(&#39;w=&#39;,Ridge.coef_) # w向量
-print(&#39;b=&#39;,Ridge.intercept_)  # b向量
+print('w=',Ridge.coef_) # w向量
+print('b=',Ridge.intercept_)  # b向量
 print(&quot;训练集得分：&#123;:.2f&#125;&quot;.format(Ridge.score(X_train, Y_train)))
 print(&quot;测试集得分：&#123;:.2f&#125;&quot;.format(Ridge.score(X_test, Y_test)))
 Ridge_draw()
-</code></pre><h3 id="2、输出图片如下：-1"><a href="#2、输出图片如下：-1" class="headerlink" title="2、输出图片如下："></a>2、输出图片如下：</h3><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png" alt="输出图片"></p>
-<h2 id="四、-Linear-Regression-多元回归预测"><a href="#四、-Linear-Regression-多元回归预测" class="headerlink" title="四、$Linear_Regression$多元回归预测"></a>四、$Linear_Regression$多元回归预测</h2><h3 id="1、利用-sklearn-库进行检测-1"><a href="#1、利用-sklearn-库进行检测-1" class="headerlink" title="1、利用$sklearn$库进行检测"></a>1、利用$sklearn$库进行检测</h3><pre><code>def Linear_train(X_train,Y_train): # 训练模型
-    linear = LinearRegression()
-    # alpha: 正则化力度，必须是一个浮点整数。正则化提升问题条件，减少估计器的方差
-    # max_iter:共轭梯度求解器的最大迭代次数
-    linear.fit(X_train,Y_train)
-    predict = linear.predict(X_train)
-    return linear,predict
+</code></pre>
+<h3 id="2-输出图片如下-2"><a class="markdownIt-Anchor" href="#2-输出图片如下-2"></a> 2、输出图片如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png" alt="输出图片" /></p>
+<h2 id="四-linear_regression多元回归预测"><a class="markdownIt-Anchor" href="#四-linear_regression多元回归预测"></a> 四、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>a</mi><msub><mi>r</mi><mi>R</mi></msub><mi>e</mi><mi>g</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">Linear_Regression</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span></span></span></span>多元回归预测</h2>
+<h3 id="1-利用sklearn库进行检测-2"><a class="markdownIt-Anchor" href="#1-利用sklearn库进行检测-2"></a> 1、利用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>k</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sklearn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span></span></span></span>库进行检测</h3>
+<pre><code>def Linear_train(X_train,Y_train): # 训练模型
+	linear = LinearRegression()
+	# alpha: 正则化力度，必须是一个浮点整数。正则化提升问题条件，减少估计器的方差
+	# max_iter:共轭梯度求解器的最大迭代次数
+	linear.fit(X_train,Y_train)
+	predict = linear.predict(X_train)
+	return linear,predict
 def Linear_draw(Y_test,Y_predict):
-    plt.plot(Y_test,label=&#39;Y_True&#39;)
-    plt.plot(Y_predict,&#39;r:&#39;,label=&#39;Y_Predict&#39;)
-    plt.legend()
-    plt.show()
+	plt.plot(Y_test,label='Y_True')
+	plt.plot(Y_predict,'r:',label='Y_Predict')
+	plt.legend()
+	plt.show()
 
 X_train,X_test,Y_train,Y_test = load_dataset()
 linear,linear_predict = Linear_train(X_train,Y_train)
-print(&#39;w=&#39;,linear.coef_) # w向量
-print(&#39;b=&#39;,linear.intercept_)  # b向量
+print('w=',linear.coef_) # w向量
+print('b=',linear.intercept_)  # b向量
 print(&quot;训练集得分：&#123;:.2f&#125;&quot;.format(linear.score(X_train, Y_train)))
 print(&quot;测试集得分：&#123;:.2f&#125;&quot;.format(linear.score(X_test, Y_test)))
 Linear_draw()
-</code></pre><h3 id="2、输出图片如下：-2"><a href="#2、输出图片如下：-2" class="headerlink" title="2、输出图片如下："></a>2、输出图片如下：</h3><p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%923.png" alt="输出图片"></p>
+</code></pre>
+<h3 id="2-输出图片如下-3"><a class="markdownIt-Anchor" href="#2-输出图片如下-3"></a> 2、输出图片如下：</h3>
+<p><img src="https://raw.githubusercontent.com/ntmydb/ntmydb.github.io/main/images/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%923.png" alt="输出图片" /></p>
 
     </div>
     

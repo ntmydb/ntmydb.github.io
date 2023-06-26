@@ -180,7 +180,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/KMP/" style="color: #ffa2c4">KMP</a>
+                <a href="/tags/KMP/" style="color: #ff7d73">KMP</a>
             </span>
             
             <span class="tag">
@@ -195,7 +195,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #ff7d73">C++</a>
+                <a href="/tags/C/" style="color: #03a9f4">C++</a>
             </span>
             
         </span>
@@ -203,8 +203,10 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="KMP模板和AC自动机模板"><a href="#KMP模板和AC自动机模板" class="headerlink" title="KMP模板和AC自动机模板"></a>KMP模板和AC自动机模板</h1><span id="more"></span>
-<h2 id="这是KMP的模板"><a href="#这是KMP的模板" class="headerlink" title="这是KMP的模板"></a>这是KMP的模板</h2><pre><code>int fail[N];
+        <h1 id="kmp模板和ac自动机模板"><a class="markdownIt-Anchor" href="#kmp模板和ac自动机模板"></a> KMP模板和AC自动机模板</h1>
+<span id="more"></span>
+<h2 id="这是kmp的模板"><a class="markdownIt-Anchor" href="#这是kmp的模板"></a> 这是KMP的模板</h2>
+<pre><code>int fail[N];
 
 char mot[N],son[N];
 
@@ -236,7 +238,10 @@ int KMP()
     &#125;
     return ans;
 &#125;
-</code></pre><h4 id="例题-KMP模板题"><a href="#例题-KMP模板题" class="headerlink" title="例题:KMP模板题"></a><a target="_blank" rel="noopener" href="https://luogu.org/problem/P3375">例题:KMP模板题</a></h4><h4 id="题解代码如下"><a href="#题解代码如下" class="headerlink" title="题解代码如下:"></a>题解代码如下:</h4><pre><code>#include &lt;bits/stdc++.h&gt;
+</code></pre>
+<h4 id="例题kmp模板题"><a class="markdownIt-Anchor" href="#例题kmp模板题"></a> <a target="_blank" rel="noopener" href="https://luogu.org/problem/P3375">例题:KMP模板题</a></h4>
+<h4 id="题解代码如下"><a class="markdownIt-Anchor" href="#题解代码如下"></a> 题解代码如下:</h4>
+<pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 const int N=1000001;
 
@@ -246,48 +251,51 @@ int fail[N],T;
 
 void pre(int len)
 &#123;
-    fail[0]=-1;
-    for(int i=1;i&lt;len;i++)
-    &#123;
-        int pos=fail[i-1];
-        while(pos!=-1 &amp;&amp; son[pos]!=son[i-1])
-            pos=fail[pos];
-        fail[i]=++pos;
-    &#125;
-    return;
+	fail[0]=-1;
+	for(int i=1;i&lt;len;i++)
+	&#123;
+		int pos=fail[i-1];
+		while(pos!=-1 &amp;&amp; son[pos]!=son[i-1])
+			pos=fail[pos];
+		fail[i]=++pos;
+	&#125;
+	return;
 &#125;
 
 void kmp(int mot_len,int son_len)
 &#123;
-    int i=0,j=0;
-    while(i&lt;mot_len)
-    &#123;
-        while(j&gt;=0 &amp;&amp; son[j]!=mot[i]) 
-            j=fail[j];
-        j++;
-        if(j==son_len) 
-            ans.push_back(i-j+1),j=fail[j-1];
-        else
-            i++;
-    &#125;
-    return;
+	int i=0,j=0;
+	while(i&lt;mot_len)
+	&#123;
+		while(j&gt;=0 &amp;&amp; son[j]!=mot[i]) 
+			j=fail[j];
+		j++;
+		if(j==son_len) 
+			ans.push_back(i-j+1),j=fail[j-1];
+		else
+			i++;
+	&#125;
+	return;
 &#125;
 
 int main()
 &#123;
-    scanf(&quot;%s %s&quot;,mot,son);
-    int mot_len=strlen(mot);
-    int son_len=strlen(son);
-    pre(mot_len);
-    kmp(mot_len,son_len);
-    int size=ans.size();
-    for(int i=0;i&lt;size;i++)
-        printf(&quot;%d\n&quot;,ans[i]+1);
-    for(int i=1;i&lt;=son_len;i++)
-        printf(&quot;%d &quot;,fail[i]);
-    return 0;
+	scanf(&quot;%s %s&quot;,mot,son);
+	int mot_len=strlen(mot);
+	int son_len=strlen(son);
+	pre(mot_len);
+	kmp(mot_len,son_len);
+	int size=ans.size();
+	for(int i=0;i&lt;size;i++)
+		printf(&quot;%d\n&quot;,ans[i]+1);
+	for(int i=1;i&lt;=son_len;i++)
+		printf(&quot;%d &quot;,fail[i]);
+	return 0;
 &#125;
-</code></pre><h3 id="例题-AC自动机模板"><a href="#例题-AC自动机模板" class="headerlink" title="例题:AC自动机模板"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3808">例题:AC自动机模板</a></h3><h4 id="题解代码如下："><a href="#题解代码如下：" class="headerlink" title="题解代码如下："></a>题解代码如下：</h4><pre><code>#include &lt;iostream&gt;
+</code></pre>
+<h3 id="例题ac自动机模板"><a class="markdownIt-Anchor" href="#例题ac自动机模板"></a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3808">例题:AC自动机模板</a></h3>
+<h4 id="题解代码如下-2"><a class="markdownIt-Anchor" href="#题解代码如下-2"></a> 题解代码如下：</h4>
+<pre><code>#include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;queue&gt;
 #include &lt;cstring&gt;
@@ -311,7 +319,7 @@ void build(string s,int len)
     int root=0;
     for(int i=0; i&lt;len; i++)
     &#123;
-        int t=s[i]-&#39;a&#39;;
+        int t=s[i]-'a';
         if(tree[root][t]==0)
         &#123;
             tree[root][t]=++tot;
@@ -354,7 +362,7 @@ int query(string s,int len)
     int ans=0,root=0;
     for(int i=0; i&lt;len; i++)
     &#123;
-        int t=s[i]-&#39;a&#39;;
+        int t=s[i]-'a';
         root=tree[root][t];
         for(int j=root; j!=0 &amp;&amp; finish[j]!=-1; j=beh[j])
             ans+=finish[j],finish[j]=-1;
@@ -376,6 +384,7 @@ int main()
     return 0;
 &#125;
 </code></pre>
+
     </div>
     
     

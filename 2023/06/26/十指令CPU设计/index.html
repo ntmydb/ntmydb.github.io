@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <head>
+        <meta charset="UTF-8" />
+        <title>十指令CPU设计 | Whispering&#39;s Blog</title>
+        <meta name="author" content="Whispering" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>WHISPERING&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WHISPERING&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>十指令CPU设计</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/26
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                计算机组成原理
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1/" style="color: #ffa2c4">硬件设计</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="十指令cpu设计"><a class="markdownIt-Anchor" href="#十指令cpu设计"></a> 十指令CPU设计</h1>
+<span id="more"></span>
+<h3 id="本质上是计算机组成原理课程的大作业被折磨了很久但最终还是挺过来了本篇是基于csdn上一篇博客进行修改的需要请点击-单指令十条指令cpu设计与verilog实现br"><a class="markdownIt-Anchor" href="#本质上是计算机组成原理课程的大作业被折磨了很久但最终还是挺过来了本篇是基于csdn上一篇博客进行修改的需要请点击-单指令十条指令cpu设计与verilog实现br"></a> 本质上是计算机组成原理课程的大作业，被折磨了很久，但最终还是挺过来了，本篇是基于CSDN上一篇博客进行修改的，需要请点击-&gt; <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45173404/article/details/113196009">单指令十条指令CPU设计与Verilog实现</a></br></h3>
+<h3 id="下面分为实验要求实验代码实验结果三个部分来进行说明"><a class="markdownIt-Anchor" href="#下面分为实验要求实验代码实验结果三个部分来进行说明"></a> 下面分为实验要求，实验代码，实验结果三个部分来进行说明</h3>
+<h2 id="一-实验要求"><a class="markdownIt-Anchor" href="#一-实验要求"></a> 一、实验要求</h2>
+<h3 id="指令集如下"><a class="markdownIt-Anchor" href="#指令集如下"></a> 指令集如下</h3>
+<table>
+<tr align="center">
+  <td>指令</td> <td>二进制代码</td> <td>功能</td>
+</tr>
+<tr align="center">
+  <td>$CLA$</td> <td>0000----</td> <td>$ACC$清零(----)表示1位无关数据</td>
+</tr>
+<tr align="center">
+  <td>$COM$</td> <td>0001----</td> <td>$ACC$按位取反</td>
+</tr>
+<tr align="center">
+  <td>$SHR$</td> <td>0010----</td> <td>$ACC$算数右移1位</td>
+</tr>
+<tr align="center">
+  <td>$CLS$</td> <td>0011----</td> <td>$ACC$循环左移1位</td>
+</tr>
+<tr align="center">
+  <td>$STP$</td> <td>0100----</td> <td>停机</td>
+</tr>
+<tr align="center">
+  <td>$ADD X$</td> <td>0101BBBB</td> <td>加法，直接寻址</td>
+</tr>
+<tr align="center">
+  <td>$STA X$</td> <td>0110BBBB</td> <td>存数，直接寻址</td>
+</tr>
+<tr align="center">
+  <td>$LDA X$</td> <td>0111BBBB</td> <td>取数，直接寻址</td>
+</tr>
+<tr align="center">
+  <td>$JMP X$</td> <td>1000BBBB</td> <td>无条件寻址，直接寻址</td>
+</tr>
+<tr align="center">
+  <td>$BAN X$</td> <td>1001BBBB</td> <td>$ACC$为负则转，相对寻址</td>
+</tr>
+</table>
+### 其他要求：
+1. 使用$Verilog HDL$仿真实现
+2. 内存：16B，按字节编址
+3. 寄存器组织
+	1. $PC$：4位，存放下一条指令的地址
+	2. $ACC$：8位
+	3. 用户不可见寄存器$MAR$,$MDR$,$IR$
+4. 测试用例
+	1. 计算高斯级数$\sum_{i=1}^ni$(n取1~127，结果不考虑溢出)
+	2. 找出两个带符号数之较大者（-128~127）
+## 二、实验代码：
+### 顶层CPU_TEST模块：
+	// 这个模块是为了进行仿真
+	module CPU_TEST;
+	    reg clk,rst;
+<pre><code>    initial begin
+        clk = 1;
+        rst = 1;
+        # 5 rst = 0;
+        # 1000 $stop;
+    end
+    
+    always # 5 clk = ~clk;
+    
+    CPU CPU(.clk(clk),.rst(rst));
+endmodule
+</code></pre>
+<h3 id="第二层的cpu模块"><a class="markdownIt-Anchor" href="#第二层的cpu模块"></a> 第二层的CPU模块</h3>
+<pre><code>// 相当于是CPU内部连线图
+module CPU(
+    input wire clk,rst
+);
+    wire STP,JMP,UJMP,ACC_WR,MDW;
+    wire [3:0] PC_ADDR,OPCODE,DT_ADDR;
+    wire [3:0] ALU_OP;
+    wire [7:0] INS,INPUT1,INPUT2,RESULT;
+    PC PC(
+        .clk(clk), .rst(rst), .STP(STP) , .JMP(JMP), .UJMP(UJMP),
+        .OFFSET(DT_ADDR),
+        .PC(PC_ADDR));
+    ACC ACC(
+        .clk(clk), .ACC_WR(ACC_WR),
+        .indata(RESULT),
+        .outdata(INPUT1));
+    ALU ALU(
+        .INPUT1(INPUT1), .INPUT2(INPUT2), 
+        .ALU_OP(ALU_OP),
+        .JMP(JMP),
+        .RESULT(RESULT)
+    );
+    CU CU(
+        .OP(OPCODE),
+        .STP(STP), .UJMP(UJMP), .ACC_WR(ACC_WR), .MD_WR(MDW),
+        .ALU_OP(ALU_OP)
+    );
+    Memory Memory(
+        .MD_WR(MDW), .clk(clk),
+        .DT_ADDR(DT_ADDR),
+        .INData(RESULT),
+        .OUTData(INPUT2),
+        .PC_ADDR(PC_ADDR),
+        .INS_OUTPUT(INS)
+    );
+    IR IR(
+        .INS(INS),
+        .OPcode(OPCODE),
+        .Addr(DT_ADDR)
+    );
+endmodule
+</code></pre>
+<h3 id="pc模块"><a class="markdownIt-Anchor" href="#pc模块"></a> PC模块：</h3>
+<pre><code>module PC(
+    input wire clk,rst,STP,JMP,UJMP,//时钟、重置、停机、条件转移、无条件转移
+    input wire [3:0] OFFSET, //4位转移指令偏移量
+    output reg [3:0] PC //4位指令地址码
+);
+    assign STP = 0;
+    always@(posedge clk) begin
+        if(rst == 1)
+            PC = 0;
+        else
+            PC = PC + 1;
+    end
+    always@(negedge clk) begin
+        if(UJMP == 1)
+            PC = OFFSET - 1;  //无条件跳转
+        if(JMP == 1)
+            PC = PC + OFFSET - 1;  //相对寻址，有条件跳转
+    end
+        
+endmodule
+</code></pre>
+<h3 id="acc模块"><a class="markdownIt-Anchor" href="#acc模块"></a> ACC模块：</h3>
+<pre><code>module ACC(
+    input wire clk,ACC_WR, //时钟，acc读写控制
+    input wire [7:0] indata, //8位输入数据
+    output wire [7:0] outdata //8位输出数据
+);
+    reg [7:0] Acc; // 8位ACC
+    
+    initial begin
+        Acc = 0;
+    end
+    
+    assign outdata = Acc;
+    
+    always@(negedge clk) begin
+        if( ACC_WR == 1 )
+            Acc = indata;
+    end
+endmodule
+</code></pre>
+<h3 id="alu模块"><a class="markdownIt-Anchor" href="#alu模块"></a> ALU模块：</h3>
+<pre><code>module ALU(
+    input wire [3:0] ALU_OP, //ALU操作选择信号
+    input wire [7:0] INPUT1,INPUT2, //操作数in1,in2
+    output reg [7:0] RESULT, //Z
+    output reg JMP //条件转移ct
+);
+    initial begin
+        JMP &lt;= 0;
+        RESULT &lt;= 0;
+    end
+    
+    always@* begin
+        case (ALU_OP)
+            4'b0000: RESULT &lt;= 0; // CLA
+            4'b0001: RESULT &lt;= ~INPUT1; //COM
+            4'b0010:  //SHR
+                begin
+                    if (INPUT1[7] == 1)
+                        RESULT &lt;= &#123;1'b1,INPUT1[7:1]&#125;;
+                    else
+                        RESULT &lt;= &#123;1'b0,INPUT1[7:1]&#125;;
+                end
+            4'b0011: RESULT &lt;= &#123;INPUT1[6:0],INPUT1[7]&#125;; //CSL
+            4'b0100: RESULT &lt;= INPUT1 + INPUT2; //ADD
+            4'b0101: RESULT &lt;= INPUT1; //STA
+            4'b0110: RESULT &lt;= INPUT2; //LDA
+            4'b1000: //BAN
+                begin
+                    if (INPUT1[7] == 1)
+                        JMP &lt;= 1;
+                    else
+                        JMP &lt;= 0;
+                end
+            4'b1001: $finish;
+        endcase
+    end
+endmodule
+</code></pre>
+<h3 id="cu模块"><a class="markdownIt-Anchor" href="#cu模块"></a> CU模块：</h3>
+<pre><code>module CU(
+    input wire [3:0] OP,
+    output reg STP,UJMP,ACC_WR,MD_WR,
+    output reg [3:0] ALU_OP
+);
+    initial begin
+        STP &lt;= 0;
+        UJMP &lt;= 0;
+        ACC_WR &lt;= 0;
+        MD_WR &lt;= 0;
+        ALU_OP &lt;= 4'b1111;
+    end
+    always@(OP) begin
+        case (OP)
+            4'b0000 :  //CLA
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b00100000;
+            4'b0001 : //COM
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b00100001;
+            4'b0010 : //SHR
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b00100010;
+            4'b0011 : //CSL
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b00100011;
+            4'b0101 : //ADD
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b00100100;
+            4'b0110 : //STA
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b00010101;    
+            4'b0111 : //LDA
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b00100110;
+            4'b1000 : //JMP
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b01000111;
+            4'b1001 : //BAN
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b00001000;
+            4'b0100 : //STP
+                &#123;STP,UJMP,ACC_WR,MD_WR,ALU_OP&#125; &lt;= 8'b10001001;
+        endcase
+    end
+        
+endmodule
+</code></pre>
+<h3 id="memory模块"><a class="markdownIt-Anchor" href="#memory模块"></a> Memory模块：</h3>
+<pre><code>// 这是内存模块，里面存着指令和数据，一共要验证两个不同的程序
+// 第一个是高斯级数，第二个是比较两个带符号数的大小
+// 第二个程序如果N大则ANS单元里是0，M大ANS单元里为1
+module Memory(
+    input wire MD_WR,clk,
+    input wire [3:0] PC_ADDR,
+    input wire [3:0] DT_ADDR,
+    input wire [7:0] INData,
+    output wire [7:0] OUTData,
+    output wire [7:0] INS_OUTPUT
+);
+    reg [7:0] MEM[15:0];
+    
+    assign OUTData = MEM[DT_ADDR];
+    
+    initial begin
+        MEM[0] &lt;= 8'b01111001; //LDA N
+        MEM[1] &lt;= 8'b01011010; //ADD SUM
+        MEM[2] &lt;= 8'b01101010; //STA SUM
+        MEM[3] &lt;= 8'b01111001; //LDA N
+        MEM[4] &lt;= 8'b01011011; //ADD M1
+        MEM[5] &lt;= 8'b10010011; //BAN 3
+        MEM[6] &lt;= 8'b01101001; //STA N
+        MEM[7] &lt;= 8'b10000001; //JMP 1
+        MEM[8] &lt;= 8'b01000000; //STP
+        MEM[9] &lt;= 8'b00001100; //N
+        MEM[10] &lt;= 8'b00000000; //SUM
+        MEM[11] &lt;= 8'b11111111; //-1
+//        MEM[0] &lt;= 8'b01111001; //LDA N
+//        MEM[1] &lt;= 8'b00010000; //COM
+//        MEM[2] &lt;= 8'b01011010; //ADD CONST1=1
+//        MEM[3] &lt;= 8'b01011011; //ADD M
+//        MEM[4] &lt;= 8'b10010100; // BAN STP
+//        MEM[5] &lt;= 8'b01111100; //LDA ANS
+//        MEM[6] &lt;= 8'b01011010; //ADD CONST=10
+//        MEM[7] &lt;= 8'b01101100; //STA ANS
+//        MEM[8] &lt;= 8'b01000000; //STP
+//        MEM[9] &lt;= 8'b00000111; //N
+//        MEM[10] &lt;= 8'b00000001; //CONST 1
+//        MEM[11] &lt;= 8'b11111111; //M  
+//        MEM[12] &lt;= 8'b00000000; //ANS
+    end
+    
+    assign INS_OUTPUT = MEM[PC_ADDR];
+    
+    always@(negedge clk) begin
+        if (MD_WR == 1)
+            MEM[DT_ADDR] = INData;
+    end
+</code></pre>
+<h3 id="ir单元"><a class="markdownIt-Anchor" href="#ir单元"></a> IR单元</h3>
+<pre><code>// IR单元本质上就是一个数据缓冲
+module IR(
+    //输入 地址，解析出前四位，后四位和完整的指令码
+    input wire [7:0] INS,
+    output reg [3:0] OPcode,
+    output reg [3:0] Addr
+);
+
+    always@(INS) begin
+        OPcode &lt;= INS[7:4];
+        Addr &lt;= INS[3:0];
+    end
+endmodule
+</code></pre>
+<h2 id="三-实验结果"><a class="markdownIt-Anchor" href="#三-实验结果"></a> 三、实验结果</h2>
+<h3 id="下图为实验一的结果输入n为12即00001100"><a class="markdownIt-Anchor" href="#下图为实验一的结果输入n为12即00001100"></a> 下图为实验一的结果，输入N为12，即00001100</h3>
+<p><img src="" alt="实验一结果图片" /></p>
+<h3 id="下图为实验二的结果输入n为-111111111m为700000111"><a class="markdownIt-Anchor" href="#下图为实验二的结果输入n为-111111111m为700000111"></a> 下图为实验二的结果，输入N为-1(11111111)，M为7(00000111)</h3>
+<p><img src="" alt="实验二结果图片" /></p>
+<h3 id="下图为最终cpu内部电路图"><a class="markdownIt-Anchor" href="#下图为最终cpu内部电路图"></a> 下图为最终CPU内部电路图：</h3>
+<p><img src="" alt="CPU内部电路图" /></p>
+
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Whispering&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Whispering
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script>
+    let clientID = "9696093cd1d92ad659a5",
+        clientSecret = "5cd57248f573a64384afb01e67ded6adf4d8465b";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "ntmydb.github.io",
+        owner: "ntmydb",
+        admin: ["ntmydb"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+        proxy: "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token",
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+
+
+
+        
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
