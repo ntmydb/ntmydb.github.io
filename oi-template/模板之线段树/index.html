@@ -1,0 +1,883 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.jpg"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="Whispering's Blog" href="http://ntmydb/github.io/rss.xml"><link rel="alternate" type="application/atom+xml" title="Whispering's Blog" href="http://ntmydb/github.io/atom.xml"><link rel="alternate" type="application/json" title="Whispering's Blog" href="http://ntmydb/github.io/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="C++,线段树"><link rel="canonical" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BA%BF%E6%AE%B5%E6%A0%91/"><title>模板之线段树 - OI 模板 | Flüstern = Whispering's Blog = 无需过去，无关未来，只有现在</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">模板之线段树</h1><div class="meta"><span class="item" title="创建时间：2023-03-20 13:28:08"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2023-03-20T13:28:08+08:00">2023-03-20</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>17k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>15 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Flüstern</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://s2.loli.net/2023/10/25/61OMxfsnwVmpjRt.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/26/NC6gibTseq9KhOr.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/26/iHVuOWSMbv82Qzx.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/27/wIOHPorsL3kGFgn.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/27/w3pZUFPhK6sX47c.png"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/25/1JfPaS5CnWF9gqK.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/oi-template/" itemprop="item" rel="index" title="分类于 OI 模板"><span itemprop="name">OI 模板</span></a><meta itemprop="position" content="1"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BA%BF%E6%AE%B5%E6%A0%91/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="Whispering"><meta itemprop="description" content="无需过去，无关未来，只有现在, Whispering's Blog"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Whispering's Blog"></span><div class="body md" itemprop="articleBody"><h1 id="线段树模板"><a class="anchor" href="#线段树模板">#</a> 线段树模板</h1><p><span id="more"></span></p><h2 id="一-线段树基本概念"><a class="anchor" href="#一-线段树基本概念">#</a> 一、线段树基本概念</h2><p>1、线段树是一颗二叉树，储存的是一个区间的信息，每个节点都是一个结构体，结构体里面包含区间左端点，区间右端点，区间所需要维护的信息</p><p>2、线段树基本思想是二分</p><p>3、线段树一般结构如下图</p><p><img data-src="https://s2.loli.net/2023/10/26/wQrvcMWS4x5tNAe.png" alt="线段树基本结构"></p><p>本人线段树一般书写方法不太一样，如下：</p><p>Code:</p><pre><code class="language-c++">struct node
+&#123;
+    int l,r,left_child,right_child;
+    int sum,delay;
+&#125;tree[N*2]; //线段树每一个节点结构体
+
+int root,tot,d[N];
+
+void push_up(root) //合并操作
+&#123;
+    int a=tree[root].left_child,b=tree[root].right_child;
+    tree[root].sum=tree[a].sum+tree[b].sum;
+    tree[root].sum+=(tree[a].r-tree[a].l+1)*tree[a].delay,tree[root].sum+=(tree[b].r-tree[b].l+1)*tree[b].delay;
+    return;
+&#125;
+
+void build(int &amp; root,int l,int r) //建树
+&#123;
+    root=++tot,tree[root].l=l,tree[root].r=r;
+    if(l==r)
+    &#123;
+        tree[root].sum=d[l];
+        return;
+    &#125;
+    int mid=(l+r)&gt;&gt;1;
+    build(tree[root].left_child,l,mid);
+    build(tree[root].right_child,mid+1,r);
+    push_up(root);
+    return;
+&#125;
+
+void push_down(int root) //修改时将延迟标记落实
+&#123;
+    int a=tree[root].left_child,b=tree[root].right_child;
+    if(tree[root].delay)
+    &#123;
+        tree[a].sum+=(tree[a].r-tree[a].l+1)*tree[root].delay,tree[a].delay+=tree[root].delay;
+        tree[b].sum+=(tree[b].r-tree[b].l+1)*tree[root].delay,tree[b].delay+=tree[root].delay;
+        tree[root].delay=0;
+    &#125;
+    return;
+&#125;
+
+void update(int root,int l,int r,int v) //区间修改
+&#123;
+    if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+    &#123;
+        tree[root].delay+=v;
+        return;
+    &#125;
+    push_down(root);
+    int mid=(tree[root].l+tree[root].r)&gt;&gt;1;
+    if(mid&gt;=r)
+        update(tree[root].left_child,l,r,v);
+    else if(mid&lt;l)
+        update(tree[root].right_child,l,r,v);
+    else
+        update(tree[root].left_child,l,mid,v),update(tree[root].right_child,mid+1,r,v);
+    push_up(root);
+    return;
+&#125;
+
+int query(int root,int l,int r) //区间查询
+&#123;
+    if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+        return tree[root].sum;
+    push_down(root);
+    int mid=(tree[root].l+tree[root].r)&gt;&gt;1;
+    if(mid&gt;=r)
+        return query(tree[root].left_child,l,r);
+    else if(mid&lt;l)
+        return query(tree[root].right_child,l,r);
+    else
+        return query(tree[root].left_child,l,mid)+query(tree[root].right_child,mid+1,r);
+&#125;
+
+void change(int root,int id,int v) //单点修改
+&#123;
+    if(tree[root].l==tree[root].r)
+    &#123;
+        tree[root].sum+=v;
+        return;
+    &#125;
+    int mid=(tree[root].l+tree[root].r)&gt;&gt;1;
+    push_down(root);
+    if(mid&gt;=id)
+        change(tree[root].left_child,l,r);
+    else
+        change(tree[root].right_child,l,r);
+    push_up(root);
+    return;
+&#125;
+</code></pre><h2 id="二-线段树板子包含区间求和单点修改区间修改"><a class="anchor" href="#二-线段树板子包含区间求和单点修改区间修改">#</a> 二、线段树板子（包含区间求和，单点修改，区间修改）</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzNzI=">例题：线段树模板 1</span></p><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzNzM=">例题：线段树模板 2</span></p><pre><code class="language-c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const long long N=100001;
+struct node
+&#123;
+	long long l,r,left_child,right_child;
+	long long sum,delay1,delay2;
+&#125;tree[N*2];
+long long n,m,root,tot,d[N],mod;
+void fix(long long root)
+&#123;
+	long long a=tree[root].left_child,b=tree[root].right_child;
+	tree[root].sum=tree[a].sum+tree[b].sum;
+	tree[root].sum%=mod;
+	return;
+&#125;
+void build(long long &amp; root,long long l,long long r)
+&#123;
+	root=++tot,tree[root].l=l,tree[root].r=r;
+	tree[root].delay2=1;
+	if(l==r)
+	&#123;
+		tree[root].sum=d[l];
+		return;
+	&#125;
+	long long mid=(l+r)/2;
+	build(tree[root].left_child,l,mid);
+	build(tree[root].right_child,mid+1,r);
+	fix(root);
+	return;
+&#125;
+void push_down(long long root)
+&#123;
+	long long a=tree[root].left_child,b=tree[root].right_child;
+    tree[a].sum*=tree[root].delay2,tree[a].sum+=(tree[a].r-tree[a].l+1)*tree[root].delay1;
+    tree[a].delay1=tree[a].delay1*tree[root].delay2+tree[root].delay1,tree[a].delay2*=tree[root].delay2;
+    tree[a].delay1%=mod,tree[a].delay2%=mod,tree[a].sum%=mod;
+    tree[b].sum*=tree[root].delay2,tree[b].sum+=(tree[b].r-tree[b].l+1)*tree[root].delay1;
+    tree[b].delay1=tree[b].delay1*tree[root].delay2+tree[root].delay1,tree[b].delay2*=tree[root].delay2;
+    tree[b].delay1%=mod,tree[b].delay2%=mod,tree[b].sum%=mod;
+    tree[root].delay1=0,tree[root].delay2=1,tree[root].sum%=mod;
+    return;
+&#125;
+void update(long long root,long long l,long long r,long long v)
+&#123;
+	if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+	&#123;
+		tree[root].sum+=(tree[root].r-tree[root].l+1)*v;
+		tree[root].delay1+=v;
+		return;
+	&#125;
+	push_down(root);
+	long long mid=(tree[root].l+tree[root].r)/2;
+	if(mid&gt;=r)
+		update(tree[root].left_child,l,r,v);
+	else if(mid&lt;l)
+		update(tree[root].right_child,l,r,v);
+	else
+		update(tree[root].left_child,l,mid,v),update(tree[root].right_child,mid+1,r,v);
+	fix(root);
+	return;
+&#125;
+void change(long long root,long long l,long long r,long long v)
+&#123;
+	if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+	&#123;
+		tree[root].sum*=v,tree[root].delay1*=v,tree[root].delay2*=v;
+		tree[root].sum%=mod,tree[root].delay1%=mod,tree[root].delay2%=mod;
+		return;
+	&#125;
+	push_down(root);
+	long long mid=(tree[root].l+tree[root].r)/2;
+	if(mid&gt;=r)
+		change(tree[root].left_child,l,r,v);
+	else if(mid&lt;l)
+		change(tree[root].right_child,l,r,v);
+	else
+		change(tree[root].left_child,l,mid,v),change(tree[root].right_child,mid+1,r,v);
+	fix(root);
+	return;
+&#125;
+long long query(long long root,long long l,long long r)
+&#123;
+	if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+		return tree[root].sum%mod;
+	long long mid=(tree[root].l+tree[root].r)/2;
+	push_down(root);
+	if(mid&gt;=r)
+		return query(tree[root].left_child,l,r)%mod;
+	else if(mid&lt;l)
+		return query(tree[root].right_child,l,r)%mod;
+	else
+		return query(tree[root].left_child,l,mid)%mod+query(tree[root].right_child,mid+1,r)%mod;
+&#125;
+int main()
+&#123;
+	scanf(&quot;%lld %lld %lld&quot;,&amp;n,&amp;m,&amp;mod);
+	for(long long i=1;i&lt;=n;i++)
+		scanf(&quot;%lld&quot;,&amp;d[i]);
+	build(root,1,n);
+	for(long long i=1;i&lt;=m;i++)
+	&#123;
+		long long op;
+		scanf(&quot;%lld&quot;,&amp;op);
+		if(op==1)
+		&#123;
+			long long l,r,x;
+			scanf(&quot;%lld %lld %lld&quot;,&amp;l,&amp;r,&amp;x);
+			change(root,l,r,x);
+		&#125;
+		else if(op==2)
+		&#123;
+			long long l,r,x;
+			scanf(&quot;%lld %lld %lld&quot;,&amp;l,&amp;r,&amp;x);
+			update(root,l,r,x);
+		&#125;
+		else
+		&#123;
+			long long l,r;
+			scanf(&quot;%lld %lld&quot;,&amp;l,&amp;r);
+			printf(&quot;%lld\n&quot;,query(root,l,r)%mod);
+		&#125;
+	&#125;
+	return 0;
+&#125;
+</code></pre><p>线段树还可以进行其他操作，如区间最大、小值等功能，这些功能待补充</p><h2 id="三-可持久化线段树"><a class="anchor" href="#三-可持久化线段树">#</a> 三、可持久化线段树</h2><p>光看标题不明所以，其主要功能是可以求区间任意第 k 小的值，k 是可输入改变的</p><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDM4MzQ=">例题：可持久化线段树</span></p><p>Code:</p><pre><code class="language-c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=200001;
+struct node
+&#123;
+	int left,right,sum;
+&#125;tree[20*N];
+struct edge
+&#123;
+	int v,old,new_id;
+	bool operator &lt; (const edge &amp; ot) const
+	&#123;
+		return v&lt;ot.v;
+	&#125;
+&#125;d[N];
+int n,m,root[20*N],tot=1;
+void update(int &amp; now,int l,int r,int pos)
+&#123;
+	tree[tot++]=tree[now];
+	now=tot-1;
+	tree[now].sum++;
+	if(l==r)
+		return;
+	int mid=(l+r)/2;
+	if(pos&lt;=mid)
+		update(tree[now].left,l,mid,pos);
+	else
+		update(tree[now].right,mid+1,r,pos);
+	return;
+&#125;
+int query(int last,int now,int l,int r,int pos)
+&#123;
+	int sum=tree[tree[now].left].sum-tree[tree[last].left].sum;
+	if(l==r)
+		return l;
+	int mid=(l+r)/2;
+	if(pos&lt;=sum)
+		return query(tree[last].left,tree[now].left,l,mid,pos);
+	else
+		return query(tree[last].right,tree[now].right,mid+1,r,pos-sum);
+&#125;
+int main()
+&#123;
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=n;i++)
+		scanf(&quot;%d&quot;,&amp;d[i].v),d[i].old=i;
+	sort(d+1,d+1+n);
+	for(int i=1;i&lt;=n;i++)
+		d[d[i].old].new_id=i;
+	for(int i=1;i&lt;=n;i++)
+	&#123;
+		root[i]=root[i-1];
+		update(root[i],1,n,d[i].new_id);
+	&#125;
+	for(int i=1;i&lt;=m;i++)
+	&#123;
+		int l,r,k;
+		scanf(&quot;%d %d %d&quot;,&amp;l,&amp;r,&amp;k);
+		printf(&quot;%d\n&quot;,d[query(root[l-1],root[r],1,n,k)].v);
+	&#125;
+	return 0;
+&#125;
+</code></pre><h2 id="四-普通平衡树"><a class="anchor" href="#四-普通平衡树">#</a> 四、普通平衡树</h2><p>普通平衡树是一颗二叉树，特点是可以动态插入删除，也可以动态查询某个数的排名及其前驱和后继</p><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzNjk=">例题：普通平衡树</span></p><p>Code:</p><pre><code class="language-c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=100001;
+int ch[N][2],par[N],size[N],cnt[N],val[N],n,tot,root;
+bool flag[N];
+int chk(int x) 
+&#123;
+	if(ch[par[x]][1]==x)  
+		return 1;
+	else
+		return 0;
+&#125;
+void push_up(int x) 
+&#123;
+	size[x]=size[ch[x][0]]+size[ch[x][1]]+cnt[x];
+	return;
+&#125;
+void rotate(int cur)
+&#123;
+	int x=par[cur],y=par[par[cur]],k=chk(cur);
+	int which=ch[cur][k^1]; 
+	ch[x][k]=which,par[which]=x; 
+	ch[y][chk(x)]=cur,par[cur]=y;
+	ch[cur][k^1]=x,par[x]=cur;
+	push_up(x),push_up(cur);
+	return;
+&#125;
+void splay(int cur,int aim=0)
+&#123;
+	while(par[cur]!=aim)
+	&#123;
+		int x=par[cur],y=par[par[cur]];
+		if(y!=aim)
+		&#123;
+			if(chk(cur)==chk(x))
+				rotate(x);
+			else
+				rotate(cur);
+		&#125;
+		rotate(cur);
+	&#125;
+	if(!aim)
+		root=cur;
+	return;
+&#125;
+void insert(int x)
+&#123;
+	int cur=root,fa=0;
+	while(cur &amp;&amp; val[cur]!=x)
+	&#123;
+		fa=cur;
+		if(x&gt;val[cur]) 
+			cur=ch[cur][1];  
+		else
+			cur=ch[cur][0];
+	&#125;
+	if(cur)
+		cnt[cur]++;
+	else 
+	&#123;
+		cur=++tot;
+		if(fa) 
+		&#123;
+			if(x&gt;val[fa]) 
+				ch[fa][1]=cur;
+			else
+				ch[fa][0]=cur;
+		&#125;
+		ch[cur][0]=ch[cur][1]=0,par[cur]=fa,val[cur]=x,cnt[cur]=size[cur]=1; 
+	&#125;
+	splay(cur); 
+	return;
+&#125;
+void pushdown(int x)
+&#123;
+	if(flag[x])
+	&#123;
+		swap(ch[x][0],ch[x][1]);
+		flag[ch[x][0]]=!flag[ch[x][0]];
+		flag[ch[x][1]]=!flag[ch[x][1]];
+		flag[x]=false;
+	&#125;
+	return;
+&#125;
+int kth(int x)
+&#123;
+	int cur=root;
+	for(;;)
+	&#123;
+		if(ch[cur][0] &amp;&amp; x&lt;=size[ch[cur][0]])
+			cur=ch[cur][0];
+		else if(x&gt;size[ch[cur][0]]+cnt[cur])
+		&#123;
+			x-=size[ch[cur][0]]+cnt[cur];
+			cur=ch[cur][1];
+		&#125;
+		else
+			return cur;
+	&#125;
+	return cur;
+&#125;
+void update(int x,int y)
+&#123;
+	int t1=kth(x),t2=kth(y+2);
+	splay(t1),splay(t2,t1);
+	flag[ch[t2][0]]=!flag[ch[t2][0]];
+	return;
+&#125;
+void find(int x)
+&#123;
+	int cur=root;
+	while(ch[cur][x&gt;val[cur]] &amp;&amp; val[cur]!=x)
+		cur=ch[cur][x&gt;val[cur]];
+	splay(cur);
+	return;
+&#125;
+int pre(int x)
+&#123;
+	find(x);
+	if(val[root]&lt;x)
+		return root;
+	int cur=ch[root][0];
+	while(ch[cur][1])
+		cur=ch[cur][1];
+	return cur;
+&#125;
+int succ(int x)
+&#123;
+	find(x);
+	if(val[root]&gt;x)
+		return root;
+	int cur=ch[root][1];
+	while(ch[cur][0])
+		cur=ch[cur][0];
+	return cur;
+&#125;
+void print(int x)
+&#123;
+	pushdown(x);
+	if(ch[x][0])
+		print(ch[x][0]);
+	if(val[x] &amp;&amp; val[x]&lt;=n)
+		printf(&quot;%d &quot;,val[x]);
+	if(ch[x][1])
+		print(ch[x][1]);
+	return;
+&#125;
+void del(int x)
+&#123;
+	int last=pre(x),next=succ(x);
+	splay(last),splay(next,last);
+	int cut=ch[next][0];
+	if(cnt[cut]&gt;1)
+	&#123;
+		cnt[cut]--;
+		splay(cut);
+	&#125;
+	else
+		ch[next][0]=0,push_up(next),push_up(root);
+	return;
+&#125;
+int main()
+&#123;
+	scanf(&quot;%d&quot;,&amp;n);
+	insert(0x7f7f7f7f),insert(0xcfcfcfcf);
+	while(n--)
+	&#123;
+		int op,x;
+		scanf(&quot;%d %d&quot;,&amp;op,&amp;x);
+		if(op==1)
+			insert(x);
+		else if(op==2)
+			del(x);
+		else if(op==3)
+		&#123;
+			find(x);
+			printf(&quot;%d\n&quot;,size[ch[root][0]]);
+		&#125;
+		else if(op==4)
+			printf(&quot;%d\n&quot;,val[kth(x+1)]);
+		else if(op==5)
+			printf(&quot;%d\n&quot;,val[pre(x)]);
+		else
+			printf(&quot;%d\n&quot;,val[succ(x)]);
+	&#125;
+	return 0;
+&#125;
+</code></pre><p>这篇文章只是单纯的模板记录文章，要想了解原理请移步另一篇文章</p><p>下面是二叉平衡树的应用，利用二叉平衡树来维护一个有序序列</p><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzOTE=">例题：文艺平衡树</span></p><p>Code:</p><pre><code class="language-c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=100001;
+int ch[N][2],par[N],size[N],cnt[N],val[N],n,m,tot,root;
+bool flag[N];
+int chk(int x)//查询子节点在父节点左边还是右边 
+&#123;
+	if(ch[par[x]][1]==x)  
+		return 1;
+	else
+		return 0;
+&#125;
+void push_up(int x) //更新此节点的size 
+&#123;
+	size[x]=size[ch[x][0]]+size[ch[x][1]]+cnt[x];
+	return;
+&#125;
+void rotate(int cur)
+&#123;
+	int x=par[cur],y=par[par[cur]],k=chk(cur),which=ch[cur][k^1]; 
+	//x为此节点的父亲，y为此节点的爷爷 
+	ch[x][k]=which,par[which]=x; //父亲的儿子改成 
+	ch[y][chk(x)]=cur,par[cur]=y;
+	ch[cur][k^1]=x,par[x]=cur;
+	push_up(x),push_up(cur);
+	return;
+&#125;
+void splay(int cur,int aim=0)
+&#123;
+	while(par[cur]!=aim)
+	&#123;
+		int x=par[cur],y=par[par[cur]];
+		if(y!=aim)
+		&#123;
+			if(chk(cur)==chk(x))
+				rotate(x);
+			else
+				rotate(cur);
+		&#125;
+		rotate(cur);
+	&#125;
+	if(!aim)
+		root=cur;
+	return;
+&#125;
+void insert(int x)
+&#123;
+	int cur=root,fa=0;
+	while(cur &amp;&amp; val[cur]!=x) //当树不为空且这个点的值不是插入值 
+	&#123;
+		fa=cur;//更新father 
+		if(x&gt;val[cur]) //这个值大于当前节点值 
+			cur=ch[cur][1]; //右儿子 
+		else
+			cur=ch[cur][0]; //左二子 
+	&#125;
+	if(cur) //出循环还没到底部，说明已经有这个值 
+		cnt[cur]++;
+	else //新建节点 
+	&#123;
+		cur=++tot;
+		if(fa) //如果这个点不是第一个点 
+		&#123;
+			if(x&gt;val[fa]) //同上 
+				ch[fa][1]=cur;
+			else
+				ch[fa][0]=cur;
+		&#125;
+		ch[cur][0]=ch[cur][1]=0,par[cur]=fa,val[cur]=x,cnt[cur]=size[cur]=1;//新节点信息 
+	&#125;
+	splay(cur); //平衡一下 
+	return;
+&#125;
+void pushdown(int x)
+&#123;
+	if(flag[x])
+	&#123;
+		swap(ch[x][0],ch[x][1]);
+		flag[ch[x][0]]=!flag[ch[x][0]];
+		flag[ch[x][1]]=!flag[ch[x][1]];
+		flag[x]=false;
+	&#125;
+	return;
+&#125;
+int kth(int x)
+&#123;
+	int cur=root;
+	for(;;)
+	&#123;
+		pushdown(cur);
+		if(ch[cur][0] &amp;&amp; x&lt;=size[ch[cur][0]])
+			cur=ch[cur][0];
+		else if(x&gt;size[ch[cur][0]]+cnt[cur])
+		&#123;
+			x-=size[ch[cur][0]]+cnt[cur];
+			cur=ch[cur][1];
+		&#125;
+		else
+			return cur;
+	&#125;
+	return cur;
+&#125;
+void update(int x,int y)
+&#123;
+	int t1=kth(x),t2=kth(y+2);
+	splay(t1),splay(t2,t1);
+	flag[ch[t2][0]]=!flag[ch[t2][0]];
+	return;
+&#125;
+void find(int x)
+&#123;
+	int cur=root;
+	while(ch[cur][x&gt;val[cur]] &amp;&amp; val[cur]!=x)
+		cur=ch[cur][x&gt;val[cur]];
+	splay(cur);
+	return;
+&#125;
+int pre(int x)
+&#123;
+	find(x);
+	if(val[root]&gt;x)
+		return root;
+	int cur=ch[root][0];
+	while(ch[cur][1])
+		cur=ch[cur][1];
+	return cur;
+&#125;
+int succ(int x)
+&#123;
+	find(x);
+	if(val[root]&lt;x)
+		return root;
+	int cur=ch[root][1];
+	while(ch[cur][0])
+		cur=ch[cur][1];
+	return cur;
+&#125;
+void print(int x)
+&#123;
+	pushdown(x);
+	if(ch[x][0])
+		print(ch[x][0]);
+	if(val[x] &amp;&amp; val[x]&lt;=n)
+		printf(&quot;%d &quot;,val[x]);
+	if(ch[x][1])
+		print(ch[x][1]);
+	return;
+&#125;
+void del(int x)
+&#123;
+	int last=pre(x),next=succ(x);
+	splay(last),splay(next,last);
+	int cut=ch[next][0];
+	if(cnt[cut]&gt;1)
+	&#123;
+		cnt[cut]--;
+		splay(cut);
+	&#125;
+	else
+		ch[next][0]=0,push_up(next),push_up(root);
+	return;
+&#125;
+int main()
+&#123;
+	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+	for(int i=0;i&lt;=n+1;i++)
+		insert(i);
+	for(int i=1;i&lt;=m;i++)
+	&#123;
+		int x,y;
+		scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+		update(x,y);
+	&#125;
+	print(root);
+	return 0;
+&#125;
+</code></pre><h2 id="五-树链剖分"><a class="anchor" href="#五-树链剖分">#</a> 五、树链剖分</h2><p>树链剖分是为了对树上进行区间修改而发明的算法，很长，很难写，但应用很多</p><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzODQ=">例题：重链剖分</span></p><p>Code:</p><pre><code class="language-c++">#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int N=100001;
+struct data
+&#123;
+    int h;
+    int zson;
+    int fa,top;
+    int size;
+    int tid;
+&#125;d[N];
+struct node
+&#123;
+    int l,r,left_child,right_child;
+    int sum,delay;
+&#125;tree[N*3];
+int rnk[N],n,m,R,mod,a[N],cnt=1,root,tot;
+vector &lt;int &gt; v[N];
+void dfs1(int pre,int cur)
+&#123;
+    d[cur].h=d[pre].h+1;
+    d[cur].fa=pre,d[cur].zson=-1;
+    d[cur].size=1;
+    int size=v[cur].size();
+    for(int i=0;i&lt;size;i++)
+    &#123;
+        int t=v[cur][i];
+        if(t!=pre)
+        &#123;
+            dfs1(cur,t);
+            d[cur].size+=d[t].size;
+            if(d[cur].zson==-1 || d[t].size&gt;d[d[cur].zson].size)
+            d[cur].zson=t;
+        &#125;
+    &#125;
+    return;
+&#125;
+void dfs2(int cur,int t)
+&#123;
+    d[cur].top=t;
+    d[cur].tid=cnt;
+    rnk[cnt]=cur;
+    cnt++;
+    if(d[cur].size==1 || d[cur].zson==-1)
+    return;
+    dfs2(d[cur].zson,t);
+    int size=v[cur].size();
+    for(int i=0;i&lt;size;i++)
+    &#123;
+        int x=v[cur][i];
+        if(x!=d[cur].fa &amp;&amp; x!=d[cur].zson)
+        dfs2(x,x);
+    &#125;
+    return;
+&#125;
+void MOD(int root)
+&#123;
+    tree[root].sum%=mod,tree[root].delay%=mod;
+    return;
+&#125;
+void fix(int root)
+&#123;
+    int a=tree[root].left_child,b=tree[root].right_child;
+    if(a!=-1 &amp;&amp; b!=-1)
+    tree[root].sum=tree[a].sum+tree[b].sum;
+    MOD(root);
+    return;
+&#125;
+void build(int &amp; root,int l,int r)
+&#123;
+    root=tot++;
+    tree[root].l=l,tree[root].r=r;
+    tree[root].left_child=tree[root].right_child=-1;
+    tree[root].delay=0;
+    if(l==r)
+    tree[root].sum=a[rnk[l]];
+    else
+    &#123;
+        int mid=(l+r)/2;
+        build(tree[root].left_child,l,mid);
+        build(tree[root].right_child,mid+1,r);
+        fix(root);
+    &#125;
+    return;
+&#125;
+void push_down(int root)
+&#123;
+    if(tree[root].delay!=0)
+    &#123;
+        int a=tree[root].left_child,b=tree[root].right_child;
+        if(a==-1 || b==-1)
+        return;
+        tree[a].sum+=(tree[a].r-tree[a].l+1)*tree[root].delay;
+        tree[a].delay+=tree[root].delay,tree[b].delay+=tree[root].delay;
+        tree[b].sum+=(tree[b].r-tree[b].l+1)*tree[root].delay;
+        tree[root].delay=0;
+        MOD(root);
+    &#125;
+    return;
+&#125;
+void update(int root,int l,int r,int v)
+&#123;
+    if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+    &#123;
+        tree[root].sum+=(tree[root].r-tree[root].l+1)*v;
+        tree[root].delay+=v;
+    &#125;
+    else
+    &#123;
+        push_down(root);
+        int mid=(tree[root].l+tree[root].r)/2;
+        if(mid&gt;=r)
+        update(tree[root].left_child,l,r,v);
+        else if(mid&lt;l)
+        update(tree[root].right_child,l,r,v);
+        else
+        &#123;
+            update(tree[root].left_child,l,mid,v);
+            update(tree[root].right_child,mid+1,r,v);
+        &#125;
+        fix(root);
+    &#125;
+    return;
+&#125;
+void update_zdl(int x,int y,int z)
+&#123;
+    int a=d[x].top,b=d[y].top;
+    while(a!=b)
+    &#123;
+        if(d[a].h&gt;d[b].h)
+        &#123;
+            update(root,d[a].tid,d[x].tid,z);
+            x=d[a].fa;
+        &#125;
+        else
+        &#123;
+            update(root,d[b].tid,d[y].tid,z);
+            y=d[b].fa;
+        &#125;
+        a=d[x].top,b=d[y].top;
+    &#125;
+    if(x!=y)
+    &#123;
+        if(d[x].tid&lt;d[y].tid)
+        update(root,d[x].tid,d[y].tid,z);
+        else
+        update(root,d[y].tid,d[x].tid,z);
+    &#125;
+    else
+    update(root,d[x].tid,d[y].tid,z);
+    return;
+&#125;
+int get_ans(int root,int l,int r)
+&#123;
+    if(l&lt;=tree[root].l &amp;&amp; tree[root].r&lt;=r)
+    return tree[root].sum;
+    else
+    &#123;
+        push_down(root);
+        int mid=(tree[root].l+tree[root].r)/2;
+        if(mid&gt;=r)
+        return get_ans(tree[root].left_child,l,r)%mod;
+        else if(mid&lt;l)
+        return get_ans(tree[root].right_child,l,r)%mod;
+        return (get_ans(tree[root].left_child,l,mid)+get_ans(tree[root].right_child,mid+1,r))%mod;
+    &#125;
+&#125;
+int get_ans_zdl(int x,int y)
+&#123;
+    int ans=0;
+    int a=d[x].top,b=d[y].top;
+    while(a!=b)
+    &#123;
+        if(d[a].h&gt;d[b].h)
+        &#123;
+            ans+=get_ans(root,d[a].tid,d[x].tid);
+            x=d[a].fa;
+        &#125;
+        else
+        &#123;
+            ans+=get_ans(root,d[b].tid,d[y].tid);
+            y=d[b].fa;
+        &#125;
+        a=d[x].top,b=d[y].top;
+    &#125;
+    if(x!=y)
+    &#123;
+        if(d[x].tid&lt;d[y].tid)
+        ans+=get_ans(root,d[x].tid,d[y].tid);
+        else
+        ans+=get_ans(root,d[y].tid,d[x].tid);
+    &#125;
+    else
+    ans+=get_ans(root,d[x].tid,d[y].tid);
+    return ans%mod;
+&#125;
+int main()
+&#123;
+    scanf(&quot;%d %d %d %d&quot;,&amp;n,&amp;m,&amp;R,&amp;mod);
+    for(int i=1;i&lt;=n;i++)
+    scanf(&quot;%d&quot;,&amp;a[i]);
+    for(int i=1;i&lt;n;i++)
+    &#123;
+        int a,b;
+        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+        v[a].push_back(b),v[b].push_back(a);
+    &#125;
+    d[0].h=0,d[0].fa=-1;
+    dfs1(0,R);
+    dfs2(R,R);
+    build(root,1,n);
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int op,x,y,z;
+        scanf(&quot;%d&quot;,&amp;op);
+        if(op==1)
+        &#123;
+            scanf(&quot;%d %d %d&quot;,&amp;x,&amp;y,&amp;z);
+            update_zdl(x,y,z);
+        &#125;
+        else if(op==2)
+        &#123;
+            scanf(&quot;%d %d&quot;,&amp;x,&amp;y);
+            printf(&quot;%d\n&quot;,get_ans_zdl(x,y));
+        &#125;
+        else if(op==3)
+        &#123;
+            scanf(&quot;%d %d&quot;,&amp;x,&amp;z);
+            update(root,d[x].tid,d[x].tid+d[x].size-1,z);
+        &#125;
+        else
+        &#123;
+            scanf(&quot;%d&quot;,&amp;x);
+            printf(&quot;%d\n&quot;,get_ans(root,d[x].tid,d[x].tid+d[x].size-1));
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre><p>和二叉平衡树一样，本篇只做记录，不做详解，详解请移步另一篇文章</p><div class="tags"><a href="/tags/C/" rel="tag"><i class="ic i-tag"></i> C++</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"><i class="ic i-tag"></i> 线段树</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2023-10-29 11:22:35" itemprop="dateModified" datetime="2023-10-29T11:22:35+08:00">2023-10-29</time> </span><span id="oi-template/模板之线段树/" class="item leancloud_visitors" data-flag-title="模板之线段树" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>Whispering <i class="ic i-at"><em>@</em></i>Whispering's Blog</li><li class="link"><strong>本文链接：</strong> <a href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="模板之线段树">http://ntmydb/github.io/oi-template/模板之线段树/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%80%8D%E5%A2%9E%E5%8F%8ALCA/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;10&#x2F;25&#x2F;6P3LF1M4Gjd52EZ.jpg" title="模板之倍增及LCA"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> OI 模板</span><h3>模板之倍增及LCA</h3></a></div><div class="item right"><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8BRMQ/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;10&#x2F;25&#x2F;I5QdftlE6wGqPnj.jpg" title="模板之RMQ"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> OI 模板</span><h3>模板之RMQ</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.</span> <span class="toc-text">线段树模板</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">一、线段树基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%9D%BF%E5%AD%90%E5%8C%85%E5%90%AB%E5%8C%BA%E9%97%B4%E6%B1%82%E5%92%8C%E5%8D%95%E7%82%B9%E4%BF%AE%E6%94%B9%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.</span> <span class="toc-text">二、线段树板子（包含区间求和，单点修改，区间修改）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number">1.3.</span> <span class="toc-text">三、可持久化线段树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%99%AE%E9%80%9A%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="toc-number">1.4.</span> <span class="toc-text">四、普通平衡树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86"><span class="toc-number">1.5.</span> <span class="toc-text">五、树链剖分</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="bookmark" title="模板之并查集">模板之并查集</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E4%BA%8C%E5%88%86/" rel="bookmark" title="模板之二分">模板之二分</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8BKMP%E4%B8%8EAC%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="bookmark" title="模板之KMP与AC自动机">模板之KMP与AC自动机</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="bookmark" title="模板之后缀数组">模板之后缀数组</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="bookmark" title="模板之最短路">模板之最短路</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%80%8D%E5%A2%9E%E5%8F%8ALCA/" rel="bookmark" title="模板之倍增及LCA">模板之倍增及LCA</a></li><li class="active"><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="bookmark" title="模板之线段树">模板之线段树</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8BRMQ/" rel="bookmark" title="模板之RMQ">模板之RMQ</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="bookmark" title="模板之树状数组">模板之树状数组</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BC%A9%E7%82%B9%E3%80%81%E5%89%B2%E7%82%B9%E3%80%81%E6%A1%A5/" rel="bookmark" title="模板之缩点、割点、桥">模板之缩点、割点、桥</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="bookmark" title="模板之最小生成树">模板之最小生成树</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%89%A9%E6%AC%A7%E3%80%81gcd%E3%80%81%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="bookmark" title="模板之扩欧、gcd和快速幂">模板之扩欧、gcd和快速幂</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E8%8E%AB%E9%98%9F/" rel="bookmark" title="模板之莫队">模板之莫队</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="bookmark" title="模板之高精度">模板之高精度</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%BF%AB%E8%AF%BB%E3%80%81%E5%BF%AB%E5%86%99%E5%92%8C%E5%AF%B9%E6%8B%8D/" rel="bookmark" title="模板之快读、快写和对拍">模板之快读、快写和对拍</a></li><li><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%B5%81%E4%B8%8E%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/" rel="bookmark" title="模板之最大流与二分图匹配">模板之最大流与二分图匹配</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Whispering" data-src="/images/avatar.jpg"><p class="name" itemprop="name">Whispering</p><div class="description" itemprop="description">Whispering's Blog</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">29</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">6</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">30</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL250bXlkYg==" title="https:&#x2F;&#x2F;github.com&#x2F;ntmydb"><i class="ic i-github"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%80%8D%E5%A2%9E%E5%8F%8ALCA/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8BRMQ/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/oi-template/" title="分类于 OI 模板">OI 模板</a></div><span><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%80%8D%E5%A2%9E%E5%8F%8ALCA/" title="模板之倍增及LCA">模板之倍增及LCA</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5/" title="机器学习之决策树实践">机器学习之决策树实践</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%89%8D%E7%BD%AEPython%E6%93%8D%E4%BD%9C/" title="机器学习之前置Python操作">机器学习之前置Python操作</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%B7%E9%87%8F%E6%96%87%E4%BB%B6%E9%81%8D%E5%8E%86/" title="机器学习之海量文件遍历">机器学习之海量文件遍历</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B/" title="机器学习之房价预测">机器学习之房价预测</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/oi-template/" title="分类于 OI 模板">OI 模板</a></div><span><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%BF%AB%E8%AF%BB%E3%80%81%E5%BF%AB%E5%86%99%E5%92%8C%E5%AF%B9%E6%8B%8D/" title="模板之快读、快写和对拍">模板之快读、快写和对拍</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BPython%E7%B9%81%E6%9D%82%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" title="机器学习之Python繁杂库的使用">机器学习之Python繁杂库的使用</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/oi-template/" title="分类于 OI 模板">OI 模板</a></div><span><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" title="模板之树状数组">模板之树状数组</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/oi-template/" title="分类于 OI 模板">OI 模板</a></div><span><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E9%AB%98%E7%B2%BE%E5%BA%A6/" title="模板之高精度">模板之高精度</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Tools/" title="分类于 Tools">Tools</a></div><span><a href="/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" title="好用的工具网站">好用的工具网站</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2023</span> <span class="with-love"><i class="ic i-"></i> </span><span class="author" itemprop="copyrightHolder">Whispering @ Flüstern</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">117k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">1:47</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"oi-template/模板之线段树/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script></body></html>

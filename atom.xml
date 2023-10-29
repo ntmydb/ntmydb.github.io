@@ -8,13 +8,191 @@
     <author>
       <name>Whispering</name>
     </author>
-    <updated>2023-10-28T07:10:53.000Z</updated>
+    <updated>2023-10-28T11:39:00.000Z</updated>
     <category term="Whispering" />
     <category term="星铁资深测评师" />
     <entry>
-        <id>http://ntmydb/github.io/2023-05-21-%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0%E4%B8%80/</id>
+        <id>http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%B8%80/</id>
+        <title>操作系统实验一</title>
+        <link rel="alternate" href="http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%B8%80/"/>
+        <content type="html">&lt;h2 id=&#34;操作系统实验一&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#操作系统实验一&#34;&gt;#&lt;/a&gt; 操作系统实验一&lt;/h2&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;前情提要&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前情提要&#34;&gt;#&lt;/a&gt; 前情提要：&lt;/h3&gt;
+&lt;p&gt;其实这篇文章并不会完全告诉你操作系统实验一的全部答案，只会记录一些该实验的坑爹点&lt;/p&gt;
+&lt;p&gt;如果你的实验一开头和下面这段文字一样，那么，强烈建议你看看这篇文章，最重要的一点，不要一开始点击 1-1.cpp 的编译运行，如果你点了。。。那我会为你默哀一秒钟，然后你可以重启电脑了&lt;/p&gt;
+&lt;p&gt;好了，说了这么多废话，先看看实验一的开头：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 背景知识&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Windows  所创建的每个进程都从调用 CreateProcess () API 函数开始，该函数的任务是在对象管理器子系统内初始化进程对象。每一进程都以调用 ExitProcess () 或 TerminateProcess () API 函数终止。通常应用程序的框架负责调用 ExitProcess () 函数，对于 C++ 运行库来说，这一调用发生在应用程序的 main () 函数返回之后。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 创建进程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CreateProcess () 调用的核心参数是可执行文件运行时的文件名及其命令行。表 1-1 详细地列出了每个参数的类型和名称。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;表 1-1 实验记录表&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名称&lt;/th&gt;
+&lt;th&gt;使用目的&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LPCTSTR lpApplivationNAME&lt;/td&gt;
+&lt;td&gt;全部或部分地指明包括可执行代码的 EXE 文件的文件名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LPCTSTR lpCommandLine&lt;/td&gt;
+&lt;td&gt;向可执行文件发送的参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LPSECURIITY_ATTRIBUTESlpProcessAttributes&lt;/td&gt;
+&lt;td&gt;返回进程句柄的安全属性，主要指明这一句柄是否应该由其他子进程所继承。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LPSECURIITY_ATTRIBUTESlpThreadAttributes&lt;/td&gt;
+&lt;td&gt;返回进程的主线程的句柄的安全属性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;BOOL bInheritHandle&lt;/td&gt;
+&lt;td&gt;一种标志，告诉系统允许新进程继承创建者进程的句柄&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DWORD dwCreationFlage&lt;/td&gt;
+&lt;td&gt;特殊的创建标志（如 CREATE_SUSPENDED）的位标记&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LPVOID lpEnvironment&lt;/td&gt;
+&lt;td&gt;向新进程发送的一套环境变量；如为 null 值则发送调用者环境&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LPCTSTR lpCurrentDirectory&lt;/td&gt;
+&lt;td&gt;新进程的启动目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STARTUPINFO lpStartupInfo&lt;/td&gt;
+&lt;td&gt;STARTUPINFO 结构，包括新进程的输入和输出配置的详情&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LPPROCESS_INFORMATION lpProcessInformation&lt;/td&gt;
+&lt;td&gt;调用的结果块；发送新应用程序的进程和主线程的句柄和 ID&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;OK，假如到这里都是一模一样的，那么接着往下看吧，如果没有，慢走不送&lt;/p&gt;
+&lt;h3 id=&#34;一-执行如下指令c-cl-1-1cpp给出运行结果并进行分析&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-执行如下指令c-cl-1-1cpp给出运行结果并进行分析&#34;&gt;#&lt;/a&gt; 一、执行如下指令&lt;span class=&#34;kbd&#34;&gt; C:\ CL 1-1.cpp&lt;/span&gt;，给出运行结果，并进行分析&lt;/h3&gt;
+&lt;p&gt;看起来是不是很简单，只要在命令行里输入上面的句子就结束了，那我只能说你太天真了。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;kbd&#34;&gt;cl&lt;/span&gt; 指令是&lt;span class=&#34;kbd&#34;&gt; VS&lt;/span&gt;（全名&lt;span class=&#34;kbd&#34;&gt; Visual Studio&lt;/span&gt;）才包含的，也就是如果你的电脑上没有下&lt;span class=&#34;kbd&#34;&gt; VS&lt;/span&gt;，那么这个问题你没法做&lt;/p&gt;
+&lt;h4 id=&#34;1-第一步下载vs找到clexe所在文件夹&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-第一步下载vs找到clexe所在文件夹&#34;&gt;#&lt;/a&gt; 1、第一步，下载&lt;span class=&#34;kbd&#34;&gt; VS&lt;/span&gt;，找到&lt;span class=&#34;kbd&#34;&gt; cl.exe&lt;/span&gt; 所在文件夹&lt;/h4&gt;
+&lt;p&gt;在安装 VS 时，你需要选择安装有关&lt;span class=&#34;kbd&#34;&gt; C/C++&lt;/span&gt; 开发有关的库才可以&lt;/p&gt;
+&lt;p&gt;笔者本人的&lt;span class=&#34;kbd&#34;&gt; cl.exe&lt;/span&gt; 在&lt;span class=&#34;kbd&#34;&gt; F:\dev C\VS\VC\Tools\MSVC\14.37.32822\bin\Hostx64\x64&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;将这个目录添加到你系统变量的&lt;span class=&#34;kbd&#34;&gt; Path&lt;/span&gt; 中，然后你打开&lt;span class=&#34;kbd&#34;&gt; cmd&lt;/span&gt; 可以尝试一下输入以下命令：&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;C:\Users\asus&gt;cl&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;如果出现了以下界面：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2023/10/28/QObGPgHhlqmpXn6.png&#34; alt=&#34;运行结果&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;那么证明你的&lt;span class=&#34;kbd&#34;&gt; cl.exe&lt;/span&gt; 已经放入系统路径中了&lt;/p&gt;
+&lt;h4 id=&#34;2-第二步将你的系统中的一些库添加到系统变量中&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-第二步将你的系统中的一些库添加到系统变量中&#34;&gt;#&lt;/a&gt; 2、第二步，将你的系统中的一些库添加到系统变量中&lt;/h4&gt;
+&lt;p&gt;记住，是添加到系统变量中，而不是系统变量的&lt;span class=&#34;kbd&#34;&gt; Path&lt;/span&gt; 中&lt;/p&gt;
+&lt;p&gt;新建变量&lt;span class=&#34;kbd&#34;&gt; Lib&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;添加路径包含：&lt;span class=&#34;kbd&#34;&gt;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\ucrt\x64&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​						   &lt;span class=&#34;kbd&#34;&gt;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\ucrt_enclave\x64&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​						   &lt;span class=&#34;kbd&#34;&gt;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​						   &lt;span class=&#34;kbd&#34;&gt;F:\dev C\VS\VC\Tools\MSVC\14.37.32822\lib\x64&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;新建变量&lt;span class=&#34;kbd&#34;&gt; Include&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;添加路径包含：&lt;span class=&#34;kbd&#34;&gt;F:\dev C\VS\VC\Tools\MSVC\14.37.32822\include&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​						   &lt;span class=&#34;kbd&#34;&gt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\cppwinrt&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​						   &lt;span class=&#34;kbd&#34;&gt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​						   &lt;span class=&#34;kbd&#34;&gt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​						   &lt;span class=&#34;kbd&#34;&gt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​						   &lt;span class=&#34;kbd&#34;&gt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\winrt&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3-第三步如果你再次运行cl-1-1cpp后出现了问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-第三步如果你再次运行cl-1-1cpp后出现了问题&#34;&gt;#&lt;/a&gt; 3、第三步，如果你再次运行&lt;span class=&#34;kbd&#34;&gt; CL 1-1.cpp&lt;/span&gt; 后出现了问题&lt;/h4&gt;
+&lt;p&gt;问题描述大概就是找不到&lt;span class=&#34;kbd&#34;&gt; mspdbcore.dll&lt;/span&gt; 文件，那么按照一下步骤解决&lt;/p&gt;
+&lt;p&gt;进入文件夹&lt;span class=&#34;kbd&#34;&gt; F:\dev C\VS\Common7\IDE&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;将四个文件复制&lt;span class=&#34;kbd&#34;&gt; msobj140.dll&lt;/span&gt;，&lt;span class=&#34;kbd&#34;&gt;mspdb140.dll&lt;/span&gt;，&lt;span class=&#34;kbd&#34;&gt;mspdbcore.dll&lt;/span&gt;，&lt;span class=&#34;kbd&#34;&gt;mspdbsrv.exe&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;到文件夹&lt;span class=&#34;kbd&#34;&gt; F:\dev C\VS\VC\Tools\MSVC\14.37.32822\bin\Hostx64\x64&lt;/span&gt; 中，选择覆盖文件&lt;/p&gt;
+&lt;h4 id=&#34;4-第四步正常运行不出意外的话可以得到以下结果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-第四步正常运行不出意外的话可以得到以下结果&#34;&gt;#&lt;/a&gt; 4、第四步，正常运行，不出意外的话可以得到以下结果：&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2023/10/29/ewyGSqjIfA4Ja9L.png&#34; alt=&#34;运行结果&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;到这里第一问才完整解决，那么剩下的问题我不会记录答案，下面会记录&lt;span class=&#34;kbd&#34;&gt; 1-1.cpp&lt;/span&gt; 的完整代码，如果你的和下面不一样，说明你的代码可能有&lt;span class=&#34;label danger&#34;&gt; bug&lt;/span&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;// proccreate项目
+#include &amp;lt;windows.h&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+// 创建传递过来的进程的克隆过程并赋于其ID值
+void StartClone(int nCloneID)
+&amp;#123;
+    // 提取用于当前可执行文件的文件名
+    TCHAR szFilename[MAX_PATH] ;
+    :: GetModuleFileName(NULL, szFilename, MAX_PATH) ;
+
+    // 格式化用于子进程的命令行并通知其EXE文件名和克隆ID
+    TCHAR szCmdLine[MAX_PATH];
+	:: sprintf(szCmdLine,&amp;quot;\&amp;quot;%s\&amp;quot; %d&amp;quot;,szFilename,nCloneID);
+
+	// 用于子进程的STARTUPINFO结构
+    STARTUPINFO si;
+    :: ZeroMemory(reinterpret_cast &amp;lt;void*&amp;gt; (&amp;amp;si) , sizeof(si) ) ;
+    si.cb = sizeof(si) ;				// 必须是本结构的大小
+
+    // 返回的用于子进程的进程信息
+    PROCESS_INFORMATION pi;
+
+    // 利用同样的可执行文件和命令行创建进程，并赋于其子进程的性质
+    BOOL bCreateOK=::CreateProcess(
+        szFilename,					// 产生这个EXE的应用程序的名称
+        szCmdLine,					// 告诉其行为像一个子进程的标志
+        NULL,						// 缺省的进程安全性
+        NULL,						// 缺省的线程安全性
+        FALSE,						// 不继承句柄
+        CREATE_NEW_CONSOLE,			// 使用新的控制台
+        NULL,						// 新的环境
+        NULL,						// 当前目录
+        &amp;amp;si,						// 启动信息
+        &amp;amp;pi) ;						// 返回的进程信息
+
+    // 对子进程释放引用
+    if (bCreateOK)
+    &amp;#123;
+        :: CloseHandle(pi.hProcess) ;
+        :: CloseHandle(pi.hThread) ;
+    &amp;#125;
+    return;
+&amp;#125;
+
+int main(int argc, char* argv[] )
+&amp;#123;
+    // 确定进程在列表中的位置
+    int nClone(0) ; // 等价于 int nClone = 0 
+    if (argc &amp;gt; 1)
+    &amp;#123;
+        // 从第二个参数中提取克隆ID
+        :: sscanf(argv[1] , &amp;quot;%d&amp;quot; , &amp;amp;nClone) ;
+    &amp;#125;
+
+    // 显示进程位置
+    std :: cout &amp;lt;&amp;lt; &amp;quot;Process ID:&amp;quot; &amp;lt;&amp;lt; :: GetCurrentProcessId()
+                &amp;lt;&amp;lt; &amp;quot;, Clone ID:&amp;quot; &amp;lt;&amp;lt; nClone
+                &amp;lt;&amp;lt; std :: endl;
+
+    // 检查是否有创建子进程的需要
+    const int c_nCloneMax=25;
+    if (nClone &amp;lt; c_nCloneMax)
+    &amp;#123;	
+        // 发送新进程的命令行和克隆号
+        StartClone(++nClone) ;
+    &amp;#125;
+    // 在终止之前暂停一下 (l/2秒)
+    :: Sleep(500) ;
+
+    return 0;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="计算机科学" scheme="http://ntmydb/github.io/categories/computer-science/" />
+        <category term="操作系统" scheme="http://ntmydb/github.io/categories/computer-science/operating-system/" />
+        <category term="操作系统" scheme="http://ntmydb/github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
+        <updated>2023-10-28T11:39:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://ntmydb/github.io/english-notes/2023-05-21-%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0%E4%B8%80/</id>
         <title>英语笔记一</title>
-        <link rel="alternate" href="http://ntmydb/github.io/2023-05-21-%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0%E4%B8%80/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/english-notes/2023-05-21-%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0%E4%B8%80/"/>
         <content type="html">&lt;h3 id=&#34;sports-crickets-return-to-asian-games-a-bridge-event&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#sports-crickets-return-to-asian-games-a-bridge-event&#34;&gt;#&lt;/a&gt; Sports: Cricket&#39;s return to Asian Games a &#39;bridge&#39; event&lt;/h3&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;div class=&#34;tab&#34; data-id=&#34;id1&#34; data-title=&#34;文章内容&#34;&gt;
@@ -44,37 +222,42 @@
 &lt;p&gt;Yasir Habib Khan, a writer for The Nation, Pakistan&#39;s leading newspaper, noted that cricket&#39;s return to the Asian Games and its inclusion in the Hangzhou events &amp;quot;is a pivotal moment for the sport and for China&#39;s diplomatic endeavors&amp;quot;, as teams of both Pakistan and India now may have the chance to embark on friendly rivalry at the games.&lt;/p&gt;
 &lt;/div&gt;
 &lt;h3 id=&#34;expression&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#expression&#34;&gt;#&lt;/a&gt; Expression:&lt;/h3&gt;
-&lt;p&gt;1、tangible  adj. 有形的，实际的，可感知的，可触摸的；n. 有形资产，具体的某事物&lt;/p&gt;
-&lt;p&gt;​	extend: tangibly adv. 确实地，明确的     near-synonym: literally,definitely&lt;/p&gt;
-&lt;p&gt;​	e.g: The tension between them was almost tangible.   他们之间的紧张关系几乎让人都感觉得出来&lt;/p&gt;
-&lt;p&gt;​		   Suddenly the problem of future loomed tangibly for me.   突然，前途的问题明确地出现在我面前&lt;/p&gt;
-&lt;p&gt;2、endorse v.(公开) 赞同，支持，认可    near-synonym: agree with,favour,approve&lt;/p&gt;
-&lt;p&gt;3、diplomatic adj. 外交的，灵活变通的&lt;/p&gt;
-&lt;p&gt;4、affinity n. 密切关系，喜爱&lt;/p&gt;
-&lt;p&gt;​      e.g: The two plots share certain obvious affinities.  这两个情节有某种明显的相似&lt;/p&gt;
-&lt;p&gt;5、a community with a shared future connected by mountains and rivers as well as cultural affinity&lt;/p&gt;
+&lt;p&gt;1、&lt;span class=&#34;kbd red&#34;&gt;tangible&lt;/span&gt;  adj. 有形的，实际的，可感知的，可触摸的；n. 有形资产，具体的某事物&lt;/p&gt;
+&lt;p&gt;​	extend: &lt;span class=&#34;kbd red&#34;&gt;tangibly&lt;/span&gt; adv. 确实地，明确的     &lt;span class=&#34;kdb aqua&#34;&gt;near-synonym&lt;/span&gt;: &lt;span class=&#34;kbd red&#34;&gt;literally&lt;/span&gt;,&lt;span class=&#34;kbd red&#34;&gt;definitely&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​	e.g: &lt;span class=&#34;kbd orange&#34;&gt;The tension between them was almost tangible. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​			他们之间的紧张关系几乎让人都感觉得出来&lt;/p&gt;
+&lt;p&gt;​		   &lt;span class=&#34;kbd orange&#34;&gt;Suddenly the problem of future loomed tangibly for me.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​			 突然，前途的问题明确地出现在我面前&lt;/p&gt;
+&lt;p&gt;2、&lt;span class=&#34;kbd red&#34;&gt;endorse&lt;/span&gt; v.(公开) 赞同，支持，认可    &lt;span class=&#34;kdb aqua&#34;&gt;near-synonym&lt;/span&gt;: &lt;span class=&#34;kbd red&#34;&gt;agree with&lt;/span&gt;,&lt;span class=&#34;kbd red&#34;&gt;favour&lt;/span&gt;,&lt;span class=&#34;kbd red&#34;&gt;approve&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;3、&lt;span class=&#34;kbd red&#34;&gt;diplomatic&lt;/span&gt; adj. 外交的，灵活变通的&lt;/p&gt;
+&lt;p&gt;4、&lt;span class=&#34;kbd red&#34;&gt;affinity&lt;/span&gt; n. 密切关系，喜爱&lt;/p&gt;
+&lt;p&gt;​      e.g: &lt;span class=&#34;kbd orange&#34;&gt;The two plots share certain obvious affinities.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​			 这两个情节有某种明显的相似&lt;/p&gt;
+&lt;p&gt;5、&lt;span class=&#34;kbd orange&#34;&gt;a community with a shared future connected by mountains and rivers as well as cultural affinity&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;山水相连，文化相亲的命运共同体&lt;/p&gt;
-&lt;p&gt;6、mutual adj. 相互的，共同的   near-synonym: common，collective&lt;/p&gt;
-&lt;p&gt;7、shore up 支持，支撑，加强   near-synonym: bolster (加强，改善),advance (加强，提高)&lt;/p&gt;
-&lt;p&gt;8、embark on sth/doing sth 着手，开始做某事&lt;/p&gt;
-&lt;p&gt;9、prominent adj. 显眼的，显著的，著名的，杰出的   near-synonym: famous,established,renowned&lt;/p&gt;
-&lt;p&gt;10、amity n. 友好，和睦    sincerity n. 诚意，真挚&lt;/p&gt;
-&lt;p&gt;11、epitomize v. 成为... 典范&lt;/p&gt;
-&lt;p&gt;e.g: These movies seem to epitomize the 1950s 这些影片似乎就是 20 世纪 50 年代的缩影&lt;/p&gt;
-&lt;p&gt;12、consensus n. 共识，一致的意见&lt;/p&gt;
-&lt;p&gt;e.g: These is a growing consensus of opinion on this issue.  对这个问题的看法日趋一致&lt;/p&gt;
-&lt;p&gt;13、pivotal  adj. 关键的，中枢的，核心的   near-synonym: key,critical,important,core&lt;/p&gt;
-&lt;p&gt;14、testament n. 证明，证据&lt;/p&gt;
-&lt;p&gt;15、craft a shared narrative of friendship 构建一个共同的友谊&lt;/p&gt;
+&lt;p&gt;6、&lt;span class=&#34;kbd red&#34;&gt;mutual&lt;/span&gt; adj. 相互的，共同的   &lt;span class=&#34;kdb aqua&#34;&gt;near-synonym&lt;/span&gt;: &lt;span class=&#34;kbd red&#34;&gt;common&lt;/span&gt;，&lt;span class=&#34;kbd red&#34;&gt;collective&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;7、&lt;span class=&#34;kbd red&#34;&gt;shore up&lt;/span&gt; 支持，支撑，加强   &lt;span class=&#34;kdb aqua&#34;&gt;near-synonym&lt;/span&gt;: &lt;span class=&#34;kbd red&#34;&gt;bolster (加强，改善)&lt;/span&gt;,&lt;span class=&#34;kbd red&#34;&gt;advance (加强，提高)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;8、&lt;span class=&#34;kbd red&#34;&gt;embark on sth/doing sth&lt;/span&gt; 着手，开始做某事&lt;/p&gt;
+&lt;p&gt;9、&lt;span class=&#34;kbd red&#34;&gt;prominent&lt;/span&gt; adj. 显眼的，显著的，著名的，杰出的   &lt;span class=&#34;kdb aqua&#34;&gt;near-synonym&lt;/span&gt;: &lt;span class=&#34;kbd red&#34;&gt;famous&lt;/span&gt;,&lt;span class=&#34;kbd red&#34;&gt;established&lt;/span&gt;,&lt;span class=&#34;kbd red&#34;&gt;renowned&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;10、&lt;span class=&#34;kbd red&#34;&gt;amity&lt;/span&gt; n. 友好，和睦    &lt;span class=&#34;kbd red&#34;&gt;sincerity&lt;/span&gt; n. 诚意，真挚&lt;/p&gt;
+&lt;p&gt;11、&lt;span class=&#34;kbd red&#34;&gt;epitomize&lt;/span&gt; v. 成为... 典范&lt;/p&gt;
+&lt;p&gt;e.g: &lt;span class=&#34;kbd orange&#34;&gt;These movies seem to epitomize the 1950s&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​		这些影片似乎就是 20 世纪 50 年代的缩影&lt;/p&gt;
+&lt;p&gt;12、&lt;span class=&#34;kbd red&#34;&gt;consensus&lt;/span&gt; n. 共识，一致的意见&lt;/p&gt;
+&lt;p&gt;e.g: &lt;span class=&#34;kbd orange&#34;&gt;These is a growing consensus of opinion on this issue. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;​		 对这个问题的看法日趋一致&lt;/p&gt;
+&lt;p&gt;13、&lt;span class=&#34;kbd red&#34;&gt;pivotal&lt;/span&gt;  adj. 关键的，中枢的，核心的   &lt;span class=&#34;kdb aqua&#34;&gt;near-synonym&lt;/span&gt;: &lt;span class=&#34;kbd red&#34;&gt;key,critical&lt;/span&gt;,&lt;span class=&#34;kbd red&#34;&gt;important&lt;/span&gt;,&lt;span class=&#34;kbd red&#34;&gt;core&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;14、&lt;span class=&#34;kbd red&#34;&gt;testament&lt;/span&gt; n. 证明，证据&lt;/p&gt;
+&lt;p&gt;15、&lt;span class=&#34;kbd red&#34;&gt;craft a shared narrative of friendship&lt;/span&gt; 构建一个共同的友谊&lt;/p&gt;
 </content>
-        <category term="英语笔记" scheme="http://ntmydb/github.io/categories/%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0/" />
+        <category term="英语笔记" scheme="http://ntmydb/github.io/categories/english-notes/" />
         <category term="English" scheme="http://ntmydb/github.io/tags/English/" />
         <updated>2023-10-28T07:10:53.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BGMM%E6%A8%A1%E5%9E%8B/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BGMM%E6%A8%A1%E5%9E%8B/</id>
         <title>机器学习之GMM模型</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BGMM%E6%A8%A1%E5%9E%8B/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BGMM%E6%A8%A1%E5%9E%8B/"/>
         <content type="html">&lt;h4 id=&#34;gmm模型及其em算法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gmm模型及其em算法&#34;&gt;#&lt;/a&gt; GMM 模型及其 EM 算法&lt;/h4&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-gmm模型简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-gmm模型简介&#34;&gt;#&lt;/a&gt; 一、GMM 模型简介&lt;/h2&gt;
@@ -214,9 +397,9 @@
         <updated>2023-10-18T14:09:45.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/</id>
         <title>机器学习之手写数字识别</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/"/>
         <content type="html">&lt;h1 id=&#34;手写数字识别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#手写数字识别&#34;&gt;#&lt;/a&gt; 手写数字识别&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-前置库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前置库&#34;&gt;#&lt;/a&gt; 一、前置库&lt;/h2&gt;
@@ -279,9 +462,9 @@ print(&amp;quot;Classification report for classifier %s:\n%s\n&amp;quot; % (rfc,
         <updated>2023-04-05T02:11:01.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B/</id>
         <title>机器学习之房价预测</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B/"/>
         <content type="html">&lt;h1 id=&#34;线性回归解决波士顿房价预测问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#线性回归解决波士顿房价预测问题&#34;&gt;#&lt;/a&gt; 线性回归解决波士顿房价预测问题&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-数据集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-数据集&#34;&gt;#&lt;/a&gt; 一、数据集&lt;/h2&gt;
@@ -305,9 +488,9 @@ print(&amp;quot;Classification report for classifier %s:\n%s\n&amp;quot; % (rfc,
         <updated>2023-04-01T14:04:21.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BKMeans%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BKMeans%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</id>
         <title>机器学习之KMeans聚类算法</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BKMeans%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BKMeans%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/"/>
         <content type="html">&lt;h1 id=&#34;kmeans聚类算法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#kmeans聚类算法&#34;&gt;#&lt;/a&gt; KMeans 聚类算法&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一-数据集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-数据集&#34;&gt;#&lt;/a&gt; 一、数据集&lt;/h3&gt;
@@ -380,9 +563,9 @@ print(&amp;quot;Classification report for classifier %s:\n%s\n&amp;quot; % (rfc,
         <updated>2023-04-01T05:21:11.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%96%87%E6%9C%AC%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%90/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%96%87%E6%9C%AC%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%90/</id>
         <title>机器学习之文本词频分析</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%96%87%E6%9C%AC%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%90/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%96%87%E6%9C%AC%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%90/"/>
         <content type="html">&lt;h1 id=&#34;文本词频分析&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#文本词频分析&#34;&gt;#&lt;/a&gt; 文本词频分析&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一-前置库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前置库&#34;&gt;#&lt;/a&gt; 一、前置库&lt;/h3&gt;
@@ -401,9 +584,9 @@ print(&amp;quot;Classification report for classifier %s:\n%s\n&amp;quot; % (rfc,
         <updated>2023-03-28T08:26:10.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0/</id>
         <title>机器学习之简单计算器实现</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0/"/>
         <content type="html">&lt;h1 id=&#34;简单计算器的实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#简单计算器的实现&#34;&gt;#&lt;/a&gt; 简单计算器的实现&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;本篇更像是&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;Python&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8888799999999999em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.13889em;&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03588em;&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 的实践学习，也是数据处理学习的深入，把不是我们需要的格式处理成我们需要的格式&lt;/p&gt;
@@ -435,9 +618,9 @@ print(&amp;quot;Classification report for classifier %s:\n%s\n&amp;quot; % (rfc,
         <updated>2023-03-26T10:45:40.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%B7%E9%87%8F%E6%96%87%E4%BB%B6%E9%81%8D%E5%8E%86/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%B7%E9%87%8F%E6%96%87%E4%BB%B6%E9%81%8D%E5%8E%86/</id>
         <title>机器学习之海量文件遍历</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%B7%E9%87%8F%E6%96%87%E4%BB%B6%E9%81%8D%E5%8E%86/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%B7%E9%87%8F%E6%96%87%E4%BB%B6%E9%81%8D%E5%8E%86/"/>
         <content type="html">&lt;h1 id=&#34;海量文件遍历&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#海量文件遍历&#34;&gt;#&lt;/a&gt; 海量文件遍历&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;机器学习往往需要大量的数据来训练模型，因此对数据的处理肯定是不能少的，而数据往往很多，大多数以压缩文件.zip 出现的，所以本篇记录文件遍历的方法&lt;/p&gt;
@@ -464,9 +647,9 @@ print(&amp;quot;Classification report for classifier %s:\n%s\n&amp;quot; % (rfc,
         <updated>2023-03-26T08:25:36.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BPython%E7%B9%81%E6%9D%82%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BPython%E7%B9%81%E6%9D%82%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
         <title>机器学习之Python繁杂库的使用</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BPython%E7%B9%81%E6%9D%82%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BPython%E7%B9%81%E6%9D%82%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
         <content type="html">&lt;h1 id=&#34;python机器学习常用库的使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#python机器学习常用库的使用&#34;&gt;#&lt;/a&gt; Python 机器学习常用库的使用&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-numpy库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-numpy库&#34;&gt;#&lt;/a&gt; 一、Numpy 库&lt;/h2&gt;
@@ -599,9 +782,9 @@ print(&amp;quot;Classification report for classifier %s:\n%s\n&amp;quot; % (rfc,
         <updated>2023-03-22T08:41:37.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%89%8D%E7%BD%AEPython%E6%93%8D%E4%BD%9C/</id>
+        <id>http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%89%8D%E7%BD%AEPython%E6%93%8D%E4%BD%9C/</id>
         <title>机器学习之前置Python操作</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%89%8D%E7%BD%AEPython%E6%93%8D%E4%BD%9C/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%89%8D%E7%BD%AEPython%E6%93%8D%E4%BD%9C/"/>
         <content type="html">&lt;h1 id=&#34;python初级操作&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#python初级操作&#34;&gt;#&lt;/a&gt; Python 初级操作&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-数字&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-数字&#34;&gt;#&lt;/a&gt; 一、数字&lt;/h2&gt;
@@ -642,9 +825,9 @@ print(&amp;quot;Classification report for classifier %s:\n%s\n&amp;quot; % (rfc,
         <updated>2023-03-21T08:12:42.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%B5%81%E4%B8%8E%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%B5%81%E4%B8%8E%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/</id>
         <title>模板之最大流与二分图匹配</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%B5%81%E4%B8%8E%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%A4%A7%E6%B5%81%E4%B8%8E%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/"/>
         <content type="html">&lt;h1 id=&#34;最大流和二分图匹配的模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#最大流和二分图匹配的模板&#34;&gt;#&lt;/a&gt; 最大流和二分图匹配的模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-二分图匹配&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-二分图匹配&#34;&gt;#&lt;/a&gt; 一、二分图匹配&lt;/h2&gt;
@@ -966,17 +1149,16 @@ int main()
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vbGlzdD9rZXl3b3JkPSVFNiU5QyU4MCVFNSVCMCU4RiVFOCVCNCVCOSVFNyU5NCVBOCVFNiU5QyU4MCVFNSVBNCVBNyVFNSU4QSU5QiZhbXA7cGFnZT0x&#34;&gt;最小费用最大流&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;两种算法的具体解析请移步另一篇文章&lt;/p&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
         <category term="图论" scheme="http://ntmydb/github.io/tags/%E5%9B%BE%E8%AE%BA/" />
         <category term="最大流" scheme="http://ntmydb/github.io/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" />
         <updated>2023-03-21T05:05:12.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%BF%AB%E8%AF%BB%E3%80%81%E5%BF%AB%E5%86%99%E5%92%8C%E5%AF%B9%E6%8B%8D/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%BF%AB%E8%AF%BB%E3%80%81%E5%BF%AB%E5%86%99%E5%92%8C%E5%AF%B9%E6%8B%8D/</id>
         <title>模板之快读、快写和对拍</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%BF%AB%E8%AF%BB%E3%80%81%E5%BF%AB%E5%86%99%E5%92%8C%E5%AF%B9%E6%8B%8D/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%BF%AB%E8%AF%BB%E3%80%81%E5%BF%AB%E5%86%99%E5%92%8C%E5%AF%B9%E6%8B%8D/"/>
         <content type="html">&lt;h1 id=&#34;快读-快写和对拍的模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#快读-快写和对拍的模板&#34;&gt;#&lt;/a&gt; 快读、快写和对拍的模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-用途介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-用途介绍&#34;&gt;#&lt;/a&gt; 一、用途介绍&lt;/h2&gt;
@@ -1036,16 +1218,15 @@ bc为自己的暴力代码 记得每个文件点一下编译运行
 */
 &lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
         <category term="数据读写" scheme="http://ntmydb/github.io/tags/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99/" />
         <updated>2023-03-21T01:34:54.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E9%AB%98%E7%B2%BE%E5%BA%A6/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E9%AB%98%E7%B2%BE%E5%BA%A6/</id>
         <title>模板之高精度</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E9%AB%98%E7%B2%BE%E5%BA%A6/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E9%AB%98%E7%B2%BE%E5%BA%A6/"/>
         <content type="html">&lt;h1 id=&#34;高精度模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#高精度模板&#34;&gt;#&lt;/a&gt; 高精度模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-高精度简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-高精度简介&#34;&gt;#&lt;/a&gt; 一、高精度简介&lt;/h2&gt;
@@ -1217,16 +1398,15 @@ biglong divison(biglong x,int cut)
 &amp;#125;
 &lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
         <category term="高精度" scheme="http://ntmydb/github.io/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" />
         <updated>2023-03-21T01:09:44.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E8%8E%AB%E9%98%9F/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E8%8E%AB%E9%98%9F/</id>
         <title>模板之莫队</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E8%8E%AB%E9%98%9F/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E8%8E%AB%E9%98%9F/"/>
         <content type="html">&lt;h1 id=&#34;莫队算法的模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#莫队算法的模板&#34;&gt;#&lt;/a&gt; 莫队算法的模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-简介&#34;&gt;#&lt;/a&gt; 一、简介&lt;/h2&gt;
@@ -1332,17 +1512,16 @@ int main()
 &amp;#125;
 &lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
         <category term="分块" scheme="http://ntmydb/github.io/tags/%E5%88%86%E5%9D%97/" />
         <category term="莫队" scheme="http://ntmydb/github.io/tags/%E8%8E%AB%E9%98%9F/" />
         <updated>2023-03-21T00:58:46.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%89%A9%E6%AC%A7%E3%80%81gcd%E3%80%81%E5%BF%AB%E9%80%9F%E5%B9%82/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%89%A9%E6%AC%A7%E3%80%81gcd%E3%80%81%E5%BF%AB%E9%80%9F%E5%B9%82/</id>
         <title>模板之扩欧、gcd和快速幂</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%89%A9%E6%AC%A7%E3%80%81gcd%E3%80%81%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%89%A9%E6%AC%A7%E3%80%81gcd%E3%80%81%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
         <content type="html">&lt;h1 id=&#34;扩展欧几里得-gcd-快速幂模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#扩展欧几里得-gcd-快速幂模板&#34;&gt;#&lt;/a&gt; 扩展欧几里得、gcd、快速幂模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-gcd模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-gcd模板&#34;&gt;#&lt;/a&gt; 一、gcd 模板&lt;/h2&gt;
@@ -1425,16 +1604,15 @@ ll quickpow(ll x,ll zs)
 &amp;#125;
 &lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
         <category term="数学" scheme="http://ntmydb/github.io/tags/%E6%95%B0%E5%AD%A6/" />
         <updated>2023-03-20T13:15:54.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/</id>
         <title>模板之最小生成树</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"/>
         <content type="html">&lt;h1 id=&#34;最小生成树模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#最小生成树模板&#34;&gt;#&lt;/a&gt; 最小生成树模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;最小生成树有&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;prime&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.85396em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;e&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 算法和&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;kruskal&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03148em;&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03148em;&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 算法，本篇暂时贴了克鲁斯卡尔算法写的生成树代码，算法分析请移步另一篇文章&lt;/p&gt;
@@ -1507,16 +1685,15 @@ int main()
  &amp;#125; 
 &lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
         <category term="图论" scheme="http://ntmydb/github.io/tags/%E5%9B%BE%E8%AE%BA/" />
         <updated>2023-03-20T12:50:34.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BC%A9%E7%82%B9%E3%80%81%E5%89%B2%E7%82%B9%E3%80%81%E6%A1%A5/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BC%A9%E7%82%B9%E3%80%81%E5%89%B2%E7%82%B9%E3%80%81%E6%A1%A5/</id>
         <title>模板之缩点、割点、桥</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BC%A9%E7%82%B9%E3%80%81%E5%89%B2%E7%82%B9%E3%80%81%E6%A1%A5/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BC%A9%E7%82%B9%E3%80%81%E5%89%B2%E7%82%B9%E3%80%81%E6%A1%A5/"/>
         <content type="html">&lt;h1 id=&#34;tarjan缩点-割点和桥的模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tarjan缩点-割点和桥的模板&#34;&gt;#&lt;/a&gt; Tarjan 缩点、割点和桥的模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-缩点&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-缩点&#34;&gt;#&lt;/a&gt; 一、缩点&lt;/h2&gt;
@@ -1703,16 +1880,15 @@ void tarjan(int cur)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;本篇文章只贴模板，具体分析移步另一篇文章&lt;/p&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
         <category term="图论" scheme="http://ntmydb/github.io/tags/%E5%9B%BE%E8%AE%BA/" />
         <updated>2023-03-20T12:31:46.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</id>
         <title>模板之树状数组</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
         <content type="html">&lt;h1 id=&#34;树状数组模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#树状数组模板&#34;&gt;#&lt;/a&gt; 树状数组模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-树状数组大致介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-树状数组大致介绍&#34;&gt;#&lt;/a&gt; 一、树状数组大致介绍&lt;/h2&gt;
@@ -1787,17 +1963,16 @@ int main()
 &amp;#125;
 &lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
         <category term="数据结构" scheme="http://ntmydb/github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" />
         <category term="树状数组" scheme="http://ntmydb/github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" />
         <updated>2023-03-20T12:19:12.000Z</updated>
     </entry>
     <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8BRMQ/</id>
+        <id>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8BRMQ/</id>
         <title>模板之RMQ</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8BRMQ/"/>
+        <link rel="alternate" href="http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8BRMQ/"/>
         <content type="html">&lt;h1 id=&#34;rmq模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#rmq模板&#34;&gt;#&lt;/a&gt; RMQ 模板&lt;/h1&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一-rmq简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-rmq简介&#34;&gt;#&lt;/a&gt; 一、RMQ 简介&lt;/h2&gt;
@@ -1853,940 +2028,9 @@ int main()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;具体算法原理请移步另一篇文章&lt;/p&gt;
 </content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
+        <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
         <category term="倍增" scheme="http://ntmydb/github.io/tags/%E5%80%8D%E5%A2%9E/" />
         <category term="RMQ" scheme="http://ntmydb/github.io/tags/RMQ/" />
         <updated>2023-03-20T09:00:16.000Z</updated>
-    </entry>
-    <entry>
-        <id>http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BA%BF%E6%AE%B5%E6%A0%91/</id>
-        <title>模板之线段树</title>
-        <link rel="alternate" href="http://ntmydb/github.io/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
-        <content type="html">&lt;h1 id=&#34;线段树模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#线段树模板&#34;&gt;#&lt;/a&gt; 线段树模板&lt;/h1&gt;
-&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;一-线段树基本概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-线段树基本概念&#34;&gt;#&lt;/a&gt; 一、线段树基本概念&lt;/h2&gt;
-&lt;p&gt;1、线段树是一颗二叉树，储存的是一个区间的信息，每个节点都是一个结构体，结构体里面包含区间左端点，区间右端点，区间所需要维护的信息&lt;/p&gt;
-&lt;p&gt;2、线段树基本思想是二分&lt;/p&gt;
-&lt;p&gt;3、线段树一般结构如下图&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2023/10/26/wQrvcMWS4x5tNAe.png&#34; alt=&#34;线段树基本结构&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;本人线段树一般书写方法不太一样，如下：&lt;/p&gt;
-&lt;p&gt;Code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct node
-&amp;#123;
-    int l,r,left_child,right_child;
-    int sum,delay;
-&amp;#125;tree[N*2]; //线段树每一个节点结构体
-
-int root,tot,d[N];
-
-void push_up(root) //合并操作
-&amp;#123;
-    int a=tree[root].left_child,b=tree[root].right_child;
-    tree[root].sum=tree[a].sum+tree[b].sum;
-    tree[root].sum+=(tree[a].r-tree[a].l+1)*tree[a].delay,tree[root].sum+=(tree[b].r-tree[b].l+1)*tree[b].delay;
-    return;
-&amp;#125;
-
-void build(int &amp;amp; root,int l,int r) //建树
-&amp;#123;
-    root=++tot,tree[root].l=l,tree[root].r=r;
-    if(l==r)
-    &amp;#123;
-        tree[root].sum=d[l];
-        return;
-    &amp;#125;
-    int mid=(l+r)&amp;gt;&amp;gt;1;
-    build(tree[root].left_child,l,mid);
-    build(tree[root].right_child,mid+1,r);
-    push_up(root);
-    return;
-&amp;#125;
-
-void push_down(int root) //修改时将延迟标记落实
-&amp;#123;
-    int a=tree[root].left_child,b=tree[root].right_child;
-    if(tree[root].delay)
-    &amp;#123;
-        tree[a].sum+=(tree[a].r-tree[a].l+1)*tree[root].delay,tree[a].delay+=tree[root].delay;
-        tree[b].sum+=(tree[b].r-tree[b].l+1)*tree[root].delay,tree[b].delay+=tree[root].delay;
-        tree[root].delay=0;
-    &amp;#125;
-    return;
-&amp;#125;
-
-void update(int root,int l,int r,int v) //区间修改
-&amp;#123;
-    if(l&amp;lt;=tree[root].l &amp;amp;&amp;amp; tree[root].r&amp;lt;=r)
-    &amp;#123;
-        tree[root].delay+=v;
-        return;
-    &amp;#125;
-    push_down(root);
-    int mid=(tree[root].l+tree[root].r)&amp;gt;&amp;gt;1;
-    if(mid&amp;gt;=r)
-        update(tree[root].left_child,l,r,v);
-    else if(mid&amp;lt;l)
-        update(tree[root].right_child,l,r,v);
-    else
-        update(tree[root].left_child,l,mid,v),update(tree[root].right_child,mid+1,r,v);
-    push_up(root);
-    return;
-&amp;#125;
-
-int query(int root,int l,int r) //区间查询
-&amp;#123;
-    if(l&amp;lt;=tree[root].l &amp;amp;&amp;amp; tree[root].r&amp;lt;=r)
-        return tree[root].sum;
-    push_down(root);
-    int mid=(tree[root].l+tree[root].r)&amp;gt;&amp;gt;1;
-    if(mid&amp;gt;=r)
-        return query(tree[root].left_child,l,r);
-    else if(mid&amp;lt;l)
-        return query(tree[root].right_child,l,r);
-    else
-        return query(tree[root].left_child,l,mid)+query(tree[root].right_child,mid+1,r);
-&amp;#125;
-
-void change(int root,int id,int v) //单点修改
-&amp;#123;
-    if(tree[root].l==tree[root].r)
-    &amp;#123;
-        tree[root].sum+=v;
-        return;
-    &amp;#125;
-    int mid=(tree[root].l+tree[root].r)&amp;gt;&amp;gt;1;
-    push_down(root);
-    if(mid&amp;gt;=id)
-        change(tree[root].left_child,l,r);
-    else
-        change(tree[root].right_child,l,r);
-    push_up(root);
-    return;
-&amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;二-线段树板子包含区间求和单点修改区间修改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-线段树板子包含区间求和单点修改区间修改&#34;&gt;#&lt;/a&gt; 二、线段树板子（包含区间求和，单点修改，区间修改）&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzNzI=&#34;&gt;例题：线段树模板 1&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzNzM=&#34;&gt;例题：线段树模板 2&lt;/span&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
-using namespace std;
-const long long N=100001;
-struct node
-&amp;#123;
-	long long l,r,left_child,right_child;
-	long long sum,delay1,delay2;
-&amp;#125;tree[N*2];
-long long n,m,root,tot,d[N],mod;
-void fix(long long root)
-&amp;#123;
-	long long a=tree[root].left_child,b=tree[root].right_child;
-	tree[root].sum=tree[a].sum+tree[b].sum;
-	tree[root].sum%=mod;
-	return;
-&amp;#125;
-void build(long long &amp;amp; root,long long l,long long r)
-&amp;#123;
-	root=++tot,tree[root].l=l,tree[root].r=r;
-	tree[root].delay2=1;
-	if(l==r)
-	&amp;#123;
-		tree[root].sum=d[l];
-		return;
-	&amp;#125;
-	long long mid=(l+r)/2;
-	build(tree[root].left_child,l,mid);
-	build(tree[root].right_child,mid+1,r);
-	fix(root);
-	return;
-&amp;#125;
-void push_down(long long root)
-&amp;#123;
-	long long a=tree[root].left_child,b=tree[root].right_child;
-    tree[a].sum*=tree[root].delay2,tree[a].sum+=(tree[a].r-tree[a].l+1)*tree[root].delay1;
-    tree[a].delay1=tree[a].delay1*tree[root].delay2+tree[root].delay1,tree[a].delay2*=tree[root].delay2;
-    tree[a].delay1%=mod,tree[a].delay2%=mod,tree[a].sum%=mod;
-    tree[b].sum*=tree[root].delay2,tree[b].sum+=(tree[b].r-tree[b].l+1)*tree[root].delay1;
-    tree[b].delay1=tree[b].delay1*tree[root].delay2+tree[root].delay1,tree[b].delay2*=tree[root].delay2;
-    tree[b].delay1%=mod,tree[b].delay2%=mod,tree[b].sum%=mod;
-    tree[root].delay1=0,tree[root].delay2=1,tree[root].sum%=mod;
-    return;
-&amp;#125;
-void update(long long root,long long l,long long r,long long v)
-&amp;#123;
-	if(l&amp;lt;=tree[root].l &amp;amp;&amp;amp; tree[root].r&amp;lt;=r)
-	&amp;#123;
-		tree[root].sum+=(tree[root].r-tree[root].l+1)*v;
-		tree[root].delay1+=v;
-		return;
-	&amp;#125;
-	push_down(root);
-	long long mid=(tree[root].l+tree[root].r)/2;
-	if(mid&amp;gt;=r)
-		update(tree[root].left_child,l,r,v);
-	else if(mid&amp;lt;l)
-		update(tree[root].right_child,l,r,v);
-	else
-		update(tree[root].left_child,l,mid,v),update(tree[root].right_child,mid+1,r,v);
-	fix(root);
-	return;
-&amp;#125;
-void change(long long root,long long l,long long r,long long v)
-&amp;#123;
-	if(l&amp;lt;=tree[root].l &amp;amp;&amp;amp; tree[root].r&amp;lt;=r)
-	&amp;#123;
-		tree[root].sum*=v,tree[root].delay1*=v,tree[root].delay2*=v;
-		tree[root].sum%=mod,tree[root].delay1%=mod,tree[root].delay2%=mod;
-		return;
-	&amp;#125;
-	push_down(root);
-	long long mid=(tree[root].l+tree[root].r)/2;
-	if(mid&amp;gt;=r)
-		change(tree[root].left_child,l,r,v);
-	else if(mid&amp;lt;l)
-		change(tree[root].right_child,l,r,v);
-	else
-		change(tree[root].left_child,l,mid,v),change(tree[root].right_child,mid+1,r,v);
-	fix(root);
-	return;
-&amp;#125;
-long long query(long long root,long long l,long long r)
-&amp;#123;
-	if(l&amp;lt;=tree[root].l &amp;amp;&amp;amp; tree[root].r&amp;lt;=r)
-		return tree[root].sum%mod;
-	long long mid=(tree[root].l+tree[root].r)/2;
-	push_down(root);
-	if(mid&amp;gt;=r)
-		return query(tree[root].left_child,l,r)%mod;
-	else if(mid&amp;lt;l)
-		return query(tree[root].right_child,l,r)%mod;
-	else
-		return query(tree[root].left_child,l,mid)%mod+query(tree[root].right_child,mid+1,r)%mod;
-&amp;#125;
-int main()
-&amp;#123;
-	scanf(&amp;quot;%lld %lld %lld&amp;quot;,&amp;amp;n,&amp;amp;m,&amp;amp;mod);
-	for(long long i=1;i&amp;lt;=n;i++)
-		scanf(&amp;quot;%lld&amp;quot;,&amp;amp;d[i]);
-	build(root,1,n);
-	for(long long i=1;i&amp;lt;=m;i++)
-	&amp;#123;
-		long long op;
-		scanf(&amp;quot;%lld&amp;quot;,&amp;amp;op);
-		if(op==1)
-		&amp;#123;
-			long long l,r,x;
-			scanf(&amp;quot;%lld %lld %lld&amp;quot;,&amp;amp;l,&amp;amp;r,&amp;amp;x);
-			change(root,l,r,x);
-		&amp;#125;
-		else if(op==2)
-		&amp;#123;
-			long long l,r,x;
-			scanf(&amp;quot;%lld %lld %lld&amp;quot;,&amp;amp;l,&amp;amp;r,&amp;amp;x);
-			update(root,l,r,x);
-		&amp;#125;
-		else
-		&amp;#123;
-			long long l,r;
-			scanf(&amp;quot;%lld %lld&amp;quot;,&amp;amp;l,&amp;amp;r);
-			printf(&amp;quot;%lld\n&amp;quot;,query(root,l,r)%mod);
-		&amp;#125;
-	&amp;#125;
-	return 0;
-&amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;线段树还可以进行其他操作，如区间最大、小值等功能，这些功能待补充&lt;/p&gt;
-&lt;h2 id=&#34;三-可持久化线段树&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-可持久化线段树&#34;&gt;#&lt;/a&gt; 三、可持久化线段树&lt;/h2&gt;
-&lt;p&gt;光看标题不明所以，其主要功能是可以求区间任意第 k 小的值，k 是可输入改变的&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDM4MzQ=&#34;&gt;例题：可持久化线段树&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
-using namespace std;
-const int N=200001;
-struct node
-&amp;#123;
-	int left,right,sum;
-&amp;#125;tree[20*N];
-struct edge
-&amp;#123;
-	int v,old,new_id;
-	bool operator &amp;lt; (const edge &amp;amp; ot) const
-	&amp;#123;
-		return v&amp;lt;ot.v;
-	&amp;#125;
-&amp;#125;d[N];
-int n,m,root[20*N],tot=1;
-void update(int &amp;amp; now,int l,int r,int pos)
-&amp;#123;
-	tree[tot++]=tree[now];
-	now=tot-1;
-	tree[now].sum++;
-	if(l==r)
-		return;
-	int mid=(l+r)/2;
-	if(pos&amp;lt;=mid)
-		update(tree[now].left,l,mid,pos);
-	else
-		update(tree[now].right,mid+1,r,pos);
-	return;
-&amp;#125;
-int query(int last,int now,int l,int r,int pos)
-&amp;#123;
-	int sum=tree[tree[now].left].sum-tree[tree[last].left].sum;
-	if(l==r)
-		return l;
-	int mid=(l+r)/2;
-	if(pos&amp;lt;=sum)
-		return query(tree[last].left,tree[now].left,l,mid,pos);
-	else
-		return query(tree[last].right,tree[now].right,mid+1,r,pos-sum);
-&amp;#125;
-int main()
-&amp;#123;
-	scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;n,&amp;amp;m);
-	for(int i=1;i&amp;lt;=n;i++)
-		scanf(&amp;quot;%d&amp;quot;,&amp;amp;d[i].v),d[i].old=i;
-	sort(d+1,d+1+n);
-	for(int i=1;i&amp;lt;=n;i++)
-		d[d[i].old].new_id=i;
-	for(int i=1;i&amp;lt;=n;i++)
-	&amp;#123;
-		root[i]=root[i-1];
-		update(root[i],1,n,d[i].new_id);
-	&amp;#125;
-	for(int i=1;i&amp;lt;=m;i++)
-	&amp;#123;
-		int l,r,k;
-		scanf(&amp;quot;%d %d %d&amp;quot;,&amp;amp;l,&amp;amp;r,&amp;amp;k);
-		printf(&amp;quot;%d\n&amp;quot;,d[query(root[l-1],root[r],1,n,k)].v);
-	&amp;#125;
-	return 0;
-&amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;四-普通平衡树&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-普通平衡树&#34;&gt;#&lt;/a&gt; 四、普通平衡树&lt;/h2&gt;
-&lt;p&gt;普通平衡树是一颗二叉树，特点是可以动态插入删除，也可以动态查询某个数的排名及其前驱和后继&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzNjk=&#34;&gt;例题：普通平衡树&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
-using namespace std;
-const int N=100001;
-int ch[N][2],par[N],size[N],cnt[N],val[N],n,tot,root;
-bool flag[N];
-int chk(int x) 
-&amp;#123;
-	if(ch[par[x]][1]==x)  
-		return 1;
-	else
-		return 0;
-&amp;#125;
-void push_up(int x) 
-&amp;#123;
-	size[x]=size[ch[x][0]]+size[ch[x][1]]+cnt[x];
-	return;
-&amp;#125;
-void rotate(int cur)
-&amp;#123;
-	int x=par[cur],y=par[par[cur]],k=chk(cur);
-	int which=ch[cur][k^1]; 
-	ch[x][k]=which,par[which]=x; 
-	ch[y][chk(x)]=cur,par[cur]=y;
-	ch[cur][k^1]=x,par[x]=cur;
-	push_up(x),push_up(cur);
-	return;
-&amp;#125;
-void splay(int cur,int aim=0)
-&amp;#123;
-	while(par[cur]!=aim)
-	&amp;#123;
-		int x=par[cur],y=par[par[cur]];
-		if(y!=aim)
-		&amp;#123;
-			if(chk(cur)==chk(x))
-				rotate(x);
-			else
-				rotate(cur);
-		&amp;#125;
-		rotate(cur);
-	&amp;#125;
-	if(!aim)
-		root=cur;
-	return;
-&amp;#125;
-void insert(int x)
-&amp;#123;
-	int cur=root,fa=0;
-	while(cur &amp;amp;&amp;amp; val[cur]!=x)
-	&amp;#123;
-		fa=cur;
-		if(x&amp;gt;val[cur]) 
-			cur=ch[cur][1];  
-		else
-			cur=ch[cur][0];
-	&amp;#125;
-	if(cur)
-		cnt[cur]++;
-	else 
-	&amp;#123;
-		cur=++tot;
-		if(fa) 
-		&amp;#123;
-			if(x&amp;gt;val[fa]) 
-				ch[fa][1]=cur;
-			else
-				ch[fa][0]=cur;
-		&amp;#125;
-		ch[cur][0]=ch[cur][1]=0,par[cur]=fa,val[cur]=x,cnt[cur]=size[cur]=1; 
-	&amp;#125;
-	splay(cur); 
-	return;
-&amp;#125;
-void pushdown(int x)
-&amp;#123;
-	if(flag[x])
-	&amp;#123;
-		swap(ch[x][0],ch[x][1]);
-		flag[ch[x][0]]=!flag[ch[x][0]];
-		flag[ch[x][1]]=!flag[ch[x][1]];
-		flag[x]=false;
-	&amp;#125;
-	return;
-&amp;#125;
-int kth(int x)
-&amp;#123;
-	int cur=root;
-	for(;;)
-	&amp;#123;
-		if(ch[cur][0] &amp;amp;&amp;amp; x&amp;lt;=size[ch[cur][0]])
-			cur=ch[cur][0];
-		else if(x&amp;gt;size[ch[cur][0]]+cnt[cur])
-		&amp;#123;
-			x-=size[ch[cur][0]]+cnt[cur];
-			cur=ch[cur][1];
-		&amp;#125;
-		else
-			return cur;
-	&amp;#125;
-	return cur;
-&amp;#125;
-void update(int x,int y)
-&amp;#123;
-	int t1=kth(x),t2=kth(y+2);
-	splay(t1),splay(t2,t1);
-	flag[ch[t2][0]]=!flag[ch[t2][0]];
-	return;
-&amp;#125;
-void find(int x)
-&amp;#123;
-	int cur=root;
-	while(ch[cur][x&amp;gt;val[cur]] &amp;amp;&amp;amp; val[cur]!=x)
-		cur=ch[cur][x&amp;gt;val[cur]];
-	splay(cur);
-	return;
-&amp;#125;
-int pre(int x)
-&amp;#123;
-	find(x);
-	if(val[root]&amp;lt;x)
-		return root;
-	int cur=ch[root][0];
-	while(ch[cur][1])
-		cur=ch[cur][1];
-	return cur;
-&amp;#125;
-int succ(int x)
-&amp;#123;
-	find(x);
-	if(val[root]&amp;gt;x)
-		return root;
-	int cur=ch[root][1];
-	while(ch[cur][0])
-		cur=ch[cur][0];
-	return cur;
-&amp;#125;
-void print(int x)
-&amp;#123;
-	pushdown(x);
-	if(ch[x][0])
-		print(ch[x][0]);
-	if(val[x] &amp;amp;&amp;amp; val[x]&amp;lt;=n)
-		printf(&amp;quot;%d &amp;quot;,val[x]);
-	if(ch[x][1])
-		print(ch[x][1]);
-	return;
-&amp;#125;
-void del(int x)
-&amp;#123;
-	int last=pre(x),next=succ(x);
-	splay(last),splay(next,last);
-	int cut=ch[next][0];
-	if(cnt[cut]&amp;gt;1)
-	&amp;#123;
-		cnt[cut]--;
-		splay(cut);
-	&amp;#125;
-	else
-		ch[next][0]=0,push_up(next),push_up(root);
-	return;
-&amp;#125;
-int main()
-&amp;#123;
-	scanf(&amp;quot;%d&amp;quot;,&amp;amp;n);
-	insert(0x7f7f7f7f),insert(0xcfcfcfcf);
-	while(n--)
-	&amp;#123;
-		int op,x;
-		scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;op,&amp;amp;x);
-		if(op==1)
-			insert(x);
-		else if(op==2)
-			del(x);
-		else if(op==3)
-		&amp;#123;
-			find(x);
-			printf(&amp;quot;%d\n&amp;quot;,size[ch[root][0]]);
-		&amp;#125;
-		else if(op==4)
-			printf(&amp;quot;%d\n&amp;quot;,val[kth(x+1)]);
-		else if(op==5)
-			printf(&amp;quot;%d\n&amp;quot;,val[pre(x)]);
-		else
-			printf(&amp;quot;%d\n&amp;quot;,val[succ(x)]);
-	&amp;#125;
-	return 0;
-&amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这篇文章只是单纯的模板记录文章，要想了解原理请移步另一篇文章&lt;/p&gt;
-&lt;p&gt;下面是二叉平衡树的应用，利用二叉平衡树来维护一个有序序列&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzOTE=&#34;&gt;例题：文艺平衡树&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
-using namespace std;
-const int N=100001;
-int ch[N][2],par[N],size[N],cnt[N],val[N],n,m,tot,root;
-bool flag[N];
-int chk(int x)//查询子节点在父节点左边还是右边 
-&amp;#123;
-	if(ch[par[x]][1]==x)  
-		return 1;
-	else
-		return 0;
-&amp;#125;
-void push_up(int x) //更新此节点的size 
-&amp;#123;
-	size[x]=size[ch[x][0]]+size[ch[x][1]]+cnt[x];
-	return;
-&amp;#125;
-void rotate(int cur)
-&amp;#123;
-	int x=par[cur],y=par[par[cur]],k=chk(cur),which=ch[cur][k^1]; 
-	//x为此节点的父亲，y为此节点的爷爷 
-	ch[x][k]=which,par[which]=x; //父亲的儿子改成 
-	ch[y][chk(x)]=cur,par[cur]=y;
-	ch[cur][k^1]=x,par[x]=cur;
-	push_up(x),push_up(cur);
-	return;
-&amp;#125;
-void splay(int cur,int aim=0)
-&amp;#123;
-	while(par[cur]!=aim)
-	&amp;#123;
-		int x=par[cur],y=par[par[cur]];
-		if(y!=aim)
-		&amp;#123;
-			if(chk(cur)==chk(x))
-				rotate(x);
-			else
-				rotate(cur);
-		&amp;#125;
-		rotate(cur);
-	&amp;#125;
-	if(!aim)
-		root=cur;
-	return;
-&amp;#125;
-void insert(int x)
-&amp;#123;
-	int cur=root,fa=0;
-	while(cur &amp;amp;&amp;amp; val[cur]!=x) //当树不为空且这个点的值不是插入值 
-	&amp;#123;
-		fa=cur;//更新father 
-		if(x&amp;gt;val[cur]) //这个值大于当前节点值 
-			cur=ch[cur][1]; //右儿子 
-		else
-			cur=ch[cur][0]; //左二子 
-	&amp;#125;
-	if(cur) //出循环还没到底部，说明已经有这个值 
-		cnt[cur]++;
-	else //新建节点 
-	&amp;#123;
-		cur=++tot;
-		if(fa) //如果这个点不是第一个点 
-		&amp;#123;
-			if(x&amp;gt;val[fa]) //同上 
-				ch[fa][1]=cur;
-			else
-				ch[fa][0]=cur;
-		&amp;#125;
-		ch[cur][0]=ch[cur][1]=0,par[cur]=fa,val[cur]=x,cnt[cur]=size[cur]=1;//新节点信息 
-	&amp;#125;
-	splay(cur); //平衡一下 
-	return;
-&amp;#125;
-void pushdown(int x)
-&amp;#123;
-	if(flag[x])
-	&amp;#123;
-		swap(ch[x][0],ch[x][1]);
-		flag[ch[x][0]]=!flag[ch[x][0]];
-		flag[ch[x][1]]=!flag[ch[x][1]];
-		flag[x]=false;
-	&amp;#125;
-	return;
-&amp;#125;
-int kth(int x)
-&amp;#123;
-	int cur=root;
-	for(;;)
-	&amp;#123;
-		pushdown(cur);
-		if(ch[cur][0] &amp;amp;&amp;amp; x&amp;lt;=size[ch[cur][0]])
-			cur=ch[cur][0];
-		else if(x&amp;gt;size[ch[cur][0]]+cnt[cur])
-		&amp;#123;
-			x-=size[ch[cur][0]]+cnt[cur];
-			cur=ch[cur][1];
-		&amp;#125;
-		else
-			return cur;
-	&amp;#125;
-	return cur;
-&amp;#125;
-void update(int x,int y)
-&amp;#123;
-	int t1=kth(x),t2=kth(y+2);
-	splay(t1),splay(t2,t1);
-	flag[ch[t2][0]]=!flag[ch[t2][0]];
-	return;
-&amp;#125;
-void find(int x)
-&amp;#123;
-	int cur=root;
-	while(ch[cur][x&amp;gt;val[cur]] &amp;amp;&amp;amp; val[cur]!=x)
-		cur=ch[cur][x&amp;gt;val[cur]];
-	splay(cur);
-	return;
-&amp;#125;
-int pre(int x)
-&amp;#123;
-	find(x);
-	if(val[root]&amp;gt;x)
-		return root;
-	int cur=ch[root][0];
-	while(ch[cur][1])
-		cur=ch[cur][1];
-	return cur;
-&amp;#125;
-int succ(int x)
-&amp;#123;
-	find(x);
-	if(val[root]&amp;lt;x)
-		return root;
-	int cur=ch[root][1];
-	while(ch[cur][0])
-		cur=ch[cur][1];
-	return cur;
-&amp;#125;
-void print(int x)
-&amp;#123;
-	pushdown(x);
-	if(ch[x][0])
-		print(ch[x][0]);
-	if(val[x] &amp;amp;&amp;amp; val[x]&amp;lt;=n)
-		printf(&amp;quot;%d &amp;quot;,val[x]);
-	if(ch[x][1])
-		print(ch[x][1]);
-	return;
-&amp;#125;
-void del(int x)
-&amp;#123;
-	int last=pre(x),next=succ(x);
-	splay(last),splay(next,last);
-	int cut=ch[next][0];
-	if(cnt[cut]&amp;gt;1)
-	&amp;#123;
-		cnt[cut]--;
-		splay(cut);
-	&amp;#125;
-	else
-		ch[next][0]=0,push_up(next),push_up(root);
-	return;
-&amp;#125;
-int main()
-&amp;#123;
-	scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;n,&amp;amp;m);
-	for(int i=0;i&amp;lt;=n+1;i++)
-		insert(i);
-	for(int i=1;i&amp;lt;=m;i++)
-	&amp;#123;
-		int x,y;
-		scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;x,&amp;amp;y);
-		update(x,y);
-	&amp;#125;
-	print(root);
-	return 0;
-&amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;五-树链剖分&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-树链剖分&#34;&gt;#&lt;/a&gt; 五、树链剖分&lt;/h2&gt;
-&lt;p&gt;树链剖分是为了对树上进行区间修改而发明的算法，很长，很难写，但应用很多&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzODQ=&#34;&gt;例题：重链剖分&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;cstdio&amp;gt;
-#include &amp;lt;cstdlib&amp;gt;
-#include &amp;lt;vector&amp;gt;
-using namespace std;
-const int N=100001;
-struct data
-&amp;#123;
-    int h;
-    int zson;
-    int fa,top;
-    int size;
-    int tid;
-&amp;#125;d[N];
-struct node
-&amp;#123;
-    int l,r,left_child,right_child;
-    int sum,delay;
-&amp;#125;tree[N*3];
-int rnk[N],n,m,R,mod,a[N],cnt=1,root,tot;
-vector &amp;lt;int &amp;gt; v[N];
-void dfs1(int pre,int cur)
-&amp;#123;
-    d[cur].h=d[pre].h+1;
-    d[cur].fa=pre,d[cur].zson=-1;
-    d[cur].size=1;
-    int size=v[cur].size();
-    for(int i=0;i&amp;lt;size;i++)
-    &amp;#123;
-        int t=v[cur][i];
-        if(t!=pre)
-        &amp;#123;
-            dfs1(cur,t);
-            d[cur].size+=d[t].size;
-            if(d[cur].zson==-1 || d[t].size&amp;gt;d[d[cur].zson].size)
-            d[cur].zson=t;
-        &amp;#125;
-    &amp;#125;
-    return;
-&amp;#125;
-void dfs2(int cur,int t)
-&amp;#123;
-    d[cur].top=t;
-    d[cur].tid=cnt;
-    rnk[cnt]=cur;
-    cnt++;
-    if(d[cur].size==1 || d[cur].zson==-1)
-    return;
-    dfs2(d[cur].zson,t);
-    int size=v[cur].size();
-    for(int i=0;i&amp;lt;size;i++)
-    &amp;#123;
-        int x=v[cur][i];
-        if(x!=d[cur].fa &amp;amp;&amp;amp; x!=d[cur].zson)
-        dfs2(x,x);
-    &amp;#125;
-    return;
-&amp;#125;
-void MOD(int root)
-&amp;#123;
-    tree[root].sum%=mod,tree[root].delay%=mod;
-    return;
-&amp;#125;
-void fix(int root)
-&amp;#123;
-    int a=tree[root].left_child,b=tree[root].right_child;
-    if(a!=-1 &amp;amp;&amp;amp; b!=-1)
-    tree[root].sum=tree[a].sum+tree[b].sum;
-    MOD(root);
-    return;
-&amp;#125;
-void build(int &amp;amp; root,int l,int r)
-&amp;#123;
-    root=tot++;
-    tree[root].l=l,tree[root].r=r;
-    tree[root].left_child=tree[root].right_child=-1;
-    tree[root].delay=0;
-    if(l==r)
-    tree[root].sum=a[rnk[l]];
-    else
-    &amp;#123;
-        int mid=(l+r)/2;
-        build(tree[root].left_child,l,mid);
-        build(tree[root].right_child,mid+1,r);
-        fix(root);
-    &amp;#125;
-    return;
-&amp;#125;
-void push_down(int root)
-&amp;#123;
-    if(tree[root].delay!=0)
-    &amp;#123;
-        int a=tree[root].left_child,b=tree[root].right_child;
-        if(a==-1 || b==-1)
-        return;
-        tree[a].sum+=(tree[a].r-tree[a].l+1)*tree[root].delay;
-        tree[a].delay+=tree[root].delay,tree[b].delay+=tree[root].delay;
-        tree[b].sum+=(tree[b].r-tree[b].l+1)*tree[root].delay;
-        tree[root].delay=0;
-        MOD(root);
-    &amp;#125;
-    return;
-&amp;#125;
-void update(int root,int l,int r,int v)
-&amp;#123;
-    if(l&amp;lt;=tree[root].l &amp;amp;&amp;amp; tree[root].r&amp;lt;=r)
-    &amp;#123;
-        tree[root].sum+=(tree[root].r-tree[root].l+1)*v;
-        tree[root].delay+=v;
-    &amp;#125;
-    else
-    &amp;#123;
-        push_down(root);
-        int mid=(tree[root].l+tree[root].r)/2;
-        if(mid&amp;gt;=r)
-        update(tree[root].left_child,l,r,v);
-        else if(mid&amp;lt;l)
-        update(tree[root].right_child,l,r,v);
-        else
-        &amp;#123;
-            update(tree[root].left_child,l,mid,v);
-            update(tree[root].right_child,mid+1,r,v);
-        &amp;#125;
-        fix(root);
-    &amp;#125;
-    return;
-&amp;#125;
-void update_zdl(int x,int y,int z)
-&amp;#123;
-    int a=d[x].top,b=d[y].top;
-    while(a!=b)
-    &amp;#123;
-        if(d[a].h&amp;gt;d[b].h)
-        &amp;#123;
-            update(root,d[a].tid,d[x].tid,z);
-            x=d[a].fa;
-        &amp;#125;
-        else
-        &amp;#123;
-            update(root,d[b].tid,d[y].tid,z);
-            y=d[b].fa;
-        &amp;#125;
-        a=d[x].top,b=d[y].top;
-    &amp;#125;
-    if(x!=y)
-    &amp;#123;
-        if(d[x].tid&amp;lt;d[y].tid)
-        update(root,d[x].tid,d[y].tid,z);
-        else
-        update(root,d[y].tid,d[x].tid,z);
-    &amp;#125;
-    else
-    update(root,d[x].tid,d[y].tid,z);
-    return;
-&amp;#125;
-int get_ans(int root,int l,int r)
-&amp;#123;
-    if(l&amp;lt;=tree[root].l &amp;amp;&amp;amp; tree[root].r&amp;lt;=r)
-    return tree[root].sum;
-    else
-    &amp;#123;
-        push_down(root);
-        int mid=(tree[root].l+tree[root].r)/2;
-        if(mid&amp;gt;=r)
-        return get_ans(tree[root].left_child,l,r)%mod;
-        else if(mid&amp;lt;l)
-        return get_ans(tree[root].right_child,l,r)%mod;
-        return (get_ans(tree[root].left_child,l,mid)+get_ans(tree[root].right_child,mid+1,r))%mod;
-    &amp;#125;
-&amp;#125;
-int get_ans_zdl(int x,int y)
-&amp;#123;
-    int ans=0;
-    int a=d[x].top,b=d[y].top;
-    while(a!=b)
-    &amp;#123;
-        if(d[a].h&amp;gt;d[b].h)
-        &amp;#123;
-            ans+=get_ans(root,d[a].tid,d[x].tid);
-            x=d[a].fa;
-        &amp;#125;
-        else
-        &amp;#123;
-            ans+=get_ans(root,d[b].tid,d[y].tid);
-            y=d[b].fa;
-        &amp;#125;
-        a=d[x].top,b=d[y].top;
-    &amp;#125;
-    if(x!=y)
-    &amp;#123;
-        if(d[x].tid&amp;lt;d[y].tid)
-        ans+=get_ans(root,d[x].tid,d[y].tid);
-        else
-        ans+=get_ans(root,d[y].tid,d[x].tid);
-    &amp;#125;
-    else
-    ans+=get_ans(root,d[x].tid,d[y].tid);
-    return ans%mod;
-&amp;#125;
-int main()
-&amp;#123;
-    scanf(&amp;quot;%d %d %d %d&amp;quot;,&amp;amp;n,&amp;amp;m,&amp;amp;R,&amp;amp;mod);
-    for(int i=1;i&amp;lt;=n;i++)
-    scanf(&amp;quot;%d&amp;quot;,&amp;amp;a[i]);
-    for(int i=1;i&amp;lt;n;i++)
-    &amp;#123;
-        int a,b;
-        scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;a,&amp;amp;b);
-        v[a].push_back(b),v[b].push_back(a);
-    &amp;#125;
-    d[0].h=0,d[0].fa=-1;
-    dfs1(0,R);
-    dfs2(R,R);
-    build(root,1,n);
-    for(int i=1;i&amp;lt;=m;i++)
-    &amp;#123;
-        int op,x,y,z;
-        scanf(&amp;quot;%d&amp;quot;,&amp;amp;op);
-        if(op==1)
-        &amp;#123;
-            scanf(&amp;quot;%d %d %d&amp;quot;,&amp;amp;x,&amp;amp;y,&amp;amp;z);
-            update_zdl(x,y,z);
-        &amp;#125;
-        else if(op==2)
-        &amp;#123;
-            scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;x,&amp;amp;y);
-            printf(&amp;quot;%d\n&amp;quot;,get_ans_zdl(x,y));
-        &amp;#125;
-        else if(op==3)
-        &amp;#123;
-            scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;x,&amp;amp;z);
-            update(root,d[x].tid,d[x].tid+d[x].size-1,z);
-        &amp;#125;
-        else
-        &amp;#123;
-            scanf(&amp;quot;%d&amp;quot;,&amp;amp;x);
-            printf(&amp;quot;%d\n&amp;quot;,get_ans(root,d[x].tid,d[x].tid+d[x].size-1));
-        &amp;#125;
-    &amp;#125;
-    return 0;
-&amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;和二叉平衡树一样，本篇只做记录，不做详解，详解请移步另一篇文章&lt;/p&gt;
-</content>
-        <category term="算法" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/" />
-        <category term="模板" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/" />
-        <category term="数据结构" scheme="http://ntmydb/github.io/categories/%E7%AE%97%E6%B3%95/%E6%A8%A1%E6%9D%BF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" />
-        <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
-        <category term="线段树" scheme="http://ntmydb/github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" />
-        <updated>2023-03-20T05:28:08.000Z</updated>
     </entry>
 </feed>
