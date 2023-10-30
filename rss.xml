@@ -10,10 +10,170 @@
         </author>
         <description>Whispering&#39;s Blog</description>
         <language>zh-CN</language>
-        <pubDate>Sun, 29 Oct 2023 18:47:40 +0800</pubDate>
-        <lastBuildDate>Sun, 29 Oct 2023 18:47:40 +0800</lastBuildDate>
+        <pubDate>Mon, 30 Oct 2023 09:39:00 +0800</pubDate>
+        <lastBuildDate>Mon, 30 Oct 2023 09:39:00 +0800</lastBuildDate>
         <category term="Whispering" />
         <category term="星铁资深测评师" />
+        <item>
+            <guid isPermalink="true">http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E4%B8%80/</guid>
+            <title>操作系统复习一</title>
+            <link>http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E4%B8%80/</link>
+            <category term="计算机科学" scheme="http://ntmydb/github.io/categories/computer-science/" />
+            <category term="操作系统" scheme="http://ntmydb/github.io/categories/computer-science/operating-system/" />
+            <category term="操作系统" scheme="http://ntmydb/github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
+            <pubDate>Mon, 30 Oct 2023 09:39:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;操作系统复习一&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#操作系统复习一&#34;&gt;#&lt;/a&gt; 操作系统复习一&lt;/h3&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1-什么是操作系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-什么是操作系统&#34;&gt;#&lt;/a&gt; 1、什么是操作系统？&lt;/h4&gt;
+&lt;p&gt;是管理计算机系统资源、控制程序执行、改善人机界面和为应用软件提供支持的一种系统软件。&lt;/p&gt;
+&lt;h4 id=&#34;2-操作系统的作用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-操作系统的作用&#34;&gt;#&lt;/a&gt; 2、操作系统的作用&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;OS (Operating System) 作为用户与计算机硬件系统之间的接口，OS 是一个系统软件，因而这种接口是&lt;span class=&#34;red&#34;&gt;软件接口&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OS 作为计算机系统资源的管理者&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OS 实现了对计算机资源的抽象&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-用户使用计算机的三种方式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-用户使用计算机的三种方式&#34;&gt;#&lt;/a&gt; 3、用户使用计算机的三种方式&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;命令方式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统调用方式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;图形、窗口方式&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-os的主要功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-os的主要功能&#34;&gt;#&lt;/a&gt; 4、OS 的主要功能&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;处理机管理&lt;/span&gt;：用于分配和控制处理机&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;存储器管理&lt;/span&gt;：主要负责内存的分配与回收&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;I/O 设备管理&lt;/span&gt;：负责 I/O 设备的分配与操纵&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;文件管理&lt;/span&gt;：负责文件的存取、共享和保护&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;5-操作系统的基本特性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5-操作系统的基本特性&#34;&gt;#&lt;/a&gt; 5、操作系统的基本特性&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;并发 (&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;Concurrence&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.07153em;&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;e&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;blue&#34;&gt;并行性&lt;/span&gt;是指两个或多个事件在同一时刻发生；倘若在计算机系统中有多个处理机，处理多个可并发执行的程序，这样，多个程序便可同时执行&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;blue&#34;&gt;并发性&lt;/span&gt;是指两个或多个事件在同一时间间隔内发生。在多道程序环境下，并发性是指在一段时间内，宏观上有多个程序在同时运行，但在单处理机系统中，每一时刻却仅能有一道程序运行，故微观上这些程序只能是分时地交替执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;共享 (&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;Sharing&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8888799999999999em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03588em;&#34;&gt;g&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;共享&lt;/span&gt;：指系统中的资源，可供内存中多个并发执行的进程（线程）共同使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进程对资源共享的方式目前主要有两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A、&lt;span class=&#34;blue&#34;&gt;互斥共享&lt;/span&gt;：当某一进程访问完并释放该资源后，才允许另一进程进行访问。这种资源称为&lt;span class=&#34;blue&#34;&gt;临界资源&lt;/span&gt;或&lt;span class=&#34;blue&#34;&gt;独占资源&lt;/span&gt;，如打印机&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;B、&lt;span class=&#34;blue&#34;&gt;同时共享&lt;/span&gt;：允许在一段时间内由多个进程同时访问，如磁盘设备&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;虚拟 (&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;Virtual&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.22222em;&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;)&lt;/p&gt;
+&lt;p&gt;操作系统中所谓的 &amp;quot;虚拟&amp;quot;，是指通过某种技术把一个物理实体变为若干个逻辑的对应物。物理实体存在的；而后者是虚拟的，是用户感觉上的东西。如：&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;OS&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 利用多种虚拟技术，分别实现&lt;span class=&#34;blue&#34;&gt;虚拟处理机&lt;/span&gt;、&lt;span class=&#34;blue&#34;&gt;虚拟内存&lt;/span&gt;、&lt;span class=&#34;blue&#34;&gt;虚拟外部设备&lt;/span&gt;和&lt;span class=&#34;blue&#34;&gt;虚拟信道&lt;/span&gt;等&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;OS&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 中采用了两种虚拟技术&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;时分复用技术&lt;/span&gt;（多设备分时使用物理设备）&lt;/p&gt;
+&lt;p&gt;利用该技术可以实现&lt;span class=&#34;blue&#34;&gt;虚拟处理机&lt;/span&gt;、&lt;span class=&#34;blue&#34;&gt;虚拟设备&lt;/span&gt;等，以提高资源利用率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;blue&#34;&gt;虚拟处理机&lt;/span&gt;：是通过多道程序设计技术，让多道程序并发执行的方法，来分时使用一台处理机&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;blue&#34;&gt;虚拟设备技术&lt;/span&gt;：将一台物理 I/O 设备虚拟为多台逻辑上的 I/O 设备。如虚拟打印机&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;空分复用技术&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;利用该技术可以实现&lt;span class=&#34;blue&#34;&gt;虚拟磁盘技术&lt;/span&gt;、&lt;span class=&#34;blue&#34;&gt;虚拟存储器技术&lt;/span&gt;等，以提高储存空间利用率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;blue&#34;&gt;虚拟磁盘技术&lt;/span&gt;：一块硬盘划分为 1、2、3、4 个卷，分配安装在 C、D、E、F 四个逻辑驱动器上，成为四个虚拟磁盘&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;blue&#34;&gt;虚拟存储器技术&lt;/span&gt;：一个 100M 的程序可以运行在 20M 的内存空间&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;blue&#34;&gt;多道程序设计&lt;/span&gt;：多个程序同时进入主存并发执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;异步性 (&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;Asynchronism&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8888799999999999em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03588em;&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;m&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;)&lt;/p&gt;
+&lt;p&gt;多道程序环境下程序的执行，是以异步方式进行的；每个程序在何时执行，多个程序间的执行顺序以及完成每道程序所需时间都是不确定和不可预知的。进程是以人们不可预知的速度向前推进，此即进程的异步性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;6-现代os新功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#6-现代os新功能&#34;&gt;#&lt;/a&gt; 6、现代 OS 新功能&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;系统安全&lt;/li&gt;
+&lt;li&gt;网络功能及服务&lt;/li&gt;
+&lt;li&gt;支持多媒体&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;7-os结构设计&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#7-os结构设计&#34;&gt;#&lt;/a&gt; 7、OS 结构设计&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;传统操作系统的结构&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;第一代：无结构&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;OS&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二代：模块化结构&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;OS&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;优缺点&lt;/span&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模块之间直接调用函数，除了函数调用的开销外，没有额外开销&lt;/li&gt;
+&lt;li&gt;庞大的操作系统有数以千计的函数&lt;/li&gt;
+&lt;li&gt;复杂的调用关系势必导致操作系统维护的困难&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分层式操作系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;微内核结构的&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;OS&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;微内核并非是一个完整的&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;OS&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，而只是为构建通用&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;OS&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 提供一共重要基础。在微内核&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;OS&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 结构中，通常采用了&lt;span class=&#34;blue&#34;&gt;客户 / 服务器&lt;/span&gt;模式&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;优缺点&lt;/span&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内核与各个服务器之间通过通信机制进行交互，这使得微内核结构的效率大打折扣&lt;/li&gt;
+&lt;li&gt;核发出请求，服务器做出应答&lt;/li&gt;
+&lt;li&gt;因为各个服务器模块的相对独立性，使得其维护相对容易&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;blue&#34;&gt;客户 / 服务器模式&lt;/span&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;客户机：平时处理本地业务，也可以发送一个消息给服务器，以请求某项服务&lt;/li&gt;
+&lt;li&gt;服务器：通常是一台规模较大的机器，在其上驻留有网络文件系统或数据库系统等，为用户提供&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;微内核所提供功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进程 (线程) 管理&lt;/li&gt;
+&lt;li&gt;低级存储器管理&lt;/li&gt;
+&lt;li&gt;中断和陷入处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://ntmydb/github.io/english-notes/%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
             <title>英语笔记二</title>
@@ -1990,90 +2150,6 @@ void tarjan(int cur)
 &amp;#125;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;本篇文章只贴模板，具体分析移步另一篇文章&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</guid>
-            <title>模板之树状数组</title>
-            <link>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</link>
-            <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
-            <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
-            <category term="数据结构" scheme="http://ntmydb/github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" />
-            <category term="树状数组" scheme="http://ntmydb/github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" />
-            <pubDate>Mon, 20 Mar 2023 20:19:12 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;树状数组模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#树状数组模板&#34;&gt;#&lt;/a&gt; 树状数组模板&lt;/h1&gt;
-&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;一-树状数组大致介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-树状数组大致介绍&#34;&gt;#&lt;/a&gt; 一、树状数组大致介绍&lt;/h2&gt;
-&lt;p&gt;1、树状数组就是模拟树形结构的一个数组&lt;/p&gt;
-&lt;p&gt;2、树状数组解决的问题大部分是区间上的更新以及求和&lt;/p&gt;
-&lt;p&gt;3、树状数组的修改和查询的复杂度都是&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;O(logn)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03588em;&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;4、树状数组的大致形状如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2023/10/26/a1CPq9TMpNJBUi8.png&#34; alt=&#34;树状数组&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;具体原理请移步另一篇文章，本篇只搬运模板&lt;/p&gt;
-&lt;h2 id=&#34;二-例题和模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-例题和模板&#34;&gt;#&lt;/a&gt; 二、例题和模板&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzNjg=&#34;&gt;例题：树状数组&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;cstdio&amp;gt;
-#include &amp;lt;cstdlib&amp;gt;
-using namespace std;
-int n;
-const int N=500001;
-int d[N];
-int m;
-int cf[N];
-int lowbit(int x)
-&amp;#123;
-    return x &amp;amp; -x;
-&amp;#125;
-int add(int wz,int v)
-&amp;#123;
-    while(wz&amp;lt;=n)
-    &amp;#123;
-        cf[wz]+=v;
-        wz+=lowbit(wz);
-    &amp;#125;
-&amp;#125;
-int get_ans(int x)
-&amp;#123;
-    int cnt=0;
-    while(x&amp;gt;0)
-    &amp;#123;
-        cnt+=cf[x];
-        x-=lowbit(x);
-    &amp;#125;
-    return cnt;
-&amp;#125;
-int main()
-&amp;#123;
-    scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;n,&amp;amp;m);
-    int c;
-    for(int i=1;i&amp;lt;=n;i++)
-    &amp;#123;
-        scanf(&amp;quot;%d&amp;quot;,&amp;amp;c);
-        add(i,c);
-        add(i+1,-c);
-    &amp;#125;
-    for(int i=0;i&amp;lt;m;i++)
-    &amp;#123;
-        int op;
-        scanf(&amp;quot;%d&amp;quot;,&amp;amp;op);
-        if(op==1)
-        &amp;#123;
-            int l,r,z;
-            scanf(&amp;quot; %d %d %d&amp;quot;,&amp;amp;l,&amp;amp;r,&amp;amp;z);
-            add(l,z);
-            add(r+1,-z);
-        &amp;#125;
-        else
-        &amp;#123;
-            int x;
-            scanf(&amp;quot;%d&amp;quot;,&amp;amp;x);
-            printf(&amp;quot;%d\n&amp;quot;,get_ans(x));
-        &amp;#125;
-    &amp;#125;
-    return 0;
-&amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
  ]]></description>
         </item>
     </channel>
