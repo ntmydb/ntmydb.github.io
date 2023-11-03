@@ -10,10 +10,313 @@
         </author>
         <description>Whispering&#39;s Blog</description>
         <language>zh-CN</language>
-        <pubDate>Mon, 30 Oct 2023 19:05:48 +0800</pubDate>
-        <lastBuildDate>Mon, 30 Oct 2023 19:05:48 +0800</lastBuildDate>
+        <pubDate>Fri, 03 Nov 2023 17:59:38 +0800</pubDate>
+        <lastBuildDate>Fri, 03 Nov 2023 17:59:38 +0800</lastBuildDate>
         <category term="Whispering" />
         <category term="星铁资深测评师" />
+        <item>
+            <guid isPermalink="true">http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%BA%8C/</guid>
+            <title>操作系统实验二</title>
+            <link>http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%BA%8C/</link>
+            <category term="计算机科学" scheme="http://ntmydb/github.io/categories/computer-science/" />
+            <category term="操作系统" scheme="http://ntmydb/github.io/categories/computer-science/operating-system/" />
+            <category term="操作系统" scheme="http://ntmydb/github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
+            <pubDate>Fri, 03 Nov 2023 17:59:38 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;操作系统实验二&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#操作系统实验二&#34;&gt;#&lt;/a&gt; 操作系统实验二&lt;/h3&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;前情提要again&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前情提要again&#34;&gt;#&lt;/a&gt; 前情提要 Again:&lt;/h4&gt;
+&lt;p&gt;实验介绍很多，很多，非常多，让人看的很头大，越看越感觉这实验是要你把系统进程管理手搓出来，然后一种感觉油然而生。&lt;/p&gt;
+&lt;p&gt;老师太看得起我们啦！！！&lt;/p&gt;
+&lt;p&gt;后来仔细看了一下&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;shell&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 命令行的内容，发现，好像，似乎，大概，不需要我们真的创建进程然后去管理，我们只需要去模拟这个进程管理的流程就行了，然后就有了这样的简易版的进程模拟程序：&lt;/p&gt;
+&lt;h4 id=&#34;一-进程结构体和资源结构体&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-进程结构体和资源结构体&#34;&gt;#&lt;/a&gt; 一、进程结构体和资源结构体&lt;/h4&gt;
+&lt;p&gt;进程结构体：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct ProcessNode
+&amp;#123;
+	int pid;
+	string name;
+	vector &amp;lt;int&amp;gt; reslist;
+	int state; // state 0-&amp;gt;Ready 1-&amp;gt;Block 2-&amp;gt;Running 3-&amp;gt;release 
+	int priority; //优先级 
+	int tim; // 建立时间 
+	ProcessNode* fa;
+	ProcessNode* child; 
+	bool operator &amp;lt; (const ProcessNode &amp;amp; ot) const
+	&amp;#123;
+		if(priority!=ot.priority)
+			return priority&amp;gt;ot.priority;
+		return tim&amp;lt;ot.tim;
+	&amp;#125;
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;资源结构体：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct ProcessNode
+&amp;#123;
+	int pid;
+	string name;
+	vector &amp;lt;int&amp;gt; reslist;
+	int state; // state 0-&amp;gt;Ready 1-&amp;gt;Block 2-&amp;gt;Running 3-&amp;gt;release 
+	int priority; //优先级 
+	int tim; // 建立时间 
+	ProcessNode* fa;
+	ProcessNode* child; 
+	bool operator &amp;lt; (const ProcessNode &amp;amp; ot) const //排序方法，先根据优先级排序，再根据时间顺序排序
+	&amp;#123;
+		if(priority!=ot.priority)
+			return priority&amp;gt;ot.priority;
+		return tim&amp;lt;ot.tim;
+	&amp;#125;
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;二-进程队列-阻塞队列-资源管理模块&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-进程队列-阻塞队列-资源管理模块&#34;&gt;#&lt;/a&gt; 二、进程队列、阻塞队列、资源管理模块&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vector &amp;lt;ProcessNode &amp;gt; ready;
+vector &amp;lt;ProcessNode &amp;gt; block;
+vector &amp;lt;ResNode&amp;gt; res;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;三-进程创建&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-进程创建&#34;&gt;#&lt;/a&gt; 三、进程创建&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;void create(string name,int prio)
+&amp;#123;
+	ProcessNode newnode;
+	newnode.child=NULL,newnode.fa=NULL;
+	newnode.pid=++pidcnt;
+	newnode.priority=prio;
+	newnode.tim=++timcnt;
+	newnode.name=name;
+	ready.push_back(newnode);
+	sort(ready.begin(),ready.end());
+	return;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;四-资源请求&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-资源请求&#34;&gt;#&lt;/a&gt; 四、资源请求&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;void request(char name)
+&amp;#123;
+	int len=res.size();
+	for(int i=0;i&amp;lt;len;i++)
+	&amp;#123;
+		if(res[i].name==name &amp;amp;&amp;amp; res[i].available==true)
+		&amp;#123;
+			res[i].available=false;
+			ready[0].reslist.push_back(res[i].rid);
+			cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;ready[0].name&amp;lt;&amp;lt;&amp;quot; is running&amp;quot;&amp;lt;&amp;lt;endl;
+		&amp;#125;
+		else if(res[i].name==name &amp;amp;&amp;amp; res[i].available==false)
+		&amp;#123;
+			ProcessNode t=ready[0];
+			ready[0].reslist.push_back(res[i].rid);
+			ready.erase(ready.begin());
+			block.push_back(t);
+			cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;t.name&amp;lt;&amp;lt;&amp;quot; is blocked;Process &amp;quot;&amp;lt;&amp;lt;ready[0].name&amp;lt;&amp;lt;&amp;quot; is running&amp;quot;&amp;lt;&amp;lt;endl;
+		&amp;#125;
+	&amp;#125;
+	return;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;五-进程释放&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-进程释放&#34;&gt;#&lt;/a&gt; 五、进程释放&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;bool check()
+&amp;#123;
+	if(block.size()==0)
+		return false;
+	int len=block[0].reslist.size();
+	for(int i=0;i&amp;lt;len;i++)
+	&amp;#123;
+		int l1=res.size();
+		for(int j=0;j&amp;lt;l1;j++)
+		&amp;#123;
+			if(res[j].rid==block[0].reslist[i])
+			&amp;#123;
+				if(res[j].available==false)
+					return false;
+				break; 
+			&amp;#125;
+		&amp;#125;
+	&amp;#125;
+	return true;
+&amp;#125;
+void release()
+&amp;#123;
+	int l1=ready[0].reslist.size();
+	for(int i=0;i&amp;lt;l1;i++)
+	&amp;#123;
+		int l2=res.size();
+		for(int j=0;j&amp;lt;l2;j++)
+		&amp;#123;
+			if(res[j].rid==ready[0].reslist[i])
+				res[j].available=true;
+		&amp;#125;
+	&amp;#125;
+	ready.erase(ready.begin());
+	while(check())
+	&amp;#123;
+		ProcessNode t=block[0];
+		cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;t.name&amp;lt;&amp;lt;&amp;quot; is activate&amp;quot;&amp;lt;&amp;lt;endl;
+		block.erase(block.begin());
+		ready.push_back(t);
+	&amp;#125;
+	sort(ready.begin(),ready.end());
+	if(ready.size()!=0)
+		cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;ready[0].name&amp;lt;&amp;lt;&amp;quot; is running&amp;quot;&amp;lt;&amp;lt;endl;
+	else
+		cout&amp;lt;&amp;lt;&amp;quot;All the Processes have finished&amp;quot;&amp;lt;&amp;lt;endl;
+	return;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;六-完整程序&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-完整程序&#34;&gt;#&lt;/a&gt; 六、完整程序：&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int pidcnt,ridcnt,timcnt;
+struct ResNode
+&amp;#123;
+	char name;
+	int rid;
+	bool available;
+	ResNode(char nn,int rr,bool aa)
+	&amp;#123;
+		name=nn,rid=rr,available=aa;
+	&amp;#125;
+	ResNode()
+	&amp;#123;
+	&amp;#125;
+&amp;#125;;
+struct ProcessNode
+&amp;#123;
+	int pid;
+	string name;
+	vector &amp;lt;int&amp;gt; reslist;
+	int state; // state 0-&amp;gt;Ready 1-&amp;gt;Block 2-&amp;gt;Running 3-&amp;gt;release
+    // state其实可以不加，但是为了完整性可以加一下
+	int priority; //优先级 
+	int tim; // 建立时间 
+	ProcessNode* fa;
+	ProcessNode* child; 
+	bool operator &amp;lt; (const ProcessNode &amp;amp; ot) const
+	&amp;#123;
+		if(priority!=ot.priority)
+			return priority&amp;gt;ot.priority;
+		return tim&amp;lt;ot.tim;
+	&amp;#125;
+&amp;#125;;
+vector &amp;lt;ProcessNode &amp;gt; ready;
+vector &amp;lt;ProcessNode &amp;gt; block;
+vector &amp;lt;ResNode&amp;gt; res;
+void create(string name,int prio)
+&amp;#123;
+	ProcessNode newnode;
+	newnode.child=NULL,newnode.fa=NULL;
+	newnode.pid=++pidcnt;
+	newnode.priority=prio;
+	newnode.tim=++timcnt;
+	newnode.name=name;
+	ready.push_back(newnode);
+	sort(ready.begin(),ready.end());
+	return;
+&amp;#125;
+void init_res()
+&amp;#123;
+	//一共十种资源，每种资源初始都可以使用,每种资源的命名方式是由A,B,C,...以此类推 
+	for(int i=0;i&amp;lt;10;i++)
+		res.push_back(ResNode(i+&#39;A&#39;,++ridcnt,true));
+	return;
+&amp;#125;
+void request(char name)
+&amp;#123;
+	int len=res.size();
+	for(int i=0;i&amp;lt;len;i++)
+	&amp;#123;
+		if(res[i].name==name &amp;amp;&amp;amp; res[i].available==true)
+		&amp;#123;
+			res[i].available=false;
+			ready[0].reslist.push_back(res[i].rid);
+			cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;ready[0].name&amp;lt;&amp;lt;&amp;quot; is running&amp;quot;&amp;lt;&amp;lt;endl;
+		&amp;#125;
+		else if(res[i].name==name &amp;amp;&amp;amp; res[i].available==false)
+		&amp;#123;
+			ProcessNode t=ready[0];
+			ready[0].reslist.push_back(res[i].rid);
+			ready.erase(ready.begin());
+			block.push_back(t);
+			cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;t.name&amp;lt;&amp;lt;&amp;quot; is blocked;Process &amp;quot;&amp;lt;&amp;lt;ready[0].name&amp;lt;&amp;lt;&amp;quot; is running&amp;quot;&amp;lt;&amp;lt;endl;
+		&amp;#125;
+	&amp;#125;
+	return;
+&amp;#125;
+bool check()
+&amp;#123;
+	if(block.size()==0)
+		return false;
+	int len=block[0].reslist.size();
+	for(int i=0;i&amp;lt;len;i++)
+	&amp;#123;
+		int l1=res.size();
+		for(int j=0;j&amp;lt;l1;j++)
+		&amp;#123;
+			if(res[j].rid==block[0].reslist[i])
+			&amp;#123;
+				if(res[j].available==false)
+					return false;
+				break; 
+			&amp;#125;
+		&amp;#125;
+	&amp;#125;
+	return true;
+&amp;#125;
+void release()
+&amp;#123;
+	int l1=ready[0].reslist.size();
+	for(int i=0;i&amp;lt;l1;i++)
+	&amp;#123;
+		int l2=res.size();
+		for(int j=0;j&amp;lt;l2;j++)
+		&amp;#123;
+			if(res[j].rid==ready[0].reslist[i])
+				res[j].available=true;
+		&amp;#125;
+	&amp;#125;
+	ready.erase(ready.begin());
+	while(check())
+	&amp;#123;
+		ProcessNode t=block[0];
+		cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;t.name&amp;lt;&amp;lt;&amp;quot; is activate&amp;quot;&amp;lt;&amp;lt;endl;
+		block.erase(block.begin());
+		ready.push_back(t);
+	&amp;#125;
+	sort(ready.begin(),ready.end());
+	if(ready.size()!=0)
+		cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;ready[0].name&amp;lt;&amp;lt;&amp;quot; is running&amp;quot;&amp;lt;&amp;lt;endl;
+	else
+		cout&amp;lt;&amp;lt;&amp;quot;All the Processes have finished&amp;quot;&amp;lt;&amp;lt;endl;
+	return;
+&amp;#125;
+int main()
+&amp;#123;
+	init_res();
+	cout&amp;lt;&amp;lt;&amp;quot;请输入命令&amp;quot;&amp;lt;&amp;lt;endl;
+	string op;
+	int prio;
+	while(cin&amp;gt;&amp;gt;op)
+	&amp;#123;
+		if(op==&amp;quot;cr&amp;quot;)
+		&amp;#123;
+			string name;
+			cin&amp;gt;&amp;gt;name&amp;gt;&amp;gt;prio;
+			create(name,prio);
+			cout&amp;lt;&amp;lt;&amp;quot;Process &amp;quot;&amp;lt;&amp;lt;ready[0].name&amp;lt;&amp;lt;&amp;quot; is running&amp;quot;&amp;lt;&amp;lt;endl;
+		&amp;#125;
+		else if(op==&amp;quot;rq&amp;quot;)
+		&amp;#123;
+			char name;
+			cin&amp;gt;&amp;gt;name;
+			request(name);
+		&amp;#125;
+		else if(op==&amp;quot;rel&amp;quot;)
+			release();
+		else if(op==&amp;quot;esc&amp;quot;)
+			break;
+	&amp;#125;
+	return 0;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可能有些不完善的地方，如有问题，请评论区指出。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://ntmydb/github.io/mechine-learning/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E5%A4%8D%E4%B9%A0%E4%B8%80/</guid>
             <title>模式识别复习一</title>
@@ -2200,87 +2503,6 @@ ll quickpow(ll x,ll zs)
     &amp;#125;
     return ans%mod;
 &amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/</guid>
-            <title>模板之最小生成树</title>
-            <link>http://ntmydb/github.io/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/</link>
-            <category term="OI模板" scheme="http://ntmydb/github.io/categories/oi-template/" />
-            <category term="C++" scheme="http://ntmydb/github.io/tags/C/" />
-            <category term="图论" scheme="http://ntmydb/github.io/tags/%E5%9B%BE%E8%AE%BA/" />
-            <pubDate>Mon, 20 Mar 2023 20:50:34 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;最小生成树模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#最小生成树模板&#34;&gt;#&lt;/a&gt; 最小生成树模板&lt;/h1&gt;
-&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;最小生成树有&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;prime&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.85396em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;e&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 算法和&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;kruskal&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03148em;&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03148em;&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 算法，本篇暂时贴了克鲁斯卡尔算法写的生成树代码，算法分析请移步另一篇文章&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDMzNjY=&#34;&gt;例题：最小生成树&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
-using namespace std;
-const int N=5001;
-struct node
-&amp;#123;
-    int a;
-    int b;
-    int len;
-    node(int aa,int bb,int ll)
-    &amp;#123;
-        a=aa;
-        b=bb;
-        len=ll;
-    &amp;#125;
-    node()
-    &amp;#123;
-    &amp;#125;
-    bool operator &amp;lt; (const node &amp;amp; ot) const
-    &amp;#123;
-        return len&amp;lt;ot.len;
-    &amp;#125;
-&amp;#125;;
-int n,m,sum,fa[N],cnt;
-vector &amp;lt;node &amp;gt; g;
-int find(int f)
-&amp;#123;
-    if(fa[f]==f)
-        return f;
-    fa[f]=find(fa[f]);
-    return fa[f];
-&amp;#125;
-void hb(int a,int b)
-&amp;#123;
-    int f1=find(a),f2=find(b);
-    if(f1!=f2)
-        fa[f2]=f1;
-&amp;#125;
-int main()
-&amp;#123;
-    scanf(&amp;quot;%d %d&amp;quot;,&amp;amp;n,&amp;amp;m);
-    for(int i=1;i&amp;lt;=m;i++)
-    &amp;#123;
-        int x,y,z;
-        scanf(&amp;quot;%d %d %d&amp;quot;,&amp;amp;x,&amp;amp;y,&amp;amp;z);
-        g.push_back(node(x,y,z)),sum+=z;
-    &amp;#125;
-    sort(g.begin(),g.end());
-    int ans=0;
-    for(int i=1;i&amp;lt;=n;i++)
-        fa[i]=i;
-    for(int i=0;i&amp;lt;m;i++)
-    &amp;#123;
-        if(cnt==m-1)
-            break;
-        int a=g[i].a,b=g[i].b,len=g[i].len;
-        if(find(a)!=find(b))
-        &amp;#123;
-            hb(a,b);
-            cnt++;
-            ans+=len;
-        &amp;#125;
-    &amp;#125;
-    printf(&amp;quot;%d\n&amp;quot;,ans);
-    return 0;
- &amp;#125; 
 &lt;/code&gt;&lt;/pre&gt;
  ]]></description>
         </item>
