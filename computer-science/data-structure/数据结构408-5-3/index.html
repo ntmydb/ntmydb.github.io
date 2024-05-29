@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.jpg"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="Whispering's Blog" href="http://ntmydb/github.io/rss.xml"><link rel="alternate" type="application/atom+xml" title="Whispering's Blog" href="http://ntmydb/github.io/atom.xml"><link rel="alternate" type="application/json" title="Whispering's Blog" href="http://ntmydb/github.io/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="数据结构,考研408"><link rel="canonical" href="http://ntmydb/github.io/computer-science/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84408-5-3/"><title>数据结构 408-5-3 - 数据结构 - 考研复习 | Flüstern = Whispering's Blog = 无需过去，无关未来，只有现在</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">数据结构 408-5-3</h1><div class="meta"><span class="item" title="创建时间：2024-05-26 21:31:24"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2024-05-26T21:31:24+08:00">2024-05-26</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>6k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>5 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Flüstern</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://s2.loli.net/2023/10/27/hfc7q4pMWgDSB9v.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/27/trVY3AZMN2XaCgS.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/26/eM7puDvfB1AIK2r.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/27/HyZX9iFSW1EOP3l.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/29/z7GBVmRXLJMkPbZ.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/27/KS3EjfClHYktsPo.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E4%B9%A0/" itemprop="item" rel="index" title="分类于 考研复习"><span itemprop="name">考研复习</span></a><meta itemprop="position" content="1"></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E4%B9%A0/data-structure/" itemprop="item" rel="index" title="分类于 数据结构"><span itemprop="name">数据结构</span></a><meta itemprop="position" content="2"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://ntmydb/github.io/computer-science/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84408-5-3/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="Whispering"><meta itemprop="description" content="无需过去，无关未来，只有现在, Whispering's Blog"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Whispering's Blog"></span><div class="body md" itemprop="articleBody"><p><span id="more"></span></p><h2 id="二叉树的遍历"><a class="anchor" href="#二叉树的遍历">#</a> 二叉树的遍历</h2><p>遍历：按照某种次序把所有结点都访问一遍</p><p>层次遍历：基于树的层次特性确定的次序规则</p><p>二叉树的递归特性：</p><ul><li>要么是个空二叉树</li><li>要么就是由 &quot;根节点 + 左子树 + 右子树&quot; 组成的二叉树</li></ul><h3 id="先序遍历"><a class="anchor" href="#先序遍历">#</a> 先序遍历</h3><p>先序遍历：根左右</p><p>先序遍历 -&gt; 前缀表达式</p><p>先序遍历 —— 第一次路过时访问的节点</p><p>先序遍历操作过程如下：</p><ul><li>若二叉树为空，则什么也不做</li><li>若二叉树非空<ul><li>访问根节点</li><li>先序遍历左子树</li><li>先序遍历右子树</li></ul></li></ul><pre><code class="language-C">typedef struct BiTNode&#123;
+    ElemType data;
+    struct BiTNode *lchild,*rchild;
+&#125;BiTNode,*BiTree;
+//先序遍历
+void PreOrder(BiTree T)&#123;
+    if(T!=NULL)&#123;
+        visit(T); //访问根节点
+        PreOrder(T-&gt;lchild); //递归访问左子树
+        PreOrder(T-&gt;rchild); //递归访问右子树
+    &#125;
+&#125;
+</code></pre><h3 id="中序遍历"><a class="anchor" href="#中序遍历">#</a> 中序遍历</h3><p>中序遍历：左根右</p><p>中序遍历 -&gt; 中缀表达式 (需要加界限符)</p><p>中序遍历 —— 第二次路过时访问的节点</p><p>中序遍历操作过程如下：</p><ul><li>若二叉树为空，则什么也不做</li><li>若二叉树非空<ul><li>中序遍历左子树</li><li>访问根节点</li><li>中序遍历右子树</li></ul></li></ul><pre><code class="language-C">typedef struct BiTNode&#123;
+    ElemType data;
+    struct BiTNode *lchild,*rchild;
+&#125;BiTNode,*BiTree;
+//中序遍历
+void InOrder(BiTree T)&#123;
+    if(T!=NULL)&#123;
+        InOrder(T-&gt;lchild); //递归访问左子树
+        visit(T); //访问根节点
+        InOrder(T-&gt;rchild); //递归访问右子树
+    &#125;
+&#125;
+</code></pre><h3 id="后续遍历"><a class="anchor" href="#后续遍历">#</a> 后续遍历</h3><p>后续遍历：左右根</p><p>后序遍历 -&gt; 后缀表达式</p><p>后序遍历 —— 第三次路过时访问的节点</p><p>后序遍历操作过程如下：</p><ul><li>若二叉树为空，则什么也不做</li><li>若二叉树非空<ul><li>后序遍历左子树</li><li>后序遍历右子树</li><li>访问根节点</li></ul></li></ul><pre><code class="language-C">typedef struct BiTNode&#123;
+    ElemType data;
+    struct BiTNode *lchild,*rchild;
+&#125;BiTNode,*BiTree;
+//后序遍历
+void PostOrder(BiTree T)&#123;
+    if(T!=NULL)&#123;
+        PostOrder(T-&gt;lchild); //递归访问左子树
+        PostOrder(T-&gt;rchild); //递归访问右子树
+        visit(T); //访问根节点
+    &#125;
+&#125;
+</code></pre><h3 id="二叉树的层次遍历"><a class="anchor" href="#二叉树的层次遍历">#</a> 二叉树的层次遍历</h3><p>算法思想：</p><ul><li>初始化一个辅助队列</li><li>根节点入队</li><li>若队列非空，则队头结点出队，访问该结点，并将其左、右孩子插入队尾 (如果有的话)</li></ul><pre><code class="language-C">void LevelOrder(BiTree T)&#123;
+    LinkQueue Q; //初始化辅助队列
+    InitQueue(Q);
+    BiTree p;
+    EnQueue(Q,T); //根节点入队
+    while(!IsEmpty(Q))&#123; //队不空则循环
+        DeQueue(Q,p); //队头节点出队
+        visit(p); //访问出队节点
+        if(p-&gt;lchild!=NULL)
+            EnQueue(Q,p-&gt;lchild); //左孩子入队
+        if(p-&gt;rchild!=NULL)
+            EnQueue(Q,p-&gt;rchild); //右孩子入队
+    &#125;
+&#125;
+</code></pre><h3 id="由遍历序列构造二叉树"><a class="anchor" href="#由遍历序列构造二叉树">#</a> 由遍历序列构造二叉树</h3><h4 id="不同二叉树的中序遍历序列"><a class="anchor" href="#不同二叉树的中序遍历序列">#</a> 不同二叉树的中序遍历序列</h4><p>结论：若只给出一颗二叉树的前 / 中 / 后 / 层序遍历序列中的一种，不能唯一确定一颗二叉树</p><p>中序遍历序列：左子树的中序遍历序列 + 根节点 + 右子树的前序遍历序列</p><h5 id="前序中序遍历序列"><a class="anchor" href="#前序中序遍历序列">#</a> 前序 + 中序遍历序列</h5><p>前序遍历序列：根节点 + 左子树的前序遍历序列 + 右子树的前序遍历序列</p><h5 id="后续中序遍历序列"><a class="anchor" href="#后续中序遍历序列">#</a> 后续 + 中序遍历序列</h5><p>后续遍历序列：左子树的后续遍历序列 + 右子树的后续遍历序列 + 根节点</p><h5 id="层序中序遍历序列"><a class="anchor" href="#层序中序遍历序列">#</a> 层序 + 中序遍历序列</h5><p>层序遍历序列：根节点 + 左子树的根 + 右子树的根</p><p>Key：找到树的根节点，并根据中序序列分为左右子树，再找到左右子树的根节点</p><p>结论：前序、后续、层序序列的两两组合无法唯一确定一颗二叉树</p><h3 id="线索二叉树"><a class="anchor" href="#线索二叉树">#</a> 线索二叉树</h3><h4 id="线索二叉树的作用"><a class="anchor" href="#线索二叉树的作用">#</a> 线索二叉树的作用</h4><p>思路：</p><ul><li><p>从根节点出发，重新进行一次中序遍历，指针 q 记录当前访问的结点，指针 pre 记录上一个被访问的节点</p><ul><li><p>如何找到指定节点 p 在中序遍历序列中的前驱</p><ul><li>当 p==q 时，pre 为前驱</li></ul></li><li><p>如何找到 p 的中序后继</p><ul><li>当 pre==p 时，q 为后继</li></ul></li><li><p>缺点：找前驱、后继不是很方便：遍历操作必须从根开始</p></li></ul></li></ul><p>中序线索二叉树：</p><p>n 个结点的二叉树来说，有 n+1 个空链域，可用来记录前驱、后继的信息</p><p>指向前驱、后继的指针称为 &quot;线索&quot;</p><h4 id="线索二叉树的存储结构"><a class="anchor" href="#线索二叉树的存储结构">#</a> 线索二叉树的存储结构</h4><pre><code class="language-C">//二叉树的结点(链式存储)
+typedef struct BiTNode&#123;
+    ElemType data;
+    struct BiTNode *lchild,*rchild;
+&#125;BiTNode,*BiTree;
+//线索二叉树结点
+typedef struct ThreadNode&#123;
+    ElemType data;
+    struct ThreadNode *lchild,*rchild;
+    int ltag,rtag; //左、右线索标志
+	//tag==0,表示指针指向孩子
+    //tag==1,表示指针是线索
+&#125;ThreadNode,*ThreadTree;
+</code></pre><h4 id="三种线索二叉树"><a class="anchor" href="#三种线索二叉树">#</a> 三种线索二叉树</h4><p>先序线索二叉树：按照先序遍历进行线索化</p><p>中序线索二叉树：按照中序遍历进行线索化</p><p>后序线索二叉树：按照后序遍历进行线索化</p><p>先序线索二叉树 —— 线索指向先序前驱、先序后继</p><p>中序线索二叉树 —— 线索指向中序前驱、中序后继</p><p>后序线索二叉树 —— 线索指向后序前驱、后序后继</p><h3 id="二叉树的线索化"><a class="anchor" href="#二叉树的线索化">#</a> 二叉树的线索化</h3><p>土办法找中序前驱：</p><pre><code class="language-C">//中序遍历
+void InOrder(BiTree T)&#123;
+    if(T!=NULL)&#123;
+        InOrder(T-&gt;lchild); //递归遍历左子树
+        visit(T);           //访问根节点
+        InOrder(T-&gt;rchild); //递归遍历右子树
+    &#125;
+&#125;
+//访问节点q
+void visit(BiTNode *q)&#123;
+    if(q==p)               //当前访问节点刚好是p
+        final=pre;         //找到p的前驱
+    else
+        pre=q;             //pre指向当前访问节点
+&#125;
+//辅助全局变量，用于查找结点p的前驱
+BiTNode *p;                //p指向目标节点
+BiTNode *pre=NULL;         //指向当前访问节点的前驱
+BiTNode *final=NULL;       //用于记录最终结果
+</code></pre><p>中序线索化：</p><pre><code class="language-C">//全局变量pre，指向当前访问结点的前驱
+ThreadNode *pre=NULL;
+
+//中序线索化二叉树
+void CreateInThread(ThreadTree T)&#123;
+    pre=NULL;             //pre初始化为NULL
+    if(T!=NULL)&#123;          //非空二叉树才能线索化
+        InThread(T);      //中序线索化二叉树
+        if(pre-&gt;rchild==NULL)
+            pre-&gt;rtag=1;  //处理遍历的最后一个节点
+    &#125;
+&#125;
+//线索二叉树结点
+typedef struct ThreadNode&#123;
+    ElemType data;
+    struct ThreadNode *lchild,*rchild;
+    int ltag,rtag; //左、右线索标志
+	//tag==0,表示指针指向孩子
+    //tag==1,表示指针是线索
+&#125;ThreadNode,*ThreadTree;
+void InThread(ThreadTree T)&#123;
+    if(T!=NULL)&#123;
+        InThread(T-&gt;lchild); //中序遍历左子树
+        visit(T);            //访问根节点
+        InThread(T-&gt;rchild); //中序遍历右子树
+    &#125;
+&#125;
+void visit(ThreadNode *q)&#123;
+    if(q-&gt;lchild==NULL)&#123;     //左子树为空
+        q-&gt;lchild=pre;
+        q-&gt;ltag=1;
+    &#125;
+    if(pre!=NULL &amp;&amp; pre-&gt;rchild==NULL)&#123;
+        pre-&gt;rchild=q;       //建立前驱节点的后继线索
+        pre-&gt;rtag=1;
+    &#125;
+    pre=q;
+&#125;
+</code></pre><p>最后要检查 pre 的 rchild 是否为 NULL，如果是，则令 rtag=1</p><p>先序线索化：</p><pre><code class="language-C">//全局变量pre，指向当前访问结点的前驱
+ThreadNode *pre=NULL;
+
+void CreatePreThread(ThreadTree T)&#123;
+    pre=NULL;             //pre初始化为NULL
+    if(T!=NULL)&#123;          //非空二叉树才能线索化
+        PreThread(T);      //先序线索化二叉树
+        if(pre-&gt;rchild==NULL)
+            pre-&gt;rtag=1;  //处理遍历的最后一个节点
+    &#125;
+&#125;
+
+void PreThread(ThreadTree T)&#123;
+    if(T!=NULL)&#123;
+        visit(T);      //先处理根节点
+        if(T-&gt;ltag==0)
+            PreThread(T-&gt;lchild);
+        PreThread(T-&gt;rchild);
+    &#125;
+&#125;
+void visit(ThreadNode *q)&#123;
+    if(q-&gt;lchild==NULL)&#123; //左子树为空，建立前驱线索
+        q-&gt;lchild=pre;
+        q-&gt;ltag=1;
+    &#125;
+    if(pre!=NULL &amp;&amp; pre-&gt;rchild==NULL)&#123;
+        pre-&gt;rchild=q;       //建立前驱节点的后继线索
+        pre-&gt;rtag=1;
+    &#125;
+    pre=q;
+&#125;
+</code></pre><p>后续线索化：</p><pre><code class="language-C">//全局变量pre，指向当前访问结点的前驱
+ThreadNode *pre=NULL;
+
+void CreatePostThread(ThreadTree T)&#123;
+    pre=NULL;             //pre初始化为NULL
+    if(T!=NULL)&#123;          //非空二叉树才能线索化
+        PreThread(T);      //中序线索化二叉树
+        if(pre-&gt;rchild==NULL)
+            pre-&gt;rtag=1;  //处理遍历的最后一个节点
+    &#125;
+&#125;
+
+void PostThread(ThreadTree T)&#123;
+    if(T!=NULL)&#123;
+        PostThread(T-&gt;lchild);
+        PostThread(T-&gt;rchild);
+        visit(T);
+    &#125;
+&#125;
+void visit(ThreadNode *q)&#123;
+    if(q-&gt;lchild==NULL)&#123; //左子树为空，建立前驱线索
+        q-&gt;lchild=pre;
+        q-&gt;ltag=1;
+    &#125;
+    if(pre!=NULL &amp;&amp; pre-&gt;rchild==NULL)&#123;
+        pre-&gt;rchild=q;       //建立前驱节点的后继线索
+        pre-&gt;rtag=1;
+    &#125;
+    pre=q;
+&#125;
+</code></pre><h3 id="在线索二叉树中找前驱后继"><a class="anchor" href="#在线索二叉树中找前驱后继">#</a> 在线索二叉树中找前驱后继</h3><p>中序二叉树找中序后继：</p><p>寻找指定节点 * p 的后继</p><ul><li><p>若 p-&gt;rtag==1，则 next=p-&gt;rchild</p></li><li><p>若 p-&gt;rtag==0，则 next=p 的右子树最左下节点</p></li></ul><p>寻找指定节点 * p 的前驱</p><ul><li>若 p-&gt;ltag==1，则 pre=p-&gt;lchild</li><li>若 p-&gt;ltag==0，则 pre=p 的左子树最右下节点</li></ul><pre><code class="language-C">//找到以p为根的子树中，第一个被中序遍历的节点
+ThreadNode *FirstNode(ThreadNode *p)&#123;
+    //循环找最左下节点(不一定是叶节点)
+    while(p-&gt;ltag==0)
+        p=p-&gt;lchild;
+    return p;
+&#125;
+//找到以p为根的子树中，最后一个中序遍历的节点
+ThreadNode *LastNode(ThreadNode *p)&#123;
+    //循环找最右下节点(不一定是叶节点)
+    while(p-&gt;rtag==0)
+        p=p-&gt;rchild;
+    return p;
+&#125;
+//在中序线索二叉树中找到结点p的后继节点
+ThreadNode *NextNode(ThreadNode *p)&#123;
+    //右子树最左下节点
+    if(p-&gt;rtag==0)
+        return FirstNode(p-&gt;rchild);
+    else //rtag==1
+    	return p-&gt;rchild;
+&#125;
+//在中序线索二叉树中找到结点p的前驱节点
+ThreadNode *PreNode(ThreadNode *p)&#123;
+    //右子树最左下节点
+    if(p-&gt;ltag==0)
+        return LastNode(p-&gt;lchild);
+    else //rtag==1
+    	return p-&gt;rchild;
+&#125;
+//对中序线索二叉树进行中序遍历(利用线索实现非递归算法)
+void InOrder(ThreadNode *T)&#123;
+    for(ThreadNode *p=FirstNode(T);p!=NULL;p=NextNode(p))
+        visit(p);
+&#125;
+//对中序线索二叉树进行逆向中序遍历(利用线索实现非递归算法)
+void RevOrder(ThreadNode *T)&#123;
+    for(ThreadNode *p=LastNode(T);p!=NULL;p=PreNode(p))
+        visit(p);
+&#125;
+</code></pre><p>先序线索二叉树找先序前驱：</p><p>寻找指定节点 * p 的前驱</p><ul><li>若 p-&gt;ltag==1，则 next=p-&gt;lchild</li><li>若 p-&gt;ltag==0<ul><li>如果能找到 p 的父节点，且 p 是左孩子，p 的父节点为其前驱</li><li>如果能找到 p 的父节点，且 p 是右孩子，其左兄弟为空，p 的父节点为其前驱</li><li>如果能找到 p 的父节点，且 p 是右孩子，其左兄弟非空，p 的前驱为左兄弟子树最后一个被先序遍历的节点</li><li>如果 p 是根节点，则 p 没有前驱</li></ul></li></ul><p>后续线索二叉树找后续前驱：</p><p>寻找指定节点 * p 的前驱</p><ul><li>若 p-&gt;ltag==1，则 pre=p-&gt;lchild</li><li>若 p-&gt;ltag==0<ul><li>如果能找到 p 的父节点，且 p 是右孩子，p 的父节点为其前驱</li><li>如果能找到 p 的父节点，且 p 是左孩子，其右兄弟为空，p 的父节点为其前驱</li><li>如果能找到 p 的父节点，且 p 是左孩子，其右兄弟非空，p 的前驱为右兄弟子树第一个被后序遍历的节点</li><li>如果 p 是根节点，则 p 没有后续后继</li></ul></li></ul><div class="tags"><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"><i class="ic i-tag"></i> 数据结构</a> <a href="/tags/%E8%80%83%E7%A0%94408/" rel="tag"><i class="ic i-tag"></i> 考研408</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2024-05-29 22:15:01" itemprop="dateModified" datetime="2024-05-29T22:15:01+08:00">2024-05-29</time> </span><span id="computer-science/data-structure/数据结构408-5-3/" class="item leancloud_visitors" data-flag-title="数据结构 408-5-3" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>Whispering <i class="ic i-at"><em>@</em></i>Whispering's Blog</li><li class="link"><strong>本文链接：</strong> <a href="http://ntmydb/github.io/computer-science/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84408-5-3/" title="数据结构 408-5-3">http://ntmydb/github.io/computer-science/data-structure/数据结构408-5-3/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/computer-science/principles-of-computer-composition/%E8%AE%A1%E7%BB%84408-3-5&6/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;10&#x2F;29&#x2F;FRzT1nWPXB53vdY.jpg" title="计算机组成原理408-3-5&amp;6"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 计算机组成原理</span><h3>计算机组成原理408-3-5&6</h3></a></div><div class="item right"></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">1.</span> <span class="toc-text">二叉树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">1.1.</span> <span class="toc-text">先序遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">1.2.</span> <span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.</span> <span class="toc-text">后续遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树的层次遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B1%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.5.</span> <span class="toc-text">由遍历序列构造二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97"><span class="toc-number">1.5.1.</span> <span class="toc-text">不同二叉树的中序遍历序列</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E5%BA%8F%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">前序 + 中序遍历序列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">后续 + 中序遍历序列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B1%82%E5%BA%8F%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">层序 + 中序遍历序列</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.</span> <span class="toc-text">线索二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.6.1.</span> <span class="toc-text">线索二叉树的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.6.2.</span> <span class="toc-text">线索二叉树的存储结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.3.</span> <span class="toc-text">三种线索二叉树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BA%BF%E7%B4%A2%E5%8C%96"><span class="toc-number">1.7.</span> <span class="toc-text">二叉树的线索化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E6%89%BE%E5%89%8D%E9%A9%B1%E5%90%8E%E7%BB%A7"><span class="toc-number">1.8.</span> <span class="toc-text">在线索二叉树中找前驱后继</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/computer-science/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84408-5-1&2/" rel="bookmark" title="数据结构408-5-1&2">数据结构408-5-1&2</a></li><li class="active"><a href="/computer-science/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84408-5-3/" rel="bookmark" title="数据结构408-5-3">数据结构408-5-3</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Whispering" data-src="/images/avatar.jpg"><p class="name" itemprop="name">Whispering</p><div class="description" itemprop="description">Whispering's Blog</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">81</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">12</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">37</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL250bXlkYg==" title="https:&#x2F;&#x2F;github.com&#x2F;ntmydb"><i class="ic i-github"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%89%8D%E7%BD%AEPython%E6%93%8D%E4%BD%9C/" title="机器学习之前置Python操作">机器学习之前置Python操作</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/database/" title="分类于 数据库">数据库</a></div><span><a href="/computer-science/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E4%B9%9D/" title="数据库复习九">数据库复习九</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/oi-template/" title="分类于 OI 模板">OI 模板</a></div><span><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8BRMQ/" title="模板之RMQ">模板之RMQ</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%99%BA%E8%83%BD%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/" title="智能计算系统复习">智能计算系统复习</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91%E5%AE%9E%E8%B7%B5/" title="机器学习之决策树实践">机器学习之决策树实践</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/english-notes/" title="分类于 英语笔记">英语笔记</a></div><span><a href="/english-notes/%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0%E4%B8%83/" title="英语笔记七">英语笔记七</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E4%B9%A0/" title="分类于 考研复习">考研复习</a> <i class="ic i-angle-right"></i> <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E4%B9%A0/data-structure/" title="分类于 数据结构">数据结构</a></div><span><a href="/computer-science/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84408-5-1&2/" title="数据结构408-5-1&amp;2">数据结构408-5-1&2</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80/" title="分类于 形式语言">形式语言</a></div><span><a href="/course-review/formal%20language/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E5%A4%8D%E4%B9%A0%E4%B8%80/" title="形式语言复习一">形式语言复习一</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%B7%E9%87%8F%E6%96%87%E4%BB%B6%E9%81%8D%E5%8E%86/" title="机器学习之海量文件遍历">机器学习之海量文件遍历</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mechine-learning/" title="分类于 机器学习">机器学习</a></div><span><a href="/mechine-learning/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E5%A4%8D%E4%B9%A0%E6%80%BB/" title="模式识别复习总">模式识别复习总</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2024</span> <span class="with-love"><i class="ic i-"></i> </span><span class="author" itemprop="copyrightHolder">Whispering @ Flüstern</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">439k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">6:39</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"computer-science/data-structure/数据结构408-5-3/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,copy_tex:!0,katex:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script></body></html>
