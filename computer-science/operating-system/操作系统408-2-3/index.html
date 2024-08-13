@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.jpg"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="Whispering's Blog" href="http://ntmydb/github.io/rss.xml"><link rel="alternate" type="application/atom+xml" title="Whispering's Blog" href="http://ntmydb/github.io/atom.xml"><link rel="alternate" type="application/json" title="Whispering's Blog" href="http://ntmydb/github.io/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="考研408,操作系统"><link rel="canonical" href="http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-3/"><title>操作系统 408-2-3 - 操作系统 - 计算机科学 | Flüstern = Whispering's Blog = 无需过去，无关未来，只有现在</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">操作系统 408-2-3</h1><div class="meta"><span class="item" title="创建时间：2024-08-02 21:13:20"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2024-08-02T21:13:20+08:00">2024-08-02</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>11k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>10 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Flüstern</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://s2.loli.net/2023/10/25/LmezdIbZO4vV9PM.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/27/CUbOHopMzly19Ei.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/29/hmpftGvrk6TiOdC.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/27/cWeu2jrgZMiX7fl.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/27/depOFrgsylxCqJm.jpg"></li><li class="item" data-background-image="https://s2.loli.net/2023/10/25/61OMxfsnwVmpjRt.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a><meta itemprop="position" content="1"></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/operating-system/" itemprop="item" rel="index" title="分类于 操作系统"><span itemprop="name">操作系统</span></a><meta itemprop="position" content="2"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-3/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="Whispering"><meta itemprop="description" content="无需过去，无关未来，只有现在, Whispering's Blog"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Whispering's Blog"></span><div class="body md" itemprop="articleBody"><p><span id="more"></span></p><h3 id="进程同步-互斥"><a class="anchor" href="#进程同步-互斥">#</a> 进程同步、互斥</h3><h4 id="进程同步"><a class="anchor" href="#进程同步">#</a> 进程同步</h4><p>同步亦称直接制约关系，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而产生制约关系。进程间的直接制约关系就是源自于它们之间的相互合作</p><h4 id="进程互斥"><a class="anchor" href="#进程互斥">#</a> 进程互斥</h4><p>我们把一个时间段内只允许一个进程使用的资源称为临界资源。许多物理设备 (比如摄像头、打印机) 都属于临界资源。此外还有许多变量、数据、内存缓冲区都属于临界资源</p><p>对临界资源的访问，必须互斥地进行。互斥，亦称间接制约关系。进程互斥指当一个进程访问某种临界资源时，另一个想要访问临界资源的进程必须等待。当前访问临界资源的进程访问结束，释放该资源后，另一个进程才能去访问临界资源。</p><p>对临界资源的访问，可以在逻辑上分为四个部分：</p><ul><li>进入区：负责检查是否可进入临界区，若可进入，则应设置正在访问临界资源的标志 (可理解为上锁)，以阻止其他进程同时进入临界区</li><li>临界区：访问临界资源的那段代码</li><li>退出区：负责解除正在访问临界资源的标志 (可理解为解锁)</li><li>剩余区：做其他处理</li></ul><p>注意：</p><ul><li>临界区是进程中访问临界资源的代码段</li><li>进入区和退出区是负责实现互斥的代码段</li><li>临界区也可称为 &quot;临界段&quot;</li></ul><p>为了实现对临界资源的互斥访问，同时保证系统整体性能，需要遵循以下原则：</p><ul><li>空闲让进。临界区空闲时，可以允许一个请求进入临界区的进程立即进入临界区</li><li>忙则等待。当已有进程进入临界区时，其他试图进入临界区的进程必须等待</li><li>有限等待。对请求访问的进程，应保证能在有限时间内进入临界区 (保证不会饥饿)</li><li>让权等待。对进程不能进入临界区时，应立即释放处理机，防止进程忙等待</li></ul><h3 id="进程互斥的软件实现方法"><a class="anchor" href="#进程互斥的软件实现方法">#</a> 进程互斥的软件实现方法</h3><h4 id="单标志法"><a class="anchor" href="#单标志法">#</a> 单标志法</h4><p>算法思想：两个进程在访问完临界区后会把使用临界区的权限转交给另一个进程。也就是说每个进程进入临界区的权限只能被另一个进程赋予</p><p>例如：</p><pre><code class="language-C">int turn=0;  //turn表示当前允许进入临界区的进程号
+P0进程：
+while(turn!=0);    //进入区
+critical section;   //临界区
+turn=1;            //退出区
+remainder section; //剩余区
+P1进程：
+while(turn!=1);    //进入区
+critical section;   //临界区
+turn=0;            //退出区
+remainder section; //剩余区
+</code></pre><p>该算法可以实现 &quot;同一时刻最多只允许一个进程访问临界区&quot;</p><p>单标志法存在的主要问题是：违背 &quot;空闲让进&quot; 原则</p><h4 id="双标志先检查法"><a class="anchor" href="#双标志先检查法">#</a> 双标志先检查法</h4><p>算法思想：设置一个布尔型数组 flag []，数组中各个元素用来标志各进程想进入临界区的意愿，比如 &quot;flag [0]=true&quot; 意味着 0 号进程 P0 现在想要进入临界区。每个进程在进入临界区之前先检查当前有没有别的进程想进入临界区，如果没有，则把有自身对应的标志 flag [i] 设为 true，之后开始访问临界区。</p><pre><code class="language-C">bool flag[2];  //表示进入临界区意愿的数组
+flag[0]=false;
+flag[1]=false;  //刚开始设置为两个进程都不进入临界区
+P0进程：
+while(flag[1]);
+flag[0]=true;
+critical section;
+flag[0]=false;
+remainder section;
+P1进程：
+while(flag[0]);    //如果此时P0进入临界区，P1就循环等待
+flag[1]=true;      //标记为P1进程想要进入临界区
+critical section;  //访问临界区
+flag[1]=false;     //访问完临界区，修改标记为P1不想使用临界区
+remainder section;
+</code></pre><p>两个进程可能会同时进入临界区</p><p>双标志先检查法的主要问题是：违反 &quot;忙则等待&quot; 原则</p><p>原因在于，进入区的 &quot;检查&quot; 和 &quot;上锁&quot; 两个处理不是一气呵成的。检查后，上锁前可能发生进程切换</p><h4 id="双标志后检查法"><a class="anchor" href="#双标志后检查法">#</a> 双标志后检查法</h4><p>算法思想：双标志先检查法的改版。前一个算法的问题是先 &quot;检查&quot; 后 &quot;上锁&quot;，但是这两个操作又无法一气呵成，因此导致了两个进程同时进入临界区的问题。因此，人们又想到先 &quot;上锁&quot; 后检查的方法，来避免上述问题</p><pre><code class="language-C">bool flag[2];  //表示进入临界区意愿的数组
+flag[0]=false;
+flag[1]=false;  //刚开始设置为两个进程都不进入临界区
+P0进程：
+flag[0]=true;
+while(flag[1]);
+critical section;
+flag[0]=false;
+remainder section;
+P1进程：
+flag[1]=true;      //标记为P1进程想要进入临界区
+while(flag[0]);    //如果此时P0进入临界区，P1就循环等待
+critical section;  //访问临界区
+flag[1]=false;     //访问完临界区，修改标记为P1不想使用临界区
+remainder section;
+</code></pre><p>P0 和 P1 将都无法进入临界区</p><p>因此，双标志后检查法虽然解决了 &quot;忙则等待&quot; 的问题，但是又违背了 &quot;空闲让进&quot; 和 &quot;有限等待&quot; 原则，会因各进程都长期无法访问临界资源而产生 &quot;饥饿&quot; 现象</p><h4 id="peterson算法"><a class="anchor" href="#peterson算法">#</a> Peterson 算法</h4><p>算法思想：结合双标志法、单标志法的思想。如果双方都争着想进入临界区，那可以让进程尝试谦让</p><pre><code class="language-C">bool flag[2];    //表示进入临界区意愿的数组，初始值都是false
+int turn=0;    //turn 表示优先让哪个进程进入临界区
+P0进程：
+flag[0]=true;
+turn=1;
+while(flag[1] &amp;&amp; turn==1);
+critical section;
+flag[0]=false;
+remainder section;
+P1进程：
+flag[1]=true;    //表示自己想进入临界区
+turn = 0;        //可以优先让对方进入临界区
+while(flag[0] &amp;&amp; turn==0); //对方想进，且最后一次是自己&quot;谦让&quot;，那自己就循环等待
+critical section;
+flag[1]=false;   //访问完临界区，表示自己已经不想访问临界区了
+remainder section;
+</code></pre><p>Peterson 算法用软件方法解决了进程互斥问题，遵循了空闲让进、忙则等待、有限等待三个原则，但是依然未遵循让权等待的原则</p><h3 id="进程互斥的硬件实现方法"><a class="anchor" href="#进程互斥的硬件实现方法">#</a> 进程互斥的硬件实现方法</h3><h4 id="中断屏蔽方法"><a class="anchor" href="#中断屏蔽方法">#</a> 中断屏蔽方法</h4><p>利用 &quot;开 / 关中断指令&quot; 实现 (与原语的实现思想相同，即在某进程开始访问临界区到结束访问为止都不允许被中断，也就不能发生进程切换，因此也不可能发生两个同时访问临界区的情况)</p><p>关中断后即不允许当前进程被中断，也必然不会发生进程切换</p><p>直到当前进程访问完临界区，再执行开中断指令，才有可能有别的进程上处理机并访问临界区</p><p>优点：简单、高效</p><p>缺点：不适用于多处理机，只适用于操作系统内核进程，不适用于用户进程 (因为开 / 关中断指令只能运行在内核态，这组指令如果能让用户随意使用会很危险)</p><h4 id="testandset指令"><a class="anchor" href="#testandset指令">#</a> TestAndSet 指令</h4><p>简称 TS 指令，也有地方称为 TestAndSetLock 指令，或 TSL 指令</p><p>TSL 指令是用硬件实现额，执行的过程不允许被中断，只能一气呵成。以下是用 C 语言描述的逻辑</p><pre><code class="language-C">//布尔型共享变量lock表示当前临界区是否被加锁
+//true表示已加锁，false表示未加锁
+bool TestAndSet(bool *lock)&#123;
+    bool old;
+    old = *lock;  //old用来存放lock原来的值
+    *lock = true; //无论之前是否已加锁，都将lock设为true
+    return old;  //返回lock原来的值
+&#125;
+//以下是使用TSL指令实现互斥的算法逻辑
+while(TestAndSet(&amp;lock)); //&quot;上锁&quot;并检查
+critical section;
+lock = false; //解锁
+remainder section;
+</code></pre><p>相比软件实现方法，TSL 指令把上锁和检查操作用硬件的方式变成了一气呵成的原子操作。</p><p>优点：实现简单，无需像软件实现方法那样严格检查是否会有逻辑漏洞，适用于多处理机环境</p><p>缺点：不满足 &quot;让权等待&quot; 原则，暂时无法进入临界区的进程会占用 CPU 循环执行 TSL 指令，从而导致忙等</p><h4 id="swap指令"><a class="anchor" href="#swap指令">#</a> Swap 指令</h4><p>Swap 指令是用硬件实现的，执行的过程不允许被中断，只能一气呵成。以下是 C 语言描述的逻辑</p><pre><code class="language-C">//Swap指令的作用是交换两个变量的值
+Swap(bool *a,bool *b)&#123;
+    bool temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+&#125;
+//以下是Swap指令实现互斥算法的逻辑
+//lock表示当前临界区是否被加锁
+bool old=true;
+while(old == true)
+    Swap(&amp;lock,&amp;old);
+critical section;
+lock = false;
+remainder section;
+</code></pre><p>优点：实现简单，无需像软件实现方法那样严格检查是否会有逻辑漏洞，适用于多处理机环境</p><p>缺点：不满足 &quot;让权等待&quot; 原则，暂时无法进入临界区的进程会占用 CPU 循环执行 TSL 指令，从而导致忙等</p><h3 id="互斥锁"><a class="anchor" href="#互斥锁">#</a> 互斥锁</h3><p><strong>互斥锁</strong></p><p>解决临界区最简单的工具就是互斥锁，一个进程在进入临界区时应获得锁；在退出临界区时释放锁。</p><p>互斥锁的主要缺点是忙等待，当有一个进程在临界区中，任何其他进程在进入临界区时必须连续循环调用获得锁函数。当多个进程共享同一 CPU 时，就浪费了 CPU 周期。因此互斥锁通常用于多处理系统，一个线程可以在一个处理器上等待，不影响其他线程的执行</p><p>需要连续循环忙等的互斥锁，都可称为自旋锁，如 TSL 指令，Swap 指令，单标志法</p><p><strong>锁的特性</strong></p><ul><li>需忙等，进程时间片用完才下处理机，违反 &quot;让权等待&quot;</li><li>优点：等待期间不用切换进程上下文，多处理器系统中，若上锁的时间短，则等待代价很低</li><li>常用于多处理器系统，一个核忙等，其他核照常工作，并快速释放临界区</li><li>不太适用于单处理机系统，忙等的过程中不可能解锁</li></ul><h3 id="信号量机制"><a class="anchor" href="#信号量机制">#</a> 信号量机制</h3><p>用户进程可以通过操作系统提供的一对原语对信号量进行操作，从而很方便的实现了进程互斥、进程同步</p><p>信号量其实就是一个变量（可以是一个整数，也可以是更复杂的记录型变量），可以用一个信号量来表示系统中某种资源的数据。</p><p>原语是一种特殊的程序段，其执行只能一气呵成，不可被中断。原语是由关中断 / 开中断指令实现的。</p><p>一对原语：wait (S) 原语和 signal (S) 原语</p><p>wait，signal 称为 P、V 操作</p><h4 id="整形信号量"><a class="anchor" href="#整形信号量">#</a> 整形信号量</h4><p>用一个整形变量作为信号量，用来表示系统中某种资源的数量</p><ul><li>与普通变量的区别：对信号量的操作只有三种，即初始化，P 操作，V 操作</li></ul><pre><code class="language-C">void wait(int S)&#123;
+    while(S&lt;=0);
+    S=S-1;
+&#125;
+void signal(int S)&#123;
+    S=S+1;
+&#125;
+进程Pn
+wait(S);
+使用临界资源
+signal(S);
+</code></pre><h4 id="记录型信号量"><a class="anchor" href="#记录型信号量">#</a> 记录型信号量</h4><p>整形信号量的缺陷是存在 &quot;忙等&quot; 问题，记录型信号量就是用记录型数据结构表示的信号量</p><pre><code class="language-C">//记录型信号量的定义
+typedef struct &#123;
+    int value;                //剩余资源数
+    struct process *L;        //等待队列
+&#125; semaphore;
+
+//某进程需要使用资源时，通过wait原语申请
+void wait(semaphore S)&#123;
+    S.value--;
+    if(S.value&lt;0)&#123;
+        block(S.L); //如果剩余资源数不够，使用block原语使进程从运行态进入阻塞态，并挂到信号量S的等待队列（即阻塞队列）中
+    &#125;
+&#125;
+//进程使用完成后，通过signal原语释放
+void signal(semaphore S)&#123;
+    S.value++;
+    if(S.value&lt;=0)&#123; //释放资源后，若还有别的进程在等待这种资源，则使用wakeup原语唤醒等待队列中的一个进程，该进程从阻塞态变为就绪态
+        wakeup(S.L);
+    &#125;
+&#125;
+</code></pre><p>对信号量 S 的一次 P 操作意味着进程请求一个单位的该类资源，因此需要执行 S.value--，表示资源数减 1，当 S.value&lt;0 表示资源已分配完毕，因此进程应调用 block 原语进行自我阻塞（当前运行的进程从运行态 -&gt; 阻塞态），主动放弃处理机，并插入该类资源的等待队列 S.L 中。可见，该机制遵循了 &quot;让权等待&quot; 的原则，不会出现忙等的现象</p><p>对信号量 S 的一次 V 操作意味着进程释放一个单位的该类资源，因此需要执行 S.value++，表示资源数加 1，若加 1 后仍是 S.value&lt;=0 表示仍有进程在等待该类资源，因此进程应调用 wakeup 原语唤醒等待队列中的第一个进程（被唤醒进程从阻塞态 -&gt; 就绪态）。</p><h3 id="用信号量机制实现进程互斥-同步-前驱关系"><a class="anchor" href="#用信号量机制实现进程互斥-同步-前驱关系">#</a> 用信号量机制实现进程互斥、同步、前驱关系</h3><h4 id="实现进程互斥"><a class="anchor" href="#实现进程互斥">#</a> 实现进程互斥</h4><ul><li>分析并发进程的关键活动，划定临界区</li><li>设置互斥信号量 mutex（进入临界区的名额），初始值为 1</li><li>在进入区 P (mutex)—— 申请资源</li><li>在退出区 V (mutex)—— 释放资源</li></ul><p>注意：对不同的临界资源需设置不同的互斥信号量</p><p>P、V 操作必须成对出现。缺少 P (mutex) 就不能保证临界资源的互斥访问，缺少 S (mutex) 会导致资源永不被释放。等待进程永不被唤醒</p><h4 id="实现进程同步"><a class="anchor" href="#实现进程同步">#</a> 实现进程同步</h4><p>进程同步：要让各进程按要求有序地推进</p><p>用信号量实现进程同步：</p><ul><li>分析什么地方需要实现 &quot;同步关系&quot;，即必须保证 &quot;一前一后&quot; 执行的两个操作</li><li>设置同步信号量 S，初始为 0</li><li>在 &quot;前操作&quot; 之后执行 V (S)</li><li>在 &quot;后操作&quot; 之后执行 P (S)</li></ul><h4 id="实现前驱关系"><a class="anchor" href="#实现前驱关系">#</a> 实现前驱关系</h4><p>每一对前驱关系都是一个进程同步问题 (需要保证一前一后操作)</p><ul><li>要为每一对前驱关系各设置一个同步信号量</li><li>在 &quot;前操作&quot; 之后对相应的同步信号量执行 V 操作</li><li>在 &quot;后操作&quot; 之前对相应的同步信号量执行 P 操作</li></ul><p><strong>PV 操作题目分析步骤</strong></p><ul><li>关系分析。找出题目中描述的各个进程。分析它们之间的同步、互斥关系</li><li>整理思路。根据各进程的操作流程确定 P、V 操作的大致顺序</li><li>设置信号量。并根据题目条件确定信号量初值。(互斥信号量初值一般为 0，同步信号量的初始值要看对应资源初始值为多少)</li></ul><h3 id="生产者消费者问题"><a class="anchor" href="#生产者消费者问题">#</a> 生产者消费者问题</h3><p><strong>问题描述</strong></p><p>系统中有一组生产者进程和一组消费者进程，生产者进程每次生产一个产品放入缓冲区，消费者进程每次从缓冲区中取出一个产品并使用 (注：这里的 &quot;产品&quot; 可理解为数据)</p><p>生产者、消费者共享一个初始为空、大小为 n 的缓冲区。</p><p>只有缓冲区没满时，生产者才能把产品放入缓冲区，否则必须等待、</p><p><strong>分析解答</strong></p><ul><li>缓冲区没满 -&gt; 生产者生产</li><li>缓冲区没空 -&gt; 消费者消费</li><li>缓冲区满 -&gt; 生产者等待</li><li>缓冲区空 -&gt; 消费者等待</li></ul><pre><code class="language-C">semaphore mutex = 1;  //互斥信号量，实现对缓冲区的互斥访问
+semaphore empty = n;  //同步信号量，表示空闲缓冲区的数量
+semaphore full = 0;   //同步信号量，表示产品的数量，也即非空缓冲区的数量
+
+producer() &#123;
+    while(1)&#123;
+        生产一个产品;
+        P(empty);  //消耗一个空闲缓冲区
+        P(mutex);  //同一进程中的互斥操作
+        把产品放入缓冲区;
+        V(mutex);
+        V(full);  //增加一个产品
+    &#125;
+&#125;
+
+consumer() &#123;
+    while(1)&#123;
+        P(full); //消耗一个产品(非空缓冲区)
+        P(mutex);
+        从缓冲区中取走一个产品;
+        V(mutex);
+        V(empty); //产生一个空闲缓冲区
+        使用产品
+    &#125;
+&#125;
+</code></pre><p>改变 P、V 顺序可能会导致死锁，因此，实现互斥的 P 操作一定要在实现同步的 P 操作之后，V 操作不会导致进程阻塞，因此两个 V 操作顺序可以交换</p><h3 id="多生产者-多消费者问题"><a class="anchor" href="#多生产者-多消费者问题">#</a> 多生产者 - 多消费者问题</h3><p><strong>问题描述</strong></p><p>桌子上有一只盘子，每次只能向其中放入一个水果，爸爸专向盘子中放苹果，妈妈专向盘子中放橘子，儿子专等着吃盘子中的橘子，女儿专等着吃盘子中的苹果，仅当盘子中有自己需要的水果时，儿子或女儿可以从盘子中取出水果。用 PV 操作实现上述过程</p><p><strong>分析解答</strong></p><p>互斥关系：对缓冲区 (盘子) 的访问要互斥地进行</p><p>同步关系：</p><ul><li>父亲将苹果放入盘子后，女儿才能取苹果</li><li>母亲将橘子放入盘子后，儿子才能取橘子</li><li>只有盘子为空时，父亲或母亲才能往盘子里放水果</li></ul><pre><code class="language-C">semaphore mutex = 1; //实现互斥访问盘子(缓冲区)，这一个信号量可以不需要
+semaphore apple = 0; //盘子里有几个苹果
+semaphore orange = 0; //盘子里有几个橘子
+semaphore plate = 1; //盘子中还可以放多少水果
+dad()&#123;
+    while(1)&#123;
+        准备放一个苹果;
+        P(plate);
+        把苹果放入盘子;
+        V(apple);
+    &#125;
+&#125;
+
+mom()&#123;
+    while(1)&#123;
+        准备放一个句子;
+        P(plate);
+        把橘子放入盘子;
+        V(orange);
+    &#125;
+&#125;
+
+daughter()&#123;
+    while(1)&#123;
+        P(apple);
+        从盘子中取出苹果;
+        V(plate);
+        吃掉苹果;
+    &#125;
+&#125;
+
+son() &#123;
+    while(1)&#123;
+        P(orange);
+        从盘子中取出橘子;
+        V(plate);
+        吃掉橘子;
+    &#125;
+&#125;
+</code></pre><p>结论：在生产者 - 消费者问题中，如果缓冲区大小为 1，那么有可能不需要设置互斥信号量就可以实现互斥访问缓冲区的功能。当然，这不是绝对的，要具体情况具体分析。当缓冲区大小大于 1 是，就必须设置互斥信号量保证互斥访问缓冲区</p><h3 id="吸烟者问题"><a class="anchor" href="#吸烟者问题">#</a> 吸烟者问题</h3><p><strong>问题描述</strong></p><p>假设一个系统有三个抽烟者进程和一个供应者进程。每个抽烟者不停地卷烟并抽掉它，但是要卷起并抽调一支烟，抽烟者需要三种材料：烟草、纸和胶水。三个抽烟者中，第一个拥有烟草、第二个拥有纸、第三个拥有胶水。供应者进程无限地提供三种材料，供应者每次将两种材料放到桌子上，拥有剩下那种材料的抽烟者卷一根烟并抽掉它，并给供应者进程一个信号告诉完成了，供应者就会放另外两种材料在桌上，这个过程一直重复 (让三个抽烟者轮流抽烟)</p><p><strong>分析解答</strong></p><p>同步关系：</p><ul><li>桌子上有组合一 -&gt; 第一个抽烟者取走东西</li><li>桌子上有组合二 -&gt; 第二个抽烟者取走东西</li><li>桌子上有组合三 -&gt; 第三个抽烟者取走东西</li><li>发出完成信号 -&gt; 供应者将下一个组合放到桌子上</li></ul><pre><code class="language-C">semaphore offer1 = 0; //桌子上有组合一的数量
+semaphore offer2 = 0; //桌子上有组合二的数量
+semaphore offer3 = 0; //桌子上有组合三的数量
+semaphore finish = 0; //抽烟是否完成
+int i=0; //用于实现三个抽烟者轮流抽烟
+provider()&#123;
+    while(1)&#123;
+        if(i==0)&#123;
+            将组合一放在桌子上;
+            V(offer1);
+        &#125; else if (i==1)&#123;
+            将组合二放在桌子上;
+            V(offer2);
+        &#125; else if(i==2)&#123;
+            将组合三放在桌子上;
+            V(offer3);
+        &#125;
+        i=(i+1)%3;
+        P(finish);
+    &#125;
+&#125;
+smoker1()&#123;
+    while(1)&#123;
+        P(offer1);
+        从桌子上拿走组合一，卷烟，抽掉;
+        V(finish);
+    &#125;
+&#125;
+smoker2()&#123;
+    while(1)&#123;
+        P(offer2);
+        从桌子上拿走组合二，卷烟，抽掉;
+        V(finish);
+    &#125;
+&#125;
+smoker3()&#123;
+    while(1)&#123;
+        P(offer3);
+        从桌子上拿走组合三，卷烟，抽掉;
+        V(finish);
+    &#125;
+&#125;
+</code></pre><h3 id="读者写者问题"><a class="anchor" href="#读者写者问题">#</a> 读者写者问题</h3><p><strong>问题描述</strong></p><p>有读者和写者两组并发进程，共享一个文件，当两个或两个以上的读进程同时访问共享数据时，不会产生副作用，但若是某个写进程和其他进程（读进程或写进程）同时访问共享数据时则可能导致数据不一致的错误。因此要求：①允许多个读者可以同时对文件执行读操作；②只允许一个写者往文件中写信息；③任一写者在完成写操作之前不允许其他读者或写者工作；④写者执行写操作前，应让已有的读者和写者全部退出。</p><p><strong>分析解答</strong></p><pre><code class="language-C">semaphore rw = 1;  //用于实现对共享文件的互斥访问
+int count=0;   //记录当前有几个读进程在访问文件
+semaphore mutex = 1; //用于保证对count变量的互斥访问
+writer()&#123;
+    while(1)&#123;
+        P(rw);  //写之前加锁
+        写文件;
+        P(rw);
+    &#125;
+&#125;
+
+reader()&#123;
+    while(1)&#123;
+        P(mutex);  //各读进程互斥访问counter
+        if(count==0)  //由第一个读进程负责
+            P(rw);   //读之前加锁
+        count++;
+        V(mutex);
+        读文件;
+        P(mutex);  //各读进程互斥访问count
+        count--;
+        if(count==0)  //由最后一个读进程负责
+            V(rw);  //读完了解锁
+        V(mutex);
+    &#125;
+&#125;
+</code></pre><p>潜在的问题：只要有读进程还在读，写进程就要一直阻塞等待，可能饿死，因此，这种算法中，读进程是优先的</p><p>改为写优先：</p><pre><code class="language-C">semaphore rw = 1;  //用于实现对共享文件的互斥访问
+int count=0;   //记录当前有几个读进程在访问文件
+semaphore mutex = 1; //用于保证对count变量的互斥访问
+semaphore w = 1;  //用于实现写优先
+writer()&#123;
+    while(1)&#123;
+        P(w);
+        P(rw);  //写之前加锁
+        写文件;
+        P(rw);
+        V(w);
+    &#125;
+&#125;
+
+reader()&#123;
+    while(1)&#123;
+        P(w);
+        P(mutex);  //各读进程互斥访问counter
+        if(count==0)  //由第一个读进程负责
+            P(rw);   //读之前加锁
+        count++;
+        V(mutex);
+        V(w);
+        读文件;
+        P(mutex);  //各读进程互斥访问count
+        count--;
+        if(count==0)  //由最后一个读进程负责
+            V(rw);  //读完了解锁
+        V(mutex);
+    &#125;
+&#125;
+</code></pre><p>结论：在这种算法中，连续进入的多个读者可以同时读文件，写者和其他进程不能同时访问文件；写者不会饥饿，但也并不是真正的写优先，而是相对公平的先来先服务原则</p><p>核心思想：设置了一个计数器 count 用来记录当前正在访问共享文件的读进程数。我们可以用 count 的值判断当前进入的进程是否是第一个 / 最后一个读进程，从而做出不同的处理</p><h3 id="哲学家进餐问题"><a class="anchor" href="#哲学家进餐问题">#</a> 哲学家进餐问题</h3><p><strong>问题描述</strong></p><p>一个圆桌上坐着 5 名哲学家，每两个哲学家之间的桌上摆一根筷子，桌子的中间是一碗米饭。哲学家们倾注毕生精力用于思考和进餐，哲学家在思考时，并不影响他人。只有当前哲学家饥饿时，才试图拿起左、右两根筷子 (一根一根地拿起)。如果筷子已在他人手上，则需等待。饥饿的哲学家只有同时拿起两根筷子才可以开始进餐，当进餐完毕后，放下筷子继续思考。</p><p><strong>分析解答</strong></p><ul><li>关系分析。系统中 5 位哲学家进程，5 位哲学家与左右邻居对其中间的筷子访问是互斥关系的</li><li>信号量设置。定义互斥信号量数组 chopstick [5]={1,1,1,1,1} 用于实现对 5 个筷子的互斥访问。并对哲学家按 0~4 编号，哲学家 i 左边的筷子编号为 i，右边快字的编号为 (i+1)%5</li></ul><pre><code class="language-C">semaphore chopstick[5]=&#123;1,1,1,1,1&#125;;
+Pi()&#123;  //第i号哲学家的进程
+    while(1)&#123;
+        P(chopstick[i]);  //拿起左边的筷子
+        P(chopstick[(i+1)%5]);  //拿起右边的筷子
+        吃饭;
+        V(chopstick[i]);      //放左
+        V(chopstick[(i+1)%5]); //放右
+        思考;
+    &#125;
+&#125;
+</code></pre><p>上述方式可能会导致每个哲学家都拿起了左边的筷子，但是都在等待右边的筷子，造成死锁</p><p>解决方式：</p><ul><li><p>可以对哲学家进程施加一些限制条件，比如最多允许四个哲学家同时进餐。这样可以保证至少一个哲学家是可以拿到左右两只筷子的</p></li><li><p>要求奇数号哲学家先拿左边的筷子，然后再拿右边的筷子，而偶数号哲学家刚好相反，用这种方法可以保证如果两个相邻的奇偶号哲学家都想吃饭，那么只会有其中一个可以拿起第一只筷子，另一个会直接阻塞。这就避免了占有一支后再等待另一只的情况</p></li><li><p>仅当一个哲学家两只筷子都可用时才允许他抓起筷子</p></li></ul><p>改进后的程序：</p><pre><code class="language-C">semaphore chopstick[5]=&#123;1,1,1,1,1&#125;;
+semaphore mutex = 1;  //互斥地取筷子
+Pi()&#123;  //第i号哲学家的进程
+    while(1)&#123;
+        P(mutex);
+        P(chopstick[i]);  //拿起左边的筷子
+        P(chopstick[(i+1)%5]);  //拿起右边的筷子
+        V(mutex);
+        吃饭;
+        V(chopstick[i]);      //放左
+        V(chopstick[(i+1)%5]); //放右
+        思考;
+    &#125;
+&#125;
+</code></pre><p>上面这种办法并不能保证只有两边的筷子都可用时，才允许哲学家拿起筷子。但这种方法不会造成死锁，可以解决问题。</p><h3 id="管程"><a class="anchor" href="#管程">#</a> 管程</h3><p>管程是一种特殊的软件模块，有这些部分组成：</p><ul><li>局部于管程的共享数据结构说明；</li><li>对该数据结构进行操作的一组过程</li><li>对局部于管程的共享数据设置初始值的语句</li><li>管程有一个名字</li></ul><p>管程的基本特征：</p><ul><li>局部于管程的数据只能被局部于管程的过程所访问</li><li>一个进程只有通过调用管程内的过程才能进入管程访问共享数据</li><li>每次仅允许一个进程在管程内执行某个内部过程</li></ul><p>拓展 1：用管程解决生产者消费者问题：</p><pre><code class="language-C">monitor ProducerConsumer
+    condition full,empty;   //条件变量用来实现同步(排队)
+	int count=0;  //缓冲区中的产品数
+	void insert(Item item)&#123;  //把产品item放入缓冲区
+        if(count==N)
+            wait (full);
+        count++;
+        insert_item(item);
+        if(count==1)
+            signal(empty);
+    &#125;
+	Item remove()&#123;  //从缓冲区中取出一个产品
+        if(count ==0)
+            wait(empty);
+        count--;
+        if(count==N-1)
+            signal(full);
+        return remove_item();
+    &#125;
+end monitor;
+//生产者进程
+producer()&#123;
+    while(1)&#123;
+        item = 生产一个产品;
+        ProducerConsumer.insert(item);
+    &#125;
+&#125;
+//消费者进程
+consumer()&#123;
+    while(1)&#123;
+        item = ProducerConsumer.remove();
+        消费产品item;
+    &#125;
+&#125;
+</code></pre><p>引入管程的目的无非就是更方便地实现进程互斥和同步</p><ul><li>需要在管程中定义共享数据（如生产者消费者的缓冲区）</li><li>需要再管程中定义用于访问这些共享数据的 &quot;入口&quot;—— 其实就是一些函数 (如生产者消费者问题中，可以定义一个函数用于将产品放入缓冲区，再定义一个函数用于从缓冲区取出产品)</li><li>只有通过这种特定的入口才能访问共享数据</li><li>管程中有很多入口，但是每次只能开放其中一个入口，并且只能让一个进程或线程进入（如生产者消费者问题中，各进程需要互斥地访问共享缓冲区。管程的这种特性即可保证一个时间段内最多只会有一个进程在访问缓冲区。注意：这种互斥特性是由编译器负责实现的，程序员不用关心）</li><li>可在管程中设置条件变量及等待 / 唤醒操作以解决同步问题。可以让一个进程或线程在条件变量上等待 (此时，该进程应先释放管程的使用权，也就是让出入口)；可以通过唤醒操作将等待在条件变量上的进程或线程唤醒。</li></ul><div class="tags"><a href="/tags/%E8%80%83%E7%A0%94408/" rel="tag"><i class="ic i-tag"></i> 考研408</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="ic i-tag"></i> 操作系统</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2024-08-04 21:32:41" itemprop="dateModified" datetime="2024-08-04T21:32:41+08:00">2024-08-04</time> </span><span id="computer-science/operating-system/操作系统408-2-3/" class="item leancloud_visitors" data-flag-title="操作系统 408-2-3" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>Whispering <i class="ic i-at"><em>@</em></i>Whispering's Blog</li><li class="link"><strong>本文链接：</strong> <a href="http://ntmydb/github.io/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-3/" title="操作系统 408-2-3">http://ntmydb/github.io/computer-science/operating-system/操作系统408-2-3/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-2/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;10&#x2F;25&#x2F;1JfPaS5CnWF9gqK.jpg" title="操作系统408-2-2"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 操作系统</span><h3>操作系统408-2-2</h3></a></div><div class="item right"><a href="/computer-science/computer-network/%E8%AE%A1%E7%BD%91408-1-2/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2023&#x2F;10&#x2F;26&#x2F;KpEaUDz9wFtq823.jpg" title="计网408-1-2"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> 计算机网络</span><h3>计网408-1-2</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%BA%92%E6%96%A5"><span class="toc-number">1.</span> <span class="toc-text">进程同步、互斥</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">1.1.</span> <span class="toc-text">进程同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5"><span class="toc-number">1.2.</span> <span class="toc-text">进程互斥</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">进程互斥的软件实现方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E6%A0%87%E5%BF%97%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">单标志法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%A0%87%E5%BF%97%E5%85%88%E6%A3%80%E6%9F%A5%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">双标志先检查法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%A0%87%E5%BF%97%E5%90%8E%E6%A3%80%E6%9F%A5%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">双标志后检查法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#peterson%E7%AE%97%E6%B3%95"><span class="toc-number">2.4.</span> <span class="toc-text">Peterson 算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E7%A1%AC%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">进程互斥的硬件实现方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%B1%8F%E8%94%BD%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">中断屏蔽方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#testandset%E6%8C%87%E4%BB%A4"><span class="toc-number">3.2.</span> <span class="toc-text">TestAndSet 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#swap%E6%8C%87%E4%BB%A4"><span class="toc-number">3.3.</span> <span class="toc-text">Swap 指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%94%81"><span class="toc-number">4.</span> <span class="toc-text">互斥锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text">信号量机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E5%BD%A2%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-number">5.1.</span> <span class="toc-text">整形信号量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-number">5.2.</span> <span class="toc-text">记录型信号量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5-%E5%90%8C%E6%AD%A5-%E5%89%8D%E9%A9%B1%E5%85%B3%E7%B3%BB"><span class="toc-number">6.</span> <span class="toc-text">用信号量机制实现进程互斥、同步、前驱关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5"><span class="toc-number">6.1.</span> <span class="toc-text">实现进程互斥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">6.2.</span> <span class="toc-text">实现进程同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%89%8D%E9%A9%B1%E5%85%B3%E7%B3%BB"><span class="toc-number">6.3.</span> <span class="toc-text">实现前驱关系</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">生产者消费者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%94%9F%E4%BA%A7%E8%80%85-%E5%A4%9A%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">多生产者 - 多消费者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%B8%E7%83%9F%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">吸烟者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">10.</span> <span class="toc-text">读者写者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90%E9%97%AE%E9%A2%98"><span class="toc-number">11.</span> <span class="toc-text">哲学家进餐问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%A8%8B"><span class="toc-number">12.</span> <span class="toc-text">管程</span></a></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%B8%80/" rel="bookmark" title="操作系统实验一">操作系统实验一</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E4%B8%80/" rel="bookmark" title="操作系统复习一">操作系统复习一</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E4%BA%8C/" rel="bookmark" title="操作系统复习二">操作系统复习二</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%BA%8C/" rel="bookmark" title="操作系统实验二">操作系统实验二</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E4%B8%89/" rel="bookmark" title="操作系统复习三">操作系统复习三</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E5%9B%9B/" rel="bookmark" title="操作系统复习四">操作系统复习四</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-1-1&2/" rel="bookmark" title="操作系统408-1-1&2">操作系统408-1-1&2</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-1-3&4&5&6/" rel="bookmark" title="操作系统408-1-3&4&5&6">操作系统408-1-3&4&5&6</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-1/" rel="bookmark" title="操作系统408-2-1">操作系统408-2-1</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-2/" rel="bookmark" title="操作系统408-2-2">操作系统408-2-2</a></li><li class="active"><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-3/" rel="bookmark" title="操作系统408-2-3">操作系统408-2-3</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-4/" rel="bookmark" title="操作系统408-2-4">操作系统408-2-4</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-3-1/" rel="bookmark" title="操作系统408-3-1">操作系统408-3-1</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-3-2/" rel="bookmark" title="操作系统408-3-2">操作系统408-3-2</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-4-1/" rel="bookmark" title="操作系统408-4-1">操作系统408-4-1</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-4-3/" rel="bookmark" title="操作系统408-4-3">操作系统408-4-3</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-5-1/" rel="bookmark" title="操作系统408-5-1">操作系统408-5-1</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-5-2/" rel="bookmark" title="操作系统408-5-2">操作系统408-5-2</a></li><li><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-5-3/" rel="bookmark" title="操作系统408-5-3">操作系统408-5-3</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Whispering" data-src="/images/avatar.jpg"><p class="name" itemprop="name">Whispering</p><div class="description" itemprop="description">Whispering's Blog</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">128</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">11</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">39</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL250bXlkYg==" title="https:&#x2F;&#x2F;github.com&#x2F;ntmydb"><i class="ic i-github"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-2/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/computer-science/computer-network/%E8%AE%A1%E7%BD%91408-1-2/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/computer-network/" title="分类于 计算机网络">计算机网络</a></div><span><a href="/computer-science/computer-network/%E8%AE%A1%E7%BD%91408-3-1/" title="计网408-3-1">计网408-3-1</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/oi-template/" title="分类于 OI 模板">OI 模板</a></div><span><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" title="模板之最小生成树">模板之最小生成树</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/computer-network/" title="分类于 计算机网络">计算机网络</a></div><span><a href="/computer-science/computer-network/%E8%AE%A1%E7%BD%91408-1-1/" title="计网408-1-1">计网408-1-1</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/computer-network/" title="分类于 计算机网络">计算机网络</a></div><span><a href="/computer-science/computer-network/%E8%AE%A1%E7%BD%91408-5/" title="计网408-5">计网408-5</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/data-structure/" title="分类于 数据结构">数据结构</a></div><span><a href="/computer-science/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84408-5-4&5/" title="数据结构408-5-4&amp;5">数据结构408-5-4&5</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/oi-template/" title="分类于 OI 模板">OI 模板</a></div><span><a href="/oi-template/%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" title="模板之后缀数组">模板之后缀数组</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/data-structure/" title="分类于 数据结构">数据结构</a></div><span><a href="/computer-science/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84408-2-3/" title="数据结构408-2-3">数据结构408-2-3</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/operating-system/" title="分类于 操作系统">操作系统</a></div><span><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-4/" title="操作系统408-2-4">操作系统408-2-4</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/english-notes/" title="分类于 英语笔记">英语笔记</a></div><span><a href="/english-notes/%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0%E4%BA%8C/" title="英语笔记二">英语笔记二</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a> <i class="ic i-angle-right"></i> <a href="/categories/computer-science/operating-system/" title="分类于 操作系统">操作系统</a></div><span><a href="/computer-science/operating-system/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F408-2-2/" title="操作系统408-2-2">操作系统408-2-2</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2024</span> <span class="with-love"><i class="ic i-"></i> </span><span class="author" itemprop="copyrightHolder">Whispering @ Flüstern</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">690k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">10:27</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"computer-science/operating-system/操作系统408-2-3/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,copy_tex:!0,katex:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script></body></html>
